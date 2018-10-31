@@ -125,7 +125,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         lbl_codigoCliente.setOpaque(true);
 
         lbl_AvisoCPF_CNPJ.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_AvisoCPF_CNPJ.setText("kkk");
+        lbl_AvisoCPF_CNPJ.setText("DFSOAJDOISAJOIDSA");
 
         javax.swing.GroupLayout Painel_ClienteLayout = new javax.swing.GroupLayout(Painel_Cliente);
         Painel_Cliente.setLayout(Painel_ClienteLayout);
@@ -397,7 +397,10 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         txt_Data.setText(formatarDate.format(data));
 
         for (int i = 0; i < listaProdutos.size(); i++) {
-
+                
+//            SDOSAKODKSA
+//                    DLSAKDPOSAKDOPSA
+//                    DKPSAOKDPOSAKDSA
             cbxProduto.addItem(listaProdutos.get(i).getDescricao());
         }
 
