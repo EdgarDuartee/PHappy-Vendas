@@ -429,11 +429,6 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         if (cbxHabilitaPesq1.isSelected()) {
 
             if (rbtnNumero_do_Pedido.isSelected()) {
-
-                cbxFiltro.setEnabled(false);
-                ftxtData_Inicial.setEnabled(false);
-                ftxtData_Final.setEnabled(false);
-
                 if (txtPesquisaPedido.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Digite o Numero do pedido desejado!");
                     txtPesquisaPedido.requestFocus();
@@ -469,11 +464,6 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                     }
                 }
             } else {
-
-                cbxFiltro.setEnabled(true);
-                ftxtData_Inicial.setEnabled(true);
-                ftxtData_Final.setEnabled(true);
-
                 if (txtPesquisaCliente.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Digite o Codigo do cliente desejado!");
                     txtPesquisaCliente.requestFocus();
@@ -611,11 +601,6 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         } // pesquisa generica com data de inicio e situação
         else {
-
-            cbxFiltro.setEnabled(true);
-            ftxtData_Inicial.setEnabled(true);
-            ftxtData_Final.setEnabled(true);
-
             int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
             int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
             int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
@@ -735,6 +720,10 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             rbtnNumero_do_Cliente.setEnabled(false);
             txtPesquisaCliente.setEnabled(false);
             txtPesquisaPedido.setEnabled(false);
+ 
+            cbxFiltro.setEnabled(true);
+            ftxtData_Inicial.setEnabled(true);
+            ftxtData_Final.setEnabled(true);
         }
     }//GEN-LAST:event_cbxHabilitaPesq1ItemStateChanged
 
@@ -743,10 +732,18 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             txtPesquisaPedido.setEnabled(true);
             txtPesquisaCliente.setEnabled(false);
             txtPesquisaCliente.setText("");
+            
+            cbxFiltro.setEnabled(false);
+            ftxtData_Inicial.setEnabled(false);
+            ftxtData_Final.setEnabled(false);
         } else {
             txtPesquisaPedido.setEnabled(false);
             txtPesquisaCliente.setEnabled(true);
             txtPesquisaPedido.setText("");
+            
+            cbxFiltro.setEnabled(true);
+            ftxtData_Inicial.setEnabled(true);
+            ftxtData_Final.setEnabled(true);
         }
     }//GEN-LAST:event_rbtnNumero_do_PedidoStateChanged
 
