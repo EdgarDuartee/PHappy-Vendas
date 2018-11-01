@@ -649,6 +649,11 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
             ftxtCPF.setText("");
             JOptionPane.showMessageDialog(null, "Digite um CPF válido!");
         }
+        pessoaFisica = daoPfisica.consultarCPF(ftxtCPF.getText().replace("-", "").replace(".", "").replace(" ", ""));
+        if(!(pessoaFisica == null)){
+            ftxtCPF.setText("");
+            JOptionPane.showMessageDialog(null, "Este CPF ja está cadastrado no sistema!");
+        }
     }//GEN-LAST:event_ftxtCPFFocusLost
 
     /**
