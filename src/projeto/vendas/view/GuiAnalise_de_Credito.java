@@ -5,8 +5,7 @@
  */
 package projeto.vendas.view;
 
-import com.sun.glass.events.KeyEvent;
-import com.sun.xml.internal.ws.util.StringUtils;
+
 import static java.lang.Integer.parseInt;
 import java.sql.Date;
 import java.text.SimpleDateFormat;

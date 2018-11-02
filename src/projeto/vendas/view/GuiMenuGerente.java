@@ -44,7 +44,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenuItem_Alterar_Vendedor = new javax.swing.JMenuItem();
         jMenu_Gerar_Pedido = new javax.swing.JMenu();
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
-        jMenu_Emitir_Nota_Fiscal = new javax.swing.JMenu();
+        jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
         jMenuItem_EmitirNotaFiscal = new javax.swing.JMenuItem();
         jMenu_GerenciarPendencias = new javax.swing.JMenu();
         jMenuItem_Analise_de_Credito = new javax.swing.JMenuItem();
@@ -118,17 +118,17 @@ public class GuiMenuGerente extends javax.swing.JFrame {
 
         jMenu.add(jMenu_Gerar_Pedido);
 
-        jMenu_Emitir_Nota_Fiscal.setText("Emitir Nota Fiscal");
+        jMenu_Pedidos_Aprovados.setText("Pedidos Aprovados");
 
-        jMenuItem_EmitirNotaFiscal.setText("Emitir Nota Fiscal");
+        jMenuItem_EmitirNotaFiscal.setText("Pedidos Aprovados");
         jMenuItem_EmitirNotaFiscal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_EmitirNotaFiscalActionPerformed(evt);
             }
         });
-        jMenu_Emitir_Nota_Fiscal.add(jMenuItem_EmitirNotaFiscal);
+        jMenu_Pedidos_Aprovados.add(jMenuItem_EmitirNotaFiscal);
 
-        jMenu.add(jMenu_Emitir_Nota_Fiscal);
+        jMenu.add(jMenu_Pedidos_Aprovados);
 
         jMenu_GerenciarPendencias.setText("Gerenciar Pendencias");
 
@@ -199,7 +199,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_Alterar_VendedorActionPerformed
 
     private void jMenuItem_EmitirNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_EmitirNotaFiscalActionPerformed
-//        new GuiEmitir_nota_fiscal().setVisible(true);
+            new GuiPedidos_Aprovados().setVisible(true);
     }//GEN-LAST:event_jMenuItem_EmitirNotaFiscalActionPerformed
 
     /**
@@ -254,8 +254,8 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_Vendedor;
     private javax.swing.JMenu jMenu_Cadastro;
     private javax.swing.JMenu jMenu_Cliente;
-    private javax.swing.JMenu jMenu_Emitir_Nota_Fiscal;
     private javax.swing.JMenu jMenu_Gerar_Pedido;
     private javax.swing.JMenu jMenu_GerenciarPendencias;
+    private javax.swing.JMenu jMenu_Pedidos_Aprovados;
     // End of variables declaration//GEN-END:variables
 }
