@@ -33,8 +33,9 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     /**
      * Creates new form GuiEmitir_nota_fiscal
      */
-    public GuiEmitir_nota_fiscal() {
+    public GuiEmitir_nota_fiscal(Pedido pPedido) {
         initComponents();
+        recebePedido = pPedido;
     }
 
     /**
@@ -570,7 +571,15 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             new String [] {
                 "Código", "Descrição", "Valor Unitário", "Qtd", "Seguro", "Frete", "Outras Desp.", "Valor Total", "ICMS", "PIS", "COFINS", "IPI", "CFOP"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPaneProduto.setViewportView(tblProduto);
 
         javax.swing.GroupLayout jPanelProdutosLayout = new javax.swing.GroupLayout(jPanelProdutos);
@@ -972,7 +981,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnEntradaActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnGerar_NFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerar_NFActionPerformed
@@ -985,38 +994,37 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
         Pedido pedido;
-        pedido = daoGerarPedido.Consultar(Integer.parseInt(txt_codigo.getText()));
-        
-        if(pedido == null){
+        pedido = recebePedido;
+
+        if (pedido == null) {
             System.out.println("Este pedido não existe em nosso banco de dados;");
-        }
-        else{
+        } else {
             switch (pedido.getSituacao()) {
-            case 0:
-            System.out.println("Este pedido ainda não foi aprovado pela empresa;");
-            break;
-            case 2:
-            System.out.println("Este pedido foi Reprovado");
-            break;
-            case 3:
-            System.out.println("Pedido Aprovado.");
-            
-            break;
+                case 0:
+                    System.out.println("Este pedido ainda não foi aprovado pela empresa;");
+                    break;
+                case 2:
+                    System.out.println("Este pedido foi Reprovado");
+                    break;
+                case 3:
+                    System.out.println("Pedido Aprovado.");
+
+                    break;
             }
             ftxtData_Emissao.setText(pedido.getDtPedido().substring(0, pedido.getDtPedido().indexOf("-")).replace("/", ""));
             System.out.println(pedido.getDtPedido().substring(0, pedido.getDtPedido().indexOf("-")).replace("/", ""));
             System.out.println(pedido.getClienteCod().subSequence(0, 2));
-            
-            if(pedido.getClienteCod().contains("PF")) {
+
+            if (pedido.getClienteCod().contains("PF")) {
                 pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
                 txt_NomeDestinario.setText(pessoaFisica.getNome());
-                                 System.out.println(pessoaFisica.getNome());
+                System.out.println(pessoaFisica.getNome());
                 ftxtTelefone_Remetente.setText(pessoaFisica.getTel());
-                                 System.out.println(pessoaFisica.getTel());
+                System.out.println(pessoaFisica.getTel());
                 txtEmail_Remetente.setText(pessoaFisica.getEmail());
-                                 System.out.println(pessoaFisica.getEmail());
+                System.out.println(pessoaFisica.getEmail());
                 txtCidade_Remetente.setText(pessoaFisica.getCidade());
-                                 System.out.println(pessoaFisica.getCidade());
+                System.out.println(pessoaFisica.getCidade());
                 txtRua_Remetente.setText(pessoaFisica.getRua());
                 txtNumero_Remetente.setText(pessoaFisica.getNumero());
                 txtComplemento_Remetente.setText(pessoaFisica.getComplemento());
@@ -1024,40 +1032,34 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 ftxtCEP_Remetente.setText(pessoaFisica.getCep());
                 txtCidade_Remetente.setText(pessoaFisica.getCidade());
                 txtUF_Remetente.setText(pessoaFisica.getUf());
-                
-                
-//                System.out.println(produto);
-                
-                
-              ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(pedido.getCodigo());
-              if(ListaPedidoProduto != null) {
-                  DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
-                  int linhasTabela = model.getRowCount();
-                  for(int i = 0; i < linhasTabela; i++){
-                      model.removeRow(0);
 
-                  }
-                  for(int i = 0; i < ListaPedidoProduto.size(); i++) {
-                      produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
-                      Object[] row = {ListaPedidoProduto.get(i).getProdutoCod(),produto.getDescricao(),
-                                      produto.getValorUnitario(),ListaPedidoProduto.get(i).getProdutoQtd(),
-                                      "Sim","Não","Outras",produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd(),
-                                       "ICMS","IPI","PIS","COFINS","CFOP"};
-                      model.addRow(row);
-                  }     
-                  
-              }
-              
-            }
-            else {
+//                System.out.println(produto);
+                ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(pedido.getCodigo());
+                if (ListaPedidoProduto != null) {
+                    DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
+                    int linhasTabela = model.getRowCount();
+                    for (int i = 0; i < linhasTabela; i++) {
+                        model.removeRow(0);
+
+                    }
+                    for (int i = 0; i < ListaPedidoProduto.size(); i++) {
+                        produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
+                        Object[] row = {ListaPedidoProduto.get(i).getProdutoCod(), produto.getDescricao(),
+                            produto.getValorUnitario(), ListaPedidoProduto.get(i).getProdutoQtd(),
+                            "Sim", "Não", "Outras", produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd(),
+                            "ICMS", "IPI", "PIS", "COFINS", "CFOP"};
+                        model.addRow(row);
+                    }
+
+                }
+
+            } else {
 //                pessoaJuridica = daoPJuridica.consultar.getClienteCod());
-                
+
             }
-            
-            
 
         }
-           GuiEmitir_nota_fiscal.this.setTitle("OIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+        GuiEmitir_nota_fiscal.this.setTitle("OIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
     }//GEN-LAST:event_btn_BuscarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -1069,15 +1071,73 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         daoPFisica = new DaoPFisica(conexao.conectar());
         daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
         daoProduto = new DaoProduto(conexao.conectar());
+
         Date data = new Date(System.currentTimeMillis());
         Calendar calendar = new GregorianCalendar();
         SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
+
         ftxtData_Emissao.setText(formatarDate.format(data));
         ftxtData_Saida.setText(formatarDate.format(data));
-        ftxtHora_Emissao.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE));
-        ftxtHora_Saida.setText(calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE));
+        ftxtHora_Emissao.setText(calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
+        ftxtHora_Saida.setText(calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
+
+        ftxtData_Emissao.setText(recebePedido.getDtPedido().substring(0, recebePedido.getDtPedido().indexOf("-")).replace("/", ""));
+//            System.out.println(recebePedido.getDtPedido().substring(0, recebePedido.getDtPedido().indexOf("-")).replace("/", ""));
+//            System.out.println(recebePedido.getClienteCod().subSequence(0, 2));
+
+        if (recebePedido.getClienteCod().substring(0, 2).equals("PF")) {
+
+            pessoaFisica = daoPFisica.consultar(recebePedido.getClienteCod());
+            txt_NomeDestinario.setText(pessoaFisica.getNome());
+            ftxtTelefone_Remetente.setText(pessoaFisica.getTel());
+            txtEmail_Remetente.setText(pessoaFisica.getEmail());
+            txtCidade_Remetente.setText(pessoaFisica.getCidade());
+            txtRua_Remetente.setText(pessoaFisica.getRua());
+            txtNumero_Remetente.setText(pessoaFisica.getNumero());
+            txtComplemento_Remetente.setText(pessoaFisica.getComplemento());
+            txtBairro_Remetente.setText(pessoaFisica.getBairro());
+            ftxtCEP_Remetente.setText(pessoaFisica.getCep());
+            txtCidade_Remetente.setText(pessoaFisica.getCidade());
+            txtUF_Remetente.setText(pessoaFisica.getUf());
+        } else {
+            pessoaJuridica = daoPJuridica.consultar(recebePedido.getClienteCod());
+            txt_NomeDestinario.setText(pessoaJuridica.getNome());
+            ftxtTelefone_Remetente.setText(pessoaJuridica.getTel());
+            txtEmail_Remetente.setText(pessoaJuridica.getEmail());
+            txtCidade_Remetente.setText(pessoaJuridica.getCidade());
+            txtRua_Remetente.setText(pessoaJuridica.getRua());
+            txtNumero_Remetente.setText(pessoaJuridica.getNumero());
+            txtComplemento_Remetente.setText(pessoaJuridica.getComplemento());
+            txtBairro_Remetente.setText(pessoaJuridica.getBairro());
+            ftxtCEP_Remetente.setText(pessoaJuridica.getCep());
+            txtCidade_Remetente.setText(pessoaJuridica.getCidade());
+            txtUF_Remetente.setText(pessoaJuridica.getUf());
+            txtTotal_Produtos.setText("" + recebePedido.getTotal());
+
+        }
+        ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(recebePedido.getCodigo());
         
-        
+        if (ListaPedidoProduto != null) {
+            DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
+            int linhasTabela = model.getRowCount();
+            for (int i = 0; i < linhasTabela; i++) {
+                model.removeRow(0);
+            }
+            for (int i = 0; i < ListaPedidoProduto.size(); i++) {
+
+                produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
+                System.out.println("Nome : " + produto.getDescricao() + "       " + "Valor Imposto : " + produto.getImpostoIpi());
+                Object[] row = {ListaPedidoProduto.get(i).getProdutoCod(), produto.getDescricao(),
+                    produto.getValorUnitario(), ListaPedidoProduto.get(i).getProdutoQtd(),
+                    "Sim", "Não", "Outras", produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd(),
+                    produto.getImpostoIcms(), produto.getImpostoPis(), produto.getImpostoConfins(),(produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi(),
+                    "CFOP"};
+                model.addRow(row);
+            }
+
+        }
+
+
     }//GEN-LAST:event_formWindowOpened
 
     private void txtNumero_EmitenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumero_EmitenteActionPerformed
@@ -1114,13 +1174,14 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiEmitir_nota_fiscal().setVisible(true);
+                new GuiEmitir_nota_fiscal(recebePedido).setVisible(true);
             }
         });
     }
-    
+
     private Conexao conexao;
     private DaoGerarPedido daoGerarPedido;
+    private static Pedido recebePedido;
     private DaoPFisica daoPFisica;
     private DaoPJuridica daoPJuridica;
     private DaoPedidoProduto daoPedidoProduto;

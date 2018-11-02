@@ -5,15 +5,11 @@
  */
 package projeto.vendas.view;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import static java.lang.Integer.parseInt;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.vendas.control.Conexao;
@@ -25,8 +21,6 @@ import projeto.vendas.model.Login;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
-import sun.util.calendar.JulianCalendar;
-import sun.util.resources.LocaleData;
 
 /**
  *

@@ -24,9 +24,13 @@ public class DaoProduto {
             ResultSet rs = ps.executeQuery();
             while (rs.next() == true) {
                 produto = new Produto(rs.getInt("CODIGO"),
-                        rs.getString("DESCRICAO"),
-                        rs.getInt("qtdEstoque"),
-                        rs.getFloat("valorUnitario"));
+                                      rs.getString("DESCRICAO"),
+                                      rs.getInt("qtdEstoque"),
+                                      rs.getFloat("valorUnitario"));
+                produto.setImpostoConfins(rs.getFloat("impostoConfins"));
+                produto.setImpostoIcms(rs.getFloat("impostoICMS"));
+                produto.setImpostoIpi(rs.getFloat("impostoIPI"));
+                produto.setImpostoPis(rs.getFloat("impostoPIS"));
                 lista.add(produto);
             }
         } catch (SQLException ex) {
@@ -45,6 +49,12 @@ public class DaoProduto {
             if (rs.next()) {
                 produto = new Produto(rs.getInt("codigo"), rs.getString("descricao"),
                         rs.getInt("qtdEstoque"), rs.getFloat("valorUnitario"));
+                produto.setImpostoConfins(rs.getFloat("impostoConfins"));
+                produto.setImpostoIcms(rs.getFloat("impostoICMS"));
+                produto.setImpostoIpi(rs.getFloat("impostoIPI"));
+                produto.setImpostoPis(rs.getFloat("impostoPIS"));
+
+
             }
 
         } catch (SQLException ex) {

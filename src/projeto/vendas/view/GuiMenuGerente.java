@@ -199,7 +199,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_Alterar_VendedorActionPerformed
 
     private void jMenuItem_EmitirNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_EmitirNotaFiscalActionPerformed
-        new GuiEmitir_nota_fiscal().setVisible(true);
+//        new GuiEmitir_nota_fiscal().setVisible(true);
     }//GEN-LAST:event_jMenuItem_EmitirNotaFiscalActionPerformed
 
     /**

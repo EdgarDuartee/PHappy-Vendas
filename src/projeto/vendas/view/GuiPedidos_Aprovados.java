@@ -5,11 +5,22 @@
  */
 package projeto.vendas.view;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoGerarPedido;
+import projeto.vendas.control.DaoPFisica;
+import projeto.vendas.control.DaoPJuridica;
+import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Pedido;
+import projeto.vendas.model.PessoaFisica;
+import projeto.vendas.model.PessoaJuridica;
+
 /**
  *
- * @author ferna
+ * @author 0030481621028
  */
-public class GuiPedidos_Aprovados extends javax.swing.JPanel {
+public class GuiPedidos_Aprovados extends javax.swing.JFrame {
 
     /**
      * Creates new form GuiPedidos_Aprovados
@@ -27,19 +38,166 @@ public class GuiPedidos_Aprovados extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_PedidosAprovados = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        tbl_PedidosAprovados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Número do Pedido", "Cliente", "Valor do Pedido", "Pedido Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbl_PedidosAprovados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_PedidosAprovados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_PedidosAprovadosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_PedidosAprovados);
+
+        jButton1.setText("Selecione o Pedido E Click Aqui Para Emitir a Nota Fiscal.");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tbl_PedidosAprovadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PedidosAprovadosMouseClicked
+         
+    }//GEN-LAST:event_tbl_PedidosAprovadosMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao();
+        conexao.setDriver();
+        conexao.setConnectionString();
+
+        daoGerarPedido = new DaoGerarPedido(conexao.conectar());
+        daoPFisica = new DaoPFisica(conexao.conectar());
+        daoPJuridica = new DaoPJuridica(conexao.conectar());
+        ListaPedidos = daoGerarPedido.ListarPedidos();
+        DefaultTableModel model = (DefaultTableModel) tbl_PedidosAprovados.getModel();
+
+        
+        for(int i = 0; i < ListaPedidos.size(); i ++){
+            if(ListaPedidos.get(i).getSituacao() == 1) {
+                if(ListaPedidos.get(i).getClienteCod().substring(0, 2).equals("PF")) {
+                    pf = daoPFisica.consultar(ListaPedidos.get(i).getClienteCod());
+                    Object[] row = {ListaPedidos.get(i).getCodigo(),
+                        "("+ ListaPedidos.get(i).getClienteCod() + ")   " + pf.getNome(),
+                        ListaPedidos.get(i).getTotal(),
+                        "Aprovado"};
+                    model.addRow(row);
+                }    
+                else {
+                    pj = daoPJuridica.consultar(ListaPedidos.get(i).getClienteCod());
+                    Object[] row = {ListaPedidos.get(i).getCodigo(),
+                    "(" + ListaPedidos.get(i).getClienteCod() + ")   " + pj.getNome(),
+                    ListaPedidos.get(i).getTotal(),
+                    "Aprovado"};
+                    System.out.println(pj.getNome());
+                    model.addRow(row);
+                }   
+            }
+            
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        if(tbl_PedidosAprovados.getSelectedRow() >= 0) {
+            GuiEmitir_nota_fiscal NF = new GuiEmitir_nota_fiscal(daoGerarPedido.Consultar(Integer.parseInt(""+tbl_PedidosAprovados.getValueAt(tbl_PedidosAprovados.getSelectedRow(),0))));
+            NF.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GuiPedidos_Aprovados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GuiPedidos_Aprovados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GuiPedidos_Aprovados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GuiPedidos_Aprovados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new GuiPedidos_Aprovados().setVisible(true);
+            }
+        });
+    }
+private ArrayList<Pedido> ListaPedidos;    
+private DaoGerarPedido daoGerarPedido;
+private DaoPFisica daoPFisica;
+private DaoPJuridica daoPJuridica;
+private PessoaFisica pf;
+private PessoaJuridica pj;
+private Conexao conexao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tbl_PedidosAprovados;
     // End of variables declaration//GEN-END:variables
 }

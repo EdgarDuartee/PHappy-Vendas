@@ -5,28 +5,56 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
+
 /**
  *
  * @author Bruno
  */
 public class DaoPJuridica {
+
     private Connection conn;
-    
+
     public DaoPJuridica(Connection conn) {
-         this.conn = conn;
+        this.conn = conn;
     }
+
+    public PessoaJuridica consultar(String codigo) {
+        PessoaJuridica PJ = null;
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("select * from P_JURIDICA where codigo = ?");
+            ps.setString(1, codigo);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                PJ = new PessoaJuridica(codigo, rs.getString("NomeFASTASIA"), rs.getString("Email"), rs.getString("Rua"),
+                        rs.getString("Numero"), rs.getString("Bairro"), rs.getString("Cidade"),
+                        rs.getString("UF"), rs.getString("CEP"), rs.getDouble("Latitude"),
+                        rs.getDouble("Longitude"), rs.getString("Ativo"));
+                PJ.setVendedor_responsavel(rs.getString("cod_vend_resp"));
+                PJ.setComplemento(rs.getString("complemento"));
+                PJ.setTel(rs.getString("CONTATO1"));
+                PJ.setCnpj(rs.getString("CNPJ"));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return PJ;
+    }
+
     public void inserir(PessoaJuridica pessoaJuridica) {
         PreparedStatement ps = null;
-        try {      
+        try {
             ps = conn.prepareStatement("INSERT INTO P_Juridica(codigo, email, "
-                                       + "rua, numero, bairro, cidade, cep,"
-                                       + "uf, latitude, longitude, cnpj,"
-                                       + "nomefantasia, tel,complemento)"
+                    + "rua, numero, bairro, cidade, cep,"
+                    + "uf, latitude, longitude, cnpj,"
+                    + "nomefantasia, tel,complemento)"
                     + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            
-            ps.setString(1,    pessoaJuridica.getCodigo());
+
+            ps.setString(1, pessoaJuridica.getCodigo());
             ps.setString(2, pessoaJuridica.getEmail());
             ps.setString(3, pessoaJuridica.getRua());
             ps.setString(4, pessoaJuridica.getNumero());
@@ -35,20 +63,20 @@ public class DaoPJuridica {
             ps.setString(7, pessoaJuridica.getCep());
             ps.setString(8, pessoaJuridica.getUf());
             ps.setDouble(9, pessoaJuridica.getLatitude());
-            ps.setDouble(10,pessoaJuridica.getLongitude());
-            ps.setString(11,pessoaJuridica.getCnpj());
-            ps.setString(12,pessoaJuridica.getNome());
-            ps.setString(13,pessoaJuridica.getTel());
-            ps.setString(14,pessoaJuridica.getComplemento());
-            ps.setString(15,"A");
-            
+            ps.setDouble(10, pessoaJuridica.getLongitude());
+            ps.setString(11, pessoaJuridica.getCnpj());
+            ps.setString(12, pessoaJuridica.getNome());
+            ps.setString(13, pessoaJuridica.getTel());
+            ps.setString(14, pessoaJuridica.getComplemento());
+            ps.setString(15, "A");
+
             ps.execute();
         } catch (SQLException ex) {
-            System.out.println(ex.toString());   
+            System.out.println(ex.toString());
         }
 
     }
-    
+
     public ArrayList<PessoaJuridica> ListarPessoasJuridicas() {
         {
             PessoaJuridica PJ = null;
@@ -60,7 +88,7 @@ public class DaoPJuridica {
                 while (rs.next() == true) {
                     PJ = new PessoaJuridica(rs.getString("CODIGO"), rs.getString("nomefastasia"), rs.getString("email"), rs.getString("rua"),
                             rs.getString("numero"), rs.getString("bairro"), rs.getString("cidade"), rs.getString("uf"),
-                            rs.getString("CEP"), rs.getDouble("latitude"), rs.getDouble("longitude"),rs.getString("ativo"));
+                            rs.getString("CEP"), rs.getDouble("latitude"), rs.getDouble("longitude"), rs.getString("ativo"));
                     lista.add(PJ);
                 }
             } catch (SQLException ex) {
@@ -72,33 +100,33 @@ public class DaoPJuridica {
 
     }
 
-     public PessoaJuridica consultaCNPJ(String codigo) {
+    public PessoaJuridica consultaCNPJ(String codigo) {
         PessoaJuridica p = null;
         PreparedStatement ps = null;
-        try {  
-            ps = conn.prepareStatement("SELECT * from P_JURIDICA where " +
-                                                 "CNPJ = ?");
-            ps.setString(1,codigo);
-            
+        try {
+            ps = conn.prepareStatement("SELECT * from P_JURIDICA where "
+                    + "CNPJ = ?");
+            ps.setString(1, codigo);
+
             ResultSet rs = ps.executeQuery();
-            
-            if(rs.next() == true ){
-                p = new PessoaJuridica(rs.getString("codigo"),rs.getString("nomefastasia"),
-                                  rs.getString("email"),rs.getString("rua"),
-                                  rs.getString("numero"),rs.getString("bairro"),
-                                  rs.getString("cidade"),rs.getString("uf"),
-                                  rs.getString("cep"),rs.getDouble("latitude"),
-                                  rs.getDouble("longitude"),rs.getString("ativo"));
-              //  p.setVendedor_responsavel(rs.getString("vend_resp"));
+
+            if (rs.next() == true) {
+                p = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefastasia"),
+                        rs.getString("email"), rs.getString("rua"),
+                        rs.getString("numero"), rs.getString("bairro"),
+                        rs.getString("cidade"), rs.getString("uf"),
+                        rs.getString("cep"), rs.getDouble("latitude"),
+                        rs.getDouble("longitude"), rs.getString("ativo"));
+                p.setVendedor_responsavel(rs.getString("vend_resp"));
                 p.setComplemento(rs.getString("complemento"));
                 p.setTel(rs.getString("tel"));
                 p.setCnpj(rs.getString("CNPJ"));
-                
-            }             
+
+            }
         } catch (SQLException ex) {
-             System.out.println(ex.toString());   
+            System.out.println(ex.toString());
         }
-        return  (p);
+        return (p);
     }
-    
+
 }

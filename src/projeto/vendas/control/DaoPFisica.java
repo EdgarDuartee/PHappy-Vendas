@@ -178,6 +178,13 @@ public class DaoPFisica {
                                   rs.getString("numero"),rs.getString("bairro"),
                                   rs.getString("cidade"),rs.getString("uf"),
                                   rs.getString("cep"),rs.getString("ativo"));
+                PF.setVendedor_responsavel(rs.getString("vend_resp"));
+                PF.setComplemento(rs.getString("complemento"));
+                PF.setCel(rs.getString("cel"));
+                PF.setTel(rs.getString("tel"));
+                PF.setDtNasc(rs.getString("dtNasc"));
+                PF.setRg(rs.getString("rg"));
+                PF.setCpf(rs.getString("cpf"));
                     lista.add(PF);
                 }
             } catch (SQLException ex) {
@@ -207,7 +214,7 @@ public class DaoPFisica {
                                   rs.getString("numero"),rs.getString("bairro"),
                                   rs.getString("cidade"),rs.getString("uf"),
                                   rs.getString("cep"),rs.getString("ativo"));
-           //     p.setVendedor_responsavel(rs.getString("vend_resp"));
+                p.setVendedor_responsavel(rs.getString("vend_resp"));
                 p.setComplemento(rs.getString("complemento"));
                 p.setCel(rs.getString("cel"));
                 p.setTel(rs.getString("tel"));
