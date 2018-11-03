@@ -164,7 +164,7 @@ public class DaoPFisica {
         return  (p);
     }   
     
-        public ArrayList<PessoaFisica> ListarPessoasFisicas() {
+    public ArrayList<PessoaFisica> ListarPessoasFisicas() {
         {
             PessoaFisica PF = null;
             ArrayList<PessoaFisica> lista = new ArrayList();
@@ -191,7 +191,7 @@ public class DaoPFisica {
 
     }
     
-     public PessoaFisica consultaCPF(String codigo) {
+    public PessoaFisica consultaCPF(String codigo) {
         PessoaFisica p = null;
         PreparedStatement ps = null;
         try {  
@@ -221,4 +221,5 @@ public class DaoPFisica {
         }
         return  (p);
     }   
+
 }

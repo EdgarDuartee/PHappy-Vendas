@@ -5,6 +5,7 @@
  */
 package projeto.vendas.view;
 
+import com.sun.glass.events.KeyEvent;
 import com.sun.xml.internal.ws.util.StringUtils;
 import static java.lang.Integer.parseInt;
 import java.sql.Date;
@@ -297,6 +298,11 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         });
         tblPedido.setName(""); // NOI18N
         tblPedido.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblPedidoMousePressed(evt);
+            }
+        });
         tblPedido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tblPedidoKeyPressed(evt);
@@ -309,7 +315,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         jPanel_Analise_de_CreditoLayout.setHorizontalGroup(
             jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
                         .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -333,7 +339,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(JScrollPanePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(71, 71, 71))
+                        .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
                         .addComponent(lblUsuario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -376,7 +382,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Analise_de_Credito, javax.swing.GroupLayout.PREFERRED_SIZE, 896, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel_Analise_de_Credito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,11 +416,29 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarActionPerformed
-        // TODO add your handling code here:
+        if (tblPedido.getSelectedRow() >= 0) {
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")){
+                int valorPedido = (int)tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(),0);
+                daoGerarPedido.aprovar(valorPedido);
+                tblPedido.getModel().setValueAt("APROVADO",(tblPedido.getSelectedRow()),5);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha o pedido para ser aprovado!");
+            txtPesquisaPedido.requestFocus();
+        }
     }//GEN-LAST:event_btnAprovarActionPerformed
 
     private void btnReprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarActionPerformed
-        // TODO add your handling code here:
+        if (tblPedido.getSelectedRow() >= 0) {
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")) {
+                int valorPedido = (int)tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(),0);
+                daoGerarPedido.reprovar(valorPedido);
+                tblPedido.getModel().setValueAt("REPROVADO",(tblPedido.getSelectedRow()),5);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha o pedido para ser reprovado!");
+            txtPesquisaPedido.requestFocus();
+        }
     }//GEN-LAST:event_btnReprovarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -421,6 +447,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         //limpa caso ja tiver algo na tabela
+        btnAprovar.setEnabled(false);
+        btnReprovar.setEnabled(false);
         if (flag == 1) {
             model.setRowCount(0);
         }
@@ -720,7 +748,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             rbtnNumero_do_Cliente.setEnabled(false);
             txtPesquisaCliente.setEnabled(false);
             txtPesquisaPedido.setEnabled(false);
- 
+
             cbxFiltro.setEnabled(true);
             ftxtData_Inicial.setEnabled(true);
             ftxtData_Final.setEnabled(true);
@@ -732,7 +760,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             txtPesquisaPedido.setEnabled(true);
             txtPesquisaCliente.setEnabled(false);
             txtPesquisaCliente.setText("");
-            
+
             cbxFiltro.setEnabled(false);
             ftxtData_Inicial.setEnabled(false);
             ftxtData_Final.setEnabled(false);
@@ -740,7 +768,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             txtPesquisaPedido.setEnabled(false);
             txtPesquisaCliente.setEnabled(true);
             txtPesquisaPedido.setText("");
-            
+
             cbxFiltro.setEnabled(true);
             ftxtData_Inicial.setEnabled(true);
             ftxtData_Final.setEnabled(true);
@@ -748,8 +776,53 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnNumero_do_PedidoStateChanged
 
     private void tblPedidoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPedidoKeyPressed
-        // evento para excluir linha   
+        /*if (evt.getKeyCode() == KeyEvent.VK_UP|| evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")) {
+                btnAprovar.setEnabled(true);
+                btnReprovar.setEnabled(true);
+            }
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("NFe EMITIDA")) {
+                JOptionPane.showMessageDialog(null, "Este pedido ja foi emitida a nota fiscal!");
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
+            }
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("REPROVADO")) {
+                JOptionPane.showMessageDialog(null, "Este pedido foi reprovado!");
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
+            }
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("APROVADO")) {
+                JOptionPane.showMessageDialog(null, "Este pedido já esta aprovado!");
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
+            }
+        }
+        */
     }//GEN-LAST:event_tblPedidoKeyPressed
+
+    private void tblPedidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPedidoMousePressed
+        if (tblPedido.getSelectedRow() >= 0) {
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")) {
+                btnAprovar.setEnabled(true);
+                btnReprovar.setEnabled(true);
+            }
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("NFe EMITIDA")) {
+                JOptionPane.showMessageDialog(null, "Este pedido ja foi emitida a nota fiscal!");
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
+            }
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("REPROVADO")) {
+                JOptionPane.showMessageDialog(null, "Este pedido foi reprovado!");
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
+            }
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("APROVADO")) {
+                JOptionPane.showMessageDialog(null, "Este pedido já esta aprovado!");
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_tblPedidoMousePressed
 
     /**
      * @param args the command line arguments

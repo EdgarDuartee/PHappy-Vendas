@@ -162,4 +162,35 @@ public class DaoGerarPedido {
         }
         return (lista);
     }
+
+    public void aprovar(int pedido) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("UPDATE Pedido set situacao = ? where "
+                                        + "codigo = ?");
+            
+            ps.setInt(1,1);  
+            ps.setInt(2,pedido);
+             
+            ps.execute();
+        } catch (SQLException ex) {
+             System.out.println(ex.toString());   
+        }
+    }
+    
+    public void reprovar(int pedido) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("UPDATE Pedido set situacao = ? where "
+                                        + "codigo = ?");
+            
+            ps.setInt(1,2);  
+            ps.setInt(2,pedido);
+             
+            ps.execute();
+        } catch (SQLException ex) {
+             System.out.println(ex.toString());   
+        }
+    }
+    
 }
