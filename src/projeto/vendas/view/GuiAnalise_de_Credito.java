@@ -417,10 +417,10 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
 
     private void btnAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarActionPerformed
         if (tblPedido.getSelectedRow() >= 0) {
-            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")){
-                int valorPedido = (int)tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(),0);
+            if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")) {
+                int valorPedido = (int) tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(), 0);
                 daoGerarPedido.aprovar(valorPedido);
-                tblPedido.getModel().setValueAt("APROVADO",(tblPedido.getSelectedRow()),5);
+                tblPedido.getModel().setValueAt("APROVADO", (tblPedido.getSelectedRow()), 5);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Escolha o pedido para ser aprovado!");
@@ -431,9 +431,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     private void btnReprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarActionPerformed
         if (tblPedido.getSelectedRow() >= 0) {
             if (tblPedido.getValueAt((tblPedido.getSelectedRow()), 5).equals("PENDENTE")) {
-                int valorPedido = (int)tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(),0);
+                int valorPedido = (int) tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(), 0);
                 daoGerarPedido.reprovar(valorPedido);
-                tblPedido.getModel().setValueAt("REPROVADO",(tblPedido.getSelectedRow()),5);
+                tblPedido.getModel().setValueAt("REPROVADO", (tblPedido.getSelectedRow()), 5);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Escolha o pedido para ser reprovado!");
@@ -455,7 +455,6 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         daoGerarPedido = new DaoGerarPedido(conexao.conectar());
         // caso habilite para pesquisar por cliente ou codigo do pedido
         if (cbxHabilitaPesq1.isSelected()) {
-
             if (rbtnNumero_do_Pedido.isSelected()) {
                 if (txtPesquisaPedido.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Digite o Numero do pedido desejado!");
@@ -500,48 +499,90 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                     if ((txtPesquisaCliente.getText().length() >= 3)
                             && (txtPesquisaCliente.getText().substring(0, 2).equals("PF")
                             || txtPesquisaCliente.getText().substring(0, 2).equals("PJ"))) {
+                        //testa se o restante depois do prefixo so tem numero
+                        System.out.println(txtPesquisaCliente.getText().
+                                substring(2, txtPesquisaCliente.getText().length()));
+                        if (testaNumeros(txtPesquisaCliente.getText().
+                                substring(2, txtPesquisaCliente.getText().length())) == true) {
+                            daoGerarPedido = new DaoGerarPedido(conexao.conectar());
 
-                        daoGerarPedido = new DaoGerarPedido(conexao.conectar());
+                            pedido = null;
+                            //aqui preciso pesquisar pelo codigo do cliente e voltar um array list 
+                            // entre datas
+                            ArrayList<Pedido> pedidosPorCod = daoGerarPedido.
+                                    listarPedidosPorCod(txtPesquisaCliente.getText());
 
-                        pedido = null;
-                        //aqui preciso pesquisar pelo codigo do cliente e voltar um array list 
-                        // entre datas
-                        ArrayList<Pedido> pedidosPorCod = daoGerarPedido.
-                                listarPedidosPorCod(txtPesquisaCliente.getText());
+                            if (pedidosPorCod.size() == 0) {
+                                JOptionPane.showMessageDialog(null, "Este cliente não consta no Sistema!");
+                                txtPesquisaPedido.requestFocus();
+                                txtPesquisaPedido.setText("");
+                                flag = 0;
+                            }
+                            int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
+                            int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
+                            int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
+                            LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
+                            System.out.println(dataInicio);
 
-                        if (pedidosPorCod.size() == 0) {
-                            JOptionPane.showMessageDialog(null, "Este cliente não consta no Sistema!");
-                            txtPesquisaPedido.requestFocus();
-                            txtPesquisaPedido.setText("");
-                            flag = 0;
-                        }
-                        int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
-                        int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
-                        int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
-                        LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
-                        System.out.println(dataInicio);
+                            int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
+                            int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
+                            int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
+                            LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
+                            System.out.println(dataFinal);
+                            for (int x = 0; x < pedidosPorCod.size(); x++) {
 
-                        int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
-                        int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
-                        int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
-                        LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
-                        System.out.println(dataFinal);
-                        for (int x = 0; x < pedidosPorCod.size(); x++) {
+                                int dia = parseInt(pedidosPorCod.get(x).getDtPedido().substring(0, 2));
+                                int mes = parseInt(pedidosPorCod.get(x).getDtPedido().substring(3, 5));
+                                int ano = parseInt(pedidosPorCod.get(x).getDtPedido().substring(6, 10));
+                                LocalDate dataPedido = LocalDate.of(ano, mes, dia);
 
-                            int dia = parseInt(pedidosPorCod.get(x).getDtPedido().substring(0, 2));
-                            int mes = parseInt(pedidosPorCod.get(x).getDtPedido().substring(3, 5));
-                            int ano = parseInt(pedidosPorCod.get(x).getDtPedido().substring(6, 10));
-                            LocalDate dataPedido = LocalDate.of(ano, mes, dia);
+                                // testa se a data é maior que a data inicial da busca
+                                if (dataPedido.isAfter(dataInicio) || dataPedido.isEqual(dataInicio)) {
+                                    //testa se a data é menor que a data final da busca
+                                    if (dataPedido.isBefore(dataFinal) || dataPedido.isEqual(dataFinal)) {
+                                        //testa se o filtro nao é todos
+                                        if (cbxFiltro.getSelectedIndex() != 0) {
+                                            //verifica se o pedido testado esta com o filtro desejado
+                                            if (pedidosPorCod.get(x).getSituacao() == cbxFiltro.getSelectedIndex()) {
+                                                //testa se o pedido é feito para cliente pessoa fisica ou juridica
+                                                if (pedidosPorCod.get(x).getClienteCod().substring(0, 2).equals("PF")) {
+                                                    pessoaFisica = daoPFisica.consultar(pedidosPorCod.get(x).getClienteCod());
+                                                    nome = pessoaFisica.getNome();
+                                                } else {
+                                                    // aqui coloca o pesquisar codigo cliente do daoPJuridica
+                                                    //pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
+                                                    //nome = pessoaJuridica.getNome();
+                                                }
+                                                //insere uma linha na tabela com todos os dados requeridos 
 
-                            // testa se a data é maior que a data inicial da busca
-                            if (dataPedido.isAfter(dataInicio) || dataPedido.isEqual(dataInicio)) {
-                                //testa se a data é menor que a data final da busca
-                                if (dataPedido.isBefore(dataFinal) || dataPedido.isEqual(dataFinal)) {
-                                    //testa se o filtro nao é todos
-                                    if (cbxFiltro.getSelectedIndex() != 0) {
-                                        //verifica se o pedido testado esta com o filtro desejado
-                                        if (pedidosPorCod.get(x).getSituacao() == cbxFiltro.getSelectedIndex()) {
-                                            //testa se o pedido é feito para cliente pessoa fisica ou juridica
+                                                switch (pedidosPorCod.get(x).getSituacao()) {
+                                                    case 1:
+                                                        legendaSituacao = "APROVADO";
+                                                        break;
+                                                    case 2:
+                                                        legendaSituacao = "REPROVADO";
+                                                        break;
+                                                    case 3:
+                                                        legendaSituacao = "PENDENTE";
+                                                        break;
+                                                    case 4:
+                                                        legendaSituacao = "NFe EMITIDA";
+                                                        break;
+                                                }
+                                                Object[] row = {
+                                                    pedidosPorCod.get(x).getCodigo(),
+                                                    pedidosPorCod.get(x).getClienteCod(),
+                                                    nome,
+                                                    pedidosPorCod.get(x).getDtPedido(),
+                                                    pedidosPorCod.get(x).getTotal(),
+                                                    legendaSituacao};
+
+                                                model = (DefaultTableModel) tblPedido.getModel();
+                                                model.addRow(row);
+                                                flag = 1;
+                                            }
+                                        } // aqui se caso a situacao for todos exibe todos por esse else
+                                        else {
                                             if (pedidosPorCod.get(x).getClienteCod().substring(0, 2).equals("PF")) {
                                                 pessoaFisica = daoPFisica.consultar(pedidosPorCod.get(x).getClienteCod());
                                                 nome = pessoaFisica.getNome();
@@ -551,7 +592,6 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                 //nome = pessoaJuridica.getNome();
                                             }
                                             //insere uma linha na tabela com todos os dados requeridos 
-
                                             switch (pedidosPorCod.get(x).getSituacao()) {
                                                 case 1:
                                                     legendaSituacao = "APROVADO";
@@ -578,52 +618,25 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                             model.addRow(row);
                                             flag = 1;
                                         }
-                                    } // aqui se caso a situacao for todos exibe todos por esse else
-                                    else {
-                                        if (pedidosPorCod.get(x).getClienteCod().substring(0, 2).equals("PF")) {
-                                            pessoaFisica = daoPFisica.consultar(pedidosPorCod.get(x).getClienteCod());
-                                            nome = pessoaFisica.getNome();
-                                        } else {
-                                            // aqui coloca o pesquisar codigo cliente do daoPJuridica
-                                            //pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
-                                            //nome = pessoaJuridica.getNome();
-                                        }
-                                        //insere uma linha na tabela com todos os dados requeridos 
-                                        switch (pedidosPorCod.get(x).getSituacao()) {
-                                            case 1:
-                                                legendaSituacao = "APROVADO";
-                                                break;
-                                            case 2:
-                                                legendaSituacao = "REPROVADO";
-                                                break;
-                                            case 3:
-                                                legendaSituacao = "PENDENTE";
-                                                break;
-                                            case 4:
-                                                legendaSituacao = "NFe EMITIDA";
-                                                break;
-                                        }
-                                        Object[] row = {
-                                            pedidosPorCod.get(x).getCodigo(),
-                                            pedidosPorCod.get(x).getClienteCod(),
-                                            nome,
-                                            pedidosPorCod.get(x).getDtPedido(),
-                                            pedidosPorCod.get(x).getTotal(),
-                                            legendaSituacao};
-
-                                        model = (DefaultTableModel) tblPedido.getModel();
-                                        model.addRow(row);
-                                        flag = 1;
                                     }
                                 }
                             }
+                        } //caso ele nao encontre o padrao e nao seja maior que 3
+                        else {
+                            JOptionPane.showMessageDialog(null, "Digite o Codigo"
+                                    + " do cliente válido com números apos prefixo!");
+                            txtPesquisaCliente.setText("");
+                            txtPesquisaCliente.requestFocus();
+                            flag = 0;
                         }
-                    } //caso ele nao encontre o padrao e nao seja maior que 3
-                    else {
-                        JOptionPane.showMessageDialog(null, "Digite o Codigo do cliente válido com o prefixo 'PF' ou 'PJ'!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Digite o Codigo do "
+                                + "cliente válido com o prefixo 'PF' ou 'PJ'"
+                                + "e a sequência numérica!");
                         txtPesquisaCliente.setText("");
                         txtPesquisaCliente.requestFocus();
                         flag = 0;
+
                     }
                 }
             }
@@ -797,7 +810,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 btnReprovar.setEnabled(false);
             }
         }
-        */
+         */
     }//GEN-LAST:event_tblPedidoKeyPressed
 
     private void tblPedidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPedidoMousePressed
@@ -910,4 +923,12 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtVendedor;
     // End of variables declaration//GEN-END:variables
+    public boolean testaNumeros(String texto) {
+        for (int i = 0; i < texto.length(); i++) {
+            if (!Character.isDigit(texto.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
