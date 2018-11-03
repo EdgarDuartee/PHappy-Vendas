@@ -85,12 +85,12 @@
             <Property name="text" type="java.lang.String" value="Pedidos Aprovados"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_EmitirNotaFiscal">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_PedidosAprovados">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pedidos Aprovados"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_EmitirNotaFiscalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_PedidosAprovadosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

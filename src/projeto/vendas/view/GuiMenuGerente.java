@@ -45,7 +45,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu_Gerar_Pedido = new javax.swing.JMenu();
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
         jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
-        jMenuItem_EmitirNotaFiscal = new javax.swing.JMenuItem();
+        jMenuItem_PedidosAprovados = new javax.swing.JMenuItem();
         jMenu_GerenciarPendencias = new javax.swing.JMenu();
         jMenuItem_Analise_de_Credito = new javax.swing.JMenuItem();
         jMenuItem_Baixa_Nota_Fiscal = new javax.swing.JMenuItem();
@@ -120,13 +120,13 @@ public class GuiMenuGerente extends javax.swing.JFrame {
 
         jMenu_Pedidos_Aprovados.setText("Pedidos Aprovados");
 
-        jMenuItem_EmitirNotaFiscal.setText("Pedidos Aprovados");
-        jMenuItem_EmitirNotaFiscal.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem_PedidosAprovados.setText("Pedidos Aprovados");
+        jMenuItem_PedidosAprovados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_EmitirNotaFiscalActionPerformed(evt);
+                jMenuItem_PedidosAprovadosActionPerformed(evt);
             }
         });
-        jMenu_Pedidos_Aprovados.add(jMenuItem_EmitirNotaFiscal);
+        jMenu_Pedidos_Aprovados.add(jMenuItem_PedidosAprovados);
 
         jMenu.add(jMenu_Pedidos_Aprovados);
 
@@ -198,9 +198,9 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         new GuiAlterar_Vendedor().setVisible(true);
     }//GEN-LAST:event_jMenuItem_Alterar_VendedorActionPerformed
 
-    private void jMenuItem_EmitirNotaFiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_EmitirNotaFiscalActionPerformed
-            new GuiPedidos_Aprovados().setVisible(true);
-    }//GEN-LAST:event_jMenuItem_EmitirNotaFiscalActionPerformed
+    private void jMenuItem_PedidosAprovadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PedidosAprovadosActionPerformed
+        new GuiPedidos_Aprovados().setVisible(true);
+    }//GEN-LAST:event_jMenuItem_PedidosAprovadosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,8 +247,8 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Analise_de_Credito;
     private javax.swing.JMenuItem jMenuItem_Baixa_Nota_Fiscal;
-    private javax.swing.JMenuItem jMenuItem_EmitirNotaFiscal;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;
+    private javax.swing.JMenuItem jMenuItem_PedidosAprovados;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Física;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Jurídica;
     private javax.swing.JMenuItem jMenuItem_Vendedor;

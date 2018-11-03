@@ -40,7 +40,8 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_PedidosAprovados = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnSelecionar = new javax.swing.JButton();
+        btnRetornar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -80,26 +81,39 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_PedidosAprovados);
 
-        jButton1.setText("Selecione o Pedido E Click Aqui Para Emitir a Nota Fiscal.");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSelecionar.setText("Selecione o Pedido E Click Aqui Para Emitir a Nota Fiscal.");
+        btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSelecionarActionPerformed(evt);
+            }
+        });
+
+        btnRetornar.setText("Retornar");
+        btnRetornar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetornarActionPerformed(evt);
             }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRetornar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSelecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRetornar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -145,14 +159,18 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
       
         if(tbl_PedidosAprovados.getSelectedRow() >= 0) {
             GuiEmitir_nota_fiscal NF = new GuiEmitir_nota_fiscal(daoGerarPedido.Consultar(Integer.parseInt(""+tbl_PedidosAprovados.getValueAt(tbl_PedidosAprovados.getSelectedRow(),0))));
             NF.setVisible(true);
 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSelecionarActionPerformed
+
+    private void btnRetornarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetornarActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnRetornarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,7 +214,8 @@ private PessoaFisica pf;
 private PessoaJuridica pj;
 private Conexao conexao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRetornar;
+    private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_PedidosAprovados;
     // End of variables declaration//GEN-END:variables
