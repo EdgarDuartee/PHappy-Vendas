@@ -27,116 +27,289 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupVendedor = new javax.swing.ButtonGroup();
-        Controle_Estratégico_Vendedor = new javax.swing.JPanel();
-        jPanelPesquisa_Vendedor = new javax.swing.JPanel();
-        rbtnNome_Vendedor = new javax.swing.JRadioButton();
-        rbtnCodigo_Vendedor = new javax.swing.JRadioButton();
-        cbxNome_Vendedor = new javax.swing.JComboBox<>();
-        jPanelFiltros_Gerais = new javax.swing.JPanel();
-        cbxFiltros_Gerais = new javax.swing.JComboBox<>();
-        lblMaior_que = new javax.swing.JLabel();
-        txtMaior_que = new javax.swing.JTextField();
-        lblMenor_que = new javax.swing.JLabel();
-        txtMenor_que = new javax.swing.JTextField();
-        jPanelPeríodo_da_Pesquisa = new javax.swing.JPanel();
-        lblData_Inicial = new javax.swing.JLabel();
-        ftxtData_Inicial = new javax.swing.JFormattedTextField();
-        lblData_Final = new javax.swing.JLabel();
-        ftxtData_Final = new javax.swing.JFormattedTextField();
         btnBuscar = new javax.swing.JButton();
-        jPanelVendedor = new javax.swing.JPanel();
+        btnVoltar = new javax.swing.JButton();
+        btnClienteEspecifico = new javax.swing.JButton();
+        lblData_Inicial = new javax.swing.JLabel();
+        lblData_Final = new javax.swing.JLabel();
+        Painel_Geral = new javax.swing.JTabbedPane();
+        Painel_Vendedores = new javax.swing.JPanel();
         jScrollPaneVendedor = new javax.swing.JScrollPane();
         tblVendedor = new javax.swing.JTable();
-        btnVoltar = new javax.swing.JButton();
+        Painel_ResumoGeral = new javax.swing.JPanel();
+        jPanelPeriodo = new javax.swing.JPanel();
+        lblDe = new javax.swing.JLabel();
+        lblA = new javax.swing.JLabel();
+        txtDtInicio = new javax.swing.JTextField();
+        txtDtFinal = new javax.swing.JTextField();
+        jPanelVendedores = new javax.swing.JPanel();
+        lblQtdeColaboradores = new javax.swing.JLabel();
+        lblAtivos = new javax.swing.JLabel();
+        txtVendAtivos = new javax.swing.JTextField();
+        txtVendInativos = new javax.swing.JTextField();
+        lblInativos = new javax.swing.JLabel();
+        lblQtdeVendedores = new javax.swing.JLabel();
+        lblQtdeSupervisor = new javax.swing.JLabel();
+        lblQtdeGerentes = new javax.swing.JLabel();
+        txtVendedores = new javax.swing.JTextField();
+        txtSupervisores = new javax.swing.JTextField();
+        txtGerentes = new javax.swing.JTextField();
+        jPanelVendas = new javax.swing.JPanel();
+        lblTotalValorVendas = new javax.swing.JLabel();
+        lblQtdeTotalVendas = new javax.swing.JLabel();
+        txtQtdeTotalVendas = new javax.swing.JTextField();
+        txtValorTotalVendas = new javax.swing.JTextField();
+        btnImprimir = new javax.swing.JButton();
+        ftxtData_Inicial = new javax.swing.JFormattedTextField();
+        ftxtData_Final = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico Vendedor");
         setResizable(false);
 
-        jPanelPesquisa_Vendedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa Vendedor"));
+        btnBuscar.setText("Buscar");
 
-        buttonGroupVendedor.add(rbtnNome_Vendedor);
-        rbtnNome_Vendedor.setText("Nome");
+        btnVoltar.setText("Voltar");
 
-        buttonGroupVendedor.add(rbtnCodigo_Vendedor);
-        rbtnCodigo_Vendedor.setText("Código");
-
-        javax.swing.GroupLayout jPanelPesquisa_VendedorLayout = new javax.swing.GroupLayout(jPanelPesquisa_Vendedor);
-        jPanelPesquisa_Vendedor.setLayout(jPanelPesquisa_VendedorLayout);
-        jPanelPesquisa_VendedorLayout.setHorizontalGroup(
-            jPanelPesquisa_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPesquisa_VendedorLayout.createSequentialGroup()
-                .addGroup(jPanelPesquisa_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPesquisa_VendedorLayout.createSequentialGroup()
-                        .addComponent(rbtnNome_Vendedor)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbtnCodigo_Vendedor))
-                    .addComponent(cbxNome_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 21, Short.MAX_VALUE))
-        );
-        jPanelPesquisa_VendedorLayout.setVerticalGroup(
-            jPanelPesquisa_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPesquisa_VendedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelPesquisa_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnNome_Vendedor)
-                    .addComponent(rbtnCodigo_Vendedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxNome_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanelFiltros_Gerais.setBorder(javax.swing.BorderFactory.createTitledBorder("Opcões Filtros Gerais"));
-
-        lblMaior_que.setText("Maior Que");
-
-        lblMenor_que.setText("Menor Que");
-
-        javax.swing.GroupLayout jPanelFiltros_GeraisLayout = new javax.swing.GroupLayout(jPanelFiltros_Gerais);
-        jPanelFiltros_Gerais.setLayout(jPanelFiltros_GeraisLayout);
-        jPanelFiltros_GeraisLayout.setHorizontalGroup(
-            jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFiltros_GeraisLayout.createSequentialGroup()
-                .addGroup(jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbxFiltros_Gerais, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelFiltros_GeraisLayout.createSequentialGroup()
-                        .addGroup(jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMaior_que)
-                            .addComponent(txtMaior_que, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
-                        .addGroup(jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMenor_que)
-                            .addComponent(txtMenor_que))))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanelFiltros_GeraisLayout.setVerticalGroup(
-            jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFiltros_GeraisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbxFiltros_Gerais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMaior_que)
-                    .addComponent(lblMenor_que))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelFiltros_GeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaior_que, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMenor_que, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanelPeríodo_da_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Período da Pesquisa"));
+        btnClienteEspecifico.setText("Selecionar Cliente Específico");
 
         lblData_Inicial.setText("Data Inicial");
+
+        lblData_Final.setText("Data Final");
+
+        tblVendedor.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "Cargo", "Vendas no periodo", "Qtde Clientes", "Ativo/Inativo", "Data da Inatividade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPaneVendedor.setViewportView(tblVendedor);
+
+        javax.swing.GroupLayout Painel_VendedoresLayout = new javax.swing.GroupLayout(Painel_Vendedores);
+        Painel_Vendedores.setLayout(Painel_VendedoresLayout);
+        Painel_VendedoresLayout.setHorizontalGroup(
+            Painel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
+        );
+        Painel_VendedoresLayout.setVerticalGroup(
+            Painel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_VendedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Painel_Geral.addTab("Vendedores", Painel_Vendedores);
+
+        jPanelPeriodo.setBorder(javax.swing.BorderFactory.createTitledBorder("Periodo"));
+
+        lblDe.setText("De:");
+
+        lblA.setText("á");
+
+        txtDtInicio.setEnabled(false);
+
+        txtDtFinal.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelPeriodoLayout = new javax.swing.GroupLayout(jPanelPeriodo);
+        jPanelPeriodo.setLayout(jPanelPeriodoLayout);
+        jPanelPeriodoLayout.setHorizontalGroup(
+            jPanelPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPeriodoLayout.createSequentialGroup()
+                .addComponent(lblDe)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanelPeriodoLayout.setVerticalGroup(
+            jPanelPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPeriodoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPeriodoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDe)
+                    .addComponent(lblA)
+                    .addComponent(txtDtInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDtFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanelVendedores.setBorder(javax.swing.BorderFactory.createTitledBorder("Vendedores"));
+
+        lblQtdeColaboradores.setText("Quantidade de colaboradores por função ativos");
+
+        lblAtivos.setText("Vendedores Ativos");
+
+        txtVendAtivos.setEnabled(false);
+
+        txtVendInativos.setEnabled(false);
+        txtVendInativos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVendInativosActionPerformed(evt);
+            }
+        });
+
+        lblInativos.setText("Vendedores Inatiivos");
+
+        lblQtdeVendedores.setText("Vendedores");
+
+        lblQtdeSupervisor.setText("Supervisores");
+
+        lblQtdeGerentes.setText("Gerentes");
+
+        txtVendedores.setEnabled(false);
+
+        txtSupervisores.setEnabled(false);
+
+        txtGerentes.setEnabled(false);
+        txtGerentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGerentesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelVendedoresLayout = new javax.swing.GroupLayout(jPanelVendedores);
+        jPanelVendedores.setLayout(jPanelVendedoresLayout);
+        jPanelVendedoresLayout.setHorizontalGroup(
+            jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVendedoresLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVendedoresLayout.createSequentialGroup()
+                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblQtdeColaboradores)
+                            .addComponent(lblQtdeVendedores))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtVendAtivos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAtivos))
+                        .addGap(11, 11, Short.MAX_VALUE)
+                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblInativos)
+                            .addComponent(txtVendInativos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanelVendedoresLayout.createSequentialGroup()
+                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelVendedoresLayout.createSequentialGroup()
+                                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblQtdeSupervisor)
+                                    .addComponent(lblQtdeGerentes))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSupervisores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGerentes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanelVendedoresLayout.setVerticalGroup(
+            jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVendedoresLayout.createSequentialGroup()
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQtdeColaboradores)
+                    .addComponent(lblAtivos)
+                    .addComponent(lblInativos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtVendAtivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtVendInativos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblQtdeVendedores)
+                    .addComponent(txtVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblQtdeSupervisor)
+                    .addComponent(txtSupervisores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblQtdeGerentes)
+                    .addComponent(txtGerentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanelVendas.setBorder(javax.swing.BorderFactory.createTitledBorder("Vendas"));
+
+        lblTotalValorVendas.setText("Valor total das vendas");
+
+        lblQtdeTotalVendas.setText("Quantidade total de vendas");
+
+        txtQtdeTotalVendas.setEnabled(false);
+
+        txtValorTotalVendas.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelVendasLayout = new javax.swing.GroupLayout(jPanelVendas);
+        jPanelVendas.setLayout(jPanelVendasLayout);
+        jPanelVendasLayout.setHorizontalGroup(
+            jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVendasLayout.createSequentialGroup()
+                .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblQtdeTotalVendas)
+                    .addComponent(txtQtdeTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalValorVendas)
+                    .addComponent(txtValorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelVendasLayout.setVerticalGroup(
+            jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVendasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotalValorVendas)
+                    .addComponent(lblQtdeTotalVendas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtQtdeTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout Painel_ResumoGeralLayout = new javax.swing.GroupLayout(Painel_ResumoGeral);
+        Painel_ResumoGeral.setLayout(Painel_ResumoGeralLayout);
+        Painel_ResumoGeralLayout.setHorizontalGroup(
+            Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanelPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jPanelVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Painel_ResumoGeralLayout.setVerticalGroup(
+            Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        Painel_Geral.addTab("Resumo Geral", Painel_ResumoGeral);
+
+        btnImprimir.setText("Imprimir");
 
         try {
             ftxtData_Inicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        lblData_Final.setText("Data Final");
+        ftxtData_Inicial.setText("01/01/2000");
 
         try {
             ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -144,124 +317,70 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        javax.swing.GroupLayout jPanelPeríodo_da_PesquisaLayout = new javax.swing.GroupLayout(jPanelPeríodo_da_Pesquisa);
-        jPanelPeríodo_da_Pesquisa.setLayout(jPanelPeríodo_da_PesquisaLayout);
-        jPanelPeríodo_da_PesquisaLayout.setHorizontalGroup(
-            jPanelPeríodo_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPeríodo_da_PesquisaLayout.createSequentialGroup()
-                .addGroup(jPanelPeríodo_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblData_Inicial)
-                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(jPanelPeríodo_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblData_Final)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanelPeríodo_da_PesquisaLayout.setVerticalGroup(
-            jPanelPeríodo_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPeríodo_da_PesquisaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelPeríodo_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblData_Inicial)
-                    .addComponent(lblData_Final))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPeríodo_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        btnBuscar.setText("Buscar");
-
-        tblVendedor.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Vendedor", "Cód. Venda", "Total", "Data", "Média das Vendas"
-            }
-        ));
-        jScrollPaneVendedor.setViewportView(tblVendedor);
-
-        javax.swing.GroupLayout jPanelVendedorLayout = new javax.swing.GroupLayout(jPanelVendedor);
-        jPanelVendedor.setLayout(jPanelVendedorLayout);
-        jPanelVendedorLayout.setHorizontalGroup(
-            jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelVendedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
-        );
-        jPanelVendedorLayout.setVerticalGroup(
-            jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelVendedorLayout.createSequentialGroup()
-                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        btnVoltar.setText("Voltar");
-
-        javax.swing.GroupLayout Controle_Estratégico_VendedorLayout = new javax.swing.GroupLayout(Controle_Estratégico_Vendedor);
-        Controle_Estratégico_Vendedor.setLayout(Controle_Estratégico_VendedorLayout);
-        Controle_Estratégico_VendedorLayout.setHorizontalGroup(
-            Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
-                        .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanelFiltros_Gerais, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanelPeríodo_da_Pesquisa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanelPesquisa_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanelVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addGap(68, 68, 68)
-                        .addComponent(btnBuscar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        Controle_Estratégico_VendedorLayout.setVerticalGroup(
-            Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
-                        .addComponent(jPanelPesquisa_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jPanelFiltros_Gerais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanelPeríodo_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanelVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnVoltar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Controle_Estratégico_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addComponent(btnVoltar)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblData_Inicial)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblData_Final)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addComponent(btnBuscar)
+                        .addGap(34, 34, 34)
+                        .addComponent(btnClienteEspecifico)
+                        .addGap(71, 71, 71)))
+                .addComponent(btnImprimir)
+                .addGap(0, 186, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(Painel_Geral)
+                    .addGap(21, 21, 21)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(Controle_Estratégico_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(339, 339, 339)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblData_Final)
+                    .addComponent(lblData_Inicial))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnClienteEspecifico)
+                    .addComponent(btnBuscar)
+                    .addComponent(btnImprimir)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Painel_Geral, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(85, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtVendInativosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVendInativosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVendInativosActionPerformed
+
+    private void txtGerentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGerentesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGerentesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -299,27 +418,50 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Controle_Estratégico_Vendedor;
+    private javax.swing.JTabbedPane Painel_Geral;
+    private javax.swing.JPanel Painel_ResumoGeral;
+    private javax.swing.JPanel Painel_Vendedores;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnClienteEspecifico;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.ButtonGroup buttonGroupVendedor;
-    private javax.swing.JComboBox<String> cbxFiltros_Gerais;
-    private javax.swing.JComboBox<String> cbxNome_Vendedor;
     private javax.swing.JFormattedTextField ftxtData_Final;
     private javax.swing.JFormattedTextField ftxtData_Inicial;
-    private javax.swing.JPanel jPanelFiltros_Gerais;
-    private javax.swing.JPanel jPanelPeríodo_da_Pesquisa;
-    private javax.swing.JPanel jPanelPesquisa_Vendedor;
-    private javax.swing.JPanel jPanelVendedor;
+    private javax.swing.JPanel jPanelPeriodo;
+    private javax.swing.JPanel jPanelResumo1;
+    private javax.swing.JPanel jPanelResumo2;
+    private javax.swing.JPanel jPanelVendas;
+    private javax.swing.JPanel jPanelVendedores;
     private javax.swing.JScrollPane jScrollPaneVendedor;
+    private javax.swing.JLabel lblA;
+    private javax.swing.JLabel lblAtivoInativo1;
+    private javax.swing.JLabel lblAtivoInativo2;
+    private javax.swing.JLabel lblAtivos;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
-    private javax.swing.JLabel lblMaior_que;
-    private javax.swing.JLabel lblMenor_que;
-    private javax.swing.JRadioButton rbtnCodigo_Vendedor;
-    private javax.swing.JRadioButton rbtnNome_Vendedor;
+    private javax.swing.JLabel lblDe;
+    private javax.swing.JLabel lblInativos;
+    private javax.swing.JLabel lblQtdeColaboradores;
+    private javax.swing.JLabel lblQtdeColaboradores1;
+    private javax.swing.JLabel lblQtdeColaboradores2;
+    private javax.swing.JLabel lblQtdeGerentes;
+    private javax.swing.JLabel lblQtdeSupervisor;
+    private javax.swing.JLabel lblQtdeTotalVendas;
+    private javax.swing.JLabel lblQtdeVendedores;
+    private javax.swing.JLabel lblTotalValorPorPeriodo1;
+    private javax.swing.JLabel lblTotalValorPorPeriodo2;
+    private javax.swing.JLabel lblTotalValorVendas;
+    private javax.swing.JLabel lblTotalVendasPeriodo1;
+    private javax.swing.JLabel lblTotalVendasPeriodo2;
     private javax.swing.JTable tblVendedor;
-    private javax.swing.JTextField txtMaior_que;
-    private javax.swing.JTextField txtMenor_que;
+    private javax.swing.JTextField txtDtFinal;
+    private javax.swing.JTextField txtDtInicio;
+    private javax.swing.JTextField txtGerentes;
+    private javax.swing.JTextField txtQtdeTotalVendas;
+    private javax.swing.JTextField txtSupervisores;
+    private javax.swing.JTextField txtValorTotalVendas;
+    private javax.swing.JTextField txtVendAtivos;
+    private javax.swing.JTextField txtVendInativos;
+    private javax.swing.JTextField txtVendedores;
     // End of variables declaration//GEN-END:variables
 }
