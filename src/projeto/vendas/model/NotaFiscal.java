@@ -6,7 +6,7 @@ public class NotaFiscal {
     private int Serie;
     private int PedidoCod;
     private String Tipo;
-    private float CFOP;
+    private String CFOP;
     private float Total;
     private String DataEmissao;
     private String HoraEmissao;
@@ -14,7 +14,7 @@ public class NotaFiscal {
     private String Transp_DataSaida;
     private String Transp_HoraSaida;
 
-    public NotaFiscal(int Numero, int Serie, int PedidoCod, String Tipo, float CFOP, float Total, String DataEmissao, String HoraEmissao, int TranspCod) {
+    public NotaFiscal(int Numero, int Serie, int PedidoCod, String Tipo, String CFOP, float Total, String DataEmissao, String HoraEmissao, int TranspCod) {
         this.Numero = Numero;
         this.Serie = Serie;
         this.PedidoCod = PedidoCod;
@@ -58,11 +58,11 @@ public class NotaFiscal {
         this.Tipo = Tipo;
     }
 
-    public float getCFOP() {
+    public String getCFOP() {
         return CFOP;
     }
 
-    public void setCFOP(float CFOP) {
+    public void setCFOP(String CFOP) {
         this.CFOP = CFOP;
     }
 

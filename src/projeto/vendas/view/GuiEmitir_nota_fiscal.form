@@ -248,6 +248,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Imprimir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImprimirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnGerar_NF">
           <Properties>
@@ -1296,6 +1299,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtSerie_Nota_Fiscal">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="551"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNumero_Nota_Fiscal">
               <Properties>
