@@ -326,6 +326,11 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         btnLimpar.setText("Limpar");
         btnLimpar.setEnabled(false);
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnEnviar_Pedido.setText("Enviar Pedido");
         btnEnviar_Pedido.setEnabled(false);
@@ -377,7 +382,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // nova maneira de conectar
         conexao = new Conexao();
         conexao.setDriver();
         conexao.setConnectionString();
@@ -388,26 +392,27 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
         daoGerarPedido = new DaoGerarPedido(conexao.conectar());
         listaProdutos = daoProduto.ListarProdutos();
+        
+        // aqui luiz
+        
         ListaPessoaFisica = daoPFisica.ListarPessoasFisicas();
         ListaPessoaJuridica = daoPJrudica.ListarPessoasJuridicas();
-
+        //
+        
+        
         lbl_codigoCliente.setVisible(false);
         Date data = new Date(System.currentTimeMillis());
         SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
         txt_Data.setText(formatarDate.format(data));
 
         for (int i = 0; i < listaProdutos.size(); i++) {
-                
-//            SDOSAKODKSA
-//                    DLSAKDPOSAKDOPSA
-//                    DKPSAOKDPOSAKDSA
+
             cbxProduto.addItem(listaProdutos.get(i).getDescricao());
         }
 
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEnviar_PedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_PedidoActionPerformed
-
         Calendar calendar = new GregorianCalendar();
         String HoraSistema = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND);
 
@@ -432,6 +437,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             txt_total.setText("0.00");
             tblProduto.removeAll();
             txtCPF_CNPJ.requestFocus();
+            btnLimpar.setEnabled(false);
             int limite = tblProduto.getModel().getRowCount();
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
             for (int i = 0; i < limite; i++) {
@@ -462,6 +468,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 btn_consultar.setEnabled(false);
                 txtCPF_CNPJ.setEnabled(false);
                 lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
+                btnLimpar.setEnabled(true);
             }
 
         } else if (txtCPF_CNPJ.getText().length() == 14) {
@@ -480,6 +487,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             btn_consultar.setEnabled(false);
             txtCPF_CNPJ.setEnabled(false);
             lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
+            btnLimpar.setEnabled(true);
 
         }
     }//GEN-LAST:event_btn_consultarActionPerformed
@@ -551,6 +559,23 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnAvançarActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        int limite = tblProduto.getModel().getRowCount();
+        DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
+        for (int i = 0; i < limite; i++) {
+            model.removeRow(0);
+        }
+        txtCPF_CNPJ.setText("");
+        txtCPF_CNPJ.setEnabled(true);
+        txtCPF_CNPJ.requestFocus();
+        cbxQuantidade.setEnabled(false);
+        cbxProduto.setEnabled(false);
+        cbxProduto.setSelectedIndex(0);
+        txt_nomeCliente.setText("");
+        txt_total.setText("");
+        btn_consultar.setEnabled(true);
+    }//GEN-LAST:event_btnLimparActionPerformed
 
     /**
      * @param args the command line arguments

@@ -122,7 +122,7 @@ public class DaoPJuridica {
                 ps = conn.prepareStatement("SELECT * from P_JURIDICA");
                 ResultSet rs = ps.executeQuery();
                 while (rs.next() == true) {
-                    PJ = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefastasia"),
+                    PJ = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
                             rs.getString("email"), rs.getString("rua"),
                             rs.getString("numero"), rs.getString("bairro"),
                             rs.getString("cidade"), rs.getString("uf"),
