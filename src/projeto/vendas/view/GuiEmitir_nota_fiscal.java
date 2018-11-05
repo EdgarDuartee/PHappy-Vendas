@@ -56,7 +56,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         jPanelNatureza_da_Operacao = new javax.swing.JPanel();
         lblCFOP = new javax.swing.JLabel();
         cbxCFOP = new javax.swing.JComboBox<>();
-        lblVenda_de_Produto_do_estabelecimento = new javax.swing.JLabel();
+        lbl_Descricao_CFOP = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnGerar_NF = new javax.swing.JButton();
@@ -157,6 +157,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         jPanelTipo_nota.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo da Nota"));
 
         buttonGroup1.add(rbtnSaida);
+        rbtnSaida.setSelected(true);
         rbtnSaida.setText("Saída");
 
         buttonGroup1.add(rbtnEntrada);
@@ -192,7 +193,15 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         lblCFOP.setText("CFOP");
 
-        lblVenda_de_Produto_do_estabelecimento.setText("Venda de Produto do estabelecimento");
+        cbxCFOP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5.101", "5.102", "5.910", "5.911", "5.915", "5.949" }));
+        cbxCFOP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxCFOPItemStateChanged(evt);
+            }
+        });
+
+        lbl_Descricao_CFOP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbl_Descricao_CFOP.setText("null");
 
         javax.swing.GroupLayout jPanelNatureza_da_OperacaoLayout = new javax.swing.GroupLayout(jPanelNatureza_da_Operacao);
         jPanelNatureza_da_Operacao.setLayout(jPanelNatureza_da_OperacaoLayout);
@@ -203,9 +212,9 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
                 .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblVenda_de_Produto_do_estabelecimento)
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_Descricao_CFOP)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNatureza_da_OperacaoLayout.setVerticalGroup(
             jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +224,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVenda_de_Produto_do_estabelecimento))
+                    .addComponent(lbl_Descricao_CFOP))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -1019,7 +1028,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         }
         ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(recebePedido.getCodigo());
-        
+
         if (ListaPedidoProduto != null) {
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
             int linhasTabela = model.getRowCount();
@@ -1033,7 +1042,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 Object[] row = {ListaPedidoProduto.get(i).getProdutoCod(), produto.getDescricao(),
                     produto.getValorUnitario(), ListaPedidoProduto.get(i).getProdutoQtd(),
                     "Sim", "Não", "Outras", produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd(),
-                    produto.getImpostoIcms(), produto.getImpostoPis(), produto.getImpostoConfins(),(produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi(),
+                    produto.getImpostoIcms(), produto.getImpostoPis(), produto.getImpostoConfins(), (produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi(),
                     "CFOP"};
                 model.addRow(row);
             }
@@ -1046,6 +1055,30 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private void txtNumero_EmitenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumero_EmitenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumero_EmitenteActionPerformed
+
+    private void cbxCFOPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCFOPItemStateChanged
+
+        switch (cbxCFOP.getSelectedIndex()) {
+            case 0:
+                lbl_Descricao_CFOP.setText("0 -> Venda de produção do estabelecimento.");
+                break;
+            case 1:
+                lbl_Descricao_CFOP.setText("1 -> Venda de mercadoria adquirida ou recebida de terceiros.");
+                break;
+            case 2:
+                 lbl_Descricao_CFOP.setText("3 ->  Remessa em bonificação, doação ou brinde");
+                break;
+            case 3:
+                lbl_Descricao_CFOP.setText("3 ->  Remessa de amostra grátis.");
+                break;
+            case 4:
+                lbl_Descricao_CFOP.setText("4 -> Remessa de mercadoria ou bem para conserto ou reparo");
+                break;
+            case 5:
+                lbl_Descricao_CFOP.setText("5 -> Outra saída de mercadoria ou prestação de serviço não especificado");
+                break;
+        }
+    }//GEN-LAST:event_cbxCFOPItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -1161,7 +1194,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private javax.swing.JLabel lblValor_IPI;
     private javax.swing.JLabel lblValor_PIS;
     private javax.swing.JLabel lblValor_Total_Nota;
-    private javax.swing.JLabel lblVenda_de_Produto_do_estabelecimento;
+    private javax.swing.JLabel lbl_Descricao_CFOP;
     private javax.swing.JRadioButton rbtnEntrada;
     private javax.swing.JRadioButton rbtnSaida;
     private javax.swing.JTable tblProduto;
