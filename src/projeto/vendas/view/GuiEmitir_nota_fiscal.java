@@ -1005,7 +1005,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         } else {
             pessoaJuridica = daoPJuridica.consultar(recebePedido.getClienteCod());
             txt_NomeDestinario.setText(pessoaJuridica.getNome());
-            ftxtTelefone_Remetente.setText(pessoaJuridica.getTel());
+            ftxtTelefone_Remetente.setText(pessoaJuridica.getTel1());
             txtEmail_Remetente.setText(pessoaJuridica.getEmail());
             txtCidade_Remetente.setText(pessoaJuridica.getCidade());
             txtRua_Remetente.setText(pessoaJuridica.getRua());
