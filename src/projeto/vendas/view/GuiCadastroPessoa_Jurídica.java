@@ -53,16 +53,13 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         txtAsteristico5 = new javax.swing.JFormattedTextField();
-        lblTelefone = new javax.swing.JLabel();
         lblCNPJ = new javax.swing.JLabel();
         txtAsteristico6 = new javax.swing.JFormattedTextField();
         lblVendedor_Responsável = new javax.swing.JLabel();
-        ftxtTelefone = new javax.swing.JFormattedTextField();
         ftxtCNPJ = new javax.swing.JFormattedTextField();
         lblAsteristico = new javax.swing.JLabel();
         lblAsteristico1 = new javax.swing.JLabel();
         lblAsteristico2 = new javax.swing.JLabel();
-        lblAsteristico3 = new javax.swing.JLabel();
         lblAsteristico4 = new javax.swing.JLabel();
         cbxVendedorResp = new javax.swing.JComboBox<>();
         lblCódigo_Cliente = new javax.swing.JLabel();
@@ -133,20 +130,12 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         txtAsteristico5.setEditable(false);
         txtAsteristico5.setBorder(null);
 
-        lblTelefone.setText("Telefone");
-
         lblCNPJ.setText("CNPJ");
 
         txtAsteristico6.setEditable(false);
         txtAsteristico6.setBorder(null);
 
         lblVendedor_Responsável.setText("Vendedor Responsável");
-
-        try {
-            ftxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
 
         try {
             ftxtCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
@@ -164,8 +153,6 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblAsteristico1.setText("*");
 
         lblAsteristico2.setText("*");
-
-        lblAsteristico3.setText("*");
 
         lblAsteristico4.setText("*");
 
@@ -201,20 +188,13 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblAsteristico1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(19, 19, 19)
-                        .addGroup(Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Painel_DadosLayout.createSequentialGroup()
-                                .addComponent(ftxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblAsteristico3))
-                            .addComponent(lblTelefone)
-                            .addGroup(Painel_DadosLayout.createSequentialGroup()
-                                .addGroup(Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblCNPJ)
-                                    .addComponent(ftxtCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblAsteristico4)
-                                .addGap(33, 33, 33)
-                                .addComponent(txtAsteristico6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblCNPJ)
+                            .addComponent(ftxtCNPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAsteristico4)
+                        .addGap(33, 33, 33)
+                        .addComponent(txtAsteristico6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblVendedor_Responsável))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -222,16 +202,12 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
             Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_DadosLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNome_Fantasia)
-                    .addComponent(lblTelefone))
+                .addComponent(lblNome_Fantasia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNome_Fantasia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAsteristico2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAsteristico)
-                    .addComponent(lblAsteristico3))
+                    .addComponent(lblAsteristico))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_DadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCNPJ)
@@ -799,7 +775,6 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtCNPJ;
     private javax.swing.JFormattedTextField ftxtCodigo_PJ;
     private javax.swing.JFormattedTextField ftxtTCelular;
-    private javax.swing.JFormattedTextField ftxtTelefone;
     private javax.swing.JFormattedTextField ftxtTelefone1;
     private javax.swing.JFormattedTextField ftxtTelefone2;
     private javax.swing.JLabel lblAsteristico;
@@ -808,7 +783,6 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     private javax.swing.JLabel lblAsteristico11;
     private javax.swing.JLabel lblAsteristico14;
     private javax.swing.JLabel lblAsteristico2;
-    private javax.swing.JLabel lblAsteristico3;
     private javax.swing.JLabel lblAsteristico4;
     private javax.swing.JLabel lblAsteristico5;
     private javax.swing.JLabel lblAsteristico6;
@@ -826,7 +800,6 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     private javax.swing.JLabel lblNome_Fantasia;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRua;
-    private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblTelefone1;
     private javax.swing.JLabel lblTelefone2;
     private javax.swing.JLabel lblUF;

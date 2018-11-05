@@ -171,24 +171,14 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="ftxtTelefone" min="-2" pref="115" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblAsteristico3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblCNPJ" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ftxtCNPJ" pref="115" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblAsteristico4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="txtAsteristico6" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblCNPJ" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ftxtCNPJ" pref="115" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblAsteristico4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="txtAsteristico6" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="lblVendedor_Responsável" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -200,17 +190,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblNome_Fantasia" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblNome_Fantasia" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtNome_Fantasia" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtAsteristico2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ftxtTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblAsteristico" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAsteristico3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -268,11 +253,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblTelefone">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Telefone"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblCNPJ">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CNPJ"/>
@@ -289,13 +269,6 @@
             <Component class="javax.swing.JLabel" name="lblVendedor_Respons&#xe1;vel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Vendedor Respons&#xe1;vel"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="ftxtTelefone">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                  <Format format="(##)####-####" subtype="-1" type="5"/>
-                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ftxtCNPJ">
@@ -319,11 +292,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAsteristico2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="*"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblAsteristico3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="*"/>
               </Properties>
