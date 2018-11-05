@@ -100,11 +100,11 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblAsteristico14 = new javax.swing.JLabel();
         lblcontato2 = new javax.swing.JLabel();
         lblTelefone2 = new javax.swing.JLabel();
-        txtNomeContato2 = new javax.swing.JTextField();
+        txtNome_Contato2 = new javax.swing.JTextField();
         ftxtTelefone2 = new javax.swing.JFormattedTextField();
         lblcontato3 = new javax.swing.JLabel();
-        txtNomeContato3 = new javax.swing.JTextField();
-        ftxtTCelular = new javax.swing.JFormattedTextField();
+        txtNome_Contato3 = new javax.swing.JTextField();
+        ftxtCelular = new javax.swing.JFormattedTextField();
         lblCelular = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -374,7 +374,11 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
             }
         });
 
-        ftxtCodigo_PJ.setText("PJ");
+        try {
+            ftxtCodigo_PJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("PJ#####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         ftxtCodigo_PJ.setEnabled(false);
 
         Painel_Contato.setBorder(javax.swing.BorderFactory.createTitledBorder("Contato"));
@@ -415,7 +419,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblcontato3.setText("Nome do contato 3");
 
         try {
-            ftxtTCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            ftxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -430,7 +434,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                 .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_ContatoLayout.createSequentialGroup()
                         .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNomeContato2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome_Contato2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblcontato2)
                             .addComponent(lblcontato3))
                         .addGap(191, 191, 191)
@@ -450,7 +454,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                                 .addComponent(lblAsteristico14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblTelefone1)))
                     .addGroup(Painel_ContatoLayout.createSequentialGroup()
-                        .addComponent(txtNomeContato3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNome_Contato3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAsteristico7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -461,7 +465,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                                     .addComponent(ftxtTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTelefone2)
                                     .addComponent(lblCelular)
-                                    .addComponent(ftxtTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(ftxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Painel_ContatoLayout.setVerticalGroup(
@@ -489,7 +493,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                             .addGroup(Painel_ContatoLayout.createSequentialGroup()
                                 .addComponent(lblcontato2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNomeContato2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNome_Contato2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_ContatoLayout.createSequentialGroup()
                                 .addComponent(lblTelefone2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -501,8 +505,8 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                         .addGap(0, 1, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomeContato3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftxtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNome_Contato3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addComponent(txtAsteristico7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -577,16 +581,16 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         conexao = new Conexao();
         conexao.setDriver();
         conexao.setConnectionString();
-        daoPjuridica = new DaoPJuridica(conexao.conectar());
+        daoPJuridica = new DaoPJuridica(conexao.conectar());
         daoVendedor = new DaoVendedor(conexao.conectar());
         daoDescobreCodigo = new DaoDescobreCodigo(conexao.conectar());
 
-        ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
+        vendedores = daoVendedor.listarVendedores();
 
         for (int x = 0; x < vendedores.size(); x++) {
             cbxVendedorResp.addItem(vendedores.get(x).getNome());
@@ -611,7 +615,12 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         txtNome_Fantasia.setText("");
         ftxtCNPJ.setText("");
         txtEmail.setText("");
-        ftxtTelefone.setText("");
+        ftxtTelefone1.setText("");
+        ftxtTelefone2.setText("");
+        ftxtCelular.setText("");
+        txtNome_Contato1.setText("");
+        txtNome_Contato3.setText("");
+        txtNome_Contato2.setText("");
 
         cbxVendedorResp.setSelectedIndex(0);
 
@@ -660,29 +669,36 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         } else {
             if (JOptionPane.showConfirmDialog(null, "Confirma Cadastro?") == 0) {//Sim
                 JOptionPane.showMessageDialog(null, "Cadastro Efetuado com sucesso!");
-                pessoaJuridica = new PessoaJuridica(ftxtCodigo_PJ.getText().replace(" ",""), txtNome_Fantasia.getText(),
+                pessoaJuridica = new PessoaJuridica(ftxtCodigo_PJ.getText().replace(" ", ""), txtNome_Fantasia.getText(),
                         txtEmail.getText(), txtRua.getText(), txtNumero.getText(), txtBairro.getText(),
-                        txtCidade.getText(),(String)cbxUF.getSelectedItem(), ftxtCEP.getText().replace("-", ""),
+                        txtCidade.getText(), (String) cbxUF.getSelectedItem(), ftxtCEP.getText().replace("-", ""),
                         "A");
                 pessoaJuridica.setCnpj(ftxtCNPJ.getText().replace(".", "").replace("-", "").replace("/", ""));
-                pessoaJuridica.setTel(ftxtTelefone.getText().replace("(", "").replace(")", "").replace("-", ""));
+
+                pessoaJuridica.setContato1(txtNome_Contato1.getText());
+                pessoaJuridica.setTel1(ftxtTelefone1.getText().replace("(", "").replace(")", "").replace("-", ""));
+                pessoaJuridica.setContato2(txtNome_Contato2.getText());
+                pessoaJuridica.setTel2(ftxtTelefone2.getText().replace("(", "").replace(")", "").replace("-", ""));
+                pessoaJuridica.setContato3(txtNome_Contato3.getText());
+                pessoaJuridica.setTel3(ftxtCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
+
                 pessoaJuridica.setComplemento(txtComplemento.getText());
 
                 ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
                 vendedor = daoVendedor.consultar(vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo());
                 pessoaJuridica.setVendedor_responsavel((String) cbxVendedorResp.getSelectedItem());
                 pessoaJuridica.setCod_vend_resp(vendedor.getCodigo());
-                
+
                 //cria o formatador de data
-                SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");  
-		 //cria um objeto date com a data do sistema
-		Date dataDoSistema = new Date(System.currentTimeMillis());
-		 //passa o objeto dataDoSistema para uma String da forma que pediu
-		String dataEmTexto = formatador.format(dataDoSistema);  
+                SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
+                //cria um objeto date com a data do sistema
+                Date dataDoSistema = new Date(System.currentTimeMillis());
+                //passa o objeto dataDoSistema para uma String da forma que pediu
+                String dataEmTexto = formatador.format(dataDoSistema);
                 //passa o valor como string para o atributo
                 pessoaJuridica.setDtInicio(dataEmTexto);
-                
-                daoPjuridica.inserir(pessoaJuridica);
+
+                daoPJuridica.inserir(pessoaJuridica);
 
                 int aux = parseInt(ftxtCodigo_PJ.getText().replace("PJ", "").replace(" ", ""));
                 ftxtCodigo_PJ.setText(String.valueOf(aux + 1));
@@ -692,7 +708,12 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                 txtNome_Fantasia.setText("");
                 ftxtCNPJ.setText("");
                 txtEmail.setText("");
-                ftxtTelefone.setText("");
+                ftxtTelefone1.setText("");
+                ftxtTelefone2.setText("");
+                ftxtCelular.setText("");
+                txtNome_Contato1.setText("");
+                txtNome_Contato3.setText("");
+                txtNome_Contato2.setText("");;
 
                 cbxVendedorResp.setSelectedIndex(0);
 
@@ -708,10 +729,16 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void ftxtCNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftxtCNPJFocusLost
-       if(ValidaCNPJ.validaCnpj(ftxtCNPJ.getText().replace("-","").replace(".","")
-                                 .replace(" ","").replace("/","")) == false){
+        //if(ValidaCNPJ.validaCnpj(ftxtCNPJ.getText().replace("-","").replace(".","")
+        //                            .replace(" ","").replace("/","")) == false){
+        //     ftxtCNPJ.setText("");
+        //   JOptionPane.showMessageDialog(null,"Digite um CNPJ válido!"); 
+        //}
+        pessoaJuridica = daoPJuridica.consultaCNPJ(ftxtCNPJ.getText().
+                replace("-", "").replace(".", "").replace(" ", "").replace("/", ""));
+        if (!(pessoaJuridica == null)) {
             ftxtCNPJ.setText("");
-            JOptionPane.showMessageDialog(null,"Digite um CNPJ válido!"); 
+            JOptionPane.showMessageDialog(null, "Este CNPJ ja está cadastrado no sistema!");
         }
     }//GEN-LAST:event_ftxtCNPJFocusLost
 
@@ -752,14 +779,14 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private Conexao conexao = null;
-    private DaoPJuridica daoPjuridica = null;
+    private DaoPJuridica daoPJuridica = null;
     private PessoaJuridica pessoaJuridica = null;
     private DaoVendedor daoVendedor = null;
     private Vendedor vendedor = null;
     private DaoDescobreCodigo daoDescobreCodigo = null;
-
+    private ArrayList<Vendedor> vendedores = null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Painel_Contato;
@@ -773,8 +800,8 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxVendedorResp;
     private javax.swing.JFormattedTextField ftxtCEP;
     private javax.swing.JFormattedTextField ftxtCNPJ;
+    private javax.swing.JFormattedTextField ftxtCelular;
     private javax.swing.JFormattedTextField ftxtCodigo_PJ;
-    private javax.swing.JFormattedTextField ftxtTCelular;
     private javax.swing.JFormattedTextField ftxtTelefone1;
     private javax.swing.JFormattedTextField ftxtTelefone2;
     private javax.swing.JLabel lblAsteristico;
@@ -817,9 +844,9 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNomeContato2;
-    private javax.swing.JTextField txtNomeContato3;
     private javax.swing.JTextField txtNome_Contato1;
+    private javax.swing.JTextField txtNome_Contato2;
+    private javax.swing.JTextField txtNome_Contato3;
     private javax.swing.JTextField txtNome_Fantasia;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;

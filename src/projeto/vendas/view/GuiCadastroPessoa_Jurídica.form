@@ -584,7 +584,9 @@
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="ftxtCodigo_PJ">
           <Properties>
-            <Property name="text" type="java.lang.String" value="PJ"/>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="PJ#####" subtype="-1" type="5"/>
+            </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -604,7 +606,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtNomeContato2" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="txtNome_Contato2" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                                   <Component id="lblcontato2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblcontato3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -631,7 +633,7 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="txtNomeContato3" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtNome_Contato3" min="-2" pref="140" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtAsteristico7" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -642,7 +644,7 @@
                                           <Component id="ftxtTelefone2" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                                           <Component id="lblTelefone2" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblCelular" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ftxtTCelular" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
+                                          <Component id="ftxtCelular" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -680,7 +682,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="lblcontato2" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtNomeContato2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNome_Contato2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="lblTelefone2" min="-2" max="-2" attributes="0"/>
@@ -698,8 +700,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ftxtTCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNomeContato3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ftxtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNome_Contato3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="txtAsteristico7" min="-2" max="-2" attributes="0"/>
@@ -771,7 +773,7 @@
                 <Property name="text" type="java.lang.String" value="Telefone 2"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNomeContato2">
+            <Component class="javax.swing.JTextField" name="txtNome_Contato2">
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ftxtTelefone2">
               <Properties>
@@ -785,9 +787,9 @@
                 <Property name="text" type="java.lang.String" value="Nome do contato 3"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNomeContato3">
+            <Component class="javax.swing.JTextField" name="txtNome_Contato3">
             </Component>
-            <Component class="javax.swing.JFormattedTextField" name="ftxtTCelular">
+            <Component class="javax.swing.JFormattedTextField" name="ftxtCelular">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="(##)####-####" subtype="-1" type="5"/>

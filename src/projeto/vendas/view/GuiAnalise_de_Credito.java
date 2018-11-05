@@ -5,7 +5,6 @@
  */
 package projeto.vendas.view;
 
-
 import static java.lang.Integer.parseInt;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -467,9 +466,22 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
                             nome = pessoaFisica.getNome();
                         } else {
-                            // aqui coloca o pesquisar codigo cliente do daoPJuridica
-                            //pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
-                            //nome = pessoaJuridica.getNome();
+                            pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
+                            nome = pessoaJuridica.getNome();
+                        }
+                        switch (pedido.getSituacao()) {
+                            case 1:
+                                legendaSituacao = "APROVADO";
+                                break;
+                            case 2:
+                                legendaSituacao = "REPROVADO";
+                                break;
+                            case 3:
+                                legendaSituacao = "PENDENTE";
+                                break;
+                            case 4:
+                                legendaSituacao = "NFe EMITIDA";
+                                break;
                         }
                         Object[] row = {
                             pedido.getCodigo(),
@@ -543,9 +555,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                     pessoaFisica = daoPFisica.consultar(pedidosPorCod.get(x).getClienteCod());
                                                     nome = pessoaFisica.getNome();
                                                 } else {
-                                                    // aqui coloca o pesquisar codigo cliente do daoPJuridica
-                                                    //pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
-                                                    //nome = pessoaJuridica.getNome();
+                                                    pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
+                                                    nome = pessoaJuridica.getNome();
                                                 }
                                                 //insere uma linha na tabela com todos os dados requeridos 
 
@@ -581,9 +592,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                 pessoaFisica = daoPFisica.consultar(pedidosPorCod.get(x).getClienteCod());
                                                 nome = pessoaFisica.getNome();
                                             } else {
-                                                // aqui coloca o pesquisar codigo cliente do daoPJuridica
-                                                //pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
-                                                //nome = pessoaJuridica.getNome();
+                                                pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
+                                                nome = pessoaJuridica.getNome();
                                             }
                                             //insere uma linha na tabela com todos os dados requeridos 
                                             switch (pedidosPorCod.get(x).getSituacao()) {
@@ -670,9 +680,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                     pessoaFisica = daoPFisica.consultar(pedidos.get(x).getClienteCod());
                                     nome = pessoaFisica.getNome();
                                 } else {
-                                    // aqui coloca o pesquisar codigo cliente do daoPJuridica
-                                    //pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
-                                    //nome = pessoaJuridica.getNome();
+                                    pessoaJuridica = daoPJrudica.consultar(pedidos.get(x).getClienteCod());
+                                    nome = pessoaJuridica.getNome();
                                 }
                                 //insere uma linha na tabela com todos os dados requeridos 
 
@@ -708,9 +717,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                 pessoaFisica = daoPFisica.consultar(pedidos.get(x).getClienteCod());
                                 nome = pessoaFisica.getNome();
                             } else {
-                                // aqui coloca o pesquisar codigo cliente do daoPJuridica
-                                //pessoaJuridica = daoPJrudica.consultar(pedidosPorCod.get(x).getClienteCod());
-                                //nome = pessoaJuridica.getNome();
+                                pessoaJuridica = daoPJrudica.consultar(pedidos.get(x).getClienteCod());
+                                nome = pessoaJuridica.getNome();
                             }
                             //insere uma linha na tabela com todos os dados requeridos 
                             switch (pedidos.get(x).getSituacao()) {

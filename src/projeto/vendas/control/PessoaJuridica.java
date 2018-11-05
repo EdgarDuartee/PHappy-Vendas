@@ -9,17 +9,22 @@ package projeto.vendas.model;
  *
  * @author EdgarSamsung
  */
-public class PessoaJuridica extends Cliente{
+public class PessoaJuridica extends Cliente {
+
     private String cnpj;
-    private String tel;
+    private String tel1;
+    private String tel2;
+    private String tel3;
+    private String contato1;
+    private String contato2;
+    private String contato3;
 
     public PessoaJuridica(String codigo, String nome, String email, String rua,
             String numero, String bairro, String cidade, String uf, String cep,
-             String ativo) {
-        super(codigo, nome, email, rua, numero, bairro, cidade, uf, cep,ativo);
+            String ativo) {
+        super(codigo, nome, email, rua, numero, bairro, cidade, uf, cep, ativo);
     }
 
-    
     public String getCnpj() {
         return cnpj;
     }
@@ -28,13 +33,4 @@ public class PessoaJuridica extends Cliente{
         this.cnpj = cnpj;
     }
 
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel_contato) {
-        this.tel = tel_contato;
-    }
-    
 }
-
