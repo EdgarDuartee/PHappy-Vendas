@@ -573,11 +573,9 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
                 pessoaFisica.setCel(ftxtCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
                 pessoaFisica.setDtNasc(ftxtData_Nasc.getText().replace("/", ""));
                 pessoaFisica.setComplemento(txtComplemento.getText());
-
-                ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
-                vendedor = daoVendedor.consultar(vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo());
+                
                 pessoaFisica.setVendedor_responsavel((String) cbxVendedorResp.getSelectedItem());
-                pessoaFisica.setCod_vend_resp(vendedor.getCodigo());
+                pessoaFisica.setCod_vend_resp(vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo());
                 
                 //cria o formatador de data
                 SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");  
@@ -624,8 +622,8 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         daoVendedor = new DaoVendedor(conexao.conectar());
         daoDescobreCodigo = new DaoDescobreCodigo(conexao.conectar());
 
-        ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
-
+        vendedores = daoVendedor.listarVendedores();
+        
         for (int x = 0; x < vendedores.size(); x++) {
             cbxVendedorResp.addItem(vendedores.get(x).getNome());
         }
@@ -700,6 +698,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
     private DaoVendedor daoVendedor = null;
     private Vendedor vendedor = null;
     private DaoDescobreCodigo daoDescobreCodigo = null;
+    ArrayList<Vendedor> vendedores = null;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

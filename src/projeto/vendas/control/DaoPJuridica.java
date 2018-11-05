@@ -44,6 +44,37 @@ public class DaoPJuridica {
         }
         return PJ;
     }
+    
+    public void alterar(PessoaJuridica pessoaJuridica) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("UPDATE P_Juridica set rua = ?,"
+                                       + " numero = ?, bairro = ?, cidade = ?,"
+                                       + " uf = ?, cep = ?, complemento = ?, "
+                                       + " tel = ?, cel = ?,"
+                                       + " email = ?, cod_vend_resp = ? ,"
+                                       + " vend_resp = ?"  
+                                       + "where codigo = ?");
+            
+            ps.setString(1, pessoaJuridica.getRua());
+            ps.setString(2, pessoaJuridica.getNumero());
+            ps.setString(3, pessoaJuridica.getBairro());
+            ps.setString(4, pessoaJuridica.getCidade());
+            ps.setString(5, pessoaJuridica.getUf());
+            ps.setString(6, pessoaJuridica.getCep());
+            ps.setString(7, pessoaJuridica.getComplemento());
+            ps.setString(8, pessoaJuridica.getTel());
+            ps.setString(9, pessoaJuridica.getCel());
+            ps.setString(10, pessoaJuridica.getEmail());
+            ps.setInt(11, pessoaJuridica.getCod_vend_resp());
+            ps.setString(12, pessoaJuridica.getVendedor_responsavel());
+            ps.setString(13,pessoaJuridica.getCodigo());
+           
+            ps.execute();
+        } catch (SQLException ex) {
+             System.out.println(ex.toString());   
+        }
+    }
 
     public void inserir(PessoaJuridica pessoaJuridica) {
         PreparedStatement ps = null;

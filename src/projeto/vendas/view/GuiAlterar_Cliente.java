@@ -11,9 +11,12 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoPFisica;
+import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoVendedor;
 import projeto.vendas.model.PessoaFisica;
+import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
+
 
 /**
  *
@@ -56,7 +59,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         ftxtCPFPF = new javax.swing.JFormattedTextField();
         ftxtRGPF = new javax.swing.JFormattedTextField();
         cbxVendedorRespPF = new javax.swing.JComboBox<>();
-        lblCodigo_Cliente = new javax.swing.JLabel();
+        lblCPF_Cliente = new javax.swing.JLabel();
         Painel_Endereço = new javax.swing.JPanel();
         lblCidade = new javax.swing.JLabel();
         txtCidadePF = new javax.swing.JTextField();
@@ -89,10 +92,10 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         lblEmail_PJ = new javax.swing.JLabel();
         txtEmailPJ = new javax.swing.JTextField();
         lblTelefone_PJ = new javax.swing.JLabel();
-        lblCNPJ = new javax.swing.JLabel();
-        lblVendedor_Responsável_PJ = new javax.swing.JLabel();
         ftxtTelefonePJ = new javax.swing.JFormattedTextField();
+        lblCNPJ = new javax.swing.JLabel();
         ftxtCNPJ = new javax.swing.JFormattedTextField();
+        lblVendedor_Responsável_PJ = new javax.swing.JLabel();
         cbxVendedorRespPJ = new javax.swing.JComboBox<>();
         Painel_Endereço_PJ = new javax.swing.JPanel();
         lblCidade_PJ = new javax.swing.JLabel();
@@ -102,24 +105,24 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         lblBairro_PJ = new javax.swing.JLabel();
         txtBairroPJ = new javax.swing.JTextField();
         lblUF_PJ = new javax.swing.JLabel();
-        txtUFPJ = new javax.swing.JTextField();
+        cbxUF_PJ = new javax.swing.JComboBox<>();
         lblNumero_PJ = new javax.swing.JLabel();
         txtNumeroPJ = new javax.swing.JTextField();
         lblCEP_PJ = new javax.swing.JLabel();
-        lblLatitude_PJ = new javax.swing.JLabel();
-        txtLatitudePJ = new javax.swing.JTextField();
-        lblLongitude_PJ = new javax.swing.JLabel();
-        txtLongitudePJ = new javax.swing.JTextField();
-        ftxtCEPPJ = new javax.swing.JFormattedTextField();
-        btnBuscar_Coordenadas = new javax.swing.JButton();
+        ftxtCEP_PJ = new javax.swing.JFormattedTextField();
         lblComplemento_PJ = new javax.swing.JLabel();
         txtComplementoPJ = new javax.swing.JTextField();
-        lblCodigo_Cliente_PJ = new javax.swing.JLabel();
-        txtCodigoPJuridica = new javax.swing.JTextField();
-        btnVoltarPJuridica = new javax.swing.JButton();
-        btnAlterarPJuridica = new javax.swing.JButton();
+        lblCNPJ_Cliente_PJ = new javax.swing.JLabel();
+        ftxtConsultar_CNPJ_Cliente = new javax.swing.JFormattedTextField();
         btnConsultarPJuridica = new javax.swing.JButton();
-        btnExcluirPJuridica = new javax.swing.JButton();
+        lblSituacao_PJ = new javax.swing.JLabel();
+        txtSituacao_PJ = new javax.swing.JTextField();
+        lblCodigo_PJ = new javax.swing.JLabel();
+        txtCodigo_PJ = new javax.swing.JTextField();
+        btnVoltarPJuridica = new javax.swing.JButton();
+        btnLimparPJuridica = new javax.swing.JButton();
+        btnAlterarPJuridica = new javax.swing.JButton();
+        btnDesativarPJ = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alterar Cliente");
@@ -257,7 +260,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        lblCodigo_Cliente.setText("Digite o CPF do cliente:");
+        lblCPF_Cliente.setText("Digite o CPF do cliente:");
 
         Painel_Endereço.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
@@ -306,32 +309,27 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                     .addComponent(lblRua)
                     .addComponent(txtRuaPF)
                     .addComponent(lblBairro)
-                    .addComponent(txtBairroPF, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_EndereçoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtComplementoPF, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
+                    .addComponent(txtBairroPF, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
                 .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_EndereçoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNumero)
-                            .addComponent(txtNumeroPF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16))
-                    .addGroup(Painel_EndereçoLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
                         .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCEP)
-                            .addComponent(ftxtCEPPF, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ftxtCEPPF, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNumeroPF, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Painel_EndereçoLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(lblUF))
                             .addGroup(Painel_EndereçoLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbx_UFPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(cbx_UFPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(lblNumero))
+                .addContainerGap(74, Short.MAX_VALUE))
             .addGroup(Painel_EndereçoLayout.createSequentialGroup()
-                .addComponent(lblComplemento)
+                .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblComplemento)
+                    .addComponent(txtComplementoPF, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_EndereçoLayout.setVerticalGroup(
@@ -361,8 +359,9 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addComponent(txtBairroPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblComplemento)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(txtComplementoPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtComplementoPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         btnLimparPFisica.setText("Limpar");
@@ -428,18 +427,18 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Painel_Contato_Pessoa_Fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
-                        .addGap(117, 117, 117)
+                        .addGap(115, 115, 115)
                         .addComponent(btnLimparPFisica)
-                        .addGap(53, 53, 53)
+                        .addGap(55, 55, 55)
                         .addComponent(btnAlterarPFisica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDesativarPF)))
-                .addGap(92, 92, 92)
+                .addGap(28, 28, 28)
                 .addComponent(Painel_Endereço, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(lblCodigo_Cliente)
+                .addComponent(lblCPF_Cliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ftxtConsultarCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -451,8 +450,8 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCodigoPF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCodigoPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
+                .addComponent(txtCodigoPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
             .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
                     .addGap(20, 20, 20)
@@ -465,7 +464,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCodigo_Cliente)
+                        .addComponent(lblCPF_Cliente)
                         .addComponent(btnConsultarPFisica)
                         .addComponent(lblSituacao)
                         .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,20 +475,19 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(Painel_Endereço, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(Painel_Endereço, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Painel_Contato_Pessoa_Fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimparPFisica)
                             .addComponent(btnAlterarPFisica)
-                            .addComponent(btnDesativarPF)
-                            .addComponent(btnLimparPFisica))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(btnDesativarPF))))
+                .addContainerGap())
             .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_FisicaLayout.createSequentialGroup()
-                    .addContainerGap(255, Short.MAX_VALUE)
+                    .addContainerGap(257, Short.MAX_VALUE)
                     .addComponent(btnVoltarPFisica)
                     .addGap(12, 12, 12)))
         );
@@ -508,10 +506,6 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
 
         lblTelefone_PJ.setText("Telefone");
 
-        lblCNPJ.setText("CNPJ");
-
-        lblVendedor_Responsável_PJ.setText("Vendedor Responsável");
-
         try {
             ftxtTelefonePJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
@@ -519,12 +513,16 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         }
         ftxtTelefonePJ.setEnabled(false);
 
+        lblCNPJ.setText("CNPJ");
+
         try {
             ftxtCNPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         ftxtCNPJ.setEnabled(false);
+
+        lblVendedor_Responsável_PJ.setText("Vendedor Responsável");
 
         cbxVendedorRespPJ.setEnabled(false);
 
@@ -600,7 +598,8 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
 
         lblUF_PJ.setText("UF");
 
-        txtUFPJ.setEnabled(false);
+        cbxUF_PJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
+        cbxUF_PJ.setEnabled(false);
 
         lblNumero_PJ.setText("n°");
 
@@ -608,23 +607,12 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
 
         lblCEP_PJ.setText("CEP");
 
-        lblLatitude_PJ.setText("Latitude");
-
-        txtLatitudePJ.setEnabled(false);
-
-        lblLongitude_PJ.setText("Longitude");
-
-        txtLongitudePJ.setEnabled(false);
-
         try {
-            ftxtCEPPJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
+            ftxtCEP_PJ.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#####-###")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtCEPPJ.setEnabled(false);
-
-        btnBuscar_Coordenadas.setText("Buscar Coordenadas");
-        btnBuscar_Coordenadas.setEnabled(false);
+        ftxtCEP_PJ.setEnabled(false);
 
         lblComplemento_PJ.setText("Complemento");
 
@@ -642,29 +630,19 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                     .addComponent(txtRuaPJ)
                     .addComponent(lblBairro_PJ)
                     .addComponent(txtBairroPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Endereço_PJLayout.createSequentialGroup()
-                        .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUF_PJ)
-                            .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblLongitude_PJ)
-                                .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblNumero_PJ)
-                                    .addComponent(txtUFPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                    .addComponent(txtNumeroPJ))))
-                        .addGap(30, 30, 30)
-                        .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblCEP_PJ)
-                            .addComponent(lblLatitude_PJ)
-                            .addComponent(txtLatitudePJ)
-                            .addComponent(ftxtCEPPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)))
+                        .addComponent(lblCEP_PJ)
+                        .addGap(75, 75, 75)
+                        .addComponent(lblUF_PJ))
                     .addGroup(Painel_Endereço_PJLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar_Coordenadas)
-                            .addComponent(txtLongitudePJ, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addComponent(ftxtCEP_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbxUF_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNumero_PJ)
+                    .addComponent(txtNumeroPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(Painel_Endereço_PJLayout.createSequentialGroup()
                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblComplemento_PJ)
@@ -677,42 +655,54 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCidade_PJ)
-                    .addComponent(lblUF_PJ)
-                    .addComponent(lblCEP_PJ))
+                    .addComponent(lblCEP_PJ)
+                    .addComponent(lblUF_PJ))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCidadePJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUFPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtCEPPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftxtCEP_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxUF_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLatitude_PJ, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblRua_PJ)
-                        .addComponent(lblNumero_PJ)))
+                .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRua_PJ)
+                    .addComponent(lblNumero_PJ))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRuaPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNumeroPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLatitudePJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNumeroPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBairro_PJ)
-                    .addComponent(lblLongitude_PJ))
+                .addComponent(lblBairro_PJ)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBairroPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLongitudePJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtBairroPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblComplemento_PJ)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtComplementoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar_Coordenadas))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtComplementoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        lblCodigo_Cliente_PJ.setText("Digite o Código do Cliente");
+        lblCNPJ_Cliente_PJ.setText("Digite o CNPJ do Cliente");
+
+        try {
+            ftxtConsultar_CNPJ_Cliente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        btnConsultarPJuridica.setText("Consultar");
+        btnConsultarPJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarPJuridicaActionPerformed(evt);
+            }
+        });
+
+        lblSituacao_PJ.setText("Situação");
+
+        txtSituacao_PJ.setEnabled(false);
+
+        lblCodigo_PJ.setText("Código");
+
+        txtCodigo_PJ.setEnabled(false);
 
         btnVoltarPJuridica.setText("Voltar");
         btnVoltarPJuridica.addActionListener(new java.awt.event.ActionListener() {
@@ -721,59 +711,88 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
             }
         });
 
+        btnLimparPJuridica.setText("Limpar");
+        btnLimparPJuridica.setEnabled(false);
+        btnLimparPJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparPJuridicaActionPerformed(evt);
+            }
+        });
+
         btnAlterarPJuridica.setText("Alterar");
         btnAlterarPJuridica.setEnabled(false);
+        btnAlterarPJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarPJuridicaActionPerformed(evt);
+            }
+        });
 
-        btnConsultarPJuridica.setText("Consultar");
-
-        btnExcluirPJuridica.setText("Alterar");
-        btnExcluirPJuridica.setEnabled(false);
+        btnDesativarPJ.setText("Desativar Cliente");
+        btnDesativarPJ.setEnabled(false);
+        btnDesativarPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDesativarPJActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Painel_Pessoa_JuridicaLayout = new javax.swing.GroupLayout(Painel_Pessoa_Juridica);
         Painel_Pessoa_Juridica.setLayout(Painel_Pessoa_JuridicaLayout);
         Painel_Pessoa_JuridicaLayout.setHorizontalGroup(
             Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblCNPJ_Cliente_PJ)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ftxtConsultar_CNPJ_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnConsultarPJuridica)
+                .addGap(31, 31, 31)
+                .addComponent(lblSituacao_PJ)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSituacao_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(178, 178, 178)
+                .addComponent(lblCodigo_PJ)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCodigo_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_JuridicaLayout.createSequentialGroup()
                 .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Contato_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Painel_Contato_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                                .addComponent(btnVoltarPJuridica)
-                                .addGap(141, 141, 141)
-                                .addComponent(btnAlterarPJuridica)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExcluirPJuridica)))
+                        .addComponent(btnVoltarPJuridica)
+                        .addGap(65, 65, 65)
+                        .addComponent(btnLimparPJuridica)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAlterarPJuridica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblCodigo_Cliente_PJ)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConsultarPJuridica)))
-                .addContainerGap(163, Short.MAX_VALUE))
+                        .addComponent(btnDesativarPJ)))
+                .addGap(65, 65, 65)
+                .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         Painel_Pessoa_JuridicaLayout.setVerticalGroup(
             Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCodigo_Cliente_PJ)
-                    .addComponent(txtCodigoPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarPJuridica))
+                    .addComponent(lblCNPJ_Cliente_PJ)
+                    .addComponent(btnConsultarPJuridica)
+                    .addComponent(ftxtConsultar_CNPJ_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSituacao_PJ)
+                    .addComponent(txtSituacao_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCodigo_PJ)
+                    .addComponent(txtCodigo_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
                         .addComponent(Painel_Contato_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnVoltarPJuridica)
+                            .addComponent(btnLimparPJuridica)
                             .addComponent(btnAlterarPJuridica)
-                            .addComponent(btnExcluirPJuridica))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btnDesativarPJ)))
+                    .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -806,22 +825,28 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         conexao.setDriver();
         conexao.setConnectionString();
         daoPfisica = new DaoPFisica(conexao.conectar());
+        daoPJuridica = new DaoPJuridica(conexao.conectar());
 
         daoVendedor = new DaoVendedor(conexao.conectar());
+        
 
         ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
-
-        for (int x = 0; x < vendedores.size(); x++) {
-            cbxVendedorRespPF.addItem(vendedores.get(x).getNome());
-        }
+        
+            for (int x = 0; x < vendedores.size(); x++) {
+                cbxVendedorRespPF.addItem(vendedores.get(x).getNome());
+            }
+            for (int x = 0; x < vendedores.size(); x++) {
+                cbxVendedorRespPJ.addItem(vendedores.get(x).getNome());
+            }
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btnAlterarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPFisicaActionPerformed
         if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {//Sim    
             JOptionPane.showMessageDialog(null, "Alteração Efetuada com sucesso!");
             pessoaFisica.setEmail(txtEmailPF.getText());
-            pessoaFisica.setTel(ftxtTelefonePF.getText().replace("(","").replace(")","").replace("-",""));
-            pessoaFisica.setCel(ftxtCelularPF.getText().replace("(","").replace(")","").replace("-",""));
+            pessoaFisica.setTel(ftxtTelefonePF.getText());
+            pessoaFisica.setCel(ftxtCelularPF.getText());
             pessoaFisica.setRua(txtRuaPF.getText());
             pessoaFisica.setNumero(txtNumeroPF.getText());
             pessoaFisica.setBairro(txtBairroPF.getText());
@@ -948,6 +973,133 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDesativarPFActionPerformed
 
+    private void btnAlterarPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPJuridicaActionPerformed
+           if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {//Sim    
+            JOptionPane.showMessageDialog(null, "Alteração Efetuada com sucesso!");
+            pessoaJuridica.setEmail(txtEmailPJ.getText());
+            pessoaJuridica.setRua(txtRuaPJ.getText());
+            pessoaJuridica.setNumero(txtNumeroPJ.getText());
+            pessoaJuridica.setBairro(txtBairroPJ.getText());
+            pessoaJuridica.setCidade(txtCidadePJ.getText());
+            pessoaJuridica.setUf((String) cbxUF_PJ.getSelectedItem());
+            pessoaJuridica.setCep(ftxtCEP_PJ.getText().replace("-", ""));
+            pessoaJuridica.setComplemento(txtComplementoPJ.getText());
+            pessoaJuridica.setTel(ftxtTelefonePJ.getText().replace("(","").replace(")","").replace("-",""));
+            pessoaJuridica.setVendedor_responsavel((String) (cbxVendedorRespPJ.getSelectedItem()));
+
+            daoVendedor = new DaoVendedor(conexao.conectar());
+
+            ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
+
+            pessoaJuridica.setCod_vend_resp(vendedores.get(cbxVendedorRespPJ.getSelectedIndex()).getCodigo());
+
+            daoPJuridica.alterar(pessoaJuridica);
+
+            txtCodigo_PJ.requestFocus();
+
+            limpaCamposs();
+
+            btnAlterarPJuridica.setEnabled(false);
+            btnDesativarPJ.setEnabled(false);
+            btnLimparPJuridica.setEnabled(false);
+
+            txtBairroPJ.setEnabled(false);
+            txtRuaPJ.setEnabled(false);
+            txtCidadePJ.setEnabled(false);
+            txtComplementoPJ.setEnabled(false);
+            txtNumeroPJ.setEnabled(false);
+            ftxtCEP_PJ.setEnabled(false);
+            cbxUF_PJ.setEnabled(false);
+            txtEmailPJ.setEnabled(false);
+            ftxtTelefonePJ.setEnabled(false);
+            cbxVendedorRespPJ.setEnabled(false);
+        }
+
+    
+    }//GEN-LAST:event_btnAlterarPJuridicaActionPerformed
+
+    private void btnLimparPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPJuridicaActionPerformed
+      limpaCamposs();
+    }//GEN-LAST:event_btnLimparPJuridicaActionPerformed
+
+    private void btnConsultarPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPJuridicaActionPerformed
+         if (ftxtConsultar_CNPJ_Cliente.getText().replace(".", "").replace("-", "").replace(" ", "").
+                 replace("/", "").equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o CNPJ do Cliente desejado!");
+            txtCodigo_PJ.requestFocus();
+            txtCodigo_PJ.setText("");
+        } else {
+            daoVendedor = new DaoVendedor(conexao.conectar());
+
+            ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
+
+            pessoaJuridica = null;
+            pessoaJuridica = daoPJuridica.consultaCNPJ(ftxtConsultar_CNPJ_Cliente.getText().replace("-", "").replace(".", "").replace(" ", "").replace("/",""));
+
+            if (pessoaJuridica == null) {
+                JOptionPane.showMessageDialog(null, "CNPJ não consta no Sistema!");
+                txtCodigo_PJ.requestFocus();
+            } else {
+                txtCodigo_PJ.setText(pessoaJuridica.getCodigo());
+                txtNome_Fantasia.setText(pessoaJuridica.getNome());
+                ftxtTelefonePJ.setText(pessoaJuridica.getTel());
+                txtEmailPJ.setText(pessoaJuridica.getEmail());
+                ftxtCNPJ.setText(pessoaJuridica.getCnpj());
+
+                txtCidadePJ.setText(pessoaJuridica.getCidade());
+                cbxUF_PJ.setSelectedItem(pessoaJuridica.getUf());
+                txtRuaPJ.setText(pessoaJuridica.getRua());
+                txtNumeroPJ.setText(pessoaJuridica.getNumero());
+                ftxtCEP_PJ.setText(pessoaJuridica.getCep());
+                txtBairroPJ.setText(pessoaJuridica.getBairro());
+                txtComplementoPJ.setText(pessoaJuridica.getComplemento());
+                if (pessoaJuridica.getAtivo().equals("A")) {
+                    txtSituacao_PJ.setText("Ativo");
+                    btnDesativarPJ.setText("Desativar Cliente");
+                } else {
+                    txtSituacao_PJ.setText("Inativo");
+                    btnDesativarPJ.setText("Ativar Cliente");
+                }
+
+                cbxVendedorRespPJ.setSelectedItem(pessoaJuridica.getVendedor_responsavel());
+
+                txtBairroPJ.setEnabled(true);
+                txtRuaPJ.setEnabled(true);
+                txtCidadePJ.setEnabled(true);
+                txtComplementoPJ.setEnabled(true);
+                txtNumeroPJ.setEnabled(true);
+                ftxtCEP_PJ.setEnabled(true);
+                cbxUF_PJ.setEnabled(true);
+                txtEmailPJ.setEnabled(true);
+                ftxtTelefonePJ.setEnabled(true);
+                cbxVendedorRespPJ.setEnabled(true);
+
+                btnAlterarPJuridica.setEnabled(true);
+                btnDesativarPJ.setEnabled(true);
+                btnLimparPJuridica.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_btnConsultarPJuridicaActionPerformed
+
+    private void btnDesativarPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarPJActionPerformed
+       if (btnDesativarPJ.getText().equals("Desativar Cliente")) {
+            if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {//Sim  
+                JOptionPane.showMessageDialog(null, "Desativação Efetuada com sucesso!");
+
+                daoPJuridica.desativarOUativar(pessoaJuridica, "I");
+
+                limpaCamposs();
+            }
+        } else {
+            if (JOptionPane.showConfirmDialog(null, "Confirma Ativação?") == 0) {//Sim  
+                JOptionPane.showMessageDialog(null, "Ativação Efetuada com sucesso!");
+                daoPJuridica.desativarOUativar(pessoaJuridica, "A");
+                limpaCamposs();
+            }
+
+        }
+    }//GEN-LAST:event_btnDesativarPJActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -985,7 +1137,9 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
 
     private Conexao conexao = null;
     private DaoPFisica daoPfisica = null;
+    private DaoPJuridica daoPJuridica = null;
     private PessoaFisica pessoaFisica = null;
+    private PessoaJuridica pessoaJuridica = null;
     private DaoVendedor daoVendedor = null;
     private Vendedor vendedor = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -998,23 +1152,25 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JPanel Painel_Pessoa_Juridica;
     private javax.swing.JButton btnAlterarPFisica;
     private javax.swing.JButton btnAlterarPJuridica;
-    private javax.swing.JButton btnBuscar_Coordenadas;
     private javax.swing.JButton btnConsultarPFisica;
     private javax.swing.JButton btnConsultarPJuridica;
     private javax.swing.JButton btnDesativarPF;
-    private javax.swing.JButton btnExcluirPJuridica;
+    private javax.swing.JButton btnDesativarPJ;
     private javax.swing.JButton btnLimparPFisica;
+    private javax.swing.JButton btnLimparPJuridica;
     private javax.swing.JButton btnVoltarPFisica;
     private javax.swing.JButton btnVoltarPJuridica;
+    private javax.swing.JComboBox<String> cbxUF_PJ;
     private javax.swing.JComboBox<String> cbxVendedorRespPF;
     private javax.swing.JComboBox<String> cbxVendedorRespPJ;
     private javax.swing.JComboBox<String> cbx_UFPF;
     private javax.swing.JFormattedTextField ftxtCEPPF;
-    private javax.swing.JFormattedTextField ftxtCEPPJ;
+    private javax.swing.JFormattedTextField ftxtCEP_PJ;
     private javax.swing.JFormattedTextField ftxtCNPJ;
     private javax.swing.JFormattedTextField ftxtCPFPF;
     private javax.swing.JFormattedTextField ftxtCelularPF;
     private javax.swing.JFormattedTextField ftxtConsultarCPF;
+    private javax.swing.JFormattedTextField ftxtConsultar_CNPJ_Cliente;
     private javax.swing.JFormattedTextField ftxtData_NascPF;
     private javax.swing.JFormattedTextField ftxtRGPF;
     private javax.swing.JFormattedTextField ftxtTelefonePF;
@@ -1024,20 +1180,19 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCEP_PJ;
     private javax.swing.JLabel lblCNPJ;
+    private javax.swing.JLabel lblCNPJ_Cliente_PJ;
     private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCPF_Cliente;
     private javax.swing.JLabel lblCelular;
     private javax.swing.JLabel lblCidade;
     private javax.swing.JLabel lblCidade_PJ;
     private javax.swing.JLabel lblCodigoPF;
-    private javax.swing.JLabel lblCodigo_Cliente;
-    private javax.swing.JLabel lblCodigo_Cliente_PJ;
+    private javax.swing.JLabel lblCodigo_PJ;
     private javax.swing.JLabel lblComplemento;
     private javax.swing.JLabel lblComplemento_PJ;
     private javax.swing.JLabel lblData_Nascimento;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail_PJ;
-    private javax.swing.JLabel lblLatitude_PJ;
-    private javax.swing.JLabel lblLongitude_PJ;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome_Fantasia;
     private javax.swing.JLabel lblNumero;
@@ -1046,6 +1201,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblRua;
     private javax.swing.JLabel lblRua_PJ;
     private javax.swing.JLabel lblSituacao;
+    private javax.swing.JLabel lblSituacao_PJ;
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblTelefone_PJ;
     private javax.swing.JLabel lblUF;
@@ -1057,13 +1213,11 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCidadePF;
     private javax.swing.JTextField txtCidadePJ;
     private javax.swing.JTextField txtCodigoPFisica;
-    private javax.swing.JTextField txtCodigoPJuridica;
+    private javax.swing.JTextField txtCodigo_PJ;
     private javax.swing.JTextField txtComplementoPF;
     private javax.swing.JTextField txtComplementoPJ;
     private javax.swing.JTextField txtEmailPF;
     private javax.swing.JTextField txtEmailPJ;
-    private javax.swing.JTextField txtLatitudePJ;
-    private javax.swing.JTextField txtLongitudePJ;
     private javax.swing.JTextField txtNomePF;
     private javax.swing.JTextField txtNome_Fantasia;
     private javax.swing.JTextField txtNumeroPF;
@@ -1071,7 +1225,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtRuaPF;
     private javax.swing.JTextField txtRuaPJ;
     private javax.swing.JTextField txtSituacao;
-    private javax.swing.JTextField txtUFPJ;
+    private javax.swing.JTextField txtSituacao_PJ;
     // End of variables declaration//GEN-END:variables
     private void limpaCampos() {
         txtCodigoPFisica.requestFocus();
@@ -1112,5 +1266,42 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         ftxtData_NascPF.setEnabled(false);
         cbxVendedorRespPF.setEnabled(false);
         ftxtConsultarCPF.setText("");
+    
     }
+
+private void limpaCamposs() {
+        txtCodigo_PJ.requestFocus();
+
+        ftxtCEP_PJ.setText("");
+        ftxtCNPJ.setText("");
+        ftxtTelefonePJ.setText("");
+        txtEmailPJ.setText("");
+
+        txtRuaPJ.setText("");
+        txtNumeroPJ.setText("");
+        txtBairroPJ.setText("");
+        txtCidadePJ.setText("");
+        cbxUF_PJ.setSelectedIndex(0);
+        txtComplementoPJ.setText("");
+        txtSituacao_PJ.setText("");
+
+        txtNome_Fantasia.setText("");
+        txtCodigo_PJ.setText("");
+
+        btnAlterarPJuridica.setEnabled(false);
+        btnDesativarPJ.setEnabled(false);
+        btnLimparPJuridica.setEnabled(false);
+
+        txtBairroPJ.setEnabled(false);
+        txtRuaPJ.setEnabled(false);
+        txtCidadePJ.setEnabled(false);
+        txtComplementoPJ.setEnabled(false);
+        txtNumeroPJ.setEnabled(false);
+        ftxtCEP_PJ.setEnabled(false);
+        cbxUF_PJ.setEnabled(false);
+        txtEmailPJ.setEnabled(false);
+        ftxtTelefonePJ.setEnabled(false);
+        cbxVendedorRespPF.setEnabled(false);
+}
+        
 }
