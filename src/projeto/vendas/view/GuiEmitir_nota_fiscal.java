@@ -210,7 +210,6 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         });
 
         lbl_Descricao_CFOP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_Descricao_CFOP.setText("null");
 
         javax.swing.GroupLayout jPanelNatureza_da_OperacaoLayout = new javax.swing.GroupLayout(jPanelNatureza_da_Operacao);
         jPanelNatureza_da_Operacao.setLayout(jPanelNatureza_da_OperacaoLayout);
