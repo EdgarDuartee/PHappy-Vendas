@@ -1,14 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package projeto.vendas.model;
 
-/**
- *
- * @author EdgarSamsung
- */
+import java.util.ArrayList;
+
 public class NotaFiscalItens {
+    
+    private int numero;
+    private ArrayList<Produto> ListaProdutos;
+    private ArrayList<Integer> QtdPedidoProduto;
+
+    public NotaFiscalItens(int numero) {
+        this.numero = numero;
+        ListaProdutos = new ArrayList<Produto>();
+        QtdPedidoProduto = new ArrayList<Integer>();
+    }
+    
+    public void addProduto (Produto p){
+        ListaProdutos.add(p);
+    }
+    
+    public void addQtdProduto(int Qtd){
+        QtdPedidoProduto.add(Qtd);
+    }
+
+    public ArrayList<Integer> getQtdPedidoProduto() {
+        return QtdPedidoProduto;
+    }
+
+    public void setQtdPedidoProduto(ArrayList<Integer> QtdPedidoProduto) {
+        this.QtdPedidoProduto = QtdPedidoProduto;
+       
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public ArrayList<Produto> getListaProdutos() {
+        return ListaProdutos;
+    }
+
+    public void setListaProdutos(ArrayList<Produto> ListaProdutos) {
+        this.ListaProdutos = ListaProdutos;
+    }
     
 }

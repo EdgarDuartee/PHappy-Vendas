@@ -63,30 +63,18 @@ public class DaoEmitirNotaFiscal {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("INSERT into Nota_Fiscal(Numero, Serie, PedidoCOD, Tipo,"
-                    + "CFOP, Total,DataEmissao,HoraEmissao,TRANSPCOD,TRANSP_DATASAIDA,TRANSP_HORASAIDA)"
-                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?,?)");
-//            System.out.println("invalido 01");
+                    + "CFOP, Total,DataEmissao,HoraEmissao,TRANSPCOD)"
+                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?)");
+
             ps.setInt(1, nf.getNumero());
-//            System.out.println("invalido 02");
             ps.setInt(2, nf.getSerie());
-//            System.out.println("invalido 03");
             ps.setInt(3, nf.getPedidoCod());
-//            System.out.println("invalido 04");
             ps.setString(4, nf.getTipo());
-//            System.out.println("invalido 05");
             ps.setString(5, nf.getCFOP());
-//            System.out.println("invalido 06");
             ps.setFloat(6, nf.getTotal());
-//            System.out.println("invalido 07");
             ps.setString(7, nf.getDataEmissao());
-//            System.out.println("invalido 08");
             ps.setString(8, nf.getHoraEmissao());
-            System.out.println("invalido 09");
-            ps.setInt(9, Integer.parseInt("20"));
-            System.out.println("invalido 10");
-            ps.setString(10,"Data");
-            System.out.println("invalido 11");
-            ps.setString(11,"Hora");
+            ps.setInt(9, 1);
 
 
             ps.execute();
