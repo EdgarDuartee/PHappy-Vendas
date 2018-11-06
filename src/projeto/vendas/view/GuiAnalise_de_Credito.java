@@ -16,9 +16,11 @@ import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
+import projeto.vendas.control.DaoPedidoProduto;
 import projeto.vendas.control.DaoProduto;
 import projeto.vendas.model.Login;
 import projeto.vendas.model.Pedido;
+import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
 
@@ -431,6 +433,13 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 tblPedido.getModel().setValueAt("REPROVADO", (tblPedido.getSelectedRow()), 5);
                 btnAprovar.setEnabled(false);
                 btnReprovar.setEnabled(false);
+                //Incrementando a Quantidade do`Pedido Reprovado ao ESTOQUE.
+                DaoPedidoProduto daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
+                ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
+                ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(valorPedido);
+                for(int i = 0; i < ListaPedidoProduto.size(); i++) {
+                    daoProduto.IncrementaEstoque(ListaPedidoProduto.get(i).getProdutoCod(), ListaPedidoProduto.get(i).getProdutoQtd());
+                }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Escolha o pedido para ser reprovado!");
