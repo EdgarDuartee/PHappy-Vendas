@@ -147,6 +147,11 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                 ftxtCNPJFocusLost(evt);
             }
         });
+        ftxtCNPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtCNPJActionPerformed(evt);
+            }
+        });
 
         lblAsteristico.setText("*");
 
@@ -527,7 +532,6 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                             .addComponent(btnVoltar)
                             .addComponent(Painel_Dados, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Painel_Pessoa_JurídicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Painel_Pessoa_JurídicaLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -741,6 +745,10 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Este CNPJ ja está cadastrado no sistema!");
         }
     }//GEN-LAST:event_ftxtCNPJFocusLost
+
+    private void ftxtCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtCNPJActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtCNPJActionPerformed
 
     /**
      * @param args the command line arguments
