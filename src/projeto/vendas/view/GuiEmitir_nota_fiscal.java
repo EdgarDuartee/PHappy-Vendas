@@ -5,6 +5,7 @@
  */
 package projeto.vendas.view;
 
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,11 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoEmitirNotaFiscal;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoPedidoProduto;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.NotaFiscal;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
@@ -56,7 +59,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         jPanelNatureza_da_Operacao = new javax.swing.JPanel();
         lblCFOP = new javax.swing.JLabel();
         cbxCFOP = new javax.swing.JComboBox<>();
-        lblVenda_de_Produto_do_estabelecimento = new javax.swing.JLabel();
+        lbl_Descricao_CFOP = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnGerar_NF = new javax.swing.JButton();
@@ -157,6 +160,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         jPanelTipo_nota.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo da Nota"));
 
         buttonGroup1.add(rbtnSaida);
+        rbtnSaida.setSelected(true);
         rbtnSaida.setText("Saída");
 
         buttonGroup1.add(rbtnEntrada);
@@ -192,7 +196,15 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         lblCFOP.setText("CFOP");
 
-        lblVenda_de_Produto_do_estabelecimento.setText("Venda de Produto do estabelecimento");
+        cbxCFOP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5.101", "5.102", "5.910", "5.911", "5.915", "5.949" }));
+        cbxCFOP.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxCFOPItemStateChanged(evt);
+            }
+        });
+
+        lbl_Descricao_CFOP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lbl_Descricao_CFOP.setText("null");
 
         javax.swing.GroupLayout jPanelNatureza_da_OperacaoLayout = new javax.swing.GroupLayout(jPanelNatureza_da_Operacao);
         jPanelNatureza_da_Operacao.setLayout(jPanelNatureza_da_OperacaoLayout);
@@ -203,9 +215,9 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
                 .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblVenda_de_Produto_do_estabelecimento)
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbl_Descricao_CFOP)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNatureza_da_OperacaoLayout.setVerticalGroup(
             jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,7 +227,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVenda_de_Produto_do_estabelecimento))
+                    .addComponent(lbl_Descricao_CFOP))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -227,6 +239,11 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         });
 
         btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
         btnGerar_NF.setText("Gerar NF-e");
         btnGerar_NF.addActionListener(new java.awt.event.ActionListener() {
@@ -778,6 +795,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         lblSerie_Nota_Fiscal.setText("Série da Nota Fiscal");
 
+        txtSerie_Nota_Fiscal.setText("551");
+
         lblNumero_Nota_Fiscal.setText("Número da Nota Fiscal");
 
         lblData_Emissao.setText("Data Emissão");
@@ -958,7 +977,18 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
     private void btnGerar_NFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerar_NFActionPerformed
         daoGerarPedido.Faturar(recebePedido.getCodigo());
+        String TipoNota = "";
+        if(rbtnSaida.isSelected()){
+            TipoNota = "Saida";
+        }
+        else {
+            TipoNota = "Entrada";
+        }
         JOptionPane.showMessageDialog(null, "Pedido Faturado e Nota Fiscal Emitida !!", "Parabéns", JOptionPane.INFORMATION_MESSAGE);
+                                                                                                                                                                                                                        
+        nf = new NotaFiscal(Integer.parseInt(txtNumero_Nota_Fiscal.getText()), Integer.parseInt(txtSerie_Nota_Fiscal.getText()), recebePedido.getCodigo(),TipoNota, cbxCFOP.getSelectedItem().toString(), recebePedido.getTotal(), ftxtData_Emissao.getText(), ftxtHora_Emissao.getText(), recebePedido.getCodigo());
+        System.out.println(nf.getTranspCod());
+        daoEmitirNF.inserir(nf);
     }//GEN-LAST:event_btnGerar_NFActionPerformed
 
     private void ftxtHora_SaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtHora_SaidaActionPerformed
@@ -974,11 +1004,13 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         daoPFisica = new DaoPFisica(conexao.conectar());
         daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
         daoProduto = new DaoProduto(conexao.conectar());
+        daoEmitirNF = new DaoEmitirNotaFiscal(conexao.conectar());
 
         Date data = new Date(System.currentTimeMillis());
         Calendar calendar = new GregorianCalendar();
         SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
 
+        txtNumero_Nota_Fiscal.setText("" + daoEmitirNF.getProximoCodigo());
         ftxtData_Emissao.setText(formatarDate.format(data));
         ftxtData_Saida.setText(formatarDate.format(data));
         ftxtHora_Emissao.setText(calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
@@ -1019,7 +1051,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         }
         ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(recebePedido.getCodigo());
-        
+
         if (ListaPedidoProduto != null) {
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
             int linhasTabela = model.getRowCount();
@@ -1033,7 +1065,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 Object[] row = {ListaPedidoProduto.get(i).getProdutoCod(), produto.getDescricao(),
                     produto.getValorUnitario(), ListaPedidoProduto.get(i).getProdutoQtd(),
                     "Sim", "Não", "Outras", produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd(),
-                    produto.getImpostoIcms(), produto.getImpostoPis(), produto.getImpostoConfins(),(produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi(),
+                    produto.getImpostoIcms(), produto.getImpostoPis(), produto.getImpostoConfins(), (produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi(),
                     "CFOP"};
                 model.addRow(row);
             }
@@ -1046,6 +1078,36 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private void txtNumero_EmitenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumero_EmitenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumero_EmitenteActionPerformed
+
+    private void cbxCFOPItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCFOPItemStateChanged
+
+        switch (cbxCFOP.getSelectedIndex()) {
+            case 0:
+                lbl_Descricao_CFOP.setText("0 -> Venda de produção do estabelecimento.");
+                break;
+            case 1:
+                lbl_Descricao_CFOP.setText("1 -> Venda de mercadoria adquirida ou recebida de terceiros.");
+                break;
+            case 2:
+                 lbl_Descricao_CFOP.setText("3 ->  Remessa em bonificação, doação ou brinde");
+                break;
+            case 3:
+                lbl_Descricao_CFOP.setText("3 ->  Remessa de amostra grátis.");
+                break;
+            case 4:
+                lbl_Descricao_CFOP.setText("4 -> Remessa de mercadoria ou bem para conserto ou reparo");
+                break;
+            case 5:
+                lbl_Descricao_CFOP.setText("5 -> Outra saída de mercadoria ou prestação de serviço não especificado");
+                break;
+        }
+    }//GEN-LAST:event_cbxCFOPItemStateChanged
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        nf = new NotaFiscal(Integer.parseInt(txtNumero_Nota_Fiscal.getText()), Integer.parseInt(txtSerie_Nota_Fiscal.getText()), recebePedido.getCodigo(),"SAIDA", cbxCFOP.getSelectedItem().toString(), recebePedido.getTotal(), ftxtData_Emissao.getText(), ftxtHora_Emissao.getText(), recebePedido.getCodigo());
+        System.out.println(nf.getTranspCod());
+        daoEmitirNF.inserir(nf);
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1093,6 +1155,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private PessoaJuridica pessoaJuridica = null;
     private ArrayList<PedidoProduto> ListaPedidoProduto;
     private DaoProduto daoProduto;
+    private DaoEmitirNotaFiscal daoEmitirNF;
+    private NotaFiscal nf;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerar_NF;
     private javax.swing.JButton btnImprimir;
@@ -1161,7 +1225,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private javax.swing.JLabel lblValor_IPI;
     private javax.swing.JLabel lblValor_PIS;
     private javax.swing.JLabel lblValor_Total_Nota;
-    private javax.swing.JLabel lblVenda_de_Produto_do_estabelecimento;
+    private javax.swing.JLabel lbl_Descricao_CFOP;
     private javax.swing.JRadioButton rbtnEntrada;
     private javax.swing.JRadioButton rbtnSaida;
     private javax.swing.JTable tblProduto;
