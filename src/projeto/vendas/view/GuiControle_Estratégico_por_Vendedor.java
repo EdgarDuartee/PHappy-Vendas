@@ -72,6 +72,11 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         btnVoltar.setText("Voltar");
 
         btnClienteEspecifico.setText("Selecionar Cliente Específico");
+        btnClienteEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClienteEspecificoActionPerformed(evt);
+            }
+        });
 
         lblData_Inicial.setText("Data Inicial");
 
@@ -82,11 +87,11 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Cargo", "Vendas no periodo", "Qtde Clientes", "Ativo/Inativo", "Data da Inatividade"
+                "Código", "Nome", "Cargo", "Vendas no periodo", "Valor total das vendas", "Qtde Clientes", "Ativo/Inativo", "Data da Inatividade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -382,6 +387,16 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGerentesActionPerformed
 
+    private void btnClienteEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteEspecificoActionPerformed
+        if (tblVendedor.getSelectedRow() >= 0) {
+            GuiControle_Estratégico_por_Vendedor_Especifico GUI
+                    = new GuiControle_Estratégico_por_Vendedor_Especifico(
+                            (int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(),0));
+            GUI.setVisible(true);
+
+        }
+    }//GEN-LAST:event_btnClienteEspecificoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -428,31 +443,21 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtData_Final;
     private javax.swing.JFormattedTextField ftxtData_Inicial;
     private javax.swing.JPanel jPanelPeriodo;
-    private javax.swing.JPanel jPanelResumo1;
-    private javax.swing.JPanel jPanelResumo2;
     private javax.swing.JPanel jPanelVendas;
     private javax.swing.JPanel jPanelVendedores;
     private javax.swing.JScrollPane jScrollPaneVendedor;
     private javax.swing.JLabel lblA;
-    private javax.swing.JLabel lblAtivoInativo1;
-    private javax.swing.JLabel lblAtivoInativo2;
     private javax.swing.JLabel lblAtivos;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
     private javax.swing.JLabel lblDe;
     private javax.swing.JLabel lblInativos;
     private javax.swing.JLabel lblQtdeColaboradores;
-    private javax.swing.JLabel lblQtdeColaboradores1;
-    private javax.swing.JLabel lblQtdeColaboradores2;
     private javax.swing.JLabel lblQtdeGerentes;
     private javax.swing.JLabel lblQtdeSupervisor;
     private javax.swing.JLabel lblQtdeTotalVendas;
     private javax.swing.JLabel lblQtdeVendedores;
-    private javax.swing.JLabel lblTotalValorPorPeriodo1;
-    private javax.swing.JLabel lblTotalValorPorPeriodo2;
     private javax.swing.JLabel lblTotalValorVendas;
-    private javax.swing.JLabel lblTotalVendasPeriodo1;
-    private javax.swing.JLabel lblTotalVendasPeriodo2;
     private javax.swing.JTable tblVendedor;
     private javax.swing.JTextField txtDtFinal;
     private javax.swing.JTextField txtDtInicio;

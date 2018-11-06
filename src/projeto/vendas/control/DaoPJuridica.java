@@ -91,7 +91,7 @@ public class DaoPJuridica {
             ps.setString(15, pessoaJuridica.getContato2());
             ps.setString(16, pessoaJuridica.getContato3());
             ps.setString(17, pessoaJuridica.getCodigo());
-            
+
             ps.execute();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -205,6 +205,31 @@ public class DaoPJuridica {
         }
         return (p);
     }
-    
-    
+
+    public ArrayList<PessoaJuridica> ListarPJPorCodVend(int codigo) {
+        {
+            PessoaJuridica PJ = null;
+            ArrayList<PessoaJuridica> lista = new ArrayList();
+            PreparedStatement ps = null;
+            try {
+                ps = conn.prepareStatement("SELECT * from P_JURIDICA where cod_vend_resp = ?");
+                ps.setInt(1, codigo);
+
+                ResultSet rs = ps.executeQuery();
+                while (rs.next() == true) {
+                    PJ = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
+                            rs.getString("email"), rs.getString("rua"),
+                            rs.getString("numero"), rs.getString("bairro"),
+                            rs.getString("cidade"), rs.getString("uf"),
+                            rs.getString("cep"), rs.getString("ativo"));
+                    lista.add(PJ);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.toString());
+            }
+            return (lista);
+
+        }
+    }
+
 }

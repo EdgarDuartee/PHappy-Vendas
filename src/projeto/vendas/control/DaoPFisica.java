@@ -229,4 +229,37 @@ public class DaoPFisica {
         return  (p);
     }   
 
+        
+    public ArrayList<PessoaFisica> ListarPFPorCodVend(int codigo) {
+        {
+            PessoaFisica PF = null;
+            ArrayList<PessoaFisica> lista = new ArrayList();
+            PreparedStatement ps = null;
+            try {
+                ps = conn.prepareStatement("SELECT * from P_FISICA where cod_vend_resp = ?");
+                
+                ps.setInt(1, codigo);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next() == true) {
+                    PF = new PessoaFisica(rs.getString("codigo"),rs.getString("nome"),
+                                  rs.getString("email"),rs.getString("rua"),
+                                  rs.getString("numero"),rs.getString("bairro"),
+                                  rs.getString("cidade"),rs.getString("uf"),
+                                  rs.getString("cep"),rs.getString("ativo"));
+                PF.setVendedor_responsavel(rs.getString("vend_resp"));
+                PF.setComplemento(rs.getString("complemento"));
+                PF.setCel(rs.getString("cel"));
+                PF.setTel(rs.getString("tel"));
+                PF.setDtNasc(rs.getString("dtNasc"));
+                PF.setRg(rs.getString("rg"));
+                PF.setCpf(rs.getString("cpf"));
+                    lista.add(PF);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.toString());
+            }
+            return (lista);
+
+        }
+    }
 }
