@@ -36,7 +36,6 @@ public class Conexao {
 
    public void setConnectionString() {
 //        setar conexao Edgar
-        //this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
 //        this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
         
         //setar conexao Luiz
