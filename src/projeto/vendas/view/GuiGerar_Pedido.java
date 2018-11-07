@@ -513,7 +513,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_consultarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        dispose();
+//        dispose();
+GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void txtCPF_CNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPF_CNPJFocusLost
