@@ -6,6 +6,10 @@
 package projeto.vendas.view;
 
 
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import javax.swing.JOptionPane;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoLogin;
@@ -21,11 +25,15 @@ public class GuiLogin extends javax.swing.JFrame {
     GuiMenuVendedor MenuVendedor;
     GuiMenu_Supervisor MenuSupervisor;
     
+    
     /**
      * Creates new form GuiLogin
      */
     public GuiLogin() {
         initComponents();
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/icon.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -47,19 +55,24 @@ public class GuiLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela Login");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
 
-        lblUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblUsuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblUsuario.setText("Usuário");
 
         ptxtSenha.setText("1000");
+        ptxtSenha.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         txtUsuario.setText("03154904034");
+        txtUsuario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
+        btnSair.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/sair.png"))); // NOI18N
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,11 +80,14 @@ public class GuiLogin extends javax.swing.JFrame {
             }
         });
 
-        lblSenha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSenha.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblSenha.setText("Senha");
 
+        lblEsqueceuSenha.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblEsqueceuSenha.setText("Esqueceu sua Senha?");
 
+        btnEntrar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/entrar.png"))); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,13 +108,14 @@ public class GuiLogin extends javax.swing.JFrame {
                             .addGap(81, 81, 81))
                         .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.LEADING))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblEsqueceuSenha)
-                            .addComponent(btnEntrar)))
+                        .addGap(99, 99, 99)
+                        .addComponent(lblEsqueceuSenha))
                     .addComponent(ptxtSenha)
-                    .addComponent(txtUsuario))
+                    .addComponent(txtUsuario)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(57, 57, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,10 +131,10 @@ public class GuiLogin extends javax.swing.JFrame {
                 .addComponent(ptxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblEsqueceuSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSair)
-                    .addComponent(btnEntrar))
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSair))
                 .addGap(43, 43, 43))
         );
 
@@ -185,7 +202,7 @@ public class GuiLogin extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("JavaFX".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

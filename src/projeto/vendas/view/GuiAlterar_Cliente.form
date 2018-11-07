@@ -147,7 +147,9 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Contato"/>
+                    <TitledBorder title="Contato">
+                      <Font PropertyName="font" name="Times New Roman" size="12" style="3"/>
+                    </TitledBorder>
                   </Border>
                 </Property>
               </Properties>
@@ -344,6 +346,9 @@
             </Container>
             <Component class="javax.swing.JLabel" name="lblCPF_Cliente">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="1"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Digite o CPF do cliente:"/>
               </Properties>
             </Component>

@@ -18,8 +18,8 @@ public class Conexao {
 
    public Conexao() {
         //conexao Edgar
-        this.usuario = "Edgar";
-        this.senha = "hercules";
+       // this.usuario = "Edgar";
+        //this.senha = "hercules";
        
         //conexao Luis
 //        this.usuario = "fernando";
@@ -28,17 +28,24 @@ public class Conexao {
         //conexao FACULDADE
         //this.usuario = "";
         //this.senha = "";   
+        
+        //conexao Cleiton
+       this.usuario = "System";
+       this.senha = "Cleiton";  
    }
 
    public void setConnectionString() {
 //        setar conexao Edgar
-        this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
+        //this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
         
         //setar conexao Luiz
 //        this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
         
         //setar conexao FACULDADE
         //this.connectionString = "jdbc:oracle:thin:@Apolo:1521:xe";
+        
+        //setar conexao Cleiton
+       this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
    }
 
    public void setDriver() {

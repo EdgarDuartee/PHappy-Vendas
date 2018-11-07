@@ -151,7 +151,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
             }
         });
 
-        Painel_Contato_Pessoa_Fisica.setBorder(javax.swing.BorderFactory.createTitledBorder("Contato"));
+        Painel_Contato_Pessoa_Fisica.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
         lblNome.setText("Nome");
 
@@ -278,6 +278,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        lblCPF_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCPF_Cliente.setText("Digite o CPF do cliente:");
 
         Painel_Endereço.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
