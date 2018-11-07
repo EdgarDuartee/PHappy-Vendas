@@ -17,9 +17,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public GuiMenuGerente(Login login) {
-              
-
         initComponents();
+
+        GuiMenuGerente.this.setTitle("Menu             " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
         this.login = login;
         System.out.println("Numero do Vendedor LOGADO = " + login.getCodigo() + "Nome = " + login.getNome());
     }
@@ -49,7 +50,6 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenuItem_PedidosAprovados = new javax.swing.JMenuItem();
         jMenu_GerenciarPendencias = new javax.swing.JMenu();
         jMenuItem_Analise_de_Credito = new javax.swing.JMenuItem();
-        jMenuItem_Baixa_Nota_Fiscal = new javax.swing.JMenuItem();
         jMenu_ControleEstrategico = new javax.swing.JMenu();
         jMenuItem_PorCliente = new javax.swing.JMenuItem();
         jMenuItem_PorVendedor = new javax.swing.JMenuItem();
@@ -147,14 +147,6 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         });
         jMenu_GerenciarPendencias.add(jMenuItem_Analise_de_Credito);
 
-        jMenuItem_Baixa_Nota_Fiscal.setText("Nota Fiscal");
-        jMenuItem_Baixa_Nota_Fiscal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_Baixa_Nota_FiscalActionPerformed(evt);
-            }
-        });
-        jMenu_GerenciarPendencias.add(jMenuItem_Baixa_Nota_Fiscal);
-
         jMenu.add(jMenu_GerenciarPendencias);
 
         jMenu_ControleEstrategico.setText("Controle Estratégico");
@@ -202,16 +194,12 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem_Pessoa_FísicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Pessoa_FísicaActionPerformed
-        new GuiCadastroPessoa_Física().setVisible(true);
+        new GuiCadastroPessoa_Física(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_Pessoa_FísicaActionPerformed
 
     private void jMenuItem_Pessoa_JurídicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Pessoa_JurídicaActionPerformed
-        new GuiCadastroPessoa_Jurídica().setVisible(true);
+        new GuiCadastroPessoa_Jurídica(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_Pessoa_JurídicaActionPerformed
-
-    private void jMenuItem_Baixa_Nota_FiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Baixa_Nota_FiscalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem_Baixa_Nota_FiscalActionPerformed
 
     private void jMenuItem_Analise_de_CreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Analise_de_CreditoActionPerformed
         new GuiAnalise_de_Credito(login).setVisible(true);
@@ -222,19 +210,19 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_Gerar_PedidoActionPerformed
 
     private void jMenuItem_VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_VendedorActionPerformed
-        new GuiCadastro_Vendedor().setVisible(true);
+        new GuiCadastro_Vendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_VendedorActionPerformed
 
     private void jMenuItem_Alterar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Alterar_ClienteActionPerformed
-        new GuiAlterar_Cliente().setVisible(true);
+        new GuiAlterar_Cliente(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_Alterar_ClienteActionPerformed
 
     private void jMenuItem_Alterar_VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Alterar_VendedorActionPerformed
-        new GuiAlterar_Vendedor().setVisible(true);
+        new GuiAlterar_Vendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_Alterar_VendedorActionPerformed
 
     private void jMenuItem_PedidosAprovadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PedidosAprovadosActionPerformed
-        new GuiPedidos_Aprovados().setVisible(true);
+        new GuiPedidos_Aprovados(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PedidosAprovadosActionPerformed
 
     private void jMenuItem_PorRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorRegiaoActionPerformed
@@ -246,7 +234,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_PorClienteActionPerformed
 
     private void jMenuItem_PorVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorVendedorActionPerformed
-        new GuiControle_Estratégico_por_Vendedor().setVisible(true);
+        new GuiControle_Estratégico_por_Vendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PorVendedorActionPerformed
 
     /**
@@ -294,7 +282,6 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Analise_de_Credito;
-    private javax.swing.JMenuItem jMenuItem_Baixa_Nota_Fiscal;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;
     private javax.swing.JMenuItem jMenuItem_PedidosAprovados;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Física;

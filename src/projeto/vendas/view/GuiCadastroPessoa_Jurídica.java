@@ -32,8 +32,11 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     /**
      * Creates new form Pessoa_Jurídica
      */
-    public GuiCadastroPessoa_Jurídica() {
+    public GuiCadastroPessoa_Jurídica(Login login) {
         initComponents();
+        this.login = login;
+        GuiCadastroPessoa_Jurídica.this.setTitle("Cadastro Pessoa Juridica    " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -783,11 +786,11 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiCadastroPessoa_Jurídica().setVisible(true);
+                new GuiCadastroPessoa_Jurídica(login).setVisible(true);
             }
         });
     }
-
+    private static Login login = null;
     private Conexao conexao = null;
     private DaoPJuridica daoPJuridica = null;
     private PessoaJuridica pessoaJuridica = null;

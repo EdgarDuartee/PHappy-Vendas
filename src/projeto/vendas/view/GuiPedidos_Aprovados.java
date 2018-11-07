@@ -7,11 +7,13 @@ package projeto.vendas.view;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -25,8 +27,14 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
     /**
      * Creates new form GuiPedidos_Aprovados
      */
-    public GuiPedidos_Aprovados() {
+    public GuiPedidos_Aprovados(Login login) {
         initComponents();
+
+        this.login = login;
+        GuiPedidos_Aprovados.this.setTitle("Pedidos Aprovados    " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+        DefaultTableModel modelo = (DefaultTableModel) tbl_PedidosAprovados.getModel();
+        tbl_PedidosAprovados.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**
@@ -120,7 +128,7 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbl_PedidosAprovadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PedidosAprovadosMouseClicked
-         
+
     }//GEN-LAST:event_tbl_PedidosAprovadosMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -134,35 +142,36 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         ListaPedidos = daoGerarPedido.ListarPedidos();
         DefaultTableModel model = (DefaultTableModel) tbl_PedidosAprovados.getModel();
 
-        
-        for(int i = 0; i < ListaPedidos.size(); i ++){
-            if(ListaPedidos.get(i).getSituacao() == 1) {
-                if(ListaPedidos.get(i).getClienteCod().substring(0, 2).equals("PF")) {
+        for (int i = 0; i < ListaPedidos.size(); i++) {
+            if (ListaPedidos.get(i).getSituacao() == 1) {
+                if (ListaPedidos.get(i).getClienteCod().substring(0, 2).equals("PF")) {
                     pf = daoPFisica.consultar(ListaPedidos.get(i).getClienteCod());
                     Object[] row = {ListaPedidos.get(i).getCodigo(),
-                        "("+ ListaPedidos.get(i).getClienteCod() + ")   " + pf.getNome(),
+                        "(" + ListaPedidos.get(i).getClienteCod() + ")   " + pf.getNome(),
                         ListaPedidos.get(i).getTotal(),
                         "Aprovado"};
                     model.addRow(row);
-                }    
-                else {
+                } else {
                     pj = daoPJuridica.consultar(ListaPedidos.get(i).getClienteCod());
                     Object[] row = {ListaPedidos.get(i).getCodigo(),
-                    "(" + ListaPedidos.get(i).getClienteCod() + ")   " + pj.getNome(),
-                    ListaPedidos.get(i).getTotal(),
-                    "Aprovado"};
+                        "(" + ListaPedidos.get(i).getClienteCod() + ")   " + pj.getNome(),
+                        ListaPedidos.get(i).getTotal(),
+                        "Aprovado"};
                     System.out.println(pj.getNome());
                     model.addRow(row);
-                }   
+                }
             }
-            
+
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-      
-        if(tbl_PedidosAprovados.getSelectedRow() >= 0) {
-            GuiEmitir_nota_fiscal NF = new GuiEmitir_nota_fiscal(daoGerarPedido.Consultar(Integer.parseInt(""+tbl_PedidosAprovados.getValueAt(tbl_PedidosAprovados.getSelectedRow(),0))));
+
+        if (tbl_PedidosAprovados.getSelectedRow() >= 0) {
+            GuiEmitir_nota_fiscal NF = new GuiEmitir_nota_fiscal(
+                    daoGerarPedido.Consultar(Integer.parseInt(""
+                            + tbl_PedidosAprovados.getValueAt(
+                                    tbl_PedidosAprovados.getSelectedRow(), 0))), login);
             NF.setVisible(true);
 
         }
@@ -202,17 +211,19 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiPedidos_Aprovados().setVisible(true);
+                new GuiPedidos_Aprovados(login).setVisible(true);
+
             }
         });
     }
-private ArrayList<Pedido> ListaPedidos;    
-private DaoGerarPedido daoGerarPedido;
-private DaoPFisica daoPFisica;
-private DaoPJuridica daoPJuridica;
-private PessoaFisica pf;
-private PessoaJuridica pj;
-private Conexao conexao;
+    private static Login login = null;
+    private ArrayList<Pedido> ListaPedidos;
+    private DaoGerarPedido daoGerarPedido;
+    private DaoPFisica daoPFisica;
+    private DaoPJuridica daoPJuridica;
+    private PessoaFisica pf;
+    private PessoaJuridica pj;
+    private Conexao conexao;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRetornar;
     private javax.swing.JButton btnSelecionar;

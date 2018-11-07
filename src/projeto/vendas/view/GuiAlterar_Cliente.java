@@ -13,6 +13,7 @@ import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
@@ -26,8 +27,11 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     /**
      * Creates new form GuiAlterar_Cliente
      */
-    public GuiAlterar_Cliente() {
+    public GuiAlterar_Cliente(Login login) {
         initComponents();
+        this.login = login;
+        GuiAlterar_Cliente.this.setTitle("Alterar CLientes         " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -1280,7 +1284,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiAlterar_Cliente().setVisible(true);
+                new GuiAlterar_Cliente(login).setVisible(true);
             }
         });
     }
@@ -1292,6 +1296,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private PessoaJuridica pessoaJuridica = null;
     private DaoVendedor daoVendedor = null;
     private Vendedor vendedor = null;
+    private static Login login = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Painel_Alterar;
     private javax.swing.JPanel Painel_Cadastro;

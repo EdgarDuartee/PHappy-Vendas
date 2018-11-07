@@ -22,6 +22,7 @@ import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoPedidoProduto;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.NotaFiscal;
 import projeto.vendas.model.NotaFiscalItens;
 import projeto.vendas.model.Pedido;
@@ -39,9 +40,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     /**
      * Creates new form GuiEmitir_nota_fiscal
      */
-    public GuiEmitir_nota_fiscal(Pedido pPedido) {
+    public GuiEmitir_nota_fiscal(Pedido pPedido,Login login) {
         initComponents();
         recebePedido = pPedido;
+        this.login = login;
+        GuiEmitir_nota_fiscal.this.setTitle("Emitir Nota Fiscal   " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -1147,11 +1151,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiEmitir_nota_fiscal(recebePedido).setVisible(true);
+                new GuiEmitir_nota_fiscal(recebePedido,login).setVisible(true);
             }
         });
     }
 
+    private static Login login = null;
     private Conexao conexao;
     private DaoGerarPedido daoGerarPedido;
     private static Pedido recebePedido;

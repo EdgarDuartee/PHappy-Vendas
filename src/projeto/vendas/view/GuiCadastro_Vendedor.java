@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoTesteExistencia;
 import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.Vendedor;
 
 /**
@@ -23,8 +24,11 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
     /**
      * Creates new form Cadastro_Funcionário
      */
-    public GuiCadastro_Vendedor() {
+    public GuiCadastro_Vendedor(Login login) {
         initComponents();
+        this.login = login;
+        GuiCadastro_Vendedor.this.setTitle("Cadastro Vendedor       " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -828,11 +832,11 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiCadastro_Vendedor().setVisible(true);
+                new GuiCadastro_Vendedor(login).setVisible(true);
             }
         });
     }
-
+    private static Login login = null;
     private Conexao conexao = null;
     private Vendedor vendedor = null;
     private Vendedor vendedor1 = null;

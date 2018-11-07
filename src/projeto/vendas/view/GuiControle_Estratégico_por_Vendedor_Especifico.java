@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
@@ -17,6 +18,7 @@ import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoPedidoProduto;
 import projeto.vendas.control.DaoProduto;
 import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -31,9 +33,18 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     /**
      * Creates new form GuiControle_Estratégico_por_Vendedor
      */
-    public GuiControle_Estratégico_por_Vendedor_Especifico(int Codigo) {
+    public GuiControle_Estratégico_por_Vendedor_Especifico(Login login, int Codigo) {
         initComponents();
+        
+        this.login = login;
+        GuiControle_Estratégico_por_Vendedor_Especifico.this.setTitle(
+                "Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
+        
         this.codigo = 1000;
+        DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+        tblClientes.setRowSorter(new TableRowSorter(modelo));
+        tblVendas.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**
@@ -79,7 +90,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         cbxUF = new javax.swing.JComboBox<>();
         Painel_VendasFeitas = new javax.swing.JPanel();
         jScrollPaneVendedor = new javax.swing.JScrollPane();
-        tblVendedor = new javax.swing.JTable();
+        tblVendas = new javax.swing.JTable();
         Painel_Clientes = new javax.swing.JPanel();
         jScrollPaneVendedor1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
@@ -302,7 +313,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
         Painel_Vendas.addTab("Dados", Painel_Dados);
 
-        tblVendedor.setModel(new javax.swing.table.DefaultTableModel(
+        tblVendas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -318,7 +329,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 return types [columnIndex];
             }
         });
-        jScrollPaneVendedor.setViewportView(tblVendedor);
+        jScrollPaneVendedor.setViewportView(tblVendas);
 
         javax.swing.GroupLayout Painel_VendasFeitasLayout = new javax.swing.GroupLayout(Painel_VendasFeitas);
         Painel_VendasFeitas.setLayout(Painel_VendasFeitasLayout);
@@ -595,7 +606,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiControle_Estratégico_por_Vendedor_Especifico(codigo).setVisible(true);
+                new GuiControle_Estratégico_por_Vendedor_Especifico(login,codigo).setVisible(true);
             }
         });
     }
@@ -608,7 +619,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private DaoPJuridica daoPJrudica = null;
     private PessoaFisica pessoaFisica = null;
     private PessoaJuridica pessoaJuridica = null;
-    //private static Login login = null;
+    private static Login login = null;
     //private DaoGerarPedido daoGerarPedido = null;
     //private Pedido pedido = null;
     //private String nome;
@@ -656,7 +667,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private javax.swing.JLabel lblTelefone;
     private javax.swing.JLabel lblValorTotalVendas;
     private javax.swing.JTable tblClientes;
-    private javax.swing.JTable tblVendedor;
+    private javax.swing.JTable tblVendas;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtCEP;
     private javax.swing.JTextField txtCidade;
