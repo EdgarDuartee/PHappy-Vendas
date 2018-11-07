@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.Vendedor;
 
 /**
@@ -21,8 +22,12 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     /**
      * Creates new form GuiAlterar_Vendedor
      */
-    public GuiAlterar_Vendedor() {
+    public GuiAlterar_Vendedor(Login login) {
         initComponents();
+        this.login = login;
+
+        GuiAlterar_Vendedor.this.setTitle("Alterar Vendedor         " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -81,7 +86,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         btnLimpar = new javax.swing.JButton();
         cbxVendedorResp = new javax.swing.JComboBox<>();
         lblVendedoresCadastrados = new javax.swing.JLabel();
-        btnConfirmaVendedor = new javax.swing.JButton();
+        btnConfirmaDesativacao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alterar Vendedor");
@@ -206,7 +211,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                 .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ftxtCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ftxtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         Painel_Endereço.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
@@ -435,11 +440,11 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
 
         lblVendedoresCadastrados.setText("Lista de Vendedores cadastrados:");
 
-        btnConfirmaVendedor.setText("Confirmar");
-        btnConfirmaVendedor.setEnabled(false);
-        btnConfirmaVendedor.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmaDesativacao.setText("Confirmar");
+        btnConfirmaDesativacao.setEnabled(false);
+        btnConfirmaDesativacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfirmaVendedorActionPerformed(evt);
+                btnConfirmaDesativacaoActionPerformed(evt);
             }
         });
 
@@ -481,7 +486,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                     .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
                         .addComponent(lblVendedoresCadastrados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnConfirmaVendedor)))
+                        .addComponent(btnConfirmaDesativacao)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Painel_Registro_VendedorLayout.setVerticalGroup(
@@ -509,7 +514,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblVendedoresCadastrados)
-                            .addComponent(btnConfirmaVendedor))
+                            .addComponent(btnConfirmaDesativacao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxVendedorResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -657,40 +662,19 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
 
     private void btnDesativarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarVendedorActionPerformed
         btnDesativarVendedor.setEnabled(false);
-        if (flag == 0) {
-            vendedores = daoVendedor.listarVendedores();
+        vendedores = daoVendedor.listarVendedores();
 
-            for (int x = 0; x < vendedores.size(); x++) {
-                cbxVendedorResp.addItem(vendedores.get(x).getNome());
-            }
+        for (int x = 0; x < vendedores.size(); x++) {
+            cbxVendedorResp.addItem(vendedores.get(x).getNome());
         }
-        flag = 1;
-        if(confirmaNovoVendedor ==0){
+
+        if (confirmaNovoVendedor == 0) {
             if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {
-            JOptionPane.showMessageDialog(null, "Escolha um vendedor para se responsabilizar"
-                    + " pelos clientes deste colaborador!");
-            
-            btnDesativarVendedor.setEnabled(true);
-            
-            btnConfirmaVendedor.setEnabled(true);
-            cbxVendedorResp.setEnabled(true);
-        }
-        if (confirmaNovoVendedor == 1) {
-                JOptionPane.showMessageDialog(null, "Desativação Efetuada com sucesso!");
-                daoVendedor.desativar(vendedor);
+                JOptionPane.showMessageDialog(null, "Escolha um vendedor para se responsabilizar"
+                        + " pelos clientes deste colaborador!");
 
-                daoVendedor.trocaResponsabilidade(codigoNovo, nomeNovo, parseInt(txtCodigo.getText()));
-                btnConfirmaVendedor.setEnabled(false);
-                cbxVendedorResp.setEnabled(false);
-                cbxVendedorResp.removeAllItems();
-                vendedores = null;
-
-                confirmaNovoVendedor = 0;
-
-                limpaCampos();
-            } else {
-                JOptionPane.showMessageDialog(null, "Confirme a Escolha do vendedor que será responsabilizado"
-                        + " pelos clientes deste que será desativado!");
+                btnConfirmaDesativacao.setEnabled(true);
+                cbxVendedorResp.setEnabled(true);
             }
         }
     }//GEN-LAST:event_btnDesativarVendedorActionPerformed
@@ -699,15 +683,25 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxVendedorRespActionPerformed
 
-    private void btnConfirmaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaVendedorActionPerformed
+    private void btnConfirmaDesativacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaDesativacaoActionPerformed
         if (vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo() == parseInt(txtCodigo.getText())) {
             JOptionPane.showMessageDialog(null, "Escolha outro Vendedor diferente deste que deseja dasativa-lo!");
         } else {
-            btnDesativarVendedor.setEnabled(true);
             codigoNovo = vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo();
             nomeNovo = vendedores.get(cbxVendedorResp.getSelectedIndex()).getNome();
+
+            daoVendedor.desativar(vendedor);
+
+            daoVendedor.trocaResponsabilidade(codigoNovo, nomeNovo, parseInt(txtCodigo.getText()));
+            btnConfirmaDesativacao.setEnabled(false);
+            cbxVendedorResp.setEnabled(false);
+            cbxVendedorResp.removeAllItems();
+            vendedores = null;
+
+            limpaCampos();
+            JOptionPane.showMessageDialog(null, "Desativação Efetuada com sucesso!");
         }
-    }//GEN-LAST:event_btnConfirmaVendedorActionPerformed
+    }//GEN-LAST:event_btnConfirmaDesativacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -739,7 +733,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiAlterar_Vendedor().setVisible(true);
+                new GuiAlterar_Vendedor(login).setVisible(true);
             }
         });
     }
@@ -752,11 +746,11 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     private int flag = 0;
     //flag para ver se o botao de confirmar foi clicado
     private int confirmaNovoVendedor = 0;
-    
     private int codigoNovo = 0;
     private String nomeNovo = null;
     ArrayList<Vendedor> vendedores = null;
-
+    private static Login login = null;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Painel_Contato;
     private javax.swing.JPanel Painel_Endereço;
@@ -765,7 +759,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     private javax.swing.JPanel Painel_Registro_Vendedor;
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnConfirmaVendedor;
+    private javax.swing.JButton btnConfirmaDesativacao;
     private javax.swing.JButton btnDesativarVendedor;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnVoltar;
@@ -810,6 +804,10 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     private void limpaCampos() {
         txtCodigo.requestFocus();
 
+        cbxVendedorResp.setEnabled(false);
+        if (!(cbxVendedorResp == null)) {
+            cbxVendedorResp.removeAllItems();
+        }
         ftxtRG.setText("");
         ftxtCEP.setText("");
         ftxtCPF.setText("");
@@ -831,6 +829,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         txtCodigo.setText("");
 
         btnAlterar.setEnabled(false);
+        btnConfirmaDesativacao.setEnabled(false);
         btnDesativarVendedor.setEnabled(false);
 
         txtBairro.setEnabled(false);

@@ -32,8 +32,11 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
     /**
      * Creates new form Pessoa_Física
      */
-    public GuiCadastroPessoa_Física() {
+    public GuiCadastroPessoa_Física(Login login) {
         initComponents();
+        this.login = login;
+        GuiCadastroPessoa_Física.this.setTitle("Cadastro Pessoa Fisica     " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -563,9 +566,9 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         } else {
             if (JOptionPane.showConfirmDialog(null, "Confirma Cadastro?") == 0) {//Sim
                 JOptionPane.showMessageDialog(null, "Cadastro Efetuado com sucesso!");
-                pessoaFisica = new PessoaFisica(ftxtCodigoCliente.getText().replace(" ",""), txtNome.getText(),
+                pessoaFisica = new PessoaFisica(ftxtCodigoCliente.getText().replace(" ", ""), txtNome.getText(),
                         txtEmail.getText(), txtRua.getText(), txtNumero.getText(), txtBairro.getText(),
-                        txtCidade.getText(),(String)cbx_Uf.getSelectedItem(), ftxtCEP.getText().replace("-", ""),
+                        txtCidade.getText(), (String) cbx_Uf.getSelectedItem(), ftxtCEP.getText().replace("-", ""),
                         "A");
                 pessoaFisica.setCpf(ftxtCPF.getText().replace(".", "").replace("-", ""));
                 pessoaFisica.setRg(ftxtRG.getText().replace("-", "").replace(".", ""));
@@ -573,19 +576,19 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
                 pessoaFisica.setCel(ftxtCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
                 pessoaFisica.setDtNasc(ftxtData_Nasc.getText().replace("/", ""));
                 pessoaFisica.setComplemento(txtComplemento.getText());
-                
+
                 pessoaFisica.setVendedor_responsavel((String) cbxVendedorResp.getSelectedItem());
                 pessoaFisica.setCod_vend_resp(vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo());
-                
+
                 //cria o formatador de data
-                SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");  
-		 //cria um objeto date com a data do sistema
-		Date dataDoSistema = new Date(System.currentTimeMillis());
-		 //passa o objeto dataDoSistema para uma String da forma que pediu
-		String dataEmTexto = formatador.format(dataDoSistema);  
+                SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
+                //cria um objeto date com a data do sistema
+                Date dataDoSistema = new Date(System.currentTimeMillis());
+                //passa o objeto dataDoSistema para uma String da forma que pediu
+                String dataEmTexto = formatador.format(dataDoSistema);
                 //passa o valor como string para o atributo
                 pessoaFisica.setDtInicio(dataEmTexto);
-                
+
                 daoPfisica.inserir(pessoaFisica);
 
                 int aux = parseInt(ftxtCodigoCliente.getText().replace("PF", "").replace(" ", ""));
@@ -623,7 +626,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         daoDescobreCodigo = new DaoDescobreCodigo(conexao.conectar());
 
         vendedores = daoVendedor.listarVendedores();
-        
+
         for (int x = 0; x < vendedores.size(); x++) {
             cbxVendedorResp.addItem(vendedores.get(x).getNome());
         }
@@ -648,7 +651,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Digite um CPF válido!");
         }
         pessoaFisica = daoPfisica.consultarCPF(ftxtCPF.getText().replace("-", "").replace(".", "").replace(" ", ""));
-        if(!(pessoaFisica == null)){
+        if (!(pessoaFisica == null)) {
             ftxtCPF.setText("");
             JOptionPane.showMessageDialog(null, "Este CPF ja está cadastrado no sistema!");
         }
@@ -687,11 +690,11 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiCadastroPessoa_Física().setVisible(true);
+                new GuiCadastroPessoa_Física(login).setVisible(true);
             }
         });
     }
-
+    private static Login login = null;
     private Conexao conexao = null;
     private DaoPFisica daoPfisica = null;
     private PessoaFisica pessoaFisica = null;

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
@@ -36,6 +37,10 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     public GuiAnalise_de_Credito(Login login) {
         initComponents();
         this.login = login;
+        GuiAnalise_de_Credito.this.setTitle("Analise de Crédito  " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
+        DefaultTableModel modelo = (DefaultTableModel) tblPedido.getModel();
+        tblPedido.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**

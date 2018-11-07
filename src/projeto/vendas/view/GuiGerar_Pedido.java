@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
@@ -49,6 +50,10 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     public GuiGerar_Pedido(Login login) {
         initComponents();
         this.login = login;
+        GuiGerar_Pedido.this.setTitle("Gerar Pedido   " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+        DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
+        tblProduto.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**
@@ -79,6 +84,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         lbl_QtdEstoque = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lbl_ValorUnit = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Painel_Pedido = new javax.swing.JPanel();
         lblData = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
@@ -202,6 +208,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         lbl_ValorUnit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
+        jLabel3.setText("alteracao do luiz");
+
         javax.swing.GroupLayout Painel_ProdutoLayout = new javax.swing.GroupLayout(Painel_Produto);
         Painel_Produto.setLayout(Painel_ProdutoLayout);
         Painel_ProdutoLayout.setHorizontalGroup(
@@ -227,7 +235,10 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                                 .addComponent(cbxQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAvançar))
-                            .addComponent(lbl_ValorUnit))))
+                            .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                                .addComponent(lbl_ValorUnit)
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel3)))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_ProdutoLayout.setVerticalGroup(
@@ -250,7 +261,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lbl_ValorUnit))
+                    .addComponent(lbl_ValorUnit)
+                    .addComponent(jLabel3))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -696,6 +708,7 @@ GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
     private javax.swing.JSpinner cbxQuantidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblProduto;

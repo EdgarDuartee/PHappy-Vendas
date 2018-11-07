@@ -96,7 +96,7 @@
                       <Group type="102" attributes="0">
                           <Component id="lblVendedoresCadastrados" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnConfirmaVendedor" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConfirmaDesativacao" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -132,7 +132,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblVendedoresCadastrados" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnConfirmaVendedor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnConfirmaDesativacao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cbxVendedorResp" min="-2" max="-2" attributes="0"/>
@@ -736,13 +736,13 @@
             <Property name="text" type="java.lang.String" value="Lista de Vendedores cadastrados:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnConfirmaVendedor">
+        <Component class="javax.swing.JButton" name="btnConfirmaDesativacao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmaVendedorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfirmaDesativacaoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

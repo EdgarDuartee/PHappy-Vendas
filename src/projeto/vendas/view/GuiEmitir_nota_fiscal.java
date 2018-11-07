@@ -22,6 +22,7 @@ import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoPedidoProduto;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.NotaFiscal;
 import projeto.vendas.model.NotaFiscalItens;
 import projeto.vendas.model.Pedido;
@@ -39,9 +40,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     /**
      * Creates new form GuiEmitir_nota_fiscal
      */
-    public GuiEmitir_nota_fiscal(Pedido pPedido) {
+    public GuiEmitir_nota_fiscal(Pedido pPedido,Login login) {
         initComponents();
         recebePedido = pPedido;
+        this.login = login;
+        GuiEmitir_nota_fiscal.this.setTitle("Emitir Nota Fiscal   " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -62,6 +66,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         lblCFOP = new javax.swing.JLabel();
         cbxCFOP = new javax.swing.JComboBox<>();
         lbl_Descricao_CFOP = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         btnGerar_NF = new javax.swing.JButton();
@@ -206,7 +211,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         });
 
         lbl_Descricao_CFOP.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_Descricao_CFOP.setText("null");
+
+        jLabel1.setText("aaaaaaaaaaaaaaaaaaaaaaaaa");
 
         javax.swing.GroupLayout jPanelNatureza_da_OperacaoLayout = new javax.swing.GroupLayout(jPanelNatureza_da_Operacao);
         jPanelNatureza_da_Operacao.setLayout(jPanelNatureza_da_OperacaoLayout);
@@ -214,7 +220,9 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
                 .addComponent(lblCFOP)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(145, 145, 145))
             .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
                 .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -224,8 +232,11 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         jPanelNatureza_da_OperacaoLayout.setVerticalGroup(
             jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCFOP)
+                .addGroup(jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblCFOP))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1147,11 +1158,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiEmitir_nota_fiscal(recebePedido).setVisible(true);
+                new GuiEmitir_nota_fiscal(recebePedido,login).setVisible(true);
             }
         });
     }
 
+    private static Login login = null;
     private Conexao conexao;
     private DaoGerarPedido daoGerarPedido;
     private static Pedido recebePedido;
@@ -1183,6 +1195,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtHora_Emissao;
     private javax.swing.JFormattedTextField ftxtHora_Saida;
     private javax.swing.JFormattedTextField ftxtTelefone_Remetente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanelDados_Emitente;
     private javax.swing.JPanel jPanelDados_Nota_Fiscal;
     private javax.swing.JPanel jPanelDados_Remetente;
