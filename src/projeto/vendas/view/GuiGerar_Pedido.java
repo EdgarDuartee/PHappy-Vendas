@@ -79,6 +79,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         btnAvançar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lbl_QtdEstoque = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_ValorUnit = new javax.swing.JLabel();
         Painel_Pedido = new javax.swing.JPanel();
         lblData = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
@@ -127,7 +129,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         lbl_codigoCliente.setOpaque(true);
 
         lbl_AvisoCPF_CNPJ.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbl_AvisoCPF_CNPJ.setText("DFSOAJDOISAJOIDSA");
 
         javax.swing.GroupLayout Painel_ClienteLayout = new javax.swing.GroupLayout(Painel_Cliente);
         Painel_Cliente.setLayout(Painel_ClienteLayout);
@@ -194,19 +195,28 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setText("Quantidade em Estoque: ");
+        jLabel1.setText("Qtd Disponível ");
 
         lbl_QtdEstoque.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Valor Unitário:");
+
+        lbl_ValorUnit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
         javax.swing.GroupLayout Painel_ProdutoLayout = new javax.swing.GroupLayout(Painel_Produto);
         Painel_Produto.setLayout(Painel_ProdutoLayout);
         Painel_ProdutoLayout.setHorizontalGroup(
             Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cbxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProduto)
-                    .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_ProdutoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))))
                 .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_ProdutoLayout.createSequentialGroup()
                         .addGap(58, 58, 58)
@@ -218,7 +228,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                             .addGroup(Painel_ProdutoLayout.createSequentialGroup()
                                 .addComponent(cbxQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnAvançar)))))
+                                .addComponent(btnAvançar))
+                            .addComponent(lbl_ValorUnit))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_ProdutoLayout.setVerticalGroup(
@@ -238,7 +249,11 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(lbl_QtdEstoque))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lbl_ValorUnit))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Painel_Pedido.setBorder(javax.swing.BorderFactory.createTitledBorder("Pedido"));
@@ -275,6 +290,18 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         });
         tblProduto.setName(""); // NOI18N
         tblProduto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblProduto.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tblProdutoComponentAdded(evt);
+            }
+        });
+        tblProduto.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                tblProdutoInputMethodTextChanged(evt);
+            }
+        });
         tblProduto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tblProdutoKeyPressed(evt);
@@ -377,7 +404,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     .addComponent(btnLimpar)
                     .addComponent(btnVoltar)
                     .addComponent(btnEnviar_Pedido))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -394,14 +421,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
         daoGerarPedido = new DaoGerarPedido(conexao.conectar());
         listaProdutos = daoProduto.ListarProdutos();
-        
-        // aqui luiz
-        
-        ListaPessoaFisica = daoPFisica.ListarPessoasFisicas();
-        ListaPessoaJuridica = daoPJrudica.ListarPessoasJuridicas();
-        //
-        
-        
+
         lbl_codigoCliente.setVisible(false);
         Date data = new Date(System.currentTimeMillis());
         SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
@@ -451,13 +471,11 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviar_PedidoActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        txtCPF_CNPJ.requestFocus();
         if (txtCPF_CNPJ.getText().length() == 11) {
             pessoaFisica = daoPFisica.consultaCPF(txtCPF_CNPJ.getText());
             if (pessoaFisica == null && ValidaCPF.validaCpf(txtCPF_CNPJ.getText()) == true) {
                 JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
-//                lbl_AvisoCPF_CNPJ.setText("Cliente não Cadastrado");
-            } else {
-                lbl_AvisoCPF_CNPJ.setText("CPF Inválido");
             }
             if (pessoaFisica != null) {
                 cbxQuantidade.requestFocus();
@@ -466,11 +484,12 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 btnAvançar.setEnabled(true);
                 cbxProduto.setEnabled(true);
                 cbxQuantidade.setEnabled(true);
-                btnEnviar_Pedido.setEnabled(true);
+//                btnEnviar_Pedido.setEnabled(true);
                 btn_consultar.setEnabled(false);
                 txtCPF_CNPJ.setEnabled(false);
                 lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
                 btnLimpar.setEnabled(true);
+                cbxQuantidade.requestFocus();
             }
 
         } else if (txtCPF_CNPJ.getText().length() == 14) {
@@ -478,18 +497,19 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             if (pessoaJuridica == null && ValidaCNPJ.validaCnpj(txtCPF_CNPJ.getText()) == true) {
                 JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
             } else {
-                lbl_AvisoCPF_CNPJ.setText("CNPJ Inválido");
+                JOptionPane.showMessageDialog(null, "CNPJ Inválido");
             }
             txt_nomeCliente.setText(pessoaJuridica.getNome());
             lbl_codigoCliente.setText(pessoaJuridica.getCodigo());
             btnAvançar.setEnabled(true);
             cbxProduto.setEnabled(true);
             cbxQuantidade.setEnabled(true);
-            btnEnviar_Pedido.setEnabled(true);
+//            btnEnviar_Pedido.setEnabled(true);
             btn_consultar.setEnabled(false);
             txtCPF_CNPJ.setEnabled(false);
             lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
             btnLimpar.setEnabled(true);
+            cbxQuantidade.requestFocus();
 
         }
     }//GEN-LAST:event_btn_consultarActionPerformed
@@ -498,40 +518,24 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void tblProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProdutoKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_BACKSPACE || evt.getKeyCode() == KeyEvent.VK_DELETE) {
-            DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
-
-            if (tblProduto.getSelectedRow() >= 0) {
-                Total = (Total - (float) model.getValueAt(tblProduto.getSelectedRow(), 4));
-                txt_total.setText("" + Total);
-                pedidoProduto.remove(tblProduto.getSelectedRow());
-                model.removeRow(tblProduto.getSelectedRow());
-            }
-        }
-    }//GEN-LAST:event_tblProdutoKeyPressed
-
     private void txtCPF_CNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPF_CNPJFocusLost
-        if (txtCPF_CNPJ.getText().length() < 11) {
-            lbl_AvisoCPF_CNPJ.setText("CPF Inválido.");
-        }
-        if (txtCPF_CNPJ.getText().length() > 14
-                || (txtCPF_CNPJ.getText().length() > 11 && txtCPF_CNPJ.getText().length() < 14)) {
-            lbl_AvisoCPF_CNPJ.setText("CNPJ Inválido.");
-        }
-        if (txtCPF_CNPJ.getText().length() == 11) {
-
+        if (txtCPF_CNPJ.getText().length() <= 11) {
             if (ValidaCPF.validaCpf(txtCPF_CNPJ.getText()) == false) {
-                lbl_AvisoCPF_CNPJ.setText("CPF Inválido.");
+                JOptionPane.showMessageDialog(null, "CPF Inválido");
             }
         }
-        if (txtCPF_CNPJ.getText().length() == 14) {
-            lbl_AvisoCPF_CNPJ.setText("CNPJ Inválido.");
+        if (txtCPF_CNPJ.getText().length() > 11) {
+
+            if (ValidaCNPJ.validaCnpj(txtCPF_CNPJ.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "CNPJ Inválido");
+            }
         }
+
     }//GEN-LAST:event_txtCPF_CNPJFocusLost
 
     private void cbxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProdutoItemStateChanged
         lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
+        lbl_ValorUnit.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario());
     }//GEN-LAST:event_cbxProdutoItemStateChanged
 
     private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
@@ -558,6 +562,11 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             //Atualizando a o DISPLAY de quantidade.
             listaProdutos.get(cbxProduto.getSelectedIndex()).setQtdEstoque(listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque() - (int) cbxQuantidade.getValue());
             lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
+
+            //CHECK DE PEDIDO VAZIO PARA HABILITAR O BOTÃO ENVIAR PEDIDO
+            if (pedidoProduto.size() > 0 && btnEnviar_Pedido.isEnabled() == false) {
+                btnEnviar_Pedido.setEnabled(true);
+            }
         }
 
     }//GEN-LAST:event_btnAvançarActionPerformed
@@ -578,6 +587,42 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         txt_total.setText("");
         btn_consultar.setEnabled(true);
     }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void tblProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProdutoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_BACKSPACE || evt.getKeyCode() == KeyEvent.VK_DELETE) {
+            DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
+
+            if (tblProduto.getSelectedRow() >= 0) {
+                Total = (Total - (float) model.getValueAt(tblProduto.getSelectedRow(), 4));
+                txt_total.setText("" + Total);
+                // PERCORRO O ARRAYLIST QUE PREENCHE O CBX PRODUTO, ATÉ ENCONTRAR O PRODUTO COM O CÓDIGO DO EXCLUIDO.
+                for (int i = 0; i < listaProdutos.size(); i++) {
+                    if (listaProdutos.get(i).getCodigo() == pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoCod()) {
+                        //DEPOIS QUE ENCONTROU O PRODUTO, ELE VAI SETAR A NOVA QUANTIDADE.
+                        //PEGANDO A QUANTIDADE ATUAL + A QUANTIDADE DO PRODUTO QUE FOI EXCLUIDO.
+                        listaProdutos.get(i).setQtdEstoque(listaProdutos.get(i).getQtdEstoque() + pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoQtd());
+                    }
+
+                }
+                pedidoProduto.remove(tblProduto.getSelectedRow());
+                model.removeRow(tblProduto.getSelectedRow());
+                //Atualiza o DISPLAY
+                lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
+            }
+        }
+        //Desativa o BOTÃO.
+        if (pedidoProduto.size() == 0 && btnEnviar_Pedido.isEnabled() == true) {
+            btnEnviar_Pedido.setEnabled(false);
+        }
+    }//GEN-LAST:event_tblProdutoKeyPressed
+
+    private void tblProdutoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tblProdutoComponentAdded
+
+    }//GEN-LAST:event_tblProdutoComponentAdded
+
+    private void tblProdutoInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_tblProdutoInputMethodTextChanged
+        System.out.println("produto adicionado");
+    }//GEN-LAST:event_tblProdutoInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -651,6 +696,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxProduto;
     private javax.swing.JSpinner cbxQuantidade;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblProduto;
@@ -659,6 +705,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_AvisoCPF_CNPJ;
     private javax.swing.JLabel lbl_CPF_CNPJ;
     private javax.swing.JLabel lbl_QtdEstoque;
+    private javax.swing.JLabel lbl_ValorUnit;
     private javax.swing.JLabel lbl_codigoCliente;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTextField txtCPF_CNPJ;
