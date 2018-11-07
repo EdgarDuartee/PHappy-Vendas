@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
@@ -49,8 +50,10 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     public GuiGerar_Pedido(Login login) {
         initComponents();
         this.login = login;
-        GuiGerar_Pedido.this.setTitle("Gerar Pedido   " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
+        GuiGerar_Pedido.this.setTitle("Gerar Pedido   " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+        DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
+        tblProduto.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**

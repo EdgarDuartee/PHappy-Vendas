@@ -455,13 +455,14 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGerentesActionPerformed
 
     private void btnClienteEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteEspecificoActionPerformed
-        if (tblVendedor.getSelectedRow() >= 0) {
+        /*if (tblVendedor.getSelectedRow() >= 0) {
             GuiControle_Estratégico_por_Vendedor_Especifico GUI
                     = new GuiControle_Estratégico_por_Vendedor_Especifico(login,
                             ((int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(), 0)));
             GUI.setVisible(true);
 
-        }
+        }*/
+        new GuiControle_Estratégico_por_Vendedor_Especifico(login, 1).setVisible(true);
     }//GEN-LAST:event_btnClienteEspecificoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
