@@ -84,7 +84,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         lbl_QtdEstoque = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lbl_ValorUnit = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Painel_Pedido = new javax.swing.JPanel();
         lblData = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
@@ -208,8 +207,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         lbl_ValorUnit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
 
-        jLabel3.setText("alteracao do luiz");
-
         javax.swing.GroupLayout Painel_ProdutoLayout = new javax.swing.GroupLayout(Painel_Produto);
         Painel_Produto.setLayout(Painel_ProdutoLayout);
         Painel_ProdutoLayout.setHorizontalGroup(
@@ -235,11 +232,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                                 .addComponent(cbxQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAvançar))
-                            .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                                .addComponent(lbl_ValorUnit)
-                                .addGap(64, 64, 64)
-                                .addComponent(jLabel3)))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lbl_ValorUnit))))
+                .addGap(0, 81, Short.MAX_VALUE))
         );
         Painel_ProdutoLayout.setVerticalGroup(
             Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,8 +255,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lbl_ValorUnit)
-                    .addComponent(jLabel3))
+                    .addComponent(lbl_ValorUnit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -525,8 +518,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_consultarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-//        dispose();
-GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
+        dispose();
+//GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void txtCPF_CNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPF_CNPJFocusLost
@@ -708,7 +701,6 @@ GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
     private javax.swing.JSpinner cbxQuantidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblProduto;
