@@ -656,6 +656,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnDesativarVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarVendedorActionPerformed
+        btnDesativarVendedor.setEnabled(false);
         if (flag == 0) {
             vendedores = daoVendedor.listarVendedores();
 
@@ -664,14 +665,17 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
             }
         }
         flag = 1;
-        if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {
+        if(confirmaNovoVendedor ==0){
+            if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {
             JOptionPane.showMessageDialog(null, "Escolha um vendedor para se responsabilizar"
                     + " pelos clientes deste colaborador!");
-
+            
+            btnDesativarVendedor.setEnabled(true);
+            
             btnConfirmaVendedor.setEnabled(true);
             cbxVendedorResp.setEnabled(true);
-
-            if (click == 1) {
+        }
+        if (confirmaNovoVendedor == 1) {
                 JOptionPane.showMessageDialog(null, "Desativação Efetuada com sucesso!");
                 daoVendedor.desativar(vendedor);
 
@@ -681,7 +685,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                 cbxVendedorResp.removeAllItems();
                 vendedores = null;
 
-                click = 0;
+                confirmaNovoVendedor = 0;
 
                 limpaCampos();
             } else {
@@ -696,11 +700,10 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxVendedorRespActionPerformed
 
     private void btnConfirmaVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaVendedorActionPerformed
-
         if (vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo() == parseInt(txtCodigo.getText())) {
             JOptionPane.showMessageDialog(null, "Escolha outro Vendedor diferente deste que deseja dasativa-lo!");
         } else {
-            click = 1;
+            btnDesativarVendedor.setEnabled(true);
             codigoNovo = vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo();
             nomeNovo = vendedores.get(cbxVendedorResp.getSelectedIndex()).getNome();
         }
@@ -745,8 +748,11 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     private Vendedor vendedor = null;
     private DaoVendedor daoVendedor = null;
 
+    //
     private int flag = 0;
-    private int click = 0;
+    //flag para ver se o botao de confirmar foi clicado
+    private int confirmaNovoVendedor = 0;
+    
     private int codigoNovo = 0;
     private String nomeNovo = null;
     ArrayList<Vendedor> vendedores = null;

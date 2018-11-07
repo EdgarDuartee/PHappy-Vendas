@@ -71,7 +71,6 @@
                               <Component id="Painel_Dados" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
                               <Component id="Painel_Contato" alignment="0" min="-2" pref="320" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -279,6 +278,7 @@
               </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ftxtCNPJFocusLost"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ftxtCNPJActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAsteristico">

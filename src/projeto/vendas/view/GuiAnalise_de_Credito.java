@@ -414,6 +414,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 int valorPedido = (int) tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(), 0);
                 daoGerarPedido.aprovar(valorPedido);
                 tblPedido.getModel().setValueAt("APROVADO", (tblPedido.getSelectedRow()), 5);
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Escolha o pedido para ser aprovado!");
@@ -427,6 +429,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 int valorPedido = (int) tblPedido.getModel().getValueAt(tblPedido.getSelectedRow(), 0);
                 daoGerarPedido.reprovar(valorPedido);
                 tblPedido.getModel().setValueAt("REPROVADO", (tblPedido.getSelectedRow()), 5);
+                btnAprovar.setEnabled(false);
+                btnReprovar.setEnabled(false);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Escolha o pedido para ser reprovado!");
@@ -489,7 +493,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             nome,
                             pedido.getDtPedido(),
                             pedido.getTotal(),
-                            pedido.getSituacao()};
+                            legendaSituacao};
 
                         model = (DefaultTableModel) tblPedido.getModel();
                         model.addRow(row);

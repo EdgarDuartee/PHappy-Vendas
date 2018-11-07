@@ -33,6 +33,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         jMenu = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
         jMenu_Cliente = new javax.swing.JMenu();
@@ -49,6 +50,12 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu_GerenciarPendencias = new javax.swing.JMenu();
         jMenuItem_Analise_de_Credito = new javax.swing.JMenuItem();
         jMenuItem_Baixa_Nota_Fiscal = new javax.swing.JMenuItem();
+        jMenu_ControleEstrategico = new javax.swing.JMenu();
+        jMenuItem_PorCliente = new javax.swing.JMenuItem();
+        jMenuItem_PorVendedor = new javax.swing.JMenuItem();
+        jMenuItem_PorRegiao = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -150,6 +157,34 @@ public class GuiMenuGerente extends javax.swing.JFrame {
 
         jMenu.add(jMenu_GerenciarPendencias);
 
+        jMenu_ControleEstrategico.setText("Controle Estratégico");
+
+        jMenuItem_PorCliente.setText("Por Cliente");
+        jMenuItem_PorCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PorClienteActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem_PorCliente);
+
+        jMenuItem_PorVendedor.setText("Por Vendedor");
+        jMenuItem_PorVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PorVendedorActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem_PorVendedor);
+
+        jMenuItem_PorRegiao.setText("Por Região");
+        jMenuItem_PorRegiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PorRegiaoActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem_PorRegiao);
+
+        jMenu.add(jMenu_ControleEstrategico);
+
         setJMenuBar(jMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,6 +237,18 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         new GuiPedidos_Aprovados().setVisible(true);
     }//GEN-LAST:event_jMenuItem_PedidosAprovadosActionPerformed
 
+    private void jMenuItem_PorRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorRegiaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem_PorRegiaoActionPerformed
+
+    private void jMenuItem_PorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem_PorClienteActionPerformed
+
+    private void jMenuItem_PorVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorVendedorActionPerformed
+        new GuiControle_Estratégico_por_Vendedor().setVisible(true);
+    }//GEN-LAST:event_jMenuItem_PorVendedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -243,6 +290,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenuAlterar;
     private javax.swing.JMenuBar jMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Analise_de_Credito;
@@ -251,9 +299,13 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_PedidosAprovados;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Física;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Jurídica;
+    private javax.swing.JMenuItem jMenuItem_PorCliente;
+    private javax.swing.JMenuItem jMenuItem_PorRegiao;
+    private javax.swing.JMenuItem jMenuItem_PorVendedor;
     private javax.swing.JMenuItem jMenuItem_Vendedor;
     private javax.swing.JMenu jMenu_Cadastro;
     private javax.swing.JMenu jMenu_Cliente;
+    private javax.swing.JMenu jMenu_ControleEstrategico;
     private javax.swing.JMenu jMenu_Gerar_Pedido;
     private javax.swing.JMenu jMenu_GerenciarPendencias;
     private javax.swing.JMenu jMenu_Pedidos_Aprovados;
