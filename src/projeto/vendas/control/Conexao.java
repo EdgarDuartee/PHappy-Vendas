@@ -3,6 +3,9 @@ package projeto.vendas.control;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import javax.naming.spi.DirStateFactory;
 
 /**
  *
@@ -10,6 +13,8 @@ import java.sql.SQLException;
  */
 public class Conexao {
 
+    public Statement stm;
+    public  ResultSet res;
     private String connectionString;
     private String driver;
     private String usuario;
@@ -86,6 +91,16 @@ public class Conexao {
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
+        }
+    }
+   
+    public void executaSQL (String sql){
+        try{
+            stm = connection.createStatement(res.TYPE_SCROLL_INSENSITIVE,res.CONCUR_READ_ONLY);
+            res = stm.executeQuery(sql);
+        }
+        catch(SQLException ex){
+            
         }
     }
 }

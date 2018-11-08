@@ -19,6 +19,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import org.apache.thrift.server.THsHaServer;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoEmitirNotaFiscal;
@@ -611,6 +616,20 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
+        try {
+            conexao.executaSQL("select * from p_fisica");
+            JRResultSetDataSource relatResult = new JRResultSetDataSource(conexao.res);
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("relatorios/EspelhoCliente.jasper",
+                    new HashMap(), relatResult);
+            
+            JasperViewer jv = new JasperViewer(jpPrint);
+            jv.setVisible(true);
+            
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
 
     }//GEN-LAST:event_btnVisualizarClienteActionPerformed
 
