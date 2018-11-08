@@ -30,6 +30,15 @@ public class Vendedor {
     private String senha;
     private String complemento;
     private String dtInicio;
+    private String dtInatividade;
+
+    public String getDtInatividade() {
+        return dtInatividade;
+    }
+
+    public void setDtInatividade(String dtInatividade) {
+        this.dtInatividade = dtInatividade;
+    }
 
     public String getDtInicio() {
         return dtInicio;

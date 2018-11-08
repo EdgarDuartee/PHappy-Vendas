@@ -9,18 +9,18 @@ import projeto.vendas.model.NotaFiscal;
 import projeto.vendas.model.NotaFiscalItens;
 import projeto.vendas.model.PedidoProduto;
 
-public class DaoNotaFiscalItems {
+public class DaoNotaFiscalItens {
 
     private Connection conn;
 
-    public DaoNotaFiscalItems(Connection conn) {
+    public DaoNotaFiscalItens(Connection conn) {
         this.conn = conn;
     }
 
     public void inserir(NotaFiscalItens NFitens) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT into Nota_Items(NumeroNota, ProdutoCod, ProdutoDesc, ProdutoValor,"
+            ps = conn.prepareStatement("INSERT into Nota_Itens(NumeroNota, ProdutoCod, ProdutoDesc, ProdutoValor,"
                     + "ProdutoQTD, ProdutoPIS,ProdutoCOFINS,ProdutoIPI,ProdutoICMS)"
                     + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?)");
 

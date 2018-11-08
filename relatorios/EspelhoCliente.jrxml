@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EspelhoCliente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0b97138-2e7b-41c5-88f2-51e3cfe8bc13">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[Select * from P_Fisica]]>
+	</queryString>
+	<field name="CODIGO" class="java.lang.String"/>
+	<field name="NOME" class="java.lang.String"/>
+	<field name="EMAIL" class="java.lang.String"/>
+	<field name="RUA" class="java.lang.String"/>
+	<field name="NUMERO" class="java.lang.String"/>
+	<field name="BAIRRO" class="java.lang.String"/>
+	<field name="CIDADE" class="java.lang.String"/>
+	<field name="CEP" class="java.lang.String"/>
+	<field name="UF" class="java.lang.String"/>
+	<field name="COMPLEMENTO" class="java.lang.String"/>
+	<field name="LATITUDE" class="java.lang.Double"/>
+	<field name="LONGITUDE" class="java.lang.Double"/>
+	<field name="CPF" class="java.lang.String"/>
+	<field name="RG" class="java.lang.String"/>
+	<field name="DTNASC" class="java.lang.String"/>
+	<field name="TEL" class="java.lang.String"/>
+	<field name="CEL" class="java.lang.String"/>
+	<field name="COD_VEND_RESP" class="java.math.BigDecimal"/>
+	<field name="VEND_RESP" class="java.lang.String"/>
+	<field name="DTINICIO" class="java.lang.String"/>
+	<field name="ATIVO" class="java.lang.String"/>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement x="92" y="0" width="346" height="49" uuid="912e497e-42ff-4f2d-9a33-68ce555c1f4b"/>
+				<textElement>
+					<font fontName="Arial Black" size="20"/>
+				</textElement>
+				<text><![CDATA[Dados Cadastrais do Cliente]]></text>
+			</staticText>
+			<image>
+				<reportElement x="438" y="-19" width="81" height="68" uuid="790353bc-a6ef-4042-848b-e219b70f3e6e"/>
+				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Downloads\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="44"/>
+	</columnHeader>
+	<detail>
+		<band height="50">
+			<textField>
+				<reportElement x="14" y="0" width="100" height="20" uuid="c8dc0b78-de58-4499-b0b2-f5e242f87772"/>
+				<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="0" width="100" height="20" uuid="8a44c6b7-2d26-4c90-8b4b-ef95a1a764e4"/>
+				<textFieldExpression><![CDATA[$F{NOME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -5,10 +5,17 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
@@ -35,12 +42,12 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
      */
     public GuiControle_Estratégico_por_Vendedor_Especifico(Login login, int Codigo) {
         initComponents();
-        
+
         this.login = login;
         GuiControle_Estratégico_por_Vendedor_Especifico.this.setTitle(
-                "Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
-        
+                "Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+
         this.codigo = 1000;
         DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
         tblClientes.setRowSorter(new TableRowSorter(modelo));
@@ -363,6 +370,11 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         jScrollPaneVendedor1.setViewportView(tblClientes);
 
         btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Painel_ClientesLayout = new javax.swing.GroupLayout(Painel_Clientes);
         Painel_Clientes.setLayout(Painel_ClientesLayout);
@@ -502,10 +514,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 .addGap(169, 169, 169)
                 .addComponent(btnBuscar)
                 .addGap(236, 236, 236))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Controle_Estratégico_VendedorLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanelVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanelVendedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Controle_Estratégico_VendedorLayout.setVerticalGroup(
             Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,7 +564,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         daoPFisica = new DaoPFisica(conexao.conectar());
         daoPJrudica = new DaoPJuridica(conexao.conectar());
         daoVendedor = new DaoVendedor(conexao.conectar());
-        
+
         SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
         Date dataDoSistema = new Date(System.currentTimeMillis());
         String dataEmTexto = formatador.format(dataDoSistema);
@@ -574,6 +583,10 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+        
+    }//GEN-LAST:event_btnBuscarClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,7 +619,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiControle_Estratégico_por_Vendedor_Especifico(login,codigo).setVisible(true);
+                new GuiControle_Estratégico_por_Vendedor_Especifico(login, codigo).setVisible(true);
             }
         });
     }
@@ -734,11 +747,11 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             model.addRow(row);
         }
         for (int x = 0; x < clientesPJ.size(); x++) {
-            cpfcnpj = clientesPJ.get(x).getCnpj().subSequence(0,2) + "."
-                    + clientesPJ.get(x).getCnpj().subSequence(2,5) + "."
-                    + clientesPJ.get(x).getCnpj().subSequence(5,8) + "/"
-                    + clientesPJ.get(x).getCnpj().subSequence(8,12) + "-"
-                    + clientesPJ.get(x).getCnpj().subSequence(12,14);
+            cpfcnpj = clientesPJ.get(x).getCnpj().subSequence(0, 2) + "."
+                    + clientesPJ.get(x).getCnpj().subSequence(2, 5) + "."
+                    + clientesPJ.get(x).getCnpj().subSequence(5, 8) + "/"
+                    + clientesPJ.get(x).getCnpj().subSequence(8, 12) + "-"
+                    + clientesPJ.get(x).getCnpj().subSequence(12, 14);
             if (clientesPJ.get(x).getAtivo().equals("A")) {
                 ativo = "ATIVO";
             } else {

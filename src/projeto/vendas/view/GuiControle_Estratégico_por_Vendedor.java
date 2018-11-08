@@ -5,16 +5,23 @@
  */
 package projeto.vendas.view;
 
+import static java.lang.Integer.parseInt;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoEmitirNotaFiscal;
+import projeto.vendas.control.DaoGerarPedido;
+import projeto.vendas.control.DaoNotaFiscalItens;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoVendedor;
 import projeto.vendas.model.Login;
+import projeto.vendas.model.NotaFiscal;
+import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
@@ -25,14 +32,15 @@ import projeto.vendas.model.Vendedor;
  */
 public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
 
-    /**1
+    /**
+     * 1
      * Creates new form GuiControle_Estratégico_por_Vendedor
      */
     public GuiControle_Estratégico_por_Vendedor(Login login) {
         initComponents();
         this.login = login;
-        GuiControle_Estratégico_por_Vendedor.this.setTitle("Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
+        GuiControle_Estratégico_por_Vendedor.this.setTitle("Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblVendedor.getModel();
         tblVendedor.setRowSorter(new TableRowSorter(modelo));
     }
@@ -118,11 +126,11 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Cargo", "Vendas no periodo", "Valor total das vendas", "Qtde Clientes", "Ativo/Inativo", "Data da Inatividade"
+                "Código", "Nome", "Cargo", "Data do cadastro", "Vendas no periodo", "Valor total das vendas", "Qtde Clientes", "Ativo/Inativo", "Data da Inatividade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -481,16 +489,32 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-      //limpa caso ja tiver algo na tabela
+        //limpa caso ja tiver algo na tabela
         if (flagLimpaTabela == 1) {
             model.setRowCount(0);
         }
-        //aqui vai os daos para busca dos dados
-        //vendedor = daoVendedor.consultarTbVend(codigo);
-        //metodo para preencher a tabela de nota fiscais
+        daoVendedor = new DaoVendedor(conexao.conectar());
+        daoPFisica = new DaoPFisica(conexao.conectar());
+        daoPJrudica = new DaoPJuridica(conexao.conectar());
+        daoGerarPedido = new DaoGerarPedido(conexao.conectar());
+        daoEmitirNotaFical = new DaoEmitirNotaFiscal(conexao.conectar());
+
+        ListarVendedores = daoVendedor.listarVendedoresTotal();
+        preencheTabelaComVendedor(ListarVendedores);
+
+        ListarNotaFiscal = daoEmitirNotaFical.ListarNotasFiscais();
+        preencheTabelaComNotaFiscal(ListarNotaFiscal);
+
+        contaClientes();
+        int total = 0;
+        double valorTotal = 0;
+        for (int i = 0; i < tblVendedor.getRowCount(); i++) {
+            total = total + (int) model.getValueAt(i, 4);
+            valorTotal = valorTotal + (double) model.getValueAt(i, 5);
+        }
         
-        //ArrayList<PessoaFisica> clientesPF = daoPFisica.ListarPFPorCodVend(codigo);
-        //ArrayList<PessoaJuridica> clientesPJ = daoPJrudica.ListarPJPorCodVend(codigo);
+        txtQtdeTotalVendas.setText(String.valueOf(total));
+        txtValorTotalVendas.setText(String.valueOf(valorTotal));
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -531,23 +555,29 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         });
     }
+
+    private ArrayList<Vendedor> ListarVendedores;
+    private ArrayList<NotaFiscal> ListarNotaFiscal;
     private static Login login = null;
     private static int codigo;
     private Conexao conexao;
     private Vendedor vendedor = null;
+    private NotaFiscal notaFiscal = null;
     private DaoVendedor daoVendedor = null;
     private DaoPFisica daoPFisica = null;
     private DaoPJuridica daoPJrudica = null;
+    private DaoEmitirNotaFiscal daoEmitirNotaFical = null;
+    private DaoNotaFiscalItens daoNotaFicalItens = null;
     private PessoaFisica pessoaFisica = null;
     private PessoaJuridica pessoaJuridica = null;
     //private static Login login = null;
-    //private DaoGerarPedido daoGerarPedido = null;
-    //private Pedido pedido = null;
+    private DaoGerarPedido daoGerarPedido = null;
+    private Pedido pedido = null;
     //private String nome;
     private DefaultTableModel model = null;
     private String legendaSituacao = null;
     private int flagLimpaTabela = 0;
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Painel_Geral;
     private javax.swing.JPanel Painel_ResumoGeral;
@@ -589,4 +619,140 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtVendInativos;
     private javax.swing.JTextField txtVendedores;
     // End of variables declaration//GEN-END:variables
+    public void preencheTabelaComVendedor(ArrayList<Vendedor> ListarVendedores) {
+        String funcao = "";
+        String ativo = "";
+        String dtInatividade;
+        int a = 0;
+        int i = 0;
+        int vend = 0;
+        int sup = 0;
+        int ger = 0;
+
+        int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
+        int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
+        int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
+        LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
+
+        int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
+        int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
+        int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
+        LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
+
+        for (int x = 0; x < ListarVendedores.size(); x++) {
+            int dia = parseInt(ListarVendedores.get(x).getDtInicio().substring(0, 2));
+            int mes = parseInt(ListarVendedores.get(x).getDtInicio().substring(2, 4));
+            int ano = parseInt(ListarVendedores.get(x).getDtInicio().substring(4, 8));
+            LocalDate datainicio1 = LocalDate.of(ano, mes, dia);
+
+            // testa se a data é maior que a data inicial da busca
+            if (datainicio1.isAfter(dataInicio) || datainicio1.isEqual(dataInicio)) {
+                //testa se a data é menor que a data final da busca
+                if (datainicio1.isBefore(dataFinal) || datainicio1.isEqual(dataFinal)) {
+                    dtInatividade = "";
+                    if (ListarVendedores.get(x).getPermissao() == 0) {
+                        funcao = "Vendedor";
+                        vend++;
+                    } else if (ListarVendedores.get(x).getPermissao() == 1) {
+                        funcao = "Gerente de Vendas";
+                        ger++;
+                    } else {
+                        funcao = "Supervisor de Vendas";
+                        sup++;
+                    }
+
+                    if (ListarVendedores.get(x).getAtivo().equals("A")) {
+                        ativo = "ATIVO";
+                        a++;
+                    } else {
+                        ativo = "INATIVO";
+                        i++;
+                    }
+
+                    if (!(ListarVendedores.get(x).getDtInatividade() == null)) {
+                        dtInatividade = ListarVendedores.get(x).getDtInatividade().substring(0, 2) + "/"
+                                + ListarVendedores.get(x).getDtInatividade().substring(2, 4) + "/"
+                                + ListarVendedores.get(x).getDtInatividade().substring(4, 8);
+                    }
+                    String dtInicio = ListarVendedores.get(x).getDtInicio().substring(0, 2) + "/"
+                            + ListarVendedores.get(x).getDtInicio().substring(2, 4) + "/"
+                            + ListarVendedores.get(x).getDtInicio().substring(4, 8);
+
+                    Object[] row = {
+                        ListarVendedores.get(x).getCodigo(),
+                        ListarVendedores.get(x).getNome(),
+                        funcao,
+                        dtInicio,
+                        0,
+                        0.0,
+                        0,
+                        ativo,
+                        dtInatividade
+                    };
+
+                    model = (DefaultTableModel) tblVendedor.getModel();
+                    model.addRow(row);
+                    flagLimpaTabela = 1;
+                }
+            }
+        }
+        txtTotalColaboradores.setText(String.valueOf(tblVendedor.getRowCount()));
+        txtVendAtivos.setText(String.valueOf(a));
+        txtVendInativos.setText(String.valueOf(i));
+        txtVendedores.setText(String.valueOf(vend));
+        txtGerentes.setText(String.valueOf(ger));
+        txtSupervisores.setText(String.valueOf(sup));
+    }
+
+    public void preencheTabelaComNotaFiscal(ArrayList<NotaFiscal> ListarNotaFiscais) {
+        int totalVendas = 0;
+        double valorTotalVendas = 0;
+
+        int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
+        int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
+        int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
+        LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
+
+        int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
+        int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
+        int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
+        LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
+
+        for (int x = 0; x < ListarNotaFiscal.size(); x++) {
+
+            int dia = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(0, 2));
+            int mes = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(3, 5));
+            int ano = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(6, 10));
+            LocalDate dataPedido = LocalDate.of(ano, mes, dia);
+
+            // testa se a data é maior que a data inicial da busca
+            if (dataPedido.isAfter(dataInicio) || dataPedido.isEqual(dataInicio)) {
+                //testa se a data é menor que a data final da busca
+                if (dataPedido.isBefore(dataFinal) || dataPedido.isEqual(dataFinal)) {
+                    //fazer busca para ver quem efetuou o pedido
+                    pedido = daoGerarPedido.Consultar(ListarNotaFiscal.get(x).getPedidoCod());
+                    for (int c = 0; c < tblVendedor.getModel().getRowCount(); c++) {
+                        if ((int) tblVendedor.getValueAt(c, 0) == pedido.getVendedorCod()) {
+
+                            totalVendas = (int) tblVendedor.getValueAt(c, 4);
+                            totalVendas++;
+                            tblVendedor.getModel().setValueAt(totalVendas, c, 4);
+                            valorTotalVendas = (double) tblVendedor.getValueAt(c, 5);
+                            valorTotalVendas = valorTotalVendas + ListarNotaFiscal.get(x).getTotal();
+                            tblVendedor.getModel().setValueAt(valorTotalVendas, c, 5);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    public void contaClientes() {
+        for (int x = 0; x < tblVendedor.getModel().getRowCount(); x++) {
+            int qtdeClientes = 0;
+            qtdeClientes = daoVendedor.contaClientePFPJ((int) tblVendedor.getValueAt(x, 0));
+            tblVendedor.getModel().setValueAt(qtdeClientes, x, 6);
+        }
+    }
 }

@@ -88,7 +88,7 @@ public class DaoEmitirNotaFiscal {
         ArrayList<NotaFiscal> lista = new ArrayList();
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("SELECT * from pedido");
+            ps = conn.prepareStatement("SELECT * from Nota_Fiscal");
             ResultSet rs = ps.executeQuery();
             while (rs.next() == true) {
                 nf = new NotaFiscal(rs.getInt("numero"),

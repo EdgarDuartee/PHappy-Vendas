@@ -6,6 +6,8 @@
 package projeto.vendas.view;
 
 import static java.lang.Integer.parseInt;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import projeto.vendas.control.Conexao;
@@ -690,7 +692,14 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
             codigoNovo = vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo();
             nomeNovo = vendedores.get(cbxVendedorResp.getSelectedIndex()).getNome();
 
-            daoVendedor.desativar(vendedor);
+            //cria o formatador de data
+                SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");  
+		 //cria um objeto date com a data do sistema
+		Date dataDoSistema = new Date(System.currentTimeMillis());
+		 //passa o objeto dataDoSistema para uma String da forma que pediu
+		String dataEmTexto = formatador.format(dataDoSistema);  
+                
+            daoVendedor.desativar(vendedor,dataEmTexto);
 
             daoVendedor.trocaResponsabilidade(codigoNovo, nomeNovo, parseInt(txtCodigo.getText()));
             btnConfirmaDesativacao.setEnabled(false);

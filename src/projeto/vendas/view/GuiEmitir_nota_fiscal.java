@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoEmitirNotaFiscal;
 import projeto.vendas.control.DaoGerarPedido;
-import projeto.vendas.control.DaoNotaFiscalItems;
+import projeto.vendas.control.DaoNotaFiscalItens;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoPedidoProduto;
@@ -1013,7 +1013,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
         daoProduto = new DaoProduto(conexao.conectar());
         daoEmitirNF = new DaoEmitirNotaFiscal(conexao.conectar());
-        daoNotaFiscalItems = new DaoNotaFiscalItems(conexao.conectar());
+        daoNotaFiscalItems = new DaoNotaFiscalItens(conexao.conectar());
 
         Date data = new Date(System.currentTimeMillis());
         Calendar calendar = new GregorianCalendar();
@@ -1172,7 +1172,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private DaoEmitirNotaFiscal daoEmitirNF;
     private NotaFiscal nf;
     private NotaFiscalItens nfItens = null;
-    private DaoNotaFiscalItems daoNotaFiscalItems;
+    private DaoNotaFiscalItens daoNotaFiscalItems;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerar_NF;
     private javax.swing.JButton btnImprimir;
