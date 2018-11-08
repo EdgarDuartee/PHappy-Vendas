@@ -552,7 +552,7 @@
                           <Component id="jScrollPaneVendedor1" pref="881" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
-                              <Component id="btnBuscarCliente" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnVisualizarCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -562,7 +562,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jScrollPaneVendedor1" min="-2" pref="109" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnBuscarCliente" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnVisualizarCliente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="86" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -593,12 +593,12 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="btnBuscarCliente">
+                    <Component class="javax.swing.JButton" name="btnVisualizarCliente">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Buscar"/>
+                        <Property name="text" type="java.lang.String" value="Visualizar Cliente"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarClienteActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVisualizarClienteActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

@@ -110,7 +110,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         Painel_Clientes = new javax.swing.JPanel();
         jScrollPaneVendedor1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
-        btnBuscarCliente = new javax.swing.JButton();
+        btnVisualizarCliente = new javax.swing.JButton();
         PainelResumo = new javax.swing.JPanel();
         txtQtdeVendas = new javax.swing.JTextField();
         lblQtdeVendas = new javax.swing.JLabel();
@@ -383,10 +383,10 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         });
         jScrollPaneVendedor1.setViewportView(tblClientes);
 
-        btnBuscarCliente.setText("Buscar");
-        btnBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnVisualizarCliente.setText("Visualizar Cliente");
+        btnVisualizarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarClienteActionPerformed(evt);
+                btnVisualizarClienteActionPerformed(evt);
             }
         });
 
@@ -397,7 +397,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             .addComponent(jScrollPaneVendedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
             .addGroup(Painel_ClientesLayout.createSequentialGroup()
                 .addGap(358, 358, 358)
-                .addComponent(btnBuscarCliente)
+                .addComponent(btnVisualizarCliente)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Painel_ClientesLayout.setVerticalGroup(
@@ -405,7 +405,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             .addGroup(Painel_ClientesLayout.createSequentialGroup()
                 .addComponent(jScrollPaneVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarCliente)
+                .addComponent(btnVisualizarCliente)
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
@@ -610,9 +610,9 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
+    private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
 
-    }//GEN-LAST:event_btnBuscarClienteActionPerformed
+    }//GEN-LAST:event_btnVisualizarClienteActionPerformed
 
     private void btnFiltrarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarDataActionPerformed
         preencherTela(vendedor);
@@ -697,8 +697,8 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private javax.swing.JPanel Painel_Dados;
     private javax.swing.JTabbedPane Painel_Vendas;
     private javax.swing.JPanel Painel_VendasFeitas;
-    private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnFiltrarData;
+    private javax.swing.JButton btnVisualizarCliente;
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup buttonGroupVendedor;
     private javax.swing.JComboBox<String> cbxUF;
