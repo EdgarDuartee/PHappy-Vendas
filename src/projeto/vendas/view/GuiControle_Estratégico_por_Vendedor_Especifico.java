@@ -12,6 +12,7 @@ import static java.lang.Integer.parseInt;
 import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import org.apache.thrift.server.THsHaServer;
 import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoEmitirNotaFiscal;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
@@ -27,6 +29,7 @@ import projeto.vendas.control.DaoPedidoProduto;
 import projeto.vendas.control.DaoProduto;
 import projeto.vendas.control.DaoVendedor;
 import projeto.vendas.model.Login;
+import projeto.vendas.model.NotaFiscal;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -41,19 +44,23 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     /**
      * Creates new form GuiControle_Estratégico_por_Vendedor
      */
-    public GuiControle_Estratégico_por_Vendedor_Especifico(Login login, int codigo) {
+    public GuiControle_Estratégico_por_Vendedor_Especifico(Login login, int codigo, ArrayList<NotaFiscal> Lista) {
         initComponents();
 
         this.login = login;
         this.codigo = codigo;
-                
+        this.ListarNotaFiscal = Lista;
+
         GuiControle_Estratégico_por_Vendedor_Especifico.this.setTitle(
                 "Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 
         DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+
+        DefaultTableModel modelo1 = (DefaultTableModel) tblVendas.getModel();
+
         tblClientes.setRowSorter(new TableRowSorter(modelo));
-        tblVendas.setRowSorter(new TableRowSorter(modelo));
+        tblVendas.setRowSorter(new TableRowSorter(modelo1));
     }
 
     /**
@@ -67,7 +74,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
         buttonGroupVendedor = new javax.swing.ButtonGroup();
         Controle_Estratégico_Vendedor = new javax.swing.JPanel();
-        btnBuscar = new javax.swing.JButton();
+        btnFiltrarData = new javax.swing.JButton();
         jPanelVendedor = new javax.swing.JPanel();
         Painel_Vendas = new javax.swing.JTabbedPane();
         Painel_Dados = new javax.swing.JPanel();
@@ -130,7 +137,12 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             }
         });
 
-        btnBuscar.setText("Buscar");
+        btnFiltrarData.setText("Filtrar por data");
+        btnFiltrarData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarDataActionPerformed(evt);
+            }
+        });
 
         jPanelDados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Pessoais"));
 
@@ -512,10 +524,11 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 .addGap(43, 43, 43)
                 .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblData_Final)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(169, 169, 169)
-                .addComponent(btnBuscar)
-                .addGap(236, 236, 236))
+                    .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
+                        .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFiltrarData)))
+                .addGap(399, 399, 399))
             .addComponent(jPanelVendedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Controle_Estratégico_VendedorLayout.setVerticalGroup(
@@ -526,7 +539,6 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnVoltar)
-                    .addComponent(btnBuscar)
                     .addGroup(Controle_Estratégico_VendedorLayout.createSequentialGroup()
                         .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblData_Inicial)
@@ -534,7 +546,8 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Controle_Estratégico_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnFiltrarData))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -566,6 +579,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         daoPFisica = new DaoPFisica(conexao.conectar());
         daoPJrudica = new DaoPJuridica(conexao.conectar());
         daoVendedor = new DaoVendedor(conexao.conectar());
+        daoGerarPedido = new DaoGerarPedido(conexao.conectar());
 
         SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
         Date dataDoSistema = new Date(System.currentTimeMillis());
@@ -580,6 +594,16 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
         preencherTblClientes(clientesPF, clientesPJ);
 
+        preencherTblVendas(ListarNotaFiscal, vendedor);
+
+        double valorTotal = 0;
+        for (int i = 0; i < tblVendas.getRowCount(); i++) {
+            valorTotal = valorTotal + (double) model.getValueAt(i, 3);
+        }
+        txtTotalClientes.setText(String.valueOf(tblClientes.getRowCount()));
+        txtQtdeVendas.setText(String.valueOf(tblVendas.getRowCount()));
+        txtValorTotalVendas.setText(String.valueOf(valorTotal));
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -587,8 +611,22 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarClienteActionPerformed
-        
+
     }//GEN-LAST:event_btnBuscarClienteActionPerformed
+
+    private void btnFiltrarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarDataActionPerformed
+        preencherTela(vendedor);
+
+        preencherTblVendas(ListarNotaFiscal, vendedor);
+
+        double valorTotal = 0;
+        for (int i = 0; i < tblVendas.getRowCount(); i++) {
+            valorTotal = valorTotal + (double) model.getValueAt(i, 3);
+        }
+        txtTotalClientes.setText(String.valueOf(tblClientes.getRowCount()));
+        txtQtdeVendas.setText(String.valueOf(tblVendas.getRowCount()));
+        txtValorTotalVendas.setText(String.valueOf(valorTotal));
+    }//GEN-LAST:event_btnFiltrarDataActionPerformed
 
     /**
      * @param args the command line arguments
@@ -604,16 +642,24 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -621,11 +667,13 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiControle_Estratégico_por_Vendedor_Especifico(login, codigo).setVisible(true);
+                new GuiControle_Estratégico_por_Vendedor_Especifico(login, codigo, ListarNotaFiscal).setVisible(true);
             }
         });
     }
-
+    private int flagLimpaTabela1 = 0;
+    private int flagLimpaTabela = 0;
+    private static ArrayList<NotaFiscal> ListarNotaFiscal;
     private static int codigo;
     private Conexao conexao;
     private Vendedor vendedor = null;
@@ -635,8 +683,8 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private PessoaFisica pessoaFisica = null;
     private PessoaJuridica pessoaJuridica = null;
     private static Login login = null;
-    //private DaoGerarPedido daoGerarPedido = null;
-    //private Pedido pedido = null;
+    private DaoGerarPedido daoGerarPedido = null;
+    private Pedido pedido = null;
     //private String nome;
     private DefaultTableModel model = null;
     private String legendaSituacao = null;
@@ -649,8 +697,8 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private javax.swing.JPanel Painel_Dados;
     private javax.swing.JTabbedPane Painel_Vendas;
     private javax.swing.JPanel Painel_VendasFeitas;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnFiltrarData;
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup buttonGroupVendedor;
     private javax.swing.JComboBox<String> cbxUF;
@@ -727,8 +775,13 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     }
 
     public void preencherTblClientes(ArrayList<PessoaFisica> clientesPF, ArrayList<PessoaJuridica> clientesPJ) {
+        if (flagLimpaTabela1 == 1) {
+            model.setRowCount(0);
+        }
         String ativo = "";
         String cpfcnpj = "";
+        int i = 0;
+        int a = 0;
         for (int x = 0; x < clientesPF.size(); x++) {
             cpfcnpj = clientesPF.get(x).getCpf().substring(0, 3) + "."
                     + clientesPF.get(x).getCpf().substring(3, 6) + "."
@@ -736,8 +789,10 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                     + clientesPF.get(x).getCpf().substring(9, 11);
             if (clientesPF.get(x).getAtivo().equals("A")) {
                 ativo = "ATIVO";
+                a++;
             } else {
                 ativo = "INATIVO";
+                i++;
             }
             Object[] row = {
                 clientesPF.get(x).getCodigo(),
@@ -747,6 +802,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
             model = (DefaultTableModel) tblClientes.getModel();
             model.addRow(row);
+            flagLimpaTabela1 = 1;
         }
         for (int x = 0; x < clientesPJ.size(); x++) {
             cpfcnpj = clientesPJ.get(x).getCnpj().subSequence(0, 2) + "."
@@ -756,8 +812,10 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                     + clientesPJ.get(x).getCnpj().subSequence(12, 14);
             if (clientesPJ.get(x).getAtivo().equals("A")) {
                 ativo = "ATIVO";
+                a++;
             } else {
                 ativo = "INATIVO";
+                i++;
             }
             Object[] row = {
                 clientesPJ.get(x).getCodigo(),
@@ -767,6 +825,62 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
             model = (DefaultTableModel) tblClientes.getModel();
             model.addRow(row);
+            flagLimpaTabela1 = 1;
+        }
+        txtClientesAtivos.setText(String.valueOf(a));
+        txtClientesInativos.setText(String.valueOf(i));
+    }
+
+    public void preencherTblVendas(ArrayList<NotaFiscal> ListarNotaFiscal, Vendedor vendedor) {
+        if (flagLimpaTabela == 1) {
+            model.setRowCount(0);
+        }
+        int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
+        int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
+        int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
+        LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
+
+        int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
+        int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
+        int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
+        LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
+
+        for (int x = 0; x < ListarNotaFiscal.size(); x++) {
+            int dia = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(0, 2));
+            int mes = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(3, 5));
+            int ano = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(6, 10));
+            LocalDate dataPedido = LocalDate.of(ano, mes, dia);
+
+            // testa se a data é maior que a data inicial da busca
+            if (dataPedido.isAfter(dataInicio) || dataPedido.isEqual(dataInicio)) {
+                //testa se a data é menor que a data final da busca
+                if (dataPedido.isBefore(dataFinal) || dataPedido.isEqual(dataFinal)) {
+                    //fazer busca para ver quem efetuou o pedido
+                    pedido = daoGerarPedido.Consultar(ListarNotaFiscal.get(x).getPedidoCod());
+                    if (vendedor.getCodigo() == pedido.getVendedorCod()) {
+                        String nome;
+                        if (pedido.getClienteCod().substring(0, 2).equals("PF")) {
+                            pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
+                            nome = pessoaFisica.getNome();
+                        } else {
+                            pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
+                            nome = pessoaJuridica.getNome();
+                        }
+                        Object[] row = {
+                            pedido.getClienteCod(),
+                            nome,
+                            ListarNotaFiscal.get(x).getNumero(),
+                            (double) ListarNotaFiscal.get(x).getTotal(),
+                            ListarNotaFiscal.get(x).getDataEmissao()
+                        };
+
+                        model = (DefaultTableModel) tblVendas.getModel();
+                        model.addRow(row);
+                        flagLimpaTabela = 1;
+                    }
+
+                }
+            }
         }
     }
 }

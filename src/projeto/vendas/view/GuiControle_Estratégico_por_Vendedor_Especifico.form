@@ -65,12 +65,14 @@
                   </Group>
                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblData_Final" min="-2" max="-2" attributes="0"/>
-                      <Component id="ftxtData_Final" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="lblData_Final" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="ftxtData_Final" min="-2" pref="75" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnFiltrarData" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
-                  <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="236" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="399" max="-2" attributes="0"/>
               </Group>
               <Component id="jPanelVendedor" alignment="1" max="32767" attributes="0"/>
           </Group>
@@ -83,7 +85,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -93,6 +94,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ftxtData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ftxtData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnFiltrarData" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -102,10 +104,13 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnBuscar">
+        <Component class="javax.swing.JButton" name="btnFiltrarData">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="text" type="java.lang.String" value="Filtrar por data"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFiltrarDataActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanelVendedor">
 

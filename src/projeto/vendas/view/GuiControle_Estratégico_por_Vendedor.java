@@ -469,7 +469,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         if(tblVendedor.getSelectedRow() >= 0) {
             GuiControle_Estratégico_por_Vendedor_Especifico GUI
                     = new GuiControle_Estratégico_por_Vendedor_Especifico(login,
-                            ((int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(), 0)));
+                            ((int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(), 0)),ListarNotaFiscal);
             GUI.setVisible(true);
 
         }else
