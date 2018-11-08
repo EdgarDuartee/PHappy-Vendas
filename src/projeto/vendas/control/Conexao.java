@@ -23,8 +23,8 @@ public class Conexao {
 
     public Conexao() {
         //conexao Edgar
-        this.usuario = "Edgar";
-        this.senha = "hercules";
+//        this.usuario = "Edgar";
+//        this.senha = "hercules";
 
        // this.usuario = "Edgar";
         //this.senha = "hercules";
@@ -37,8 +37,8 @@ public class Conexao {
         //this.senha = "fernando98";   
         
         //conexao FACULDADE
-        //this.usuario = "";
-        //this.senha = "";   
+        this.usuario = "BD1621028";
+        this.senha = "BD1621028";   
         
         //conexao Cleiton
 //       this.usuario = "System";
@@ -47,7 +47,7 @@ public class Conexao {
 
     public void setConnectionString() {
 //        setar conexao Edgar
-        this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
+//        this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
 
 //        this.connectionString = "jdbc:oracle:thin:@localhost:1523:xe";
         
@@ -55,7 +55,7 @@ public class Conexao {
        // this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
         
         //setar conexao FACULDADE
-        //this.connectionString = "jdbc:oracle:thin:@Apolo:1521:xe";
+        this.connectionString = "jdbc:oracle:thin:@Apolo:1521:xe";
 
         //setar conexao Cleiton
 //       this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
