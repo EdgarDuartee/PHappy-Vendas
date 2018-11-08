@@ -216,12 +216,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         jPanelNatureza_da_OperacaoLayout.setHorizontalGroup(
             jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
-                .addComponent(lblCFOP)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
-                .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_Descricao_CFOP)
+                .addGroup(jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCFOP)
+                    .addGroup(jPanelNatureza_da_OperacaoLayout.createSequentialGroup()
+                        .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_Descricao_CFOP)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelNatureza_da_OperacaoLayout.setVerticalGroup(
@@ -642,26 +642,31 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         lblValor_Total_Nota.setText("Valor Total da Nota");
 
+        txtValor_Total_Nota.setText("0");
         txtValor_Total_Nota.setEnabled(false);
 
         jPanelProduto.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtos"));
 
         lblTotal_Produtos.setText("Total dos Produtos");
 
+        txtTotal_Produtos.setText("0");
         txtTotal_Produtos.setEnabled(false);
 
         lblTotal_desc_Produto.setText("Total de Desconto nos Produtos");
 
+        txtTotal_Desc_Produto.setText("0");
         txtTotal_Desc_Produto.setEnabled(false);
 
         jPanelICMS.setBorder(javax.swing.BorderFactory.createTitledBorder("ICMS"));
 
         lblBase_Calculo_ICMS.setText("Base Calculo ICMS");
 
+        txtBase_Calculo_ICMS.setText("0");
         txtBase_Calculo_ICMS.setEnabled(false);
 
         lblValor_ICMS.setText("Valor ICMS");
 
+        txtValor_ICMS.setText("0");
         txtValor_ICMS.setEnabled(false);
 
         javax.swing.GroupLayout jPanelICMSLayout = new javax.swing.GroupLayout(jPanelICMS);
@@ -696,6 +701,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         lblValor_PIS.setText("Valor PIS");
 
+        txtValor_PIS.setText("0");
         txtValor_PIS.setEnabled(false);
 
         lblValor_COFINS.setText("Valor COFINS");
@@ -705,6 +711,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         lblValor_IPI.setText("Valor IPI");
 
+        txtValor_IPI.setText("0");
         txtValor_IPI.setEnabled(false);
 
         javax.swing.GroupLayout jPanelPIS_COFINSLayout = new javax.swing.GroupLayout(jPanelPIS_COFINS);

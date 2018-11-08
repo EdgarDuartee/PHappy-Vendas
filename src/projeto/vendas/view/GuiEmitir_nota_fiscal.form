@@ -174,13 +174,14 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="lblCFOP" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="145" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="cbxCFOP" min="-2" pref="177" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_Descricao_CFOP" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblCFOP" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="cbxCFOP" min="-2" pref="177" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lbl_Descricao_CFOP" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1010,6 +1011,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtValor_Total_Nota">
                   <Properties>
+                    <Property name="text" type="java.lang.String" value="0"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -1070,6 +1072,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTotal_Produtos">
                       <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -1080,6 +1083,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtTotal_Desc_Produto">
                       <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="enabled" type="boolean" value="false"/>
                       </Properties>
                     </Component>
@@ -1135,6 +1139,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtBase_Calculo_ICMS">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="0"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
@@ -1145,6 +1150,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtValor_ICMS">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="0"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
@@ -1213,6 +1219,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtValor_PIS">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="0"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
@@ -1234,6 +1241,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtValor_IPI">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="0"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
