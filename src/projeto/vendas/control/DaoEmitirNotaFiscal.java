@@ -59,7 +59,7 @@ public class DaoEmitirNotaFiscal {
         return codigo;
     }
 
-    public void inserir(NotaFiscal nf) {
+    public boolean inserir(NotaFiscal nf) {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("INSERT into Nota_Fiscal(Numero, Serie, PedidoCOD, Tipo,"
@@ -78,8 +78,10 @@ public class DaoEmitirNotaFiscal {
 
 
             ps.execute();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex.toString());
+            return false;
         }
     }
 

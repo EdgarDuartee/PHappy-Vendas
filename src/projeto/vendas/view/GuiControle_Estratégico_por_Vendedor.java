@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import projeto.vendas.control.Conexao;
@@ -140,6 +141,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         jScrollPaneVendedor.setViewportView(tblVendedor);
 
         btnClienteEspecifico.setText("Selecionar Cliente Específico");
+        btnClienteEspecifico.setEnabled(false);
         btnClienteEspecifico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteEspecificoActionPerformed(evt);
@@ -378,6 +380,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         Painel_Geral.addTab("Resumo Geral de Todos os Vendedores", Painel_ResumoGeral);
 
         btnImprimir.setText("Imprimir");
+        btnImprimir.setEnabled(false);
 
         try {
             ftxtData_Inicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -463,14 +466,16 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGerentesActionPerformed
 
     private void btnClienteEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteEspecificoActionPerformed
-        /*if (tblVendedor.getSelectedRow() >= 0) {
+        if(tblVendedor.getSelectedRow() >= 0) {
             GuiControle_Estratégico_por_Vendedor_Especifico GUI
                     = new GuiControle_Estratégico_por_Vendedor_Especifico(login,
                             ((int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(), 0)));
             GUI.setVisible(true);
 
-        }*/
-        new GuiControle_Estratégico_por_Vendedor_Especifico(login, 1).setVisible(true);
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Escolha um vendedor!");
+        }
     }//GEN-LAST:event_btnClienteEspecificoActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -515,6 +520,8 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         
         txtQtdeTotalVendas.setText(String.valueOf(total));
         txtValorTotalVendas.setText(String.valueOf(valorTotal));
+        
+        btnClienteEspecifico.setEnabled(true);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

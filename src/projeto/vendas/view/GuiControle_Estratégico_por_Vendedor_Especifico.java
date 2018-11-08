@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import org.apache.thrift.server.THsHaServer;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
@@ -40,15 +41,16 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     /**
      * Creates new form GuiControle_Estratégico_por_Vendedor
      */
-    public GuiControle_Estratégico_por_Vendedor_Especifico(Login login, int Codigo) {
+    public GuiControle_Estratégico_por_Vendedor_Especifico(Login login, int codigo) {
         initComponents();
 
         this.login = login;
+        this.codigo = codigo;
+                
         GuiControle_Estratégico_por_Vendedor_Especifico.this.setTitle(
                 "Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 
-        this.codigo = 1000;
         DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
         tblClientes.setRowSorter(new TableRowSorter(modelo));
         tblVendas.setRowSorter(new TableRowSorter(modelo));

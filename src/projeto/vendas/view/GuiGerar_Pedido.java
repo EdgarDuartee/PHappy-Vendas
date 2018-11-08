@@ -233,7 +233,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAvançar))
                             .addComponent(lbl_ValorUnit))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 81, Short.MAX_VALUE))
         );
         Painel_ProdutoLayout.setVerticalGroup(
             Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -519,6 +519,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
+//GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void txtCPF_CNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPF_CNPJFocusLost

@@ -23,7 +23,8 @@ public class Conexao {
 
         //conexao Luis
 //        this.usuario = "fernando";
-//        this.senha = "fernando98";   
+//        this.senha = "fernando98"; 
+
         //conexao FACULDADE
         //this.usuario = "";
         //this.senha = "";   
@@ -37,7 +38,11 @@ public class Conexao {
 //        this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
         //setar conexao FACULDADE
         //this.connectionString = "jdbc:oracle:thin:@Apolo:1521:xe";
-    }
+
+
+        //setar conexao Cleiton
+//       this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
+   }
 
     public void setDriver() {
         this.driver = "oracle.jdbc.driver.OracleDriver";
@@ -49,8 +54,8 @@ public class Conexao {
             try {
                 Class.forName(driver);
 
-                connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1523:xe", 
-                       "Edgar", "hercules");
+                connection = DriverManager.getConnection(connectionString, 
+                       usuario,senha);
                 System.out.println("Conexao OK");
             } catch (Exception ex) {
                 System.out.println("Falha na Conexao");

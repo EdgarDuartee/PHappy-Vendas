@@ -98,7 +98,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="92" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="11" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -175,7 +175,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="lblCFOP" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="145" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="cbxCFOP" min="-2" pref="177" max="-2" attributes="0"/>
@@ -231,7 +231,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="null"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -660,22 +659,17 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblRua_Remetente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
-                                  <Component id="lblNumero_Remetente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="115" max="32767" attributes="0"/>
-                                  <Component id="lblComplemento_Remetente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                                   <Component id="txtBairro_Remetente" alignment="0" pref="196" max="32767" attributes="0"/>
                                                   <Component id="txtRua_Remetente" alignment="0" max="32767" attributes="0"/>
                                               </Group>
-                                              <Component id="lblBairro_Remetente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="lblBairro_Remetente" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -692,10 +686,26 @@
                                               <Component id="txtCidade_Remetente" alignment="0" pref="154" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="lblUF_Remetente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtUF_Remetente" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblRua_Remetente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
+                                          <Component id="lblNumero_Remetente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="115" max="32767" attributes="0"/>
+                                          <Component id="lblComplemento_Remetente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblUF_Remetente" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -726,11 +736,11 @@
                                       <Component id="ftxtCEP_Remetente" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtCidade_Remetente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lblUF_Remetente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="8" max="32767" attributes="0"/>
-                                  <Component id="txtUF_Remetente" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lblUF_Remetente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtUF_Remetente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1213,6 +1223,7 @@
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtValor_COFINS">
                           <Properties>
+                            <Property name="text" type="java.lang.String" value="0"/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
