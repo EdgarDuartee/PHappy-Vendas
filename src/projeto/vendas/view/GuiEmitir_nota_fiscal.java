@@ -1111,8 +1111,9 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 txtValor_ICMS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIcms()) + Float.parseFloat(txtValor_ICMS.getText())) + "");
                 txtValor_IPI.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIpi()) + Float.parseFloat(txtValor_IPI.getText())) + "");
                 txtValor_PIS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoPis()) + Float.parseFloat(txtValor_PIS.getText())) + "");
+                
             }
-
+        txtValor_Total_Nota.setText("" + (Float.parseFloat(txtValor_IPI.getText()) + recebePedido.getTotal()));
         }
 
 
