@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -617,13 +618,16 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
     private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
         try {
-            conexao.executaSQL("select * from p_fisica");
-            JRResultSetDataSource relatResult = new JRResultSetDataSource(conexao.res);
+//            conexao.executaSQL("select * from p_fisica where codigo = " 
+//                    + (String) model.getValueAt(tblClientes.getSelectedRow(),0));
+//            JRResultSetDataSource relatResult = new JRResultSetDataSource(conexao.res);
+            Map parameters = new HashMap();
+            parameters.put("codigo",(String) model.getValueAt(tblClientes.getSelectedRow(),0));
             JasperPrint jpPrint;
             jpPrint = JasperFillManager.fillReport("relatorios/EspelhoCliente.jasper",
-                    new HashMap(), relatResult);
+                    parameters,conexao.conectar());
             
-            JasperViewer jv = new JasperViewer(jpPrint);
+            JasperViewer jv = new JasperViewer(jpPrint,false);
             jv.setVisible(true);
             
         } catch (JRException ex) {
