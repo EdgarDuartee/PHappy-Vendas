@@ -28,116 +28,69 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         Grupo_Cliente = new javax.swing.ButtonGroup();
-        Painel_Controle_Estratégico = new javax.swing.JPanel();
-        Painel_Pesquisa_Cliente = new javax.swing.JPanel();
-        rbtnNome_Cliente = new javax.swing.JRadioButton();
-        rbtnCodigo_Cliente = new javax.swing.JRadioButton();
-        cbxBusca_Cliente = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        Painel_Cliente = new javax.swing.JScrollPane();
+        tblCliente = new javax.swing.JTable();
         Painel_Opções_de_Filtro = new javax.swing.JPanel();
-        cbxFiltros_Gerais = new javax.swing.JComboBox<>();
-        txtMaior_Que = new javax.swing.JTextField();
-        lblMaior_Que = new javax.swing.JLabel();
-        lblMenor_Que = new javax.swing.JLabel();
-        txtMenor_Que = new javax.swing.JTextField();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Painel_Período_Pesquisa = new javax.swing.JPanel();
         lblData_Inicial = new javax.swing.JLabel();
         lblData_Final = new javax.swing.JLabel();
         ftxtData_Inicial = new javax.swing.JFormattedTextField();
         ftxtData_Final = new javax.swing.JFormattedTextField();
+        jButton5 = new javax.swing.JButton();
+        Painel_Pesquisa_Cliente4 = new javax.swing.JPanel();
+        rbtnNome_Cliente4 = new javax.swing.JRadioButton();
+        rbtnCodigo_Cliente4 = new javax.swing.JRadioButton();
+        jTextField5 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jToggleButton6 = new javax.swing.JToggleButton();
         btnVoltar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        Painel_Tabela_Cliente = new javax.swing.JPanel();
-        Painel_Cliente = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico por Cliente");
+        setBackground(new java.awt.Color(102, 153, 255));
         setResizable(false);
 
-        Painel_Pesquisa_Cliente.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa Cliente"));
+        jPanel1.setBackground(new java.awt.Color(54, 215, 183));
 
-        Grupo_Cliente.add(rbtnNome_Cliente);
-        rbtnNome_Cliente.setText("Nome");
-
-        Grupo_Cliente.add(rbtnCodigo_Cliente);
-        rbtnCodigo_Cliente.setText("Código");
-
-        javax.swing.GroupLayout Painel_Pesquisa_ClienteLayout = new javax.swing.GroupLayout(Painel_Pesquisa_Cliente);
-        Painel_Pesquisa_Cliente.setLayout(Painel_Pesquisa_ClienteLayout);
-        Painel_Pesquisa_ClienteLayout.setHorizontalGroup(
-            Painel_Pesquisa_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Pesquisa_ClienteLayout.createSequentialGroup()
-                .addComponent(rbtnNome_Cliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbtnCodigo_Cliente)
-                .addGap(30, 30, 30))
-            .addGroup(Painel_Pesquisa_ClienteLayout.createSequentialGroup()
-                .addComponent(cbxBusca_Cliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        Painel_Pesquisa_ClienteLayout.setVerticalGroup(
-            Painel_Pesquisa_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Pesquisa_ClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Painel_Pesquisa_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnNome_Cliente)
-                    .addComponent(rbtnCodigo_Cliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(cbxBusca_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções Filtros Gerais"));
-
-        lblMaior_Que.setText("Maior Que");
-
-        lblMenor_Que.setText("Menor Que");
-
-        txtMenor_Que.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMenor_QueActionPerformed(evt);
+        tblCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Cliente", "Média das Compras", "Freqüencia de Compras", "Produto mais Comprado", "Produto menos Comprado"
             }
-        });
+        ));
+        Painel_Cliente.setViewportView(tblCliente);
 
-        javax.swing.GroupLayout Painel_Opções_de_FiltroLayout = new javax.swing.GroupLayout(Painel_Opções_de_Filtro);
-        Painel_Opções_de_Filtro.setLayout(Painel_Opções_de_FiltroLayout);
-        Painel_Opções_de_FiltroLayout.setHorizontalGroup(
-            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addComponent(cbxFiltros_Gerais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addComponent(lblMaior_Que)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addComponent(txtMaior_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenor_Que)
-                    .addComponent(txtMenor_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-        Painel_Opções_de_FiltroLayout.setVerticalGroup(
-            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbxFiltros_Gerais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMaior_Que)
-                    .addComponent(lblMenor_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaior_Que, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMenor_Que, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
-        );
+        Painel_Opções_de_Filtro.setBackground(new java.awt.Color(255, 255, 255));
+        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa Coletiva"));
 
+        jToggleButton2.setText("OFF");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frequência de Compra dos Clientes." }));
+        jComboBox1.setToolTipText("Lista de Filtros");
+
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
+        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+
+        jLabel2.setText("Maior que:");
+
+        jLabel3.setText("Menor que:");
+
+        Painel_Período_Pesquisa.setBackground(new java.awt.Color(255, 255, 255));
         Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Período da Pesquisa"));
 
         lblData_Inicial.setText("Data Inicial");
@@ -149,40 +102,28 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtData_InicialActionPerformed(evt);
-            }
-        });
 
         try {
             ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Final.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftxtData_FinalActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout Painel_Período_PesquisaLayout = new javax.swing.GroupLayout(Painel_Período_Pesquisa);
         Painel_Período_Pesquisa.setLayout(Painel_Período_PesquisaLayout);
         Painel_Período_PesquisaLayout.setHorizontalGroup(
             Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblData_Inicial))
+                .addGap(33, 33, 33)
+                .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addComponent(lblData_Inicial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblData_Final)
-                        .addGap(68, 68, 68))))
+                        .addGap(3, 3, 3)
+                        .addComponent(lblData_Final)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_Período_PesquisaLayout.setVerticalGroup(
             Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +136,116 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        jButton5.setText("Pesquisar");
+
+        javax.swing.GroupLayout Painel_Opções_de_FiltroLayout = new javax.swing.GroupLayout(Painel_Opções_de_Filtro);
+        Painel_Opções_de_Filtro.setLayout(Painel_Opções_de_FiltroLayout);
+        Painel_Opções_de_FiltroLayout.setHorizontalGroup(
+            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jToggleButton2)
+                .addGap(148, 148, 148))
+        );
+        Painel_Opções_de_FiltroLayout.setVerticalGroup(
+            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jToggleButton2)
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5)
+                        .addGap(22, 22, 22))
+                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        Painel_Pesquisa_Cliente4.setBackground(new java.awt.Color(255, 255, 255));
+        Painel_Pesquisa_Cliente4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Individual", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        rbtnNome_Cliente4.setBackground(new java.awt.Color(255, 255, 255));
+        Grupo_Cliente.add(rbtnNome_Cliente4);
+        rbtnNome_Cliente4.setText("Nome");
+
+        rbtnCodigo_Cliente4.setBackground(new java.awt.Color(255, 255, 255));
+        Grupo_Cliente.add(rbtnCodigo_Cliente4);
+        rbtnCodigo_Cliente4.setText("Código");
+
+        jTextField5.setText("Luiz Fernando Neves da Rosa");
+
+        jButton6.setText("Pesquisar");
+
+        jLabel7.setText("Cliente");
+
+        jToggleButton6.setBackground(new java.awt.Color(153, 204, 0));
+        jToggleButton6.setText("ON");
+        jToggleButton6.setAutoscrolls(true);
+
+        javax.swing.GroupLayout Painel_Pesquisa_Cliente4Layout = new javax.swing.GroupLayout(Painel_Pesquisa_Cliente4);
+        Painel_Pesquisa_Cliente4.setLayout(Painel_Pesquisa_Cliente4Layout);
+        Painel_Pesquisa_Cliente4Layout.setHorizontalGroup(
+            Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton6))
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                        .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                                .addComponent(rbtnNome_Cliente4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtnCodigo_Cliente4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 81, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        Painel_Pesquisa_Cliente4Layout.setVerticalGroup(
+            Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7))
+                    .addComponent(jToggleButton6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(rbtnNome_Cliente4)
+                    .addComponent(rbtnCodigo_Cliente4))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         btnVoltar.setText("Voltar");
@@ -205,107 +255,55 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setText("Buscar");
-
-        javax.swing.GroupLayout Painel_Tabela_ClienteLayout = new javax.swing.GroupLayout(Painel_Tabela_Cliente);
-        Painel_Tabela_Cliente.setLayout(Painel_Tabela_ClienteLayout);
-        Painel_Tabela_ClienteLayout.setHorizontalGroup(
-            Painel_Tabela_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        Painel_Tabela_ClienteLayout.setVerticalGroup(
-            Painel_Tabela_ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Cliente", "Código da Compra", "Total", "Data", "Média das Compras", "Freqüencia de Compras", "Produto mais Comprado", "Produto menos Comprado"
-            }
-        ));
-        Painel_Cliente.setViewportView(tblCliente);
-
-        javax.swing.GroupLayout Painel_Controle_EstratégicoLayout = new javax.swing.GroupLayout(Painel_Controle_Estratégico);
-        Painel_Controle_Estratégico.setLayout(Painel_Controle_EstratégicoLayout);
-        Painel_Controle_EstratégicoLayout.setHorizontalGroup(
-            Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btnVoltar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnVoltar)
-                        .addGap(91, 91, 91)
-                        .addComponent(btnBuscar))
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Painel_Pesquisa_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Tabela_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Painel_Cliente)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        Painel_Controle_EstratégicoLayout.setVerticalGroup(
-            Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Painel_Tabela_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                                .addComponent(Painel_Pesquisa_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnVoltar)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoltar))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMenor_QueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenor_QueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenor_QueActionPerformed
-
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void ftxtData_InicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtData_InicialActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtData_InicialActionPerformed
-
-    private void ftxtData_FinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtData_FinalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftxtData_FinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,25 +343,28 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Grupo_Cliente;
     private javax.swing.JScrollPane Painel_Cliente;
-    private javax.swing.JPanel Painel_Controle_Estratégico;
     private javax.swing.JPanel Painel_Opções_de_Filtro;
     private javax.swing.JPanel Painel_Período_Pesquisa;
-    private javax.swing.JPanel Painel_Pesquisa_Cliente;
-    private javax.swing.JPanel Painel_Tabela_Cliente;
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JPanel Painel_Pesquisa_Cliente4;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> cbxBusca_Cliente;
-    private javax.swing.JComboBox<String> cbxFiltros_Gerais;
     private javax.swing.JFormattedTextField ftxtData_Final;
     private javax.swing.JFormattedTextField ftxtData_Inicial;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
-    private javax.swing.JLabel lblMaior_Que;
-    private javax.swing.JLabel lblMenor_Que;
-    private javax.swing.JRadioButton rbtnCodigo_Cliente;
-    private javax.swing.JRadioButton rbtnNome_Cliente;
+    private javax.swing.JRadioButton rbtnCodigo_Cliente4;
+    private javax.swing.JRadioButton rbtnNome_Cliente4;
     private javax.swing.JTable tblCliente;
-    private javax.swing.JTextField txtMaior_Que;
-    private javax.swing.JTextField txtMenor_Que;
     // End of variables declaration//GEN-END:variables
 }
