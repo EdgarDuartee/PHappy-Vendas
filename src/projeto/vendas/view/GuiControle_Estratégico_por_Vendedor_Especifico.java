@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import net.sf.jasperreports.engine.JRException;
@@ -617,24 +618,44 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnVisualizarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarClienteActionPerformed
-        try {
+        String codCli = "";
+        Map parameters = new HashMap();
+        if (tblClientes.getSelectedRow() >= 0) {
+            codCli = (String) model1.getValueAt(tblClientes.getSelectedRow(), 0);
+            if (codCli.substring(0, 2).equals("PF")) {
+                try {
 //            conexao.executaSQL("select * from p_fisica where codigo = " 
 //                    + (String) model.getValueAt(tblClientes.getSelectedRow(),0));
 //            JRResultSetDataSource relatResult = new JRResultSetDataSource(conexao.res);
-            Map parameters = new HashMap();
-            parameters.put("codigo",(String) model.getValueAt(tblClientes.getSelectedRow(),0));
-            JasperPrint jpPrint;
-            jpPrint = JasperFillManager.fillReport("relatorios/EspelhoCliente.jasper",
-                    parameters,conexao.conectar());
-            
-            JasperViewer jv = new JasperViewer(jpPrint,false);
-            jv.setVisible(true);
-            
-        } catch (JRException ex) {
-            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+
+                    parameters.put("codigo", (String) model1.getValueAt(tblClientes.getSelectedRow(), 0));
+                    JasperPrint jpPrint;
+                    jpPrint = JasperFillManager.fillReport("relatorios/EspelhoClientePF.jasper",
+                            parameters, conexao.conectar());
+
+                    JasperViewer jv = new JasperViewer(jpPrint, false);
+                    jv.setVisible(true);
+
+                } catch (JRException ex) {
+                    Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                try {
+                    parameters.put("codigo", (String) model1.getValueAt(tblClientes.getSelectedRow(), 0));
+                    JasperPrint jpPrint;
+                    jpPrint = JasperFillManager.fillReport("relatorios/EspelhoClientePJ.jasper",
+                            parameters, conexao.conectar());
+
+                    JasperViewer jv = new JasperViewer(jpPrint, false);
+                    jv.setVisible(true);
+
+                } catch (JRException ex) {
+                    Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha um cliente!");
         }
-
-
     }//GEN-LAST:event_btnVisualizarClienteActionPerformed
 
     private void btnFiltrarDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarDataActionPerformed
@@ -709,6 +730,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
     private DaoGerarPedido daoGerarPedido = null;
     private Pedido pedido = null;
     //private String nome;
+    private DefaultTableModel model1 = null;
     private DefaultTableModel model = null;
     private String legendaSituacao = null;
 
@@ -799,7 +821,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
     public void preencherTblClientes(ArrayList<PessoaFisica> clientesPF, ArrayList<PessoaJuridica> clientesPJ) {
         if (flagLimpaTabela1 == 1) {
-            model.setRowCount(0);
+            model1.setRowCount(0);
         }
         String ativo = "";
         String cpfcnpj = "";
@@ -823,8 +845,8 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 cpfcnpj,
                 ativo};
 
-            model = (DefaultTableModel) tblClientes.getModel();
-            model.addRow(row);
+            model1 = (DefaultTableModel) tblClientes.getModel();
+            model1.addRow(row);
             flagLimpaTabela1 = 1;
         }
         for (int x = 0; x < clientesPJ.size(); x++) {
@@ -846,8 +868,8 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 cpfcnpj,
                 ativo};
 
-            model = (DefaultTableModel) tblClientes.getModel();
-            model.addRow(row);
+            model1 = (DefaultTableModel) tblClientes.getModel();
+            model1.addRow(row);
             flagLimpaTabela1 = 1;
         }
         txtClientesAtivos.setText(String.valueOf(a));

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EspelhoCliente" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0b97138-2e7b-41c5-88f2-51e3cfe8bc13">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EspelhoClientePF" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0b97138-2e7b-41c5-88f2-51e3cfe8bc13">
 	<property name="ireport.zoom" value="1.366026910730141"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Titulo" fontName="Arial Black" fontSize="20"/>
 	<style name="Coluna" fontName="Arial" fontSize="12" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="detalhes" fontName="Arial" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -40,6 +40,7 @@
 	<field name="DTNASC" class="java.lang.String"/>
 	<field name="CIDADE" class="java.lang.String"/>
 	<field name="CPF" class="java.lang.String"/>
+	<variable name="situacao" class="java.lang.String"/>
 	<title>
 		<band height="76" splitType="Stretch">
 			<rectangle>
@@ -109,10 +110,6 @@
 				<reportElement style="Labels" x="222" y="40" width="53" height="20" uuid="a59e40be-c5e3-480a-a842-a2831f1c7f02"/>
 				<text><![CDATA[Situação:]]></text>
 			</staticText>
-			<textField>
-				<reportElement style="Fildes" x="275" y="40" width="100" height="20" uuid="4f271cac-2902-4291-8989-aad33c5ff44c"/>
-				<textFieldExpression><![CDATA[$F{ATIVO}]]></textFieldExpression>
-			</textField>
 			<frame>
 				<reportElement mode="Opaque" x="0" y="60" width="555" height="20" backcolor="#666666" uuid="79b63b9b-01d9-4928-b15e-9ad3ab48116b"/>
 			</frame>
@@ -196,7 +193,7 @@
 				<text><![CDATA[E-Mail:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Fildes" x="55" y="182" width="100" height="20" uuid="7513059c-66c9-4c10-bf10-365a5604b3ca"/>
+				<reportElement style="Fildes" x="55" y="182" width="337" height="20" uuid="7513059c-66c9-4c10-bf10-365a5604b3ca"/>
 				<textFieldExpression><![CDATA[$F{EMAIL}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -210,6 +207,10 @@
 			<frame>
 				<reportElement mode="Opaque" x="0" y="202" width="555" height="20" backcolor="#666666" uuid="8610948b-c2fa-46c5-bc8a-a204517e7bc4"/>
 			</frame>
+			<textField>
+				<reportElement x="275" y="39" width="100" height="20" uuid="8264dffe-d55a-4e8f-9464-f9a049e542cf"/>
+				<textFieldExpression><![CDATA[$F{ATIVO}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<lastPageFooter>
