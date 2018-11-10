@@ -71,7 +71,7 @@ public class DaoEmitirNotaFiscal {
             ps.setInt(3, nf.getPedidoCod());
             ps.setString(4, nf.getTipo());
             ps.setString(5, nf.getCFOP());
-            ps.setFloat(6, nf.getTotal());
+            ps.setDouble(6, nf.getTotal());
             ps.setString(7, nf.getDataEmissao());
             ps.setString(8, nf.getHoraEmissao());
             ps.setInt(9, 1);
@@ -98,7 +98,7 @@ public class DaoEmitirNotaFiscal {
                         rs.getInt("PedidoCod"),
                         rs.getString("Tipo"),
                         rs.getString("CFOP"),
-                        rs.getFloat("Total"),
+                        rs.getDouble("Total"),
                         rs.getString("DataEmissao"),
                         rs.getString("HoraEmissao"),
                         rs.getInt("TranspCod"));

@@ -20,6 +20,14 @@ public class GuiControleEstrategicoVendedorTBVendedoresGeral {
     private String ativo;
     private String dtInatividade;
 
+    public double getValorVendasPeriodo() {
+        return valorVendasPeriodo;
+    }
+
+    public void setValorVendasPeriodo(double valorVendasPeriodo) {
+        this.valorVendasPeriodo = valorVendasPeriodo;
+    }
+
     public GuiControleEstrategicoVendedorTBVendedoresGeral() {
     }
 
@@ -61,14 +69,6 @@ public class GuiControleEstrategicoVendedorTBVendedoresGeral {
 
     public void setQtdeVendasPeriodo(int qtdeVendasPeriodo) {
         this.qtdeVendasPeriodo = qtdeVendasPeriodo;
-    }
-
-    public double getValorVendasPeriodo() {
-        return valorVendasPeriodo;
-    }
-
-    public void setValorVendasPeriodo(double valorVendasPeriodo) {
-        this.valorVendasPeriodo = valorVendasPeriodo;
     }
 
     public int getQtdeClientes() {

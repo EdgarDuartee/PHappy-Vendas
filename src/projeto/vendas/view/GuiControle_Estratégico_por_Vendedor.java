@@ -7,6 +7,8 @@ package projeto.vendas.view;
 
 import static java.lang.Integer.parseInt;
 import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -153,6 +155,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        tblVendedor.setToolTipText("");
         jScrollPaneVendedor.setViewportView(tblVendedor);
 
         btnClienteEspecifico.setText("Selecionar Cliente Específico");
@@ -533,12 +536,17 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         int total = 0;
         double valorTotal = 0;
         for (int i = 0; i < tblVendedor.getRowCount(); i++) {
-            total = total + (int) model.getValueAt(i, 4);
-            valorTotal = valorTotal + (double) model.getValueAt(i, 5);
+            total = total + (int) model.getValueAt(i, 4);;
+            
+            valorTotal = valorTotal + (double)model.getValueAt(i,5);
         }
 
         txtQtdeTotalVendas.setText(String.valueOf(total));
-        txtValorTotalVendas.setText("R$ " + String.valueOf(valorTotal) + " Reais");
+
+        NumberFormat calculo;
+        calculo = NumberFormat.getInstance();
+        calculo.setMinimumFractionDigits(2);
+        txtValorTotalVendas.setText("R$ " + calculo.format(valorTotal) + " Reais");
 
         btnClienteEspecifico.setEnabled(true);
 
@@ -563,6 +571,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             print.setDtCadastro((String) tblVendedor.getValueAt(x, 3));
             print.setQtdeVendasPeriodo((int) tblVendedor.getValueAt(x, 4));
             print.setValorVendasPeriodo((double) tblVendedor.getValueAt(x, 5));
+            System.out.println(print.getValorVendasPeriodo());
             print.setQtdeClientes((int) tblVendedor.getValueAt(x, 6));
             print.setAtivo((String) tblVendedor.getValueAt(x, 7));
             print.setDtInatividade((String) tblVendedor.getValueAt(x, 8));
@@ -582,7 +591,6 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         parameters.put("i", txtVendInativos.getText());
         parameters.put("dtinicio", ftxtData_Inicial.getText());
         parameters.put("dtfinal", ftxtData_Final.getText());
-        
 
         JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
         try {
@@ -644,6 +652,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         });
     }
 
+    private static DecimalFormat formatoDinheiro = new DecimalFormat("#.##");
     private ArrayList<Vendedor> ListarVendedores;
     private ArrayList<NotaFiscal> ListarNotaFiscal;
     private static Login login = null;
@@ -826,8 +835,12 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                             totalVendas = (int) tblVendedor.getValueAt(c, 4);
                             totalVendas++;
                             tblVendedor.getModel().setValueAt(totalVendas, c, 4);
-                            valorTotalVendas = (double) tblVendedor.getValueAt(c, 5);
-                            valorTotalVendas = valorTotalVendas + ListarNotaFiscal.get(x).getTotal();
+                            valorTotalVendas = (double)model.getValueAt(c, 5);
+                            System.out.println((double) ListarNotaFiscal.get(x).getTotal());
+                            valorTotalVendas = valorTotalVendas + (double) ListarNotaFiscal.get(x).getTotal();
+                                                       System.out.println(valorTotalVendas);
+                          
+
                             tblVendedor.getModel().setValueAt(valorTotalVendas, c, 5);
                         }
                     }
