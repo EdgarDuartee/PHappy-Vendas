@@ -10,9 +10,19 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoEmitirNotaFiscal;
 import projeto.vendas.control.DaoGerarPedido;
@@ -381,6 +391,11 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
 
         btnImprimir.setText("Imprimir");
         btnImprimir.setEnabled(false);
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
 
         try {
             ftxtData_Inicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -466,14 +481,13 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGerentesActionPerformed
 
     private void btnClienteEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteEspecificoActionPerformed
-        if(tblVendedor.getSelectedRow() >= 0) {
+        if (tblVendedor.getSelectedRow() >= 0) {
             GuiControle_Estratégico_por_Vendedor_Especifico GUI
                     = new GuiControle_Estratégico_por_Vendedor_Especifico(login,
-                            ((int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(), 0)),ListarNotaFiscal);
+                            ((int) tblVendedor.getValueAt(tblVendedor.getSelectedRow(), 0)), ListarNotaFiscal);
             GUI.setVisible(true);
 
-        }else
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Escolha um vendedor!");
         }
     }//GEN-LAST:event_btnClienteEspecificoActionPerformed
@@ -517,10 +531,10 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             total = total + (int) model.getValueAt(i, 4);
             valorTotal = valorTotal + (double) model.getValueAt(i, 5);
         }
-        
+
         txtQtdeTotalVendas.setText(String.valueOf(total));
         txtValorTotalVendas.setText(String.valueOf(valorTotal));
-        
+
         btnClienteEspecifico.setEnabled(true);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -528,9 +542,39 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        /*List lista = new ArrayList();
+        for (int x = 0; x < tblVendedor.getRowCount();x++){
+            model print = tblVendedor.getModel();
+            lista.add(print);
+        }
+//        tblVendedor print = new tblVendedor();
+        
+        String codCli;
+        Map<String, Object> parameters = new HashMap<String, Object>();
+        if (tblVendedor.getSelectedRow() >= 0) {
+            codCli = (String) model.getValueAt(tblVendedor.getSelectedRow(), 0);
+            if (codCli.substring(0, 2).equals("PF")) {
+                try {
+                    JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(tblVendedor);
+
+                    parameters.put("Lista", lista);
+                    JasperPrint jpPrint;
+                    jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorVendedor.jasper",
+                            parameters, ds);
+
+                    JasperViewer jv = new JasperViewer(jpPrint, false);
+                    jv.setVisible(true);
+
+                } catch (JRException ex) {
+                    Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        } */  
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
