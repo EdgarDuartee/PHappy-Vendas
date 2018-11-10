@@ -462,13 +462,18 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             txt_total.setText("0.00");
             tblProduto.removeAll();
             txtCPF_CNPJ.requestFocus();
+            txtCPF_CNPJ.setText("");
+            txt_nomeCliente.setText("");
+
+            cbxProduto.setSelectedIndex(0);
+            cbxQuantidade.setValue(0);
+
             btnLimpar.setEnabled(false);
             int limite = tblProduto.getModel().getRowCount();
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
             for (int i = 0; i < limite; i++) {
                 model.removeRow(0);
             }
-
         }
 
     }//GEN-LAST:event_btnEnviar_PedidoActionPerformed
@@ -476,65 +481,70 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
         txtCPF_CNPJ.requestFocus();
         if (txtCPF_CNPJ.getText().length() == 11) {
-            pessoaFisica = daoPFisica.consultaCPF(txtCPF_CNPJ.getText());
-            if (pessoaFisica == null && ValidaCPF.validaCpf(txtCPF_CNPJ.getText()) == true) {
-                JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+            if (ValidaCPF.validaCpf(txtCPF_CNPJ.getText()) == true) {
+                pessoaFisica = daoPFisica.consultaCPF(txtCPF_CNPJ.getText());
+                if (pessoaFisica == null) {
+                    JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+                }
+                if (pessoaFisica != null) {
+                    cbxQuantidade.requestFocus();
+                    txt_nomeCliente.setText(pessoaFisica.getNome());
+                    lbl_codigoCliente.setText(pessoaFisica.getCodigo());
+                    btnAvançar.setEnabled(true);
+                    cbxProduto.setEnabled(true);
+                    cbxQuantidade.setEnabled(true);
+//                btnEnviar_Pedido.setEnabled(true);
+                    btn_consultar.setEnabled(false);
+                    txtCPF_CNPJ.setEnabled(false);
+                    lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
+                    btnLimpar.setEnabled(true);
+                    cbxQuantidade.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "CPF Inválido!");
             }
-            if (pessoaFisica != null) {
-                cbxQuantidade.requestFocus();
-                txt_nomeCliente.setText(pessoaFisica.getNome());
-                lbl_codigoCliente.setText(pessoaFisica.getCodigo());
+        } else if (txtCPF_CNPJ.getText().length() == 14) {
+            if (ValidaCNPJ.validaCnpj(txtCPF_CNPJ.getText()) == true) {
+                pessoaJuridica = daoPJrudica.consultaCNPJ(txtCPF_CNPJ.getText());
+                if (pessoaJuridica == null) {
+                    JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
+                }
+                txt_nomeCliente.setText(pessoaJuridica.getNome());
+                lbl_codigoCliente.setText(pessoaJuridica.getCodigo());
                 btnAvançar.setEnabled(true);
                 cbxProduto.setEnabled(true);
                 cbxQuantidade.setEnabled(true);
-//                btnEnviar_Pedido.setEnabled(true);
+//            btnEnviar_Pedido.setEnabled(true);
                 btn_consultar.setEnabled(false);
                 txtCPF_CNPJ.setEnabled(false);
                 lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
                 btnLimpar.setEnabled(true);
                 cbxQuantidade.requestFocus();
-            }
-
-        } else if (txtCPF_CNPJ.getText().length() == 14) {
-            pessoaJuridica = daoPJrudica.consultaCNPJ(txtCPF_CNPJ.getText());
-            if (pessoaJuridica == null && ValidaCNPJ.validaCnpj(txtCPF_CNPJ.getText()) == true) {
-                JOptionPane.showMessageDialog(null, "Cliente Não Cadastrado");
             } else {
-                JOptionPane.showMessageDialog(null, "CNPJ Inválido");
+                JOptionPane.showMessageDialog(null, "CNPJ Inválido!");
             }
-            txt_nomeCliente.setText(pessoaJuridica.getNome());
-            lbl_codigoCliente.setText(pessoaJuridica.getCodigo());
-            btnAvançar.setEnabled(true);
-            cbxProduto.setEnabled(true);
-            cbxQuantidade.setEnabled(true);
-//            btnEnviar_Pedido.setEnabled(true);
-            btn_consultar.setEnabled(false);
-            txtCPF_CNPJ.setEnabled(false);
-            lbl_AvisoCPF_CNPJ.setText("Cliente Localizado");
-            btnLimpar.setEnabled(true);
-            cbxQuantidade.requestFocus();
-
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Digite um CPF ou CNPJ válido!");
         }
     }//GEN-LAST:event_btn_consultarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
-//GuiGerar_Pedido.this.setTitle(":Oiiii edgar");
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void txtCPF_CNPJFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCPF_CNPJFocusLost
-        if (txtCPF_CNPJ.getText().length() <= 11) {
+        /*if (txtCPF_CNPJ.getText().length() <= 11) {
             if (ValidaCPF.validaCpf(txtCPF_CNPJ.getText()) == false) {
                 JOptionPane.showMessageDialog(null, "CPF Inválido");
             }
         }
         if (txtCPF_CNPJ.getText().length() > 11) {
-
             if (ValidaCNPJ.validaCnpj(txtCPF_CNPJ.getText()) == false) {
                 JOptionPane.showMessageDialog(null, "CNPJ Inválido");
             }
         }
-
+*/
     }//GEN-LAST:event_txtCPF_CNPJFocusLost
 
     private void cbxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProdutoItemStateChanged
