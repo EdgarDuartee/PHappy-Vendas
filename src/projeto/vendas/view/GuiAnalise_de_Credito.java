@@ -5,7 +5,10 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -41,6 +44,10 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 "         " +"Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblPedido.getModel();
         tblPedido.setRowSorter(new TableRowSorter(modelo));
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -79,6 +86,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         btnReprovar = new javax.swing.JButton();
         JScrollPanePedido = new javax.swing.JScrollPane();
         tblPedido = new javax.swing.JTable();
+        lblAnalise_de_Credito = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Análise de Crédito");
@@ -89,11 +97,13 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         });
 
-        jPanel_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa"));
+        jPanel_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblPesquisa.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblPesquisa.setText("Pesquisar por:");
 
         buttonGroup1.add(rbtnNumero_do_Pedido);
+        rbtnNumero_do_Pedido.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         rbtnNumero_do_Pedido.setSelected(true);
         rbtnNumero_do_Pedido.setText("N° do Pedido");
         rbtnNumero_do_Pedido.setEnabled(false);
@@ -106,11 +116,13 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         txtPesquisaPedido.setEnabled(false);
 
         buttonGroup1.add(rbtnNumero_do_Cliente);
+        rbtnNumero_do_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         rbtnNumero_do_Cliente.setText("N° do Cliente");
         rbtnNumero_do_Cliente.setEnabled(false);
 
         txtPesquisaCliente.setEnabled(false);
 
+        cbxHabilitaPesq1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         cbxHabilitaPesq1.setText("Habilitar pesquisa por Pedido/CLiente");
         cbxHabilitaPesq1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -124,16 +136,16 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             jPanel_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                         .addComponent(rbtnNumero_do_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPesquisaCliente))
                     .addComponent(lblPesquisa)
                     .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                         .addComponent(rbtnNumero_do_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPesquisaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPesquisaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                 .addComponent(cbxHabilitaPesq1)
@@ -156,8 +168,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel_Complemento_da_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Complemento da Pesquisa"));
+        jPanel_Complemento_da_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Complemento da Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblFiltro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblFiltro.setText("Filtrar por:");
 
         cbxFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Aprovados", "Reprovados", "Pendentes", "Concluido" }));
@@ -170,8 +183,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel_Complemento_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFiltro)
-                    .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cbxFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel_Complemento_da_PesquisaLayout.setVerticalGroup(
             jPanel_Complemento_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,10 +196,12 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel_Período_da_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Período da Pesquisa"));
+        jPanel_Período_da_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Período da Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblData_Inicial.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Inicial.setText("Data Inicial");
 
+        lblData_Final.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Final.setText("Data Final");
 
         try {
@@ -194,27 +209,28 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.setText("01/01/2000");
+        ftxtData_Inicial.setText("");
 
         try {
             ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ftxtData_Final.setText("");
 
         javax.swing.GroupLayout jPanel_Período_da_PesquisaLayout = new javax.swing.GroupLayout(jPanel_Período_da_Pesquisa);
         jPanel_Período_da_Pesquisa.setLayout(jPanel_Período_da_PesquisaLayout);
         jPanel_Período_da_PesquisaLayout.setHorizontalGroup(
             jPanel_Período_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_Período_da_PesquisaLayout.createSequentialGroup()
-                .addGroup(jPanel_Período_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblData_Inicial, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGroup(jPanel_Período_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblData_Inicial)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel_Período_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblData_Final)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel_Período_da_PesquisaLayout.setVerticalGroup(
             jPanel_Período_da_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,6 +246,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,6 +255,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,16 +264,20 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         });
 
+        lblUsuario.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblUsuario.setText("Usuário:");
 
         txtUsuario.setBorder(null);
         txtUsuario.setEnabled(false);
 
+        lblVendedor.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblVendedor.setText("| Vendedor:");
 
         txtVendedor.setBorder(null);
         txtVendedor.setEnabled(false);
 
+        btnAprovar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnAprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Aprovar.png"))); // NOI18N
         btnAprovar.setText("Aprovar Pedido");
         btnAprovar.setEnabled(false);
         btnAprovar.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +286,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         });
 
+        btnReprovar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnReprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Reprovar.png"))); // NOI18N
         btnReprovar.setText("Reprovar Pedido");
         btnReprovar.setEnabled(false);
         btnReprovar.addActionListener(new java.awt.event.ActionListener() {
@@ -310,45 +336,47 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         });
         JScrollPanePedido.setViewportView(tblPedido);
 
+        lblAnalise_de_Credito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Analise de credito.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel_Analise_de_CreditoLayout = new javax.swing.GroupLayout(jPanel_Analise_de_Credito);
         jPanel_Analise_de_Credito.setLayout(jPanel_Analise_de_CreditoLayout);
         jPanel_Analise_de_CreditoLayout.setHorizontalGroup(
             jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                .addContainerGap(79, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                        .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(180, 180, 180)
+                        .addComponent(btnVoltar)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReprovar)
+                        .addGap(47, 47, 47)
+                        .addComponent(btnAprovar)
+                        .addGap(30, 30, 30))
+                    .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
+                        .addComponent(lblAnalise_de_Credito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
+                                .addComponent(lblUsuario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblVendedor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
                                 .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel_Complemento_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(btnVoltar)))
+                                        .addComponent(jPanel_Complemento_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jPanel_Período_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jPanel_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnBuscar)
-                                    .addComponent(jPanel_Período_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPanel_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnReprovar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAprovar))
-                            .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
                                 .addComponent(JScrollPanePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                        .addComponent(lblUsuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblVendedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(625, 625, 625))))
+                        .addContainerGap())))
         );
         jPanel_Analise_de_CreditoLayout.setVerticalGroup(
             jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,21 +389,23 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                     .addComponent(txtVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JScrollPanePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel_Analise_de_CreditoLayout.createSequentialGroup()
-                        .addComponent(jPanel_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAnalise_de_Credito, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel_Período_da_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel_Complemento_da_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(JScrollPanePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_Analise_de_CreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
-                    .addComponent(btnBuscar)
                     .addComponent(btnAprovar)
-                    .addComponent(btnReprovar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(btnReprovar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -383,8 +413,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_Analise_de_Credito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addComponent(jPanel_Analise_de_Credito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -929,6 +959,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel_Complemento_da_Pesquisa;
     private javax.swing.JPanel jPanel_Período_da_Pesquisa;
     private javax.swing.JPanel jPanel_Pesquisa;
+    private javax.swing.JLabel lblAnalise_de_Credito;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
     private javax.swing.JLabel lblFiltro;

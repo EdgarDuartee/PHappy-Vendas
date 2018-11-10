@@ -5,7 +5,10 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +33,10 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
 
         GuiAlterar_Vendedor.this.setTitle("Alterar Vendedor         " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -89,6 +96,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         cbxVendedorResp = new javax.swing.JComboBox<>();
         lblVendedoresCadastrados = new javax.swing.JLabel();
         btnConfirmaDesativacao = new javax.swing.JButton();
+        lblFuncionario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alterar Vendedor");
@@ -187,11 +195,11 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_ContatoLayout.createSequentialGroup()
                         .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCelular)
-                            .addComponent(ftxtCel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27)
+                            .addComponent(ftxtCel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
                         .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ftxtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTelefone))
+                            .addComponent(lblTelefone)
+                            .addComponent(ftxtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -294,7 +302,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                         .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblCEP)
                             .addComponent(ftxtCEP, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Painel_EndereçoLayout.setVerticalGroup(
             Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,16 +462,12 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
 
         cbxVendedorResp.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbxVendedorResp.setEnabled(false);
-        cbxVendedorResp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxVendedorRespActionPerformed(evt);
-            }
-        });
 
         lblVendedoresCadastrados.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblVendedoresCadastrados.setText("Lista de Vendedores cadastrados:");
 
         btnConfirmaDesativacao.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnConfirmaDesativacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Aprovar.png"))); // NOI18N
         btnConfirmaDesativacao.setText("Confirmar");
         btnConfirmaDesativacao.setEnabled(false);
         btnConfirmaDesativacao.addActionListener(new java.awt.event.ActionListener() {
@@ -486,12 +490,11 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnVoltar)
                                 .addGap(37, 37, 37)
                                 .addComponent(btnLimpar)
                                 .addGap(151, 151, 151)
-                                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
                                         .addComponent(btnAlterar)
                                         .addGap(103, 103, 103)
@@ -499,29 +502,29 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Registro_VendedorLayout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
-                                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Painel_Permissoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                                                    .addComponent(lblVendedoresCadastrados)
-                                                    .addGap(61, 61, 61)
-                                                    .addComponent(btnConfirmaDesativacao))
-                                                .addComponent(cbxVendedorResp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(Painel_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(cbxVendedorResp, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Registro_VendedorLayout.createSequentialGroup()
+                                                .addComponent(lblVendedoresCadastrados)
+                                                .addGap(59, 59, 59)
+                                                .addComponent(btnConfirmaDesativacao)))))
                                 .addGap(8, 8, 8))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_Registro_VendedorLayout.createSequentialGroup()
-                                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(Painel_Endereço, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_Registro_VendedorLayout.createSequentialGroup()
-                                        .addGap(185, 185, 185)
-                                        .addComponent(btnBuscar)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(lblNome_Colaborador)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(185, 185, 185)
+                                .addComponent(btnBuscar)
+                                .addGap(10, 10, 10)
+                                .addComponent(lblNome_Colaborador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_Registro_VendedorLayout.createSequentialGroup()
+                                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Painel_Permissoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Painel_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         Painel_Registro_VendedorLayout.setVerticalGroup(
@@ -553,27 +556,34 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                     .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnDesativarVendedor))
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDesativarVendedor)
                     .addComponent(btnVoltar))
                 .addContainerGap())
         );
+
+        lblFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Funcionario.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(lblFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -715,10 +725,6 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDesativarVendedorActionPerformed
 
-    private void cbxVendedorRespActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxVendedorRespActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxVendedorRespActionPerformed
-
     private void btnConfirmaDesativacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaDesativacaoActionPerformed
         if (vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo() == parseInt(txtCodigo.getText())) {
             JOptionPane.showMessageDialog(null, "Escolha outro Vendedor diferente deste que deseja dasativa-lo!");
@@ -824,6 +830,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     private javax.swing.JLabel lblComplemento;
     private javax.swing.JLabel lblData_Nascimento;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFuncionario;
     private javax.swing.JLabel lblNome_Colaborador;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblRG;
