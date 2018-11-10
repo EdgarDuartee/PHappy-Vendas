@@ -15,8 +15,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -36,6 +39,7 @@ import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
+import projeto.vendas.tabelas.GuiControleEstrategicoVendedorTBVendedoresGeral;
 
 /**
  *
@@ -54,6 +58,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblVendedor.getModel();
         tblVendedor.setRowSorter(new TableRowSorter(modelo));
+
     }
 
     /**
@@ -533,9 +538,13 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         }
 
         txtQtdeTotalVendas.setText(String.valueOf(total));
-        txtValorTotalVendas.setText(String.valueOf(valorTotal));
+        txtValorTotalVendas.setText("R$ " + String.valueOf(valorTotal) + " Reais");
 
         btnClienteEspecifico.setEnabled(true);
+
+        if (tblVendedor.getRowCount() >= 0) {
+            btnImprimir.setEnabled(true);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -543,38 +552,58 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        /*List lista = new ArrayList();
-        for (int x = 0; x < tblVendedor.getRowCount();x++){
-            model print = tblVendedor.getModel();
+        List lista = new ArrayList();
+        for (int x = 0; x < tblVendedor.getRowCount(); x++) {
+            GuiControleEstrategicoVendedorTBVendedoresGeral print
+                    = new GuiControleEstrategicoVendedorTBVendedoresGeral();
+
+            print.setCodigo((int) tblVendedor.getValueAt(x, 0));
+            print.setNome((String) tblVendedor.getValueAt(x, 1));
+            print.setCargo((String) tblVendedor.getValueAt(x, 2));
+            print.setDtCadastro((String) tblVendedor.getValueAt(x, 3));
+            print.setQtdeVendasPeriodo((int) tblVendedor.getValueAt(x, 4));
+            print.setValorVendasPeriodo((double) tblVendedor.getValueAt(x, 5));
+            print.setQtdeClientes((int) tblVendedor.getValueAt(x, 6));
+            print.setAtivo((String) tblVendedor.getValueAt(x, 7));
+            print.setDtInatividade((String) tblVendedor.getValueAt(x, 8));
+
             lista.add(print);
         }
-//        tblVendedor print = new tblVendedor();
+
+        // Map<String, Object> parameters = new HashMap<String, Object>();
+        Map parameters = new HashMap();
+        parameters.put("qtdcolaboradores", txtTotalColaboradores.getText());
+        parameters.put("vendedores", txtVendedores.getText());
+        parameters.put("supervisores", txtSupervisores.getText());
+        parameters.put("gerentes", txtGerentes.getText());
+        parameters.put("qtdtotalvendasgeral", txtQtdeTotalVendas.getText());
+        parameters.put("valortotalvendasgeral", txtValorTotalVendas.getText());
+        parameters.put("a", txtVendAtivos.getText());
+        parameters.put("i", txtVendInativos.getText());
+        parameters.put("dtinicio", ftxtData_Inicial.getText());
+        parameters.put("dtfinal", ftxtData_Final.getText());
         
-        String codCli;
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        if (tblVendedor.getSelectedRow() >= 0) {
-            codCli = (String) model.getValueAt(tblVendedor.getSelectedRow(), 0);
-            if (codCli.substring(0, 2).equals("PF")) {
-                try {
-                    JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(tblVendedor);
 
-                    parameters.put("Lista", lista);
-                    JasperPrint jpPrint;
-                    jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorVendedor.jasper",
-                            parameters, ds);
+        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
+        try {
 
-                    JasperViewer jv = new JasperViewer(jpPrint, false);
-                    jv.setVisible(true);
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorVendedor.jasper",
+                    parameters, ds);
 
-                } catch (JRException ex) {
-                    Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
-                }
-        } */  
+            JasperViewer jv = new JasperViewer(jpPrint, false);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -586,16 +615,24 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -700,7 +737,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             if (datainicio1.isAfter(dataInicio) || datainicio1.isEqual(dataInicio)) {
                 //testa se a data é menor que a data final da busca
                 if (datainicio1.isBefore(dataFinal) || datainicio1.isEqual(dataFinal)) {
-                    dtInatividade = "";
+                    dtInatividade = "-";
                     if (ListarVendedores.get(x).getPermissao() == 0) {
                         funcao = "Vendedor";
                         vend++;
@@ -747,6 +784,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 }
             }
         }
+
         txtTotalColaboradores.setText(String.valueOf(tblVendedor.getRowCount()));
         txtVendAtivos.setText(String.valueOf(a));
         txtVendInativos.setText(String.valueOf(i));
