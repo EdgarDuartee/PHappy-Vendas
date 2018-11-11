@@ -5,6 +5,9 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import projeto.vendas.model.Login;
 
 /**
@@ -23,6 +26,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
                 "         " +"Codigo:  " + login.getCodigo());
         this.login = login;
         System.out.println("Numero do Vendedor LOGADO = " + login.getCodigo() + "Nome = " + login.getNome());
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -35,6 +42,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
+        lblLogotipo = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
         jMenu_Cliente = new javax.swing.JMenu();
@@ -61,10 +69,15 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         setTitle("Menu");
         setResizable(false);
 
+        lblLogotipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/logo.png"))); // NOI18N
+
         jMenu_Cadastro.setText("Cadastro");
+        jMenu_Cadastro.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
         jMenu_Cliente.setText("Cliente");
+        jMenu_Cliente.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem_Pessoa_Física.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Pessoa_Física.setText("Pessoa Física");
         jMenuItem_Pessoa_Física.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +86,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         });
         jMenu_Cliente.add(jMenuItem_Pessoa_Física);
 
+        jMenuItem_Pessoa_Jurídica.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Pessoa_Jurídica.setText("Pessoa Jurídica");
         jMenuItem_Pessoa_Jurídica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +97,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
 
         jMenu_Cadastro.add(jMenu_Cliente);
 
+        jMenuItem_Vendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Vendedor.setText("Vendedor");
         jMenuItem_Vendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +109,9 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu.add(jMenu_Cadastro);
 
         JMenuAlterar.setText("Alterar");
+        JMenuAlterar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem_Alterar_Cliente.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Alterar_Cliente.setText("Cliente");
         jMenuItem_Alterar_Cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +120,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         });
         JMenuAlterar.add(jMenuItem_Alterar_Cliente);
 
+        jMenuItem_Alterar_Vendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Alterar_Vendedor.setText("Vendedor");
         jMenuItem_Alterar_Vendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,8 +132,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu.add(JMenuAlterar);
 
         jMenu_Gerar_Pedido.setText("Gerar Pedido");
+        jMenu_Gerar_Pedido.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
-        jMenuItem_Gerar_Pedido.setText("gerar Pedido");
+        jMenuItem_Gerar_Pedido.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_Gerar_Pedido.setText("Gerar Pedido");
         jMenuItem_Gerar_Pedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem_Gerar_PedidoActionPerformed(evt);
@@ -126,7 +146,9 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu.add(jMenu_Gerar_Pedido);
 
         jMenu_Pedidos_Aprovados.setText("Pedidos Aprovados");
+        jMenu_Pedidos_Aprovados.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem_PedidosAprovados.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_PedidosAprovados.setText("Pedidos Aprovados");
         jMenuItem_PedidosAprovados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +160,9 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu.add(jMenu_Pedidos_Aprovados);
 
         jMenu_GerenciarPendencias.setText("Gerenciar Pendencias");
+        jMenu_GerenciarPendencias.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem_Analise_de_Credito.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Analise_de_Credito.setText("Análise de Crédito");
         jMenuItem_Analise_de_Credito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +174,9 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu.add(jMenu_GerenciarPendencias);
 
         jMenu_ControleEstrategico.setText("Controle Estratégico");
+        jMenu_ControleEstrategico.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem_PorCliente.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_PorCliente.setText("Por Cliente");
         jMenuItem_PorCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +185,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         });
         jMenu_ControleEstrategico.add(jMenuItem_PorCliente);
 
+        jMenuItem_PorVendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_PorVendedor.setText("Por Vendedor");
         jMenuItem_PorVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +194,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         });
         jMenu_ControleEstrategico.add(jMenuItem_PorVendedor);
 
+        jMenuItem_PorRegiao.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_PorRegiao.setText("Por Região");
         jMenuItem_PorRegiao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,11 +211,17 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 601, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(174, Short.MAX_VALUE)
+                .addComponent(lblLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(148, 148, 148))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 281, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(lblLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
@@ -296,5 +330,6 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_Gerar_Pedido;
     private javax.swing.JMenu jMenu_GerenciarPendencias;
     private javax.swing.JMenu jMenu_Pedidos_Aprovados;
+    private javax.swing.JLabel lblLogotipo;
     // End of variables declaration//GEN-END:variables
 }

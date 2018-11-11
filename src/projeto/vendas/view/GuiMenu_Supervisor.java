@@ -5,6 +5,9 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import projeto.vendas.model.Login;
 
 /**
@@ -20,6 +23,10 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
         initComponents();
         this.login = login;
         System.out.println("Numero do Vendedor LOGADO = " + login.getCodigo() + "Nome = " + login.getNome());
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
 
     }
 
@@ -32,6 +39,7 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblLogo = new javax.swing.JLabel();
         Menu_Supervisor = new javax.swing.JMenuBar();
         Menu_Cadastro = new javax.swing.JMenu();
         Menu_Cliente = new javax.swing.JMenu();
@@ -39,12 +47,8 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
         MenuItem_Pessoa_Jurídica = new javax.swing.JMenuItem();
         MenuItem_Vendedor = new javax.swing.JMenuItem();
         Menu_Alterar = new javax.swing.JMenu();
-        Menu_Alterar_Cliente_Vendedor = new javax.swing.JMenu();
-        MenuItem_Alterar_Cliente = new javax.swing.JMenuItem();
-        MenuItem_Alterar_Vendedor = new javax.swing.JMenuItem();
-        Menu_Excluir = new javax.swing.JMenu();
-        MenuItem_Excluir_Cliente = new javax.swing.JMenuItem();
-        MenuItem_Excluir_Vendedor = new javax.swing.JMenuItem();
+        jMenu_Item_Alterar_Cliente = new javax.swing.JMenuItem();
+        jMenu_Item_Vendedor = new javax.swing.JMenuItem();
         Menu_Gerar_Pedido = new javax.swing.JMenu();
         Menu_Emitir_Nota_Fiscal = new javax.swing.JMenu();
         Menu_Consultas = new javax.swing.JMenu();
@@ -55,18 +59,25 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
         setTitle("Menu");
         setResizable(false);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/logo.png"))); // NOI18N
+
         Menu_Cadastro.setText("Cadastro");
+        Menu_Cadastro.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
         Menu_Cliente.setText("Cliente");
+        Menu_Cliente.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        MenuItem_Pessoa_Física.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         MenuItem_Pessoa_Física.setText("Pessoa Física");
         Menu_Cliente.add(MenuItem_Pessoa_Física);
 
+        MenuItem_Pessoa_Jurídica.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         MenuItem_Pessoa_Jurídica.setText("Pessoa Jurídica");
         Menu_Cliente.add(MenuItem_Pessoa_Jurídica);
 
         Menu_Cadastro.add(Menu_Cliente);
 
+        MenuItem_Vendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         MenuItem_Vendedor.setText("Vendedor");
         MenuItem_Vendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,42 +89,30 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
         Menu_Supervisor.add(Menu_Cadastro);
 
         Menu_Alterar.setText("Alterar");
+        Menu_Alterar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
-        Menu_Alterar_Cliente_Vendedor.setText("Alterar");
+        jMenu_Item_Alterar_Cliente.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenu_Item_Alterar_Cliente.setText("Cliente");
+        Menu_Alterar.add(jMenu_Item_Alterar_Cliente);
 
-        MenuItem_Alterar_Cliente.setText("Cliente");
-        Menu_Alterar_Cliente_Vendedor.add(MenuItem_Alterar_Cliente);
-
-        MenuItem_Alterar_Vendedor.setText("Vendedor");
-        Menu_Alterar_Cliente_Vendedor.add(MenuItem_Alterar_Vendedor);
-
-        Menu_Alterar.add(Menu_Alterar_Cliente_Vendedor);
-
-        Menu_Excluir.setText("Excluir");
-
-        MenuItem_Excluir_Cliente.setText("Cliente");
-        MenuItem_Excluir_Cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuItem_Excluir_ClienteActionPerformed(evt);
-            }
-        });
-        Menu_Excluir.add(MenuItem_Excluir_Cliente);
-
-        MenuItem_Excluir_Vendedor.setText("Vendedor");
-        Menu_Excluir.add(MenuItem_Excluir_Vendedor);
-
-        Menu_Alterar.add(Menu_Excluir);
+        jMenu_Item_Vendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenu_Item_Vendedor.setText("Vendedor");
+        Menu_Alterar.add(jMenu_Item_Vendedor);
 
         Menu_Supervisor.add(Menu_Alterar);
 
         Menu_Gerar_Pedido.setText("Gerar Pedido");
+        Menu_Gerar_Pedido.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         Menu_Supervisor.add(Menu_Gerar_Pedido);
 
         Menu_Emitir_Nota_Fiscal.setText("Emitir Nota Fiscal");
+        Menu_Emitir_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         Menu_Supervisor.add(Menu_Emitir_Nota_Fiscal);
 
         Menu_Consultas.setText("Consultas");
+        Menu_Consultas.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        MenuItem_Análise_de_Crédito.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         MenuItem_Análise_de_Crédito.setText("Análise de Crédito");
         MenuItem_Análise_de_Crédito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +121,7 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
         });
         Menu_Consultas.add(MenuItem_Análise_de_Crédito);
 
+        MenuItem_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         MenuItem_Nota_Fiscal.setText("Nota Fiscal");
         MenuItem_Nota_Fiscal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,11 +138,17 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addComponent(lblLogo)
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,10 +157,6 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
     private void MenuItem_VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem_VendedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MenuItem_VendedorActionPerformed
-
-    private void MenuItem_Excluir_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem_Excluir_ClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MenuItem_Excluir_ClienteActionPerformed
 
     private void MenuItem_Análise_de_CréditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItem_Análise_de_CréditoActionPerformed
         // TODO add your handling code here:
@@ -201,23 +203,20 @@ public class GuiMenu_Supervisor extends javax.swing.JFrame {
     
     private static Login login;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuItem_Alterar_Cliente;
-    private javax.swing.JMenuItem MenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem MenuItem_Análise_de_Crédito;
-    private javax.swing.JMenuItem MenuItem_Excluir_Cliente;
-    private javax.swing.JMenuItem MenuItem_Excluir_Vendedor;
     private javax.swing.JMenuItem MenuItem_Nota_Fiscal;
     private javax.swing.JMenuItem MenuItem_Pessoa_Física;
     private javax.swing.JMenuItem MenuItem_Pessoa_Jurídica;
     private javax.swing.JMenuItem MenuItem_Vendedor;
     private javax.swing.JMenu Menu_Alterar;
-    private javax.swing.JMenu Menu_Alterar_Cliente_Vendedor;
     private javax.swing.JMenu Menu_Cadastro;
     private javax.swing.JMenu Menu_Cliente;
     private javax.swing.JMenu Menu_Consultas;
     private javax.swing.JMenu Menu_Emitir_Nota_Fiscal;
-    private javax.swing.JMenu Menu_Excluir;
     private javax.swing.JMenu Menu_Gerar_Pedido;
     private javax.swing.JMenuBar Menu_Supervisor;
+    private javax.swing.JMenuItem jMenu_Item_Alterar_Cliente;
+    private javax.swing.JMenuItem jMenu_Item_Vendedor;
+    private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }
