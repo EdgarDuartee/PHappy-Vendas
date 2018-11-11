@@ -33,7 +33,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="lblControle_Estrategico" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Controle_Estratégico_Vendedor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -41,9 +43,17 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="Controle_Estratégico_Vendedor" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="Controle_Estratégico_Vendedor" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Component id="lblControle_Estrategico" min="-2" pref="228" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -56,19 +66,19 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblData_Inicial" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="ftxtData_Inicial" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="lblData_Inicial" min="-2" max="-2" attributes="0"/>
+                      <Component id="ftxtData_Inicial" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblData_Final" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="ftxtData_Final" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblData_Final" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="ftxtData_Final" min="-2" pref="71" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnFiltrarData" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -83,20 +93,16 @@
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jPanelVendedor" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ftxtData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ftxtData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnFiltrarData" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ftxtData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ftxtData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnFiltrarData" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -106,6 +112,12 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnFiltrarData">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/projeto/vendas/model/icones/Filtrar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Filtrar por data"/>
           </Properties>
           <Events>
@@ -124,14 +136,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Painel_Vendas" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="Painel_Vendas" pref="291" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Container class="javax.swing.JTabbedPane" name="Painel_Vendas">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
+              </Properties>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
@@ -151,8 +167,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanelDados" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="Endereço" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="252" max="-2" attributes="0"/>
+                              <Component id="Endereço" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="245" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -161,10 +177,10 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Endereço" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanelDados" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanelDados" max="32767" attributes="0"/>
+                                  <Component id="Endereço" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -174,7 +190,9 @@
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder title="Dados Pessoais"/>
+                            <TitledBorder title="Dados Pessoais">
+                              <Font PropertyName="font" name="Times New Roman" size="12" style="3"/>
+                            </TitledBorder>
                           </Border>
                         </Property>
                       </Properties>
@@ -182,70 +200,64 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtNome" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="lblFuncao" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtFuncao" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtEmail" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" pref="166" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblCelular" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="txtCodigo" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                          <Component id="lblTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblFuncao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtCodigo" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <Component id="lblCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ftxtTelefone" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="ftxtCelular" min="-2" pref="92" max="-2" attributes="0"/>
+                                              <Component id="lblCelular" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Component id="ftxtTelefone" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="ftxtCelular" alignment="0" pref="77" max="32767" attributes="0"/>
+                                      <Component id="txtNome" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="txtEmail" alignment="0" pref="315" max="32767" attributes="0"/>
+                                          <Component id="txtFuncao" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblCodigo" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblNome" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtNome" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtNome" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblFuncao" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="ftxtTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtFuncao" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="ftxtTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ftxtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ftxtCelular" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="lblCelular" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblFuncao" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="txtFuncao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -255,6 +267,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblNome">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Nome"/>
                           </Properties>
                         </Component>
@@ -262,6 +277,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblCodigo">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Codigo"/>
                           </Properties>
                         </Component>
@@ -269,16 +287,25 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblFuncao">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Fun&#xe7;&#xe3;o"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblTelefone">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Telefone"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblEmail">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Email"/>
                           </Properties>
                         </Component>
@@ -286,6 +313,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblCelular">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Celular"/>
                           </Properties>
                         </Component>
@@ -294,6 +324,7 @@
                             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                               <Format format="(##)####-####" subtype="-1" type="5"/>
                             </Property>
+                            <Property name="text" type="java.lang.String" value=""/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
@@ -302,6 +333,7 @@
                             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                               <Format format="(##)#####-####" subtype="-1" type="5"/>
                             </Property>
+                            <Property name="text" type="java.lang.String" value=""/>
                             <Property name="enabled" type="boolean" value="false"/>
                           </Properties>
                         </Component>
@@ -311,7 +343,9 @@
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                            <TitledBorder title="Endere&#xe7;o"/>
+                            <TitledBorder title="Endere&#xe7;o">
+                              <Font PropertyName="font" name="Times New Roman" size="12" style="3"/>
+                            </TitledBorder>
                           </Border>
                         </Property>
                       </Properties>
@@ -324,83 +358,65 @@
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="lblRua" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtRua" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <Component id="txtRua" min="-2" pref="195" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="txtNumero" min="-2" pref="43" max="-2" attributes="0"/>
                                               <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtNumero" min="-2" pref="75" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" attributes="0">
+                                      <Component id="txtBairro" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                                      <Component id="lblBairro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxUF" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblBairro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtBairro" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtCidade" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                                               <Component id="lblCidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtCidade" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cbxUF" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblCEP" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtCEP" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                              <Component id="lblCEP" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ftxtCEP" min="-2" pref="63" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtNumero" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblRua" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtRua" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblRua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lblCidade" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtCidade" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="lblBairro" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtBairro" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtRua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtNumero" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cbxUF" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblCEP" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtCEP" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="lblBairro" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtBairro" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCEP" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ftxtCEP" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cbxUF" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -408,6 +424,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="lblRua">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Rua"/>
                           </Properties>
                         </Component>
@@ -415,6 +434,9 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblNumero">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Numero"/>
                           </Properties>
                         </Component>
@@ -424,11 +446,17 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblBairro">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Bairro"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblCidade">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Cidade"/>
                           </Properties>
                         </Component>
@@ -436,15 +464,19 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblEstado">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Tahoma" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="Estado"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblCEP">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Times New Roman" size="12" style="1"/>
+                            </Property>
                             <Property name="text" type="java.lang.String" value="CEP"/>
                           </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtCEP">
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbxUF">
                           <Properties>
@@ -484,6 +516,13 @@
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
+                        <Component class="javax.swing.JFormattedTextField" name="ftxtCEP">
+                          <Properties>
+                            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                              <Format format="#####-###" subtype="-1" type="5"/>
+                            </Property>
+                          </Properties>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -500,12 +539,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneVendedor" alignment="0" pref="881" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneVendedor" alignment="0" pref="950" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneVendedor" alignment="0" pref="224" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneVendedor" alignment="0" pref="263" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -549,7 +588,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPaneVendedor1" pref="881" max="32767" attributes="0"/>
+                          <Component id="jScrollPaneVendedor1" pref="950" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
                               <Component id="btnVisualizarCliente" min="-2" max="-2" attributes="0"/>
@@ -562,8 +601,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jScrollPaneVendedor1" min="-2" pref="109" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnVisualizarCliente" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="86" max="32767" attributes="0"/>
+                              <Component id="btnVisualizarCliente" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace pref="118" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -595,6 +634,12 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnVisualizarCliente">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="12" style="3"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/projeto/vendas/model/icones/Visualizar.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Visualizar Cliente"/>
                       </Properties>
                       <Events>
@@ -618,26 +663,18 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtClientesAtivos" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtClientesInativos" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtTotalClientes" min="-2" pref="75" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="lblValorTotalVendas" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtValorTotalVendas" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                                   <Component id="lblQtdeVendas" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtQtdeVendas" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblClienteAtivo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="lblClienteInativo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="lblClienteInativo1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lblClienteAtivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtClientesAtivos" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="lblClienteInativo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtClientesInativos" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="lblClienteInativo1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTotalClientes" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="600" max="32767" attributes="0"/>
+                              <EmptySpace pref="822" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -653,18 +690,17 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtQtdeVendas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblClienteAtivo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblClienteInativo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblClienteInativo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblClienteAtivo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtClientesAtivos" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtClientesInativos" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtTotalClientes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="66" max="32767" attributes="0"/>
+                              <Component id="txtClientesAtivos" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblClienteInativo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtClientesInativos" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblClienteInativo1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="19" max="32767" attributes="0"/>
+                              <Component id="txtTotalClientes" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -674,6 +710,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblQtdeVendas">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="12" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Quantidade de Vendas"/>
                       </Properties>
                     </Component>
@@ -681,11 +720,17 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblValorTotalVendas">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="12" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Valor total das Vendas"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblClienteAtivo">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="12" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Clientes Ativos"/>
                       </Properties>
                     </Component>
@@ -693,6 +738,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblClienteInativo">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="12" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Clientes Inativos"/>
                       </Properties>
                     </Component>
@@ -702,6 +750,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="lblClienteInativo1">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Times New Roman" size="12" style="1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Responsavel por:"/>
                       </Properties>
                     </Component>
@@ -713,6 +764,12 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnVoltar">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/projeto/vendas/model/icones/Voltar.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
@@ -721,6 +778,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblData_Inicial">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Data Inicial"/>
           </Properties>
         </Component>
@@ -729,11 +789,14 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="01/01/2000"/>
+            <Property name="text" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblData_Final">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Data Final"/>
           </Properties>
         </Component>
@@ -742,9 +805,17 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##/##/####" subtype="-1" type="5"/>
             </Property>
+            <Property name="text" type="java.lang.String" value=""/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="lblControle_Estrategico">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Controle estrategico.png"/>
+        </Property>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

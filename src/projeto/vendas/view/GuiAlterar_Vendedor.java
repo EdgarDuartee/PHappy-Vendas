@@ -563,7 +563,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        lblFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Funcionario.png"))); // NOI18N
+        lblFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Alterar Funcionario.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -582,7 +582,8 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(lblFuncionario)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
