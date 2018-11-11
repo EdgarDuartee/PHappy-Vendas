@@ -105,6 +105,12 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnSelecionar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Nota Fiscal.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Selecione o Pedido E Click Aqui Para Emitir a Nota Fiscal."/>
       </Properties>
       <Events>
@@ -113,6 +119,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnRetornar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Voltar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Retornar"/>
       </Properties>
       <Events>

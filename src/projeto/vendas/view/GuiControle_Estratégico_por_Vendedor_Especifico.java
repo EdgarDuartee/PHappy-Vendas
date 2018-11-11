@@ -6,9 +6,12 @@
 package projeto.vendas.view;
 
 import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Integer.parseInt;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -68,6 +71,10 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
         tblClientes.setRowSorter(new TableRowSorter(modelo));
         tblVendas.setRowSorter(new TableRowSorter(modelo1));
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**

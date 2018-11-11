@@ -6,6 +6,9 @@
 package projeto.vendas.view;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +32,10 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
      */
     public GuiControle_Estratégico_por_Cliente() {
         initComponents();
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**

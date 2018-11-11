@@ -171,6 +171,8 @@
               </Border>
             </Property>
           </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
             <Component class="javax.swing.JToggleButton" name="btn_ColetivaSTATUS">
               <Properties>
@@ -348,6 +350,8 @@
               </Border>
             </Property>
           </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
             <Component class="javax.swing.JRadioButton" name="rbtnNome_Cliente">
               <Properties>

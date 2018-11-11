@@ -5,6 +5,10 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+
 /**
  *
  * @author 0030481521038
@@ -16,6 +20,10 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
      */
     public GuiControle_Estratégico_por_Região() {
         initComponents();
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
