@@ -1085,12 +1085,6 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         if (ListaPedidoProduto != null) {
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
             tblProduto.setBackground(Color.white);
-//            tblProduto.setBounds(350, 350, 250, 270);
-//            tblProduto.setFont(new java.awt.Font("Comic Sans", 1, 15));
-            tblProduto.setForeground(Color.DARK_GRAY);
-            tblProduto.setGridColor(Color.BLUE);
-            tblProduto.setShowGrid(true);
-//            tblProduto.setTableHeader(tableHeader);
             int linhasTabela = model.getRowCount();
             for (int i = 0; i < linhasTabela; i++) {
                 model.removeRow(0);
@@ -1100,20 +1094,22 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
                 nfItens.addProduto(produto);
                 nfItens.addQtdProduto(ListaPedidoProduto.get(i).getProdutoQtd());
-                Object[] row = {ListaPedidoProduto.get(i).getProdutoCod(), produto.getDescricao(),
+                Object[] row = {
+                    ListaPedidoProduto.get(i).getProdutoCod(), produto.getDescricao(),
                     produto.getValorUnitario(), ListaPedidoProduto.get(i).getProdutoQtd(),
                     "Sim", "Não", "Outras", produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd(),
                     produto.getImpostoIcms(), produto.getImpostoPis(), produto.getImpostoConfins(), (produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi(),
-                    "CFOP"};
+                    "CFOP"
+                };
                 model.addRow(row);
                 //Preenchendo os TXT de Impostos
                 txtValor_COFINS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoConfins()) + Float.parseFloat(txtValor_COFINS.getText())) + "");
                 txtValor_ICMS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIcms()) + Float.parseFloat(txtValor_ICMS.getText())) + "");
                 txtValor_IPI.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIpi()) + Float.parseFloat(txtValor_IPI.getText())) + "");
                 txtValor_PIS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoPis()) + Float.parseFloat(txtValor_PIS.getText())) + "");
-                
+
             }
-        txtValor_Total_Nota.setText("" + (Float.parseFloat(txtValor_IPI.getText()) + recebePedido.getTotal()));
+            txtValor_Total_Nota.setText("" + (Float.parseFloat(txtValor_IPI.getText()) + recebePedido.getTotal()));
         }
 
 
