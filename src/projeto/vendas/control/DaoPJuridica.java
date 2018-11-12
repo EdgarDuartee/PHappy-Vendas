@@ -164,6 +164,7 @@ public class DaoPJuridica {
                 p.setTel3(rs.getString("contato3"));
                 p.setContato3(rs.getString("nomecont3"));
                 p.setCnpj(rs.getString("CNPJ"));
+                p.setDtInicio(rs.getString("DtINICIO"));
                 
             }
         } catch (SQLException ex) {
@@ -198,6 +199,7 @@ public class DaoPJuridica {
                 p.setTel3(rs.getString("contato3"));
                 p.setContato3(rs.getString("nomecont3"));
                 p.setCnpj(rs.getString("CNPJ"));
+                p.setDtInicio(rs.getString("DtINICIO"));
                 
             }
         } catch (SQLException ex) {
@@ -231,6 +233,41 @@ public class DaoPJuridica {
             return (lista);
             
         }
+    }
+    
+    public PessoaJuridica consultaNome(String Nome) {
+        PessoaJuridica p = null;
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT * from P_JURIDICA where "
+                    + "NomeFantasia = ?");
+            ps.setString(1, Nome);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next() == true) {
+                p = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
+                        rs.getString("email"), rs.getString("rua"),
+                        rs.getString("numero"), rs.getString("bairro"),
+                        rs.getString("cidade"), rs.getString("uf"),
+                        rs.getString("cep"), rs.getString("ativo"));
+                p.setVendedor_responsavel(rs.getString("vend_resp"));
+                p.setCod_vend_resp(rs.getInt("cod_vend_resp"));
+                p.setComplemento(rs.getString("complemento"));
+                p.setTel1(rs.getString("contato1"));
+                p.setContato1(rs.getString("nomecont1"));
+                p.setTel2(rs.getString("contato2"));
+                p.setContato2(rs.getString("nomecont2"));
+                p.setTel3(rs.getString("contato3"));
+                p.setContato3(rs.getString("nomecont3"));
+                p.setCnpj(rs.getString("CNPJ"));
+                p.setDtInicio(rs.getString("DtINICIO"));
+                
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return (p);
     }
     
 }

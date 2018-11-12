@@ -245,7 +245,8 @@ public class DaoGerarPedido {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
+        
+        System.out.println(frequencia);
         return frequencia;
     }
 

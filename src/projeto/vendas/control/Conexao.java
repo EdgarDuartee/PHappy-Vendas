@@ -30,19 +30,17 @@ public class Conexao {
         //this.senha = "hercules";
        
         //conexao Luis
-//        this.usuario = "fernando";
-//        this.senha = "fernando98"; 
-
-       // this.usuario = "fernando";
-       // this.senha = "fernando98";   
+        this.usuario = "fernando";
+        this.senha = "fernando98"; 
+  
         
         //conexao FACULDADE
 //        this.usuario = "BD1621028";
 //        this.senha = "BD1621028";   
         
         //conexao Cleiton
-       this.usuario = "System";
-       this.senha = "Cleiton";  
+//       this.usuario = "System";
+//       this.senha = "Cleiton";  
    }
 
     public void setConnectionString() {

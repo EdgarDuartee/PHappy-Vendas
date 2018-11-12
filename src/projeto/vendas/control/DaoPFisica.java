@@ -124,6 +124,7 @@ public class DaoPFisica {
                 p.setDtNasc(rs.getString("dtNasc"));
                 p.setRg(rs.getString("rg"));
                 p.setCpf(rs.getString("cpf"));
+                p.setDtInicio(rs.getString("DtINICIO"));
                 
             }             
         } catch (SQLException ex) {
@@ -156,6 +157,7 @@ public class DaoPFisica {
                 p.setDtNasc(rs.getString("dtNasc"));
                 p.setRg(rs.getString("rg"));
                 p.setCpf(rs.getString("cpf"));
+                p.setDtInicio(rs.getString("DtINICIO"));
                 
             }             
         } catch (SQLException ex) {
@@ -185,6 +187,7 @@ public class DaoPFisica {
                 PF.setDtNasc(rs.getString("dtNasc"));
                 PF.setRg(rs.getString("rg"));
                 PF.setCpf(rs.getString("cpf"));
+                PF.setDtInicio(rs.getString("DtINICIO"));
                     lista.add(PF);
                 }
             } catch (SQLException ex) {
@@ -221,6 +224,7 @@ public class DaoPFisica {
                 p.setDtNasc(rs.getString("dtNasc"));
                 p.setRg(rs.getString("rg"));
                 p.setCpf(rs.getString("cpf"));
+                p.setDtInicio(rs.getString("DtINICIO"));
                 
             }             
         } catch (SQLException ex) {
@@ -228,6 +232,38 @@ public class DaoPFisica {
         }
         return  (p);
     }   
+    
+    public PessoaFisica consultaNome(String Nome) {
+        PessoaFisica p = null;
+        PreparedStatement ps = null;
+        try {  
+            ps = conn.prepareStatement("SELECT * from P_Fisica where " +
+                                                 "nome = ?");
+            ps.setString(1,Nome);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next() == true ){
+                p = new PessoaFisica (rs.getString("codigo"),rs.getString("nome"),
+                                  rs.getString("email"),rs.getString("rua"),
+                                  rs.getString("numero"),rs.getString("bairro"),
+                                  rs.getString("cidade"),rs.getString("uf"),
+                                  rs.getString("cep"),rs.getString("ativo"));
+                p.setVendedor_responsavel(rs.getString("vend_resp"));
+                p.setComplemento(rs.getString("complemento"));
+                p.setCel(rs.getString("cel"));
+                p.setTel(rs.getString("tel"));
+                p.setDtNasc(rs.getString("dtNasc"));
+                p.setRg(rs.getString("rg"));
+                p.setCpf(rs.getString("cpf"));
+                p.setDtInicio(rs.getString("DtINICIO"));
+                
+            }             
+        } catch (SQLException ex) {
+             System.out.println(ex.toString());   
+        }
+        return  (p);
+    }  
 
         
     public ArrayList<PessoaFisica> ListarPFPorCodVend(int codigo) {
@@ -253,6 +289,7 @@ public class DaoPFisica {
                 PF.setDtNasc(rs.getString("dtNasc"));
                 PF.setRg(rs.getString("rg"));
                 PF.setCpf(rs.getString("cpf"));
+                PF.setDtInicio(rs.getString("DtINICIO"));
                     lista.add(PF);
                 }
             } catch (SQLException ex) {

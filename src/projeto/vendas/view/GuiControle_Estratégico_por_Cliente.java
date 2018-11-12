@@ -14,6 +14,7 @@ import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
+import projeto.vendas.control.DaoProduto;
 import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -186,6 +187,11 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         );
 
         btn_pesquisarColetiva.setText("Pesquisar");
+        btn_pesquisarColetiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarColetivaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Painel_Opções_de_FiltroLayout = new javax.swing.GroupLayout(Painel_Opções_de_Filtro);
         Painel_Opções_de_Filtro.setLayout(Painel_Opções_de_FiltroLayout);
@@ -423,12 +429,22 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_IndividualSTATUSItemStateChanged
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+        ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
+
         if (rbtnCodigo_Cliente.isSelected()) {
             if (txt_Cliente.getText().substring(0, 2).contains("PJ")) {
                 PJ = daoPJ.consultar(txt_Cliente.getText());
                 if (PJ == null) {
 //                    CLiente nao localizado, confira o codigo.
                 } else {
+                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
+                    Object[] row = {
+                        PJ.getNome(),
+                        daoPedido.MediaCompras(PJ.getCodigo()),
+                        daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()),
+                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                        daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()};
+                    model.addRow(row);
 
                 }
             }
@@ -438,10 +454,15 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
 //                    Cliente nao localizado, confira o codigo.
                 } else {
 
+                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
                     Object[] row = {
                         PF.getNome(),
                         daoPedido.MediaCompras(PF.getCodigo()),
-                        daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio())};
+                        daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()),
+                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                        daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
+                    };
+                    model.addRow(row);
                 }
             }
 
@@ -456,9 +477,37 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         daoPF = new DaoPFisica(conexao.conectar());
         daoPJ = new DaoPJuridica(conexao.conectar());
         daoPedido = new DaoGerarPedido(conexao.conectar());
+        daoProduto = new DaoProduto(conexao.conectar());
         model = (DefaultTableModel) tblCliente.getModel();
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void btn_pesquisarColetivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarColetivaActionPerformed
+        ArrayList<PessoaFisica> ListaPF = new ArrayList<PessoaFisica>();
+        ArrayList<PessoaJuridica> ListaPJ = new ArrayList<PessoaJuridica>();
+        ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
+
+        ListaPF = daoPF.ListarPessoasFisicas();
+        ListaPJ = daoPJ.ListarPessoasJuridicas();
+
+        for (int i = 0; i < ListaPF.size(); i++) {
+            ListaPedidoProduto = daoPedido.ProdutosMaisComprados(ListaPF.get(i).getCodigo());
+            if (ListaPedidoProduto != null) {
+                Object[] row = {
+                    ListaPF.get(i).getNome(),
+                    daoPedido.MediaCompras(ListaPF.get(i).getCodigo()),
+                    daoPedido.FrequenciaDeCompras(ListaPF.get(i).getCodigo(), formatarDate.format(data), ListaPF.get(i).getDtInicio()),
+                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
+                };
+                model.addRow(row);
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_btn_pesquisarColetivaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,6 +550,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private PessoaFisica PF;
     private PessoaJuridica PJ;
     private DaoGerarPedido daoPedido;
+    private DaoProduto daoProduto;
     private DefaultTableModel model;
     Date data = new Date(System.currentTimeMillis());
     SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
