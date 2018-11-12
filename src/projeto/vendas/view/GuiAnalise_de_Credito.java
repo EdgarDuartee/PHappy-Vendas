@@ -210,7 +210,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.setText("");
+        ftxtData_Inicial.setText("01012000");
 
         try {
             ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));

@@ -425,7 +425,8 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.setText("");
+        ftxtData_Inicial.setText("01012000");
+        ftxtData_Inicial.setToolTipText("");
 
         try {
             ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));

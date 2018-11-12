@@ -50,13 +50,13 @@
 				<reportElement style="Titulo" x="41" y="17" width="397" height="34" uuid="3017bba5-28ab-4596-8ea1-991cc8673190"/>
 				<text><![CDATA[DADOS CADASTRAIS DO CLIENTE]]></text>
 			</staticText>
-			<image>
-				<reportElement x="438" y="-25" width="117" height="101" uuid="a90bf4bb-de0d-4432-a04d-ce7196799d5c"/>
-				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\imagens\\logo.png"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement x="0" y="0" width="555" height="1" uuid="bcea1650-4963-4b62-bbf8-cb28ca7fd656"/>
 			</line>
+			<image>
+				<reportElement x="409" y="1" width="146" height="75" uuid="b3cd2fd7-2266-44a7-aed4-b674bdc31642"/>
+				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

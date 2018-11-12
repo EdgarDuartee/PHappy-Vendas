@@ -504,7 +504,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             jPanelVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVendedorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Painel_Vendas, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+                .addComponent(Painel_Vendas))
         );
 
         btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
@@ -524,7 +524,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.setText("");
+        ftxtData_Inicial.setText("01012000");
 
         lblData_Final.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Final.setText("Data Final");

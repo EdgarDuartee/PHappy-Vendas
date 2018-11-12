@@ -49,14 +49,14 @@
 			<rectangle>
 				<reportElement x="0" y="0" width="555" height="75" uuid="c60206e3-f146-41ec-af7d-c0e452778b0c"/>
 			</rectangle>
-			<image>
-				<reportElement x="448" y="-26" width="117" height="101" uuid="f5fd7705-8794-48f0-96e4-f7089d88b009"/>
-				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\imagens\\logo.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="Titulo" x="51" y="20" width="397" height="34" uuid="2fa54c1a-5510-4cc2-bfa1-98a8854a5102"/>
 				<text><![CDATA[DADOS CADASTRAIS DO CLIENTE]]></text>
 			</staticText>
+			<image>
+				<reportElement x="443" y="0" width="112" height="70" uuid="f3558580-6dd9-49c7-ae0e-764cbae0601a"/>
+				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

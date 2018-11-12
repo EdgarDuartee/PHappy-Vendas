@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08f21581-4319-4a0c-9871-3a3cd8832b88">
 	<property name="ireport.zoom" value="1.3310000000000102"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="96"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Titulo" fontName="Arial Black" fontSize="20"/>
 	<style name="Coluna" fontName="Arial" fontSize="12" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="detalhes" fontName="Arial" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -96,8 +96,8 @@
 				<text><![CDATA[RELATORIO ESTRATEGICO GERAL POR VENDEDORES]]></text>
 			</staticText>
 			<image>
-				<reportElement x="448" y="-26" width="117" height="101" uuid="214bcbe9-c663-4196-b41b-a3629b9083c9"/>
-				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\imagens\\logo.png"]]></imageExpression>
+				<reportElement x="448" y="0" width="107" height="75" uuid="e8a9a0cb-47c0-435c-9640-690bb59f2b2b"/>
+				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
