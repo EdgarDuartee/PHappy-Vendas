@@ -31,41 +31,48 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="72" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="lblDe" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="ftxtData_Inicial" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblA" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="lblData_Inicial" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblData_Inicial" max="32767" attributes="0"/>
+                  <Component id="ftxtData_Inicial" pref="70" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Component id="lblA" min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblData_Final" min="-2" max="-2" attributes="0"/>
-                  <Component id="ftxtData_Final" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="ftxtData_Final" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="131" max="32767" attributes="0"/>
-              <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
               <Component id="btnImprimir" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
           </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="Painel_Geral" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="lblControle_Estrategico_Vendedor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Painel_Geral" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                      <Component id="lblControle_Estrategico_Vendedor" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="Painel_Geral" min="-2" pref="308" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -73,21 +80,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnImprimir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnImprimir" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="ftxtData_Inicial" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ftxtData_Final" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBuscar" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblA" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblDe" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="24" max="32767" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Painel_Geral" min="-2" pref="308" max="-2" attributes="0"/>
-                  <EmptySpace pref="90" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,6 +95,12 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnBuscar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Consultar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
@@ -103,6 +109,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVoltar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Voltar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
       <Events>
@@ -111,11 +123,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblData_Inicial">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Data Inicial"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblData_Final">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Data Final"/>
       </Properties>
     </Component>
@@ -135,7 +153,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPaneVendedor" alignment="1" pref="911" max="32767" attributes="0"/>
+                  <Component id="jScrollPaneVendedor" alignment="1" pref="963" max="32767" attributes="0"/>
                   <Component id="btnClienteEspecifico" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
@@ -143,9 +161,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPaneVendedor" pref="228" max="32767" attributes="0"/>
+                      <Component id="jScrollPaneVendedor" pref="203" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnClienteEspecifico" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="btnClienteEspecifico" min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -212,6 +231,12 @@
             </Container>
             <Component class="javax.swing.JButton" name="btnClienteEspecifico">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/projeto/vendas/model/icones/Selecionar.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Selecionar Cliente Espec&#xed;fico"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
@@ -236,14 +261,14 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jPanelVendedores" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanelVendas" min="-2" pref="276" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jPanelVendas" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jPanelProduto" min="-2" pref="276" max="-2" attributes="0"/>
+                              <Component id="jPanelProduto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -255,17 +280,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jPanelVendedores" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jPanelVendas" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="jPanelProduto" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanelVendas" max="32767" attributes="0"/>
+                          <Component id="jPanelProduto" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -275,7 +295,9 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Vendedores"/>
+                    <TitledBorder title="Vendedores">
+                      <Font PropertyName="font" name="Times New Roman" size="12" style="3"/>
+                    </TitledBorder>
                   </Border>
                 </Property>
               </Properties>
@@ -287,82 +309,70 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblQtdeColaboradores" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblQtdeVendedores" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="txtVendedores" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblQtdeSupervisor" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblQtdeGerentes" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="txtVendedores" min="-2" pref="75" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                           <Component id="txtSupervisores" min="-2" pref="75" max="-2" attributes="0"/>
-                                          <Component id="txtGerentes" min="-2" pref="75" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblQtdeVendedores" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="lblQtdeSupervisor" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="241" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtVendAtivos" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="lblAtivos" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="27" pref="125" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="lblInativos" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtVendInativos" min="-2" pref="75" max="-2" attributes="0"/>
+                                      <Component id="lblQtdeGerentes" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtGerentes" min="-2" pref="75" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtTotalColaboradores" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                      <Component id="lblTotalColaboradores" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace pref="37" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblAtivos" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtVendAtivos" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblInativos" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtVendInativos" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblTotalColaboradores" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTotalColaboradores" min="-2" pref="75" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="82" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblQtdeColaboradores" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblAtivos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblInativos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lblQtdeColaboradores" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtVendAtivos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtVendInativos" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblQtdeVendedores" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtVendedores" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblQtdeSupervisor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblQtdeGerentes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAtivos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblInativos" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTotalColaboradores" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblQtdeSupervisor" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtSupervisores" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblQtdeGerentes" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtGerentes" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="lblTotalColaboradores" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtTotalColaboradores" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtVendedores" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtSupervisores" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtGerentes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtVendAtivos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtVendInativos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTotalColaboradores" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="43" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -370,11 +380,17 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblQtdeColaboradores">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Quantidade de colaboradores por fun&#xe7;&#xe3;o ativos"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblAtivos">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Vendedores Ativos"/>
                   </Properties>
                 </Component>
@@ -393,21 +409,33 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblInativos">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Vendedores Inatiivos"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblQtdeVendedores">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Vendedores"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblQtdeSupervisor">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Supervisores"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblQtdeGerentes">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Gerentes"/>
                   </Properties>
                 </Component>
@@ -431,6 +459,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblTotalColaboradores">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Total de Colaboradores"/>
                   </Properties>
                 </Component>
@@ -445,7 +476,9 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Vendas"/>
+                    <TitledBorder title="Vendas">
+                      <Font PropertyName="font" name="Times New Roman" size="12" style="3"/>
+                    </TitledBorder>
                   </Border>
                 </Property>
               </Properties>
@@ -460,10 +493,12 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblTotalValorVendas" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtValorTotalVendas" min="-2" pref="75" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtValorTotalVendas" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="lblTotalValorVendas" pref="124" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -480,7 +515,7 @@
                               <Component id="txtQtdeTotalVendas" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtValorTotalVendas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="72" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -488,11 +523,17 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblTotalValorVendas">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Valor total das vendas"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblQtdeTotalVendas">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Quantidade total de vendas"/>
                   </Properties>
                 </Component>
@@ -512,7 +553,9 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Produto mais vendido"/>
+                    <TitledBorder title="Produto mais vendido">
+                      <Font PropertyName="font" name="Times New Roman" size="12" style="3"/>
+                    </TitledBorder>
                   </Border>
                 </Property>
               </Properties>
@@ -547,7 +590,7 @@
                               <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtQtdeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -555,11 +598,17 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="lblQtdeProduto">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Valor total das vendas"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblNomeProduto">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Quantidade total de vendas"/>
                   </Properties>
                 </Component>
@@ -581,6 +630,12 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnImprimir">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="3"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Imprimir.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Imprimir"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
@@ -593,7 +648,7 @@
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="##/##/####" subtype="-1" type="5"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="01/01/2000"/>
+        <Property name="text" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="ftxtData_Final">
@@ -601,16 +656,30 @@
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format="##/##/####" subtype="-1" type="5"/>
         </Property>
+        <Property name="text" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblA">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&#xe1;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblDe">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="De:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblControle_Estrategico_Vendedor">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/Controle Estrategico por vendedor.png"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

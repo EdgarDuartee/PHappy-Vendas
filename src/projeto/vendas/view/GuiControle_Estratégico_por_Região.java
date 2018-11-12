@@ -47,12 +47,13 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         Painel_Mapa = new javax.swing.JPanel();
+        lblControle_Estrategico_Regiao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico por Região");
         setResizable(false);
 
-        Painel_Pesquisa_Região.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa Região"));
+        Painel_Pesquisa_Região.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Região", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
         cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
         cbxEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -61,8 +62,10 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             }
         });
 
+        lblEstado.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblEstado.setText("Estado");
 
+        lblCidade.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCidade.setText("Cidade");
 
         javax.swing.GroupLayout Painel_Pesquisa_RegiãoLayout = new javax.swing.GroupLayout(Painel_Pesquisa_Região);
@@ -91,10 +94,12 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                     .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções Filtros Gerais"));
+        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções Filtros Gerais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblMaior_Que.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblMaior_Que.setText("Maior Que");
 
+        lblMenor_Que.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblMenor_Que.setText("Menor Que");
 
         txtMenor_Que.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +116,10 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxFiltros_Gerais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addComponent(lblMaior_Que)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addComponent(txtMaior_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMaior_Que)
+                            .addComponent(txtMaior_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
@@ -141,10 +145,12 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Período da Pesquisa"));
+        Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Período da Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblData_Inicial.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Inicial.setText("Data Inicial");
 
+        lblData_Final.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Final.setText("Data Final");
 
         try {
@@ -152,6 +158,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ftxtData_Inicial.setText("");
         ftxtData_Inicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtData_InicialActionPerformed(evt);
@@ -163,6 +170,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ftxtData_Final.setText("");
         ftxtData_Final.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtData_FinalActionPerformed(evt);
@@ -175,17 +183,17 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ftxtData_Inicial)
+                    .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))
-                    .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addComponent(lblData_Inicial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Período_PesquisaLayout.createSequentialGroup()
                         .addComponent(lblData_Final)
-                        .addGap(68, 68, 68))))
+                        .addGap(68, 68, 68))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Período_PesquisaLayout.createSequentialGroup()
+                        .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49))))
         );
         Painel_Período_PesquisaLayout.setVerticalGroup(
             Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,6 +209,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +218,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,10 +254,10 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnVoltar)
-                    .addComponent(btnBuscar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Painel_MapaLayout = new javax.swing.GroupLayout(Painel_Mapa);
@@ -259,12 +271,16 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        lblControle_Estrategico_Regiao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Controle estrategico por Região.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
+                .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -279,6 +295,10 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -357,6 +377,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtData_Final;
     private javax.swing.JFormattedTextField ftxtData_Inicial;
     private javax.swing.JLabel lblCidade;
+    private javax.swing.JLabel lblControle_Estrategico_Regiao;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
     private javax.swing.JLabel lblEstado;

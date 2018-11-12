@@ -111,6 +111,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         ftxtData_Final = new javax.swing.JFormattedTextField();
         lblA = new javax.swing.JLabel();
         lblDe = new javax.swing.JLabel();
+        lblControle_Estrategico_Vendedor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico Vendedor");
@@ -121,6 +122,8 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +131,8 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         });
 
+        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,8 +140,10 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         });
 
+        lblData_Inicial.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Inicial.setText("Data Inicial");
 
+        lblData_Final.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Final.setText("Data Final");
 
         tblVendedor.setModel(new javax.swing.table.DefaultTableModel(
@@ -158,6 +165,8 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         tblVendedor.setToolTipText("");
         jScrollPaneVendedor.setViewportView(tblVendedor);
 
+        btnClienteEspecifico.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnClienteEspecifico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Selecionar.png"))); // NOI18N
         btnClienteEspecifico.setText("Selecionar Cliente Específico");
         btnClienteEspecifico.setEnabled(false);
         btnClienteEspecifico.addActionListener(new java.awt.event.ActionListener() {
@@ -170,24 +179,27 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         Painel_Vendedores.setLayout(Painel_VendedoresLayout);
         Painel_VendedoresLayout.setHorizontalGroup(
             Painel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
+            .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 963, Short.MAX_VALUE)
             .addComponent(btnClienteEspecifico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Painel_VendedoresLayout.setVerticalGroup(
             Painel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_VendedoresLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClienteEspecifico, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnClienteEspecifico, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         Painel_Geral.addTab("Vendedores", Painel_Vendedores);
 
-        jPanelVendedores.setBorder(javax.swing.BorderFactory.createTitledBorder("Vendedores"));
+        jPanelVendedores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vendedores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblQtdeColaboradores.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQtdeColaboradores.setText("Quantidade de colaboradores por função ativos");
 
+        lblAtivos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblAtivos.setText("Vendedores Ativos");
 
         txtVendAtivos.setEnabled(false);
@@ -199,12 +211,16 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         });
 
+        lblInativos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblInativos.setText("Vendedores Inatiivos");
 
+        lblQtdeVendedores.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQtdeVendedores.setText("Vendedores");
 
+        lblQtdeSupervisor.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQtdeSupervisor.setText("Supervisores");
 
+        lblQtdeGerentes.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQtdeGerentes.setText("Gerentes");
 
         txtVendedores.setEnabled(false);
@@ -218,6 +234,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         });
 
+        lblTotalColaboradores.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblTotalColaboradores.setText("Total de Colaboradores");
 
         txtTotalColaboradores.setEnabled(false);
@@ -230,68 +247,64 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblQtdeColaboradores)
-                    .addComponent(lblQtdeVendedores)
-                    .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelVendedoresLayout.createSequentialGroup()
-                            .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblQtdeSupervisor)
-                                .addComponent(lblQtdeGerentes))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtSupervisores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtGerentes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
-                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelVendedoresLayout.createSequentialGroup()
                         .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVendAtivos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAtivos))
-                        .addGap(27, 125, Short.MAX_VALUE)
+                            .addGroup(jPanelVendedoresLayout.createSequentialGroup()
+                                .addComponent(txtVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(70, 70, 70)
+                                .addComponent(txtSupervisores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelVendedoresLayout.createSequentialGroup()
+                                .addComponent(lblQtdeVendedores)
+                                .addGap(84, 84, 84)
+                                .addComponent(lblQtdeSupervisor)))
+                        .addGap(38, 38, 38)
                         .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblInativos)
-                            .addComponent(txtVendInativos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanelVendedoresLayout.createSequentialGroup()
-                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTotalColaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTotalColaboradores))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblQtdeGerentes)
+                            .addComponent(txtGerentes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAtivos)
+                    .addComponent(txtVendAtivos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInativos)
+                    .addComponent(txtVendInativos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalColaboradores)
+                    .addComponent(txtTotalColaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanelVendedoresLayout.setVerticalGroup(
             jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelVendedoresLayout.createSequentialGroup()
-                .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblQtdeColaboradores)
-                    .addComponent(lblAtivos)
-                    .addComponent(lblInativos))
+                .addComponent(lblQtdeColaboradores)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVendAtivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVendInativos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblQtdeVendedores)
-                    .addComponent(txtVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblQtdeSupervisor)
+                    .addComponent(lblQtdeGerentes)
+                    .addComponent(lblAtivos)
+                    .addComponent(lblInativos)
+                    .addComponent(lblTotalColaboradores))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelVendedoresLayout.createSequentialGroup()
-                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblQtdeSupervisor)
-                            .addComponent(txtSupervisores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblQtdeGerentes)
-                            .addComponent(txtGerentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelVendedoresLayout.createSequentialGroup()
-                        .addComponent(lblTotalColaboradores)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(txtVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelVendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSupervisores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtGerentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtVendAtivos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtVendInativos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtTotalColaboradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jPanelVendas.setBorder(javax.swing.BorderFactory.createTitledBorder("Vendas"));
+        jPanelVendas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vendas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblTotalValorVendas.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblTotalValorVendas.setText("Valor total das vendas");
 
+        lblQtdeTotalVendas.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQtdeTotalVendas.setText("Quantidade total de vendas");
 
         txtQtdeTotalVendas.setEnabled(false);
@@ -308,9 +321,10 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                     .addComponent(txtQtdeTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTotalValorVendas)
-                    .addComponent(txtValorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelVendasLayout.createSequentialGroup()
+                        .addComponent(txtValorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblTotalValorVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
         );
         jPanelVendasLayout.setVerticalGroup(
             jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,13 +337,15 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtQtdeTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtValorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelProduto.setBorder(javax.swing.BorderFactory.createTitledBorder("Produto mais vendido"));
+        jPanelProduto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Produto mais vendido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        lblQtdeProduto.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQtdeProduto.setText("Valor total das vendas");
 
+        lblNomeProduto.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNomeProduto.setText("Quantidade total de vendas");
 
         txtNomeProduto.setEnabled(false);
@@ -361,7 +377,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 .addGroup(jPanelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtQtdeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Painel_ResumoGeralLayout = new javax.swing.GroupLayout(Painel_ResumoGeral);
@@ -371,13 +387,13 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_ResumoGeralLayout.createSequentialGroup()
+                    .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
                         .addComponent(jPanelVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(75, 75, 75))
                     .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
-                        .addComponent(jPanelVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         Painel_ResumoGeralLayout.setVerticalGroup(
@@ -385,18 +401,17 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelVendedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jPanelProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(79, 79, 79))
         );
 
         Painel_Geral.addTab("Resumo Geral de Todos os Vendedores", Painel_ResumoGeral);
 
+        btnImprimir.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imprimir.png"))); // NOI18N
         btnImprimir.setText("Imprimir");
         btnImprimir.setEnabled(false);
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -410,17 +425,22 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.setText("01/01/2000");
+        ftxtData_Inicial.setText("");
 
         try {
             ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        ftxtData_Final.setText("");
 
+        lblA.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblA.setText("á");
 
+        lblDe.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblDe.setText("De:");
+
+        lblControle_Estrategico_Vendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Controle Estrategico por vendedor.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -429,52 +449,53 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(btnVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblDe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblA))
-                    .addComponent(lblData_Inicial))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(lblA, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblData_Final)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(btnBuscar)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar)))
                 .addGap(105, 105, 105)
                 .addComponent(btnImprimir)
                 .addGap(224, 224, 224))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addComponent(Painel_Geral)
-                    .addGap(21, 21, 21)))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(lblControle_Estrategico_Vendedor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Painel_Geral)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(342, 342, 342)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(lblControle_Estrategico_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Painel_Geral, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblData_Inicial)
                     .addComponent(lblData_Final))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
-                    .addComponent(btnImprimir)
+                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblA)
                     .addComponent(lblDe))
-                .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Painel_Geral, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(90, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -691,6 +712,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneVendedor;
     private javax.swing.JLabel lblA;
     private javax.swing.JLabel lblAtivos;
+    private javax.swing.JLabel lblControle_Estrategico_Vendedor;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
     private javax.swing.JLabel lblDe;

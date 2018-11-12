@@ -5,6 +5,9 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import projeto.vendas.model.Login;
 
 /**
@@ -20,6 +23,10 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         initComponents();
         this.login = login;
         System.out.println("Numero do Vendedor LOGADO = " + login.getCodigo() + "Nome = " + login.getNome());
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -31,6 +38,7 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblLogo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -43,10 +51,15 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         setTitle("Menu");
         setResizable(false);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/logo.png"))); // NOI18N
+
         jMenu_Cadastro.setText("Cadastro");
+        jMenu_Cadastro.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
         jMenu4.setText("Cliente");
+        jMenu4.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem_Pessoa_Fisica.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Pessoa_Fisica.setText("Pessoa Física");
         jMenuItem_Pessoa_Fisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +68,7 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem_Pessoa_Fisica);
 
+        jMenuItem_Pessoa_Juridica.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem_Pessoa_Juridica.setText("Pessoa Jurídica");
         jMenu4.add(jMenuItem_Pessoa_Juridica);
 
@@ -63,9 +77,11 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         jMenuBar1.add(jMenu_Cadastro);
 
         jMenu_Gerar_Pedido.setText("Gerar Pedido");
+        jMenu_Gerar_Pedido.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuBar1.add(jMenu_Gerar_Pedido);
 
         jMenu_Emitir_Nota_Fiscal.setText("Emitir Nota Fiscal");
+        jMenu_Emitir_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuBar1.add(jMenu_Emitir_Nota_Fiscal);
 
         setJMenuBar(jMenuBar1);
@@ -74,11 +90,17 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(lblLogo)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,5 +155,6 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_Cadastro;
     private javax.swing.JMenu jMenu_Emitir_Nota_Fiscal;
     private javax.swing.JMenu jMenu_Gerar_Pedido;
+    private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }

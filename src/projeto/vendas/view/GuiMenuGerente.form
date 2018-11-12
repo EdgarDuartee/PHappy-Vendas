@@ -16,15 +16,24 @@
         <Menu class="javax.swing.JMenu" name="jMenu_Cadastro">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastro"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu_Cliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Pessoa_F&#xed;sica">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="3"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Pessoa F&#xed;sica"/>
                   </Properties>
                   <Events>
@@ -33,6 +42,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Pessoa_Jur&#xed;dica">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Times New Roman" size="12" style="3"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Pessoa Jur&#xed;dica"/>
                   </Properties>
                   <Events>
@@ -43,6 +55,9 @@
             </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Vendedor">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vendedor"/>
               </Properties>
               <Events>
@@ -54,10 +69,16 @@
         <Menu class="javax.swing.JMenu" name="JMenuAlterar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Alterar_Cliente">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cliente"/>
               </Properties>
               <Events>
@@ -66,6 +87,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Alterar_Vendedor">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Vendedor"/>
               </Properties>
               <Events>
@@ -77,11 +101,17 @@
         <Menu class="javax.swing.JMenu" name="jMenu_Gerar_Pedido">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gerar Pedido"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Gerar_Pedido">
               <Properties>
-                <Property name="text" type="java.lang.String" value="gerar Pedido"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Gerar Pedido"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_Gerar_PedidoActionPerformed"/>
@@ -92,10 +122,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu_Pedidos_Aprovados">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pedidos Aprovados"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_PedidosAprovados">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Pedidos Aprovados"/>
               </Properties>
               <Events>
@@ -107,10 +143,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu_GerenciarPendencias">
           <Properties>
             <Property name="text" type="java.lang.String" value="Gerenciar Pendencias"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Analise_de_Credito">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="An&#xe1;lise de Cr&#xe9;dito"/>
               </Properties>
               <Events>
@@ -122,10 +164,16 @@
         <Menu class="javax.swing.JMenu" name="jMenu_ControleEstrategico">
           <Properties>
             <Property name="text" type="java.lang.String" value="Controle Estrat&#xe9;gico"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_PorCliente">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Por Cliente"/>
               </Properties>
               <Events>
@@ -134,6 +182,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_PorVendedor">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Por Vendedor"/>
               </Properties>
               <Events>
@@ -142,6 +193,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_PorRegiao">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Por Regi&#xe3;o"/>
               </Properties>
               <Events>
@@ -178,13 +232,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="601" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="174" max="32767" attributes="0"/>
+              <Component id="lblLogotipo" min="-2" pref="279" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="281" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Component id="lblLogotipo" min="-2" pref="148" max="-2" attributes="0"/>
+              <EmptySpace pref="74" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblLogotipo">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/projeto/vendas/model/icones/logo.png"/>
+        </Property>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>
