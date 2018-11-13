@@ -121,7 +121,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         });
 
-        cbx_filtros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frequência de Compra dos Clientes." }));
+        cbx_filtros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frequência de Compra.", "Maiores Compras" }));
         cbx_filtros.setToolTipText("Lista de Filtros");
         cbx_filtros.setEnabled(false);
 
@@ -466,6 +466,35 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 }
             }
 
+        } else {
+            PJ = daoPJ.consultaNome(txt_Cliente.getText());
+            if (PJ == null) {
+//                    CLiente nao localizado, confira o codigo.
+            } else {
+                ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
+                Object[] row = {
+                    PJ.getNome(),
+                    daoPedido.MediaCompras(PJ.getCodigo()),
+                    daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()),
+                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()};
+                model.addRow(row);
+            }
+            PF = daoPF.consultaNome(txt_Cliente.getText());
+            if (PF == null) {
+//                    Cliente nao localizado, confira o codigo.
+            } else {
+
+                ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
+                Object[] row = {
+                    PF.getNome(),
+                    daoPedido.MediaCompras(PF.getCodigo()),
+                    daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()),
+                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
+                };
+                model.addRow(row);
+            }
         }
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
@@ -492,18 +521,16 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
 
         for (int i = 0; i < ListaPF.size(); i++) {
             ListaPedidoProduto = daoPedido.ProdutosMaisComprados(ListaPF.get(i).getCodigo());
-            if (ListaPedidoProduto != null) {
+            if (ListaPedidoProduto.size() > 0) {
                 Object[] row = {
                     ListaPF.get(i).getNome(),
                     daoPedido.MediaCompras(ListaPF.get(i).getCodigo()),
                     daoPedido.FrequenciaDeCompras(ListaPF.get(i).getCodigo(), formatarDate.format(data), ListaPF.get(i).getDtInicio()),
-                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
-                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
+                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao(),
+                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao()
                 };
                 model.addRow(row);
-
             }
-
         }
 
 
