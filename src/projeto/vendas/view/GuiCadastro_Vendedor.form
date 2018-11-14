@@ -159,10 +159,12 @@
                                   <Component id="Painel_Permissoes" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnLimpar" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Component id="lblFuncionario" alignment="0" min="-2" pref="425" max="-2" attributes="0"/>
@@ -583,10 +585,7 @@
                                   <Component id="lblBuscar_Por" min="-2" pref="17" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="btnPesquisar" pref="0" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnPesquisar" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">

@@ -5,6 +5,9 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -35,6 +38,10 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tbl_PedidosAprovados.getModel();
         tbl_PedidosAprovados.setRowSorter(new TableRowSorter(modelo));
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -89,6 +96,8 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbl_PedidosAprovados);
 
+        btnSelecionar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnSelecionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Nota Fiscal.png"))); // NOI18N
         btnSelecionar.setText("Selecione o Pedido E Click Aqui Para Emitir a Nota Fiscal.");
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +105,8 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
             }
         });
 
+        btnRetornar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnRetornar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
         btnRetornar.setText("Retornar");
         btnRetornar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

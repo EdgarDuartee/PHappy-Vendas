@@ -14,6 +14,7 @@ import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
+import projeto.vendas.control.DaoProduto;
 import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -65,7 +66,6 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btn_IndividualSTATUS = new javax.swing.JToggleButton();
         btnVoltar = new javax.swing.JButton();
-        lblControle_Estrategico_Cliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico por Cliente");
@@ -110,7 +110,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         Painel_Cliente.setViewportView(tblCliente);
 
         Painel_Opções_de_Filtro.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Coletiva", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
+        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa Coletiva"));
 
         btn_ColetivaSTATUS.setBackground(new java.awt.Color(255, 51, 51));
         btn_ColetivaSTATUS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -120,36 +120,26 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 btn_ColetivaSTATUSItemStateChanged(evt);
             }
         });
-        Painel_Opções_de_Filtro.add(btn_ColetivaSTATUS);
 
         cbx_filtros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frequência de Compra dos Clientes." }));
         cbx_filtros.setToolTipText("Lista de Filtros");
         cbx_filtros.setEnabled(false);
-        Painel_Opções_de_Filtro.add(cbx_filtros);
 
         ftxt_maiorque.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         ftxt_maiorque.setEnabled(false);
-        Painel_Opções_de_Filtro.add(ftxt_maiorque);
 
         ftxt_menorque.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         ftxt_menorque.setEnabled(false);
-        Painel_Opções_de_Filtro.add(ftxt_menorque);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel2.setText("Maior que:");
-        Painel_Opções_de_Filtro.add(jLabel2);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel3.setText("Menor que:");
-        Painel_Opções_de_Filtro.add(jLabel3);
 
         Painel_Período_Pesquisa.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Período da Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
+        Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Período da Pesquisa"));
 
-        lblData_Inicial.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Inicial.setText("Data Inicial");
 
-        lblData_Final.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Final.setText("Data Final");
 
         try {
@@ -174,15 +164,13 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblData_Inicial))
+                .addGap(33, 33, 33)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(lblData_Final)
-                        .addGap(0, 22, Short.MAX_VALUE))
-                    .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(ftxtData_Final)
-                        .addContainerGap())))
+                        .addGap(3, 3, 3)
+                        .addComponent(lblData_Final)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_Período_PesquisaLayout.setVerticalGroup(
             Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,48 +186,85 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Painel_Opções_de_Filtro.add(Painel_Período_Pesquisa);
-
-        btn_pesquisarColetiva.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        btn_pesquisarColetiva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
         btn_pesquisarColetiva.setText("Pesquisar");
-        Painel_Opções_de_Filtro.add(btn_pesquisarColetiva);
+        btn_pesquisarColetiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarColetivaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Painel_Opções_de_FiltroLayout = new javax.swing.GroupLayout(Painel_Opções_de_Filtro);
+        Painel_Opções_de_Filtro.setLayout(Painel_Opções_de_FiltroLayout);
+        Painel_Opções_de_FiltroLayout.setHorizontalGroup(
+            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbx_filtros, 0, 212, Short.MAX_VALUE)
+                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_ColetivaSTATUS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ftxt_maiorque)
+                            .addComponent(ftxt_menorque)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btn_pesquisarColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        Painel_Opções_de_FiltroLayout.setVerticalGroup(
+            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbx_filtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_ColetivaSTATUS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(ftxt_maiorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(ftxt_menorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_pesquisarColetiva)
+                        .addContainerGap())))
+        );
 
         Painel_Pesquisa_Cliente4.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Pesquisa_Cliente4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Individual", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
+        Painel_Pesquisa_Cliente4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Individual", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         rbtnNome_Cliente.setBackground(new java.awt.Color(255, 255, 255));
         Grupo_Cliente.add(rbtnNome_Cliente);
-        rbtnNome_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         rbtnNome_Cliente.setText("Nome");
-        Painel_Pesquisa_Cliente4.add(rbtnNome_Cliente);
 
         rbtnCodigo_Cliente.setBackground(new java.awt.Color(255, 255, 255));
         Grupo_Cliente.add(rbtnCodigo_Cliente);
-        rbtnCodigo_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         rbtnCodigo_Cliente.setText("Código");
-        Painel_Pesquisa_Cliente4.add(rbtnCodigo_Cliente);
 
         txt_Cliente.setText("Luiz Fernando Neves da Rosa");
-        Painel_Pesquisa_Cliente4.add(txt_Cliente);
 
-        btn_pesquisar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        btn_pesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
         btn_pesquisar.setText("Pesquisar");
         btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_pesquisarActionPerformed(evt);
             }
         });
-        Painel_Pesquisa_Cliente4.add(btn_pesquisar);
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel7.setText("Cliente");
-        Painel_Pesquisa_Cliente4.add(jLabel7);
 
         btn_IndividualSTATUS.setBackground(new java.awt.Color(153, 204, 0));
         btn_IndividualSTATUS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btn_IndividualSTATUS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/on.png"))); // NOI18N
         btn_IndividualSTATUS.setSelected(true);
         btn_IndividualSTATUS.setText("ON");
         btn_IndividualSTATUS.setAutoscrolls(true);
@@ -248,18 +273,53 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 btn_IndividualSTATUSItemStateChanged(evt);
             }
         });
-        Painel_Pesquisa_Cliente4.add(btn_IndividualSTATUS);
 
-        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
+        javax.swing.GroupLayout Painel_Pesquisa_Cliente4Layout = new javax.swing.GroupLayout(Painel_Pesquisa_Cliente4);
+        Painel_Pesquisa_Cliente4.setLayout(Painel_Pesquisa_Cliente4Layout);
+        Painel_Pesquisa_Cliente4Layout.setHorizontalGroup(
+            Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_IndividualSTATUS))
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                        .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                                .addComponent(rbtnNome_Cliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtnCodigo_Cliente)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 81, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        Painel_Pesquisa_Cliente4Layout.setVerticalGroup(
+            Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7))
+                    .addComponent(btn_IndividualSTATUS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_pesquisar)
+                    .addComponent(rbtnNome_Cliente)
+                    .addComponent(rbtnCodigo_Cliente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
             }
         });
-
-        lblControle_Estrategico_Cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Controle Estrategico por Cliente.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -369,12 +429,22 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_IndividualSTATUSItemStateChanged
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+        ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
+
         if (rbtnCodigo_Cliente.isSelected()) {
             if (txt_Cliente.getText().substring(0, 2).contains("PJ")) {
                 PJ = daoPJ.consultar(txt_Cliente.getText());
                 if (PJ == null) {
 //                    CLiente nao localizado, confira o codigo.
                 } else {
+                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
+                    Object[] row = {
+                        PJ.getNome(),
+                        daoPedido.MediaCompras(PJ.getCodigo()),
+                        daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()),
+                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                        daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()};
+                    model.addRow(row);
 
                 }
             }
@@ -384,10 +454,15 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
 //                    Cliente nao localizado, confira o codigo.
                 } else {
 
+                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
                     Object[] row = {
                         PF.getNome(),
                         daoPedido.MediaCompras(PF.getCodigo()),
-                        daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio())};
+                        daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()),
+                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                        daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
+                    };
+                    model.addRow(row);
                 }
             }
 
@@ -402,9 +477,37 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         daoPF = new DaoPFisica(conexao.conectar());
         daoPJ = new DaoPJuridica(conexao.conectar());
         daoPedido = new DaoGerarPedido(conexao.conectar());
+        daoProduto = new DaoProduto(conexao.conectar());
         model = (DefaultTableModel) tblCliente.getModel();
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void btn_pesquisarColetivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarColetivaActionPerformed
+        ArrayList<PessoaFisica> ListaPF = new ArrayList<PessoaFisica>();
+        ArrayList<PessoaJuridica> ListaPJ = new ArrayList<PessoaJuridica>();
+        ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
+
+        ListaPF = daoPF.ListarPessoasFisicas();
+        ListaPJ = daoPJ.ListarPessoasJuridicas();
+
+        for (int i = 0; i < ListaPF.size(); i++) {
+            ListaPedidoProduto = daoPedido.ProdutosMaisComprados(ListaPF.get(i).getCodigo());
+            if (ListaPedidoProduto != null) {
+                Object[] row = {
+                    ListaPF.get(i).getNome(),
+                    daoPedido.MediaCompras(ListaPF.get(i).getCodigo()),
+                    daoPedido.FrequenciaDeCompras(ListaPF.get(i).getCodigo(), formatarDate.format(data), ListaPF.get(i).getDtInicio()),
+                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
+                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
+                };
+                model.addRow(row);
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_btn_pesquisarColetivaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -447,6 +550,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private PessoaFisica PF;
     private PessoaJuridica PJ;
     private DaoGerarPedido daoPedido;
+    private DaoProduto daoProduto;
     private DefaultTableModel model;
     Date data = new Date(System.currentTimeMillis());
     SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
@@ -471,7 +575,6 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblControle_Estrategico_Cliente;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
     private javax.swing.JRadioButton rbtnCodigo_Cliente;

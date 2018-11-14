@@ -30,6 +30,9 @@ import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
 import projeto.vendas.tabelas.GuiControleEstrategicoRegiaoGeral;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 
 /**
  *
@@ -50,6 +53,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiao.getModel();
         tblRegiao.setRowSorter(new TableRowSorter(modelo));
+
     }
 
     /**

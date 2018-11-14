@@ -32,9 +32,7 @@ public class Conexao {
         //conexao Luis
 //        this.usuario = "fernando";
 //        this.senha = "fernando98"; 
-
-//        this.usuario = "fernando";
-//        this.senha = "fernando98";   
+  
         
         //conexao FACULDADE
 //        this.usuario = "BD1621028";

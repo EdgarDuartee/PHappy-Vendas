@@ -5,7 +5,10 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
+import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -60,6 +63,10 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblVendedor.getModel();
         tblVendedor.setRowSorter(new TableRowSorter(modelo));
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
 
     }
 
@@ -145,6 +152,8 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
 
         lblData_Final.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Final.setText("Data Final");
+
+        Painel_Geral.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
         tblVendedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
