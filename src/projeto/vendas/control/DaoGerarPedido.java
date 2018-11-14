@@ -245,7 +245,7 @@ public class DaoGerarPedido {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
+
         System.out.println(frequencia);
         return frequencia;
     }
@@ -260,8 +260,8 @@ public class DaoGerarPedido {
                     + "group by pedido_produto.produtocod order by quantidade");
             ps.setString(1, clienteCod);
             ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()) {
+
+            while (rs.next()) {
                 // a consulta no banco de dados retorna a somatoria de cada produto
                 //logo, estou reutilizando a model para guardar os valores, agora só percorrer a lista
                 // e pegar os maiores valores.
@@ -271,7 +271,8 @@ public class DaoGerarPedido {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
+
         return lista;
     }
+
 }

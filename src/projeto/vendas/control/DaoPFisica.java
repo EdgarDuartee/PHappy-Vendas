@@ -194,11 +194,7 @@ public class DaoPFisica {
                 System.out.println(ex.toString());
             }
             return (lista);
-
         }
-        
-
-
     }
     
     public PessoaFisica consultaCPF(String codigo) {

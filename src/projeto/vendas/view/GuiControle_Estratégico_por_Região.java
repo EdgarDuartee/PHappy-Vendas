@@ -33,6 +33,15 @@ import projeto.vendas.tabelas.GuiControleEstrategicoRegiaoGeral;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -191,40 +200,40 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
         tblRegiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"AC", "ACRE",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"AL", "ALAGOAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"AM", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"AP", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"BA", "BAHIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"CE", "CEARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"DF", "DISTRITO FEDERAL",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"ES", "ESPIRITO SANTO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"GO", "GOIÁS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MA", "MARANHÃO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MT", "MATO GROSSO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MS", "MATO GROSSO DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MG", "MINAS GERAIS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PA", "PARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PB", "PARAÍBA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PR", "PARANÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PE", "PERNAMBUCO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PI", "PIAUÍ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RJ", "RIO DE JANEIRO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RN", "RIO GRANDE DO NORTE",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RS", "RIO GRANDE DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RO", "RONDÔNIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RR", "RORAIMA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"SC", "SANTA CATARINA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"SP", "SÃO PAULO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"SE", "SERGIPE",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"TO", "TOCANTINS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)}
+                {"AC", "ACRE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"AL", "ALAGOAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"AM", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"AP", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"BA", "BAHIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"CE", "CEARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"DF", "DISTRITO FEDERAL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"ES", "ESPIRITO SANTO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"GO", "GOIÁS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MA", "MARANHÃO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MT", "MATO GROSSO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MS", "MATO GROSSO DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MG", "MINAS GERAIS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PA", "PARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PB", "PARAÍBA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PR", "PARANÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PE", "PERNAMBUCO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PI", "PIAUÍ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RJ", "RIO DE JANEIRO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RN", "RIO GRANDE DO NORTE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RS", "RIO GRANDE DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RO", "RONDÔNIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RR", "RORAIMA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"SC", "SANTA CATARINA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"SP", "SÃO PAULO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"SE", "SERGIPE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"TO", "TOCANTINS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)}
             },
             new String [] {
-                "UF", "Nome", "Qtd clientes", "Qtd clientes PF", "Qtd clientes PJ", "Valor Total vendas"
+                "UF", "Nome", "Qtd clientes", "Qtd clientes PF", "Qtd clientes PJ", "Qtd de Vendas", "Valor Total vendas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -382,11 +391,15 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         ListarPessoasFisicas = daoPFisica.ListarPessoasFisicas();
         ListarPessoasJuridicas = daoPJrudica.ListarPessoasJuridicas();
         ListarNotaFiscal = daoEmitirNotaFical.ListarNotasFiscais();
+        ListarPessoasFisicas = daoPFisica.ListarPessoasFisicas();
+        ListarPessoasJuridicas = daoPJrudica.ListarPessoasJuridicas();
 
         preencheTabelaRegiao(ListarNotaFiscal);
+        preencheQtdCliente();
         if (flagLimpaTabela == 1) {
             Cbx_val.setEnabled(true);
             btnImprimir.setEnabled(true);
+            btnRegiaoEspecifico.setEnabled(true);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -413,8 +426,13 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                             (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 2),
                             (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 3),
                             (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 4),
-                            (double) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
-                            ListarNotaFiscal);
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
+                            (double) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 6),
+                            ListarNotaFiscal,
+                            ftxtData_Inicial.getText(),
+                            ftxtData_Final.getText(),
+                            ativo,
+                            inativo);
             GUI.setVisible(true);
 
         } else {
@@ -426,7 +444,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         List lista = new ArrayList();
         if (Cbx_val.isSelected()) {
             for (int x = 0; x < tblRegiao.getRowCount(); x++) {
-                if ((double) tblRegiao.getValueAt(x, 2) != 0) {
+                if ((int) tblRegiao.getValueAt(x, 2) != 0) {
                     GuiControleEstrategicoRegiaoGeral print
                             = new GuiControleEstrategicoRegiaoGeral();
 
@@ -435,7 +453,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                     print.setQtdCli((int) tblRegiao.getValueAt(x, 2));
                     print.setQtdCliPF((int) tblRegiao.getValueAt(x, 3));
                     print.setQtdCliPJ((int) tblRegiao.getValueAt(x, 4));
-                    print.setValorVendas((double) tblRegiao.getValueAt(x, 5));
+                    print.setQtdVendas((int) tblRegiao.getValueAt(x, 5));
+                    print.setValorVendas((double) tblRegiao.getValueAt(x, 6));
 
                     lista.add(print);
                 }
@@ -450,19 +469,21 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 print.setQtdCli((int) tblRegiao.getValueAt(x, 2));
                 print.setQtdCliPF((int) tblRegiao.getValueAt(x, 3));
                 print.setQtdCliPJ((int) tblRegiao.getValueAt(x, 4));
-                print.setValorVendas((double) tblRegiao.getValueAt(x, 5));
+                print.setQtdVendas((int) tblRegiao.getValueAt(x, 5));
+                print.setValorVendas((double) tblRegiao.getValueAt(x, 6));
 
                 lista.add(print);
             }
         }
-        /*Map parameters = new HashMap();
-        parameters.put("qtdcolaboradores", txtTotalColaboradores.getText());
+        Map parameters = new HashMap();
+        parameters.put("dtinicio", ftxtData_Inicial.getText());
+        parameters.put("dtfinal", ftxtData_Final.getText());
 
         JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
         try {
 
             JasperPrint jpPrint;
-            jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorVendedor.jasper",
+            jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorRegiao1.jasper",
                     parameters, ds);
 
             JasperViewer jv = new JasperViewer(jpPrint, false);
@@ -470,7 +491,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
         } catch (JRException ex) {
             Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
@@ -508,6 +529,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         });
     }
 
+    private int ativo;
+    private int inativo;
     private static DecimalFormat formatoDinheiro = new DecimalFormat("#.##");
     private ArrayList<PessoaFisica> ListarPessoasFisicas;
     private ArrayList<PessoaJuridica> ListarPessoasJuridicas;
@@ -583,14 +606,11 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                         pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
                         for (int a = 0; a < tblRegiao.getRowCount(); a++) {
                             if (pessoaFisica.getUf().equals(tblRegiao.getValueAt(a, 0))) {
-                                int qtdeClientePF = (int) tblRegiao.getValueAt(a, 3);
-                                tblRegiao.setValueAt(qtdeClientePF + 1, a, 3);
+                                int qtd = (int) tblRegiao.getValueAt(a, 5);
+                                tblRegiao.setValueAt(qtd + 1, a, 5);
 
-                                int qtdeClientes = (int) tblRegiao.getValueAt(a, 2);
-                                tblRegiao.setValueAt(qtdeClientes + 1, a, 2);
-
-                                double valor = (double) tblRegiao.getValueAt(a, 5);
-                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 5);
+                                double valor = (double) tblRegiao.getValueAt(a, 6);
+                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 6);
                                 flagLimpaTabela = 1;
                             }
                         }
@@ -598,14 +618,11 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                         pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
                         for (int a = 0; a < tblRegiao.getRowCount(); a++) {
                             if (pessoaJuridica.getUf().equals(tblRegiao.getValueAt(a, 0))) {
-                                int qtdeClientePJ = (int) tblRegiao.getValueAt(a, 4);
-                                tblRegiao.setValueAt(qtdeClientePJ + 1, a, 4);
+                                int qtd = (int) tblRegiao.getValueAt(a, 5);
+                                tblRegiao.setValueAt(qtd + 1, a, 5);
 
-                                int qtdeClientes = (int) tblRegiao.getValueAt(a, 2);
-                                tblRegiao.setValueAt(qtdeClientes + 1, a, 2);
-
-                                double valor = (double) tblRegiao.getValueAt(a, 5);
-                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 5);
+                                double valor = (double) tblRegiao.getValueAt(a, 6);
+                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 6);
                                 flagLimpaTabela = 1;
                             }
                         }
@@ -619,6 +636,44 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         DecimalFormat formato = new DecimalFormat("#.##");
         valor = Double.valueOf(formato.format(valor));
         return (valor);
+    }
+
+    public void preencheQtdCliente() {
+        ativo = 0;
+        inativo = 0;
+        for (int c = 0; c < tblRegiao.getRowCount(); c++) {
+            for (int b = 0; b < ListarPessoasFisicas.size(); b++) {
+                if (ListarPessoasFisicas.get(b).getUf().equals((String) tblRegiao.getValueAt(c, 0))) {
+                    int aux = (int) tblRegiao.getValueAt(c, 2);
+                    tblRegiao.setValueAt(aux + 1, c, 2);
+
+                    aux = (int) tblRegiao.getValueAt(c, 3);
+                    tblRegiao.setValueAt(aux + 1, c, 3);
+                    if (ListarPessoasFisicas.get(b).getAtivo().equals("A")) {
+                        ativo++;
+                    } else {
+                        inativo++;
+                    }
+                }
+            }
+        }
+        for (int c = 0; c < tblRegiao.getRowCount(); c++) {
+            for (int b = 0; b < ListarPessoasJuridicas.size(); b++) {
+                if (ListarPessoasJuridicas.get(b).getUf().equals((String) tblRegiao.getValueAt(c, 0))) {
+                    int aux = (int) tblRegiao.getValueAt(c, 2);
+                    tblRegiao.setValueAt(aux + 1, c, 2);
+
+                    aux = (int) tblRegiao.getValueAt(c, 4);
+                    tblRegiao.setValueAt(aux + 1, c, 4);
+
+                    if (ListarPessoasJuridicas.get(b).getAtivo().equals("A")) {
+                        ativo++;
+                    } else {
+                        inativo++;
+                    }
+                }
+            }
+        }
     }
 
 }
