@@ -5,6 +5,32 @@
  */
 package projeto.vendas.view;
 
+import static java.lang.Integer.parseInt;
+import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoEmitirNotaFiscal;
+import projeto.vendas.control.DaoGerarPedido;
+import projeto.vendas.control.DaoNotaFiscalItens;
+import projeto.vendas.control.DaoPFisica;
+import projeto.vendas.control.DaoPJuridica;
+import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Login;
+import projeto.vendas.model.NotaFiscal;
+import projeto.vendas.model.Pedido;
+import projeto.vendas.model.PessoaFisica;
+import projeto.vendas.model.PessoaJuridica;
+import projeto.vendas.model.Vendedor;
+import projeto.vendas.tabelas.GuiControleEstrategicoRegiaoGeral;
+
 /**
  *
  * @author 0030481521038
@@ -14,8 +40,16 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     /**
      * Creates new form GuiControle_Estratégico_por_Região
      */
-    public GuiControle_Estratégico_por_Região() {
+    public GuiControle_Estratégico_por_Região(Login login) {
         initComponents();
+        this.login = login;
+
+        GuiControle_Estratégico_por_Região.this.setTitle("Controle Estratégico "
+                + "por Vendedor    " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+
+        DefaultTableModel modelo = (DefaultTableModel) tblRegiao.getModel();
+        tblRegiao.setRowSorter(new TableRowSorter(modelo));
     }
 
     /**
@@ -27,18 +61,9 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         Painel_Controle_Estratégico = new javax.swing.JPanel();
-        Painel_Pesquisa_Região = new javax.swing.JPanel();
-        cbxEstado = new javax.swing.JComboBox<>();
-        lblEstado = new javax.swing.JLabel();
-        lblCidade = new javax.swing.JLabel();
-        cbxCidade = new javax.swing.JComboBox<>();
-        Painel_Opções_de_Filtro = new javax.swing.JPanel();
-        cbxFiltros_Gerais = new javax.swing.JComboBox<>();
-        txtMaior_Que = new javax.swing.JTextField();
-        lblMaior_Que = new javax.swing.JLabel();
-        lblMenor_Que = new javax.swing.JLabel();
-        txtMenor_Que = new javax.swing.JTextField();
         Painel_Período_Pesquisa = new javax.swing.JPanel();
         lblData_Inicial = new javax.swing.JLabel();
         lblData_Final = new javax.swing.JLabel();
@@ -46,104 +71,36 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         ftxtData_Final = new javax.swing.JFormattedTextField();
         btnVoltar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        Painel_Mapa = new javax.swing.JPanel();
+        Painel_Geral = new javax.swing.JTabbedPane();
+        Painel_Regiao = new javax.swing.JPanel();
+        jScrollPaneVendedor = new javax.swing.JScrollPane();
+        tblRegiao = new javax.swing.JTable();
+        btnRegiaoEspecifico = new javax.swing.JButton();
+        Cbx_val = new javax.swing.JCheckBox();
+        btnImprimir = new javax.swing.JButton();
         lblControle_Estrategico_Regiao = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico por Região");
         setResizable(false);
-
-        Painel_Pesquisa_Região.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Região", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
-
-        cbxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
-        cbxEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxEstadoActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
-
-        lblEstado.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblEstado.setText("Estado");
-
-        lblCidade.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblCidade.setText("Cidade");
-
-        javax.swing.GroupLayout Painel_Pesquisa_RegiãoLayout = new javax.swing.GroupLayout(Painel_Pesquisa_Região);
-        Painel_Pesquisa_Região.setLayout(Painel_Pesquisa_RegiãoLayout);
-        Painel_Pesquisa_RegiãoLayout.setHorizontalGroup(
-            Painel_Pesquisa_RegiãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pesquisa_RegiãoLayout.createSequentialGroup()
-                .addGroup(Painel_Pesquisa_RegiãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEstado)
-                    .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Painel_Pesquisa_RegiãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCidade)
-                    .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        Painel_Pesquisa_RegiãoLayout.setVerticalGroup(
-            Painel_Pesquisa_RegiãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Pesquisa_RegiãoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Painel_Pesquisa_RegiãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEstado)
-                    .addComponent(lblCidade))
-                .addGap(7, 7, 7)
-                .addGroup(Painel_Pesquisa_RegiãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções Filtros Gerais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
-
-        lblMaior_Que.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblMaior_Que.setText("Maior Que");
-
-        lblMenor_Que.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblMenor_Que.setText("Menor Que");
-
-        txtMenor_Que.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMenor_QueActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Painel_Opções_de_FiltroLayout = new javax.swing.GroupLayout(Painel_Opções_de_Filtro);
-        Painel_Opções_de_Filtro.setLayout(Painel_Opções_de_FiltroLayout);
-        Painel_Opções_de_FiltroLayout.setHorizontalGroup(
-            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxFiltros_Gerais, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMaior_Que)
-                            .addComponent(txtMaior_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenor_Que)
-                    .addComponent(txtMenor_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
-        );
-        Painel_Opções_de_FiltroLayout.setVerticalGroup(
-            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbxFiltros_Gerais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMaior_Que)
-                    .addComponent(lblMenor_Que, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaior_Que, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMenor_Que, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
-        );
 
         Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Período da Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
@@ -158,7 +115,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Inicial.setText("");
+        ftxtData_Inicial.setText("01012000");
+        ftxtData_Inicial.setToolTipText("");
         ftxtData_Inicial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftxtData_InicialActionPerformed(evt);
@@ -186,7 +144,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ftxtData_Inicial)
                     .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Período_PesquisaLayout.createSequentialGroup()
                         .addComponent(lblData_Final)
@@ -227,48 +185,137 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             }
         });
 
+        tblRegiao.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"AC", "ACRE",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"AL", "ALAGOAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"AM", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"AP", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"BA", "BAHIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"CE", "CEARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"DF", "DISTRITO FEDERAL",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"ES", "ESPIRITO SANTO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"GO", "GOIÁS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MA", "MARANHÃO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MT", "MATO GROSSO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MS", "MATO GROSSO DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"MG", "MINAS GERAIS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PA", "PARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PB", "PARAÍBA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PR", "PARANÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PE", "PERNAMBUCO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"PI", "PIAUÍ",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RJ", "RIO DE JANEIRO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RN", "RIO GRANDE DO NORTE",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RS", "RIO GRANDE DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RO", "RONDÔNIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"RR", "RORAIMA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"SC", "SANTA CATARINA",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"SP", "SÃO PAULO",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"SE", "SERGIPE",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
+                {"TO", "TOCANTINS",  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)}
+            },
+            new String [] {
+                "UF", "Nome", "Qtd clientes", "Qtd clientes PF", "Qtd clientes PJ", "Valor Total vendas"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblRegiao.setToolTipText("");
+        jScrollPaneVendedor.setViewportView(tblRegiao);
+
+        btnRegiaoEspecifico.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnRegiaoEspecifico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Selecionar.png"))); // NOI18N
+        btnRegiaoEspecifico.setText("Selecionar Região Específica");
+        btnRegiaoEspecifico.setEnabled(false);
+        btnRegiaoEspecifico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegiaoEspecificoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Painel_RegiaoLayout = new javax.swing.GroupLayout(Painel_Regiao);
+        Painel_Regiao.setLayout(Painel_RegiaoLayout);
+        Painel_RegiaoLayout.setHorizontalGroup(
+            Painel_RegiaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
+            .addComponent(btnRegiaoEspecifico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        Painel_RegiaoLayout.setVerticalGroup(
+            Painel_RegiaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Painel_RegiaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegiaoEspecifico, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        Painel_Geral.addTab("Regiao", Painel_Regiao);
+
+        Cbx_val.setText("Somente Estados que contenham cliente(s).");
+        Cbx_val.setEnabled(false);
+
+        btnImprimir.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
+        btnImprimir.setText("Imprimir");
+        btnImprimir.setEnabled(false);
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Painel_Controle_EstratégicoLayout = new javax.swing.GroupLayout(Painel_Controle_Estratégico);
         Painel_Controle_Estratégico.setLayout(Painel_Controle_EstratégicoLayout);
         Painel_Controle_EstratégicoLayout.setHorizontalGroup(
             Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Painel_Pesquisa_Região, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnVoltar)
                         .addGap(47, 47, 47)
-                        .addComponent(btnBuscar)))
-                .addContainerGap(632, Short.MAX_VALUE))
+                        .addComponent(btnBuscar)
+                        .addGap(44, 44, 44)
+                        .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnImprimir)
+                            .addComponent(Cbx_val))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+                        .addComponent(Painel_Geral, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         Painel_Controle_EstratégicoLayout.setVerticalGroup(
             Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Painel_Pesquisa_Região, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout Painel_MapaLayout = new javax.swing.GroupLayout(Painel_Mapa);
-        Painel_Mapa.setLayout(Painel_MapaLayout);
-        Painel_MapaLayout.setHorizontalGroup(
-            Painel_MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        Painel_MapaLayout.setVerticalGroup(
-            Painel_MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(Painel_Geral, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Controle_EstratégicoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+                        .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnVoltar)
+                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Cbx_val)))
+                        .addContainerGap())))
         );
 
         lblControle_Estrategico_Regiao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Controle estrategico por Região.png"))); // NOI18N
@@ -282,35 +329,21 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cbxEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbxEstadoActionPerformed
-
-    private void txtMenor_QueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenor_QueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenor_QueActionPerformed
 
     private void ftxtData_InicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtData_InicialActionPerformed
         // TODO add your handling code here:
@@ -321,12 +354,120 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     }//GEN-LAST:event_ftxtData_FinalActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        //limpa caso ja tiver algo na tabela
+        if (flagLimpaTabela == 1) {
+            for (int b = 0; b < tblRegiao.getRowCount(); b++) {
+                for (int c = 2; c < 6; c++) {
+                    if (c != 5 && (int) tblRegiao.getValueAt(b, c) != 0) {
+                        tblRegiao.setValueAt(0, b, c);
+                    } else {
+                        tblRegiao.setValueAt(0, b, c);
+                    }
+                }
+            }
+        }
+        daoPFisica = new DaoPFisica(conexao.conectar());
+        daoPJrudica = new DaoPJuridica(conexao.conectar());
+        daoGerarPedido = new DaoGerarPedido(conexao.conectar());
+        daoEmitirNotaFical = new DaoEmitirNotaFiscal(conexao.conectar());
+
+        ListarPessoasFisicas = daoPFisica.ListarPessoasFisicas();
+        ListarPessoasJuridicas = daoPJrudica.ListarPessoasJuridicas();
+        ListarNotaFiscal = daoEmitirNotaFical.ListarNotasFiscais();
+
+        preencheTabelaRegiao(ListarNotaFiscal);
+        if (flagLimpaTabela == 1) {
+            Cbx_val.setEnabled(true);
+            btnImprimir.setEnabled(true);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao();
+        conexao.setDriver();
+        conexao.setConnectionString();
+
+        daoPFisica = new DaoPFisica(conexao.conectar());
+        daoPJrudica = new DaoPJuridica(conexao.conectar());
+
+        SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
+        Date dataDoSistema = new Date(System.currentTimeMillis());
+        String dataEmTexto = formatador.format(dataDoSistema);
+        ftxtData_Final.setText(dataEmTexto);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnRegiaoEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiaoEspecificoActionPerformed
+        if (tblRegiao.getSelectedRow() >= 0) {
+            GuiControle_Estratégico_por_Região_Especifica GUI
+                    = new GuiControle_Estratégico_por_Região_Especifica(login,
+                            (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 0),
+                            (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 1),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 2),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 3),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 4),
+                            (double) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
+                            ListarNotaFiscal);
+            GUI.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha uma Região!");
+        }
+    }//GEN-LAST:event_btnRegiaoEspecificoActionPerformed
+
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
+        List lista = new ArrayList();
+        if (Cbx_val.isSelected()) {
+            for (int x = 0; x < tblRegiao.getRowCount(); x++) {
+                if ((double) tblRegiao.getValueAt(x, 2) != 0) {
+                    GuiControleEstrategicoRegiaoGeral print
+                            = new GuiControleEstrategicoRegiaoGeral();
+
+                    print.setUF((String) tblRegiao.getValueAt(x, 0));
+                    print.setEstado((String) tblRegiao.getValueAt(x, 1));
+                    print.setQtdCli((int) tblRegiao.getValueAt(x, 2));
+                    print.setQtdCliPF((int) tblRegiao.getValueAt(x, 3));
+                    print.setQtdCliPJ((int) tblRegiao.getValueAt(x, 4));
+                    print.setValorVendas((double) tblRegiao.getValueAt(x, 5));
+
+                    lista.add(print);
+                }
+            }
+        } else {
+            for (int x = 0; x < tblRegiao.getRowCount(); x++) {
+                GuiControleEstrategicoRegiaoGeral print
+                        = new GuiControleEstrategicoRegiaoGeral();
+
+                print.setUF((String) tblRegiao.getValueAt(x, 0));
+                print.setEstado((String) tblRegiao.getValueAt(x, 1));
+                print.setQtdCli((int) tblRegiao.getValueAt(x, 2));
+                print.setQtdCliPF((int) tblRegiao.getValueAt(x, 3));
+                print.setQtdCliPJ((int) tblRegiao.getValueAt(x, 4));
+                print.setValorVendas((double) tblRegiao.getValueAt(x, 5));
+
+                lista.add(print);
+            }
+        }
+        /*Map parameters = new HashMap();
+        parameters.put("qtdcolaboradores", txtTotalColaboradores.getText());
+
+        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
+        try {
+
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorVendedor.jasper",
+                    parameters, ds);
+
+            JasperViewer jv = new JasperViewer(jpPrint, false);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+    }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,32 +499,122 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiControle_Estratégico_por_Região().setVisible(true);
+                new GuiControle_Estratégico_por_Região(login).setVisible(true);
             }
         });
     }
 
+    private static DecimalFormat formatoDinheiro = new DecimalFormat("#.##");
+    private ArrayList<PessoaFisica> ListarPessoasFisicas;
+    private ArrayList<PessoaJuridica> ListarPessoasJuridicas;
+    private ArrayList<NotaFiscal> ListarNotaFiscal;
+    private ArrayList<Pedido> ListarPedidos;
+    private static Login login = null;
+    private static int codigo;
+    private Conexao conexao;
+    private Vendedor vendedor = null;
+    private NotaFiscal notaFiscal = null;
+    private DaoVendedor daoVendedor = null;
+    private DaoPFisica daoPFisica = null;
+    private DaoPJuridica daoPJrudica = null;
+    private DaoEmitirNotaFiscal daoEmitirNotaFical = null;
+    private DaoNotaFiscalItens daoNotaFicalItens = null;
+    private PessoaFisica pessoaFisica = null;
+    private PessoaJuridica pessoaJuridica = null;
+    private DaoGerarPedido daoGerarPedido = null;
+    private Pedido pedido = null;
+    private DefaultTableModel model = null;
+    private String legendaSituacao = null;
+    private int flagLimpaTabela = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox Cbx_val;
     private javax.swing.JPanel Painel_Controle_Estratégico;
-    private javax.swing.JPanel Painel_Mapa;
-    private javax.swing.JPanel Painel_Opções_de_Filtro;
+    private javax.swing.JTabbedPane Painel_Geral;
     private javax.swing.JPanel Painel_Período_Pesquisa;
-    private javax.swing.JPanel Painel_Pesquisa_Região;
+    private javax.swing.JPanel Painel_Regiao;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btnRegiaoEspecifico;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JComboBox<String> cbxCidade;
-    private javax.swing.JComboBox<String> cbxEstado;
-    private javax.swing.JComboBox<String> cbxFiltros_Gerais;
     private javax.swing.JFormattedTextField ftxtData_Final;
     private javax.swing.JFormattedTextField ftxtData_Inicial;
-    private javax.swing.JLabel lblCidade;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPaneVendedor;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblControle_Estrategico_Regiao;
     private javax.swing.JLabel lblData_Final;
     private javax.swing.JLabel lblData_Inicial;
-    private javax.swing.JLabel lblEstado;
-    private javax.swing.JLabel lblMaior_Que;
-    private javax.swing.JLabel lblMenor_Que;
-    private javax.swing.JTextField txtMaior_Que;
-    private javax.swing.JTextField txtMenor_Que;
+    private javax.swing.JTable tblRegiao;
     // End of variables declaration//GEN-END:variables
+
+    public void preencheTabelaRegiao(ArrayList<NotaFiscal> ListarNotaFiscal) {
+        if (flagLimpaTabela == 1) {
+            model.setRowCount(0);
+        }
+        int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
+        int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
+        int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
+        LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
+
+        int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
+        int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
+        int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
+        LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
+
+        for (int x = 0; x < ListarNotaFiscal.size(); x++) {
+            int dia = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(0, 2));
+            int mes = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(3, 5));
+            int ano = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(6, 10));
+            LocalDate datainicio1 = LocalDate.of(ano, mes, dia);
+
+            // testa se a data é maior que a data inicial da busca
+            if (datainicio1.isAfter(dataInicio) || datainicio1.isEqual(dataInicio)) {
+                //testa se a data é menor que a data final da busca
+                if (datainicio1.isBefore(dataFinal) || datainicio1.isEqual(dataFinal)) {
+
+                    //busca o pedido para descobrir o cliente
+                    pedido = daoGerarPedido.Consultar(ListarNotaFiscal.get(x).getPedidoCod());
+                    // busca o cliente se for pessoa fisica ou juridica
+                    if (pedido.getClienteCod().substring(0, 2).equals("PF")) {
+                        pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
+                        for (int a = 0; a < tblRegiao.getRowCount(); a++) {
+                            if (pessoaFisica.getUf().equals(tblRegiao.getValueAt(a, 0))) {
+                                int qtdeClientePF = (int) tblRegiao.getValueAt(a, 3);
+                                tblRegiao.setValueAt(qtdeClientePF + 1, a, 3);
+
+                                int qtdeClientes = (int) tblRegiao.getValueAt(a, 2);
+                                tblRegiao.setValueAt(qtdeClientes + 1, a, 2);
+
+                                double valor = (double) tblRegiao.getValueAt(a, 5);
+                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 5);
+                                flagLimpaTabela = 1;
+                            }
+                        }
+                    } else {
+                        pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
+                        for (int a = 0; a < tblRegiao.getRowCount(); a++) {
+                            if (pessoaJuridica.getUf().equals(tblRegiao.getValueAt(a, 0))) {
+                                int qtdeClientePJ = (int) tblRegiao.getValueAt(a, 4);
+                                tblRegiao.setValueAt(qtdeClientePJ + 1, a, 4);
+
+                                int qtdeClientes = (int) tblRegiao.getValueAt(a, 2);
+                                tblRegiao.setValueAt(qtdeClientes + 1, a, 2);
+
+                                double valor = (double) tblRegiao.getValueAt(a, 5);
+                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 5);
+                                flagLimpaTabela = 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public double formataDinheiro(double valor) {
+        DecimalFormat formato = new DecimalFormat("#.##");
+        valor = Double.valueOf(formato.format(valor));
+        return (valor);
+    }
+
 }

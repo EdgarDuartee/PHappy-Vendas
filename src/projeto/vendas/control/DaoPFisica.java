@@ -228,7 +228,6 @@ public class DaoPFisica {
         }
         return  (p);
     }   
-
         
     public ArrayList<PessoaFisica> ListarPFPorCodVend(int codigo) {
         {

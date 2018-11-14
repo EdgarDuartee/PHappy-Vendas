@@ -260,7 +260,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem_PedidosAprovadosActionPerformed
 
     private void jMenuItem_PorRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorRegiaoActionPerformed
-        // TODO add your handling code here:
+        new GuiControle_Estratégico_por_Região(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PorRegiaoActionPerformed
 
     private void jMenuItem_PorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorClienteActionPerformed

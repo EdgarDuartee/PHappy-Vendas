@@ -507,7 +507,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtVendInativosActionPerformed
 
     private void txtGerentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGerentesActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtGerentesActionPerformed
 
     private void btnClienteEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteEspecificoActionPerformed
@@ -627,8 +627,6 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         } catch (JRException ex) {
             Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**

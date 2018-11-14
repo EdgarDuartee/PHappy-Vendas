@@ -281,9 +281,9 @@
 				<reportElement style="LinhaTabela" x="311" y="0" width="40" height="20" uuid="9990fe1f-76ae-4c0f-a6be-90587b515a28"/>
 				<textFieldExpression><![CDATA[$F{qtdeVendasPeriodo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="R$ #,##0.00">
 				<reportElement style="LinhaTabela" x="351" y="0" width="68" height="20" uuid="d811d6d1-f31b-4a33-9af6-d5ee941e4bee"/>
-				<textFieldExpression><![CDATA["R$ " +$F{valorVendasPeriodo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{valorVendasPeriodo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="LinhaTabela" x="419" y="0" width="39" height="20" uuid="abe6c996-39cb-4d97-8848-7dc4da0042f2"/>
