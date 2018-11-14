@@ -15,6 +15,7 @@ import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -42,30 +43,22 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         Grupo_Cliente = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        Painel_Cliente = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
-        Painel_Opções_de_Filtro = new javax.swing.JPanel();
-        btn_ColetivaSTATUS = new javax.swing.JToggleButton();
-        cbx_filtros = new javax.swing.JComboBox<>();
-        ftxt_maiorque = new javax.swing.JFormattedTextField();
-        ftxt_menorque = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        Painel_Período_Pesquisa = new javax.swing.JPanel();
-        lblData_Inicial = new javax.swing.JLabel();
-        lblData_Final = new javax.swing.JLabel();
-        ftxtData_Inicial = new javax.swing.JFormattedTextField();
-        ftxtData_Final = new javax.swing.JFormattedTextField();
-        btn_pesquisarColetiva = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         Painel_Pesquisa_Cliente4 = new javax.swing.JPanel();
         rbtnNome_Cliente = new javax.swing.JRadioButton();
         rbtnCodigo_Cliente = new javax.swing.JRadioButton();
         txt_Cliente = new javax.swing.JTextField();
         btn_pesquisar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        btn_IndividualSTATUS = new javax.swing.JToggleButton();
-        btnVoltar = new javax.swing.JButton();
+        Painel_Cliente = new javax.swing.JScrollPane();
+        tblCliente = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtArea_clienteDetalhes = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btn_pesquisarColetiva = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico por Cliente");
@@ -77,172 +70,17 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(54, 215, 183));
-
-        tblCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Cliente", "Média das Compras", "Frequência de Compras", "Produto mais Comprado", "Produto menos Comprado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        Painel_Cliente.setViewportView(tblCliente);
-
-        Painel_Opções_de_Filtro.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Opções_de_Filtro.setBorder(javax.swing.BorderFactory.createTitledBorder("Pesquisa Coletiva"));
-
-        btn_ColetivaSTATUS.setBackground(new java.awt.Color(255, 51, 51));
-        btn_ColetivaSTATUS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btn_ColetivaSTATUS.setText("OFF");
-        btn_ColetivaSTATUS.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btn_ColetivaSTATUSItemStateChanged(evt);
-            }
-        });
-
-        cbx_filtros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frequência de Compra.", "Maiores Compras" }));
-        cbx_filtros.setToolTipText("Lista de Filtros");
-        cbx_filtros.setEnabled(false);
-
-        ftxt_maiorque.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        ftxt_maiorque.setEnabled(false);
-
-        ftxt_menorque.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
-        ftxt_menorque.setEnabled(false);
-
-        jLabel2.setText("Maior que:");
-
-        jLabel3.setText("Menor que:");
-
-        Painel_Período_Pesquisa.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder("Período da Pesquisa"));
-
-        lblData_Inicial.setText("Data Inicial");
-
-        lblData_Final.setText("Data Final");
-
-        try {
-            ftxtData_Inicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        ftxtData_Inicial.setEnabled(false);
-
-        try {
-            ftxtData_Final.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        ftxtData_Final.setEnabled(false);
-
-        javax.swing.GroupLayout Painel_Período_PesquisaLayout = new javax.swing.GroupLayout(Painel_Período_Pesquisa);
-        Painel_Período_Pesquisa.setLayout(Painel_Período_PesquisaLayout);
-        Painel_Período_PesquisaLayout.setHorizontalGroup(
-            Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblData_Inicial))
-                .addGap(33, 33, 33)
-                .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblData_Final)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        Painel_Período_PesquisaLayout.setVerticalGroup(
-            Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblData_Inicial)
-                    .addComponent(lblData_Final))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btn_pesquisarColetiva.setText("Pesquisar");
-        btn_pesquisarColetiva.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pesquisarColetivaActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout Painel_Opções_de_FiltroLayout = new javax.swing.GroupLayout(Painel_Opções_de_Filtro);
-        Painel_Opções_de_Filtro.setLayout(Painel_Opções_de_FiltroLayout);
-        Painel_Opções_de_FiltroLayout.setHorizontalGroup(
-            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbx_filtros, 0, 212, Short.MAX_VALUE)
-                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_ColetivaSTATUS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ftxt_maiorque)
-                            .addComponent(ftxt_menorque)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btn_pesquisarColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(37, Short.MAX_VALUE))
-        );
-        Painel_Opções_de_FiltroLayout.setVerticalGroup(
-            Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbx_filtros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ColetivaSTATUS))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Painel_Opções_de_FiltroLayout.createSequentialGroup()
-                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(ftxt_maiorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(Painel_Opções_de_FiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(ftxt_menorque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_pesquisarColetiva)
-                        .addContainerGap())))
-        );
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
 
         Painel_Pesquisa_Cliente4.setBackground(new java.awt.Color(255, 255, 255));
-        Painel_Pesquisa_Cliente4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Individual", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        Painel_Pesquisa_Cliente4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         rbtnNome_Cliente.setBackground(new java.awt.Color(255, 255, 255));
         Grupo_Cliente.add(rbtnNome_Cliente);
@@ -261,242 +99,171 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Cliente");
-
-        btn_IndividualSTATUS.setBackground(new java.awt.Color(153, 204, 0));
-        btn_IndividualSTATUS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btn_IndividualSTATUS.setSelected(true);
-        btn_IndividualSTATUS.setText("ON");
-        btn_IndividualSTATUS.setAutoscrolls(true);
-        btn_IndividualSTATUS.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                btn_IndividualSTATUSItemStateChanged(evt);
-            }
-        });
-
         javax.swing.GroupLayout Painel_Pesquisa_Cliente4Layout = new javax.swing.GroupLayout(Painel_Pesquisa_Cliente4);
         Painel_Pesquisa_Cliente4.setLayout(Painel_Pesquisa_Cliente4Layout);
         Painel_Pesquisa_Cliente4Layout.setHorizontalGroup(
             Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_IndividualSTATUS))
-                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
-                        .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
-                                .addComponent(rbtnNome_Cliente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rbtnCodigo_Cliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 81, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(rbtnNome_Cliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbtnCodigo_Cliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         Painel_Pesquisa_Cliente4Layout.setVerticalGroup(
             Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
-                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Pesquisa_Cliente4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7))
-                    .addComponent(btn_IndividualSTATUS))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_pesquisar)
-                    .addComponent(rbtnNome_Cliente)
-                    .addComponent(rbtnCodigo_Cliente))
+                .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_Pesquisa_Cliente4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rbtnNome_Cliente)
+                        .addComponent(rbtnCodigo_Cliente))
+                    .addComponent(btn_pesquisar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
+        tblCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Cliente", "Número do Pedido", "Data", "Situação", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        tblCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        Painel_Cliente.setViewportView(tblCliente);
+
+        txtArea_clienteDetalhes.setEditable(false);
+        txtArea_clienteDetalhes.setColumns(20);
+        txtArea_clienteDetalhes.setRows(5);
+        txtArea_clienteDetalhes.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Detalhes Estatísticos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jScrollPane1.setViewportView(txtArea_clienteDetalhes);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(179, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Pesquisa Individual", null, jPanel3, "");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Opções de Filtro de Pesquisa", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        btn_pesquisarColetiva.setText("Pesquisar");
+        btn_pesquisarColetiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarColetivaActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Frequencia de Compras.", "Melhores Clientes.", "Média Gasta.\t", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 214, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_pesquisarColetiva, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(btn_pesquisarColetiva))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(Painel_Cliente)
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(557, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Painel_Opções_de_Filtro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.addTab("Pesquisa Coletiva", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(440, 440, 440))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-
-        ArrayList<PedidoProduto> listaPedidoProduto = new ArrayList<PedidoProduto>();
-        listaPedidoProduto = daoPedido.ProdutosMaisComprados("PF1");
-//        float xd = daoPedido.FrequenciaDeCompras("PF1", "11/11/2018", "26/10/2018");
-
-        for (int i = 0; i < listaPedidoProduto.size(); i++) {
-
-            System.out.println("Produto Código: " + listaPedidoProduto.get(i).getProdutoCod()
-                    + "Quantidade Total Comprada: " + listaPedidoProduto.get(i).getProdutoQtd());
-
-        }
-
-    }//GEN-LAST:event_btnVoltarActionPerformed
-
-    private void btn_ColetivaSTATUSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btn_ColetivaSTATUSItemStateChanged
-        if (btn_ColetivaSTATUS.isSelected()) {
-            btn_ColetivaSTATUS.setText("ON");
-            btn_ColetivaSTATUS.setBackground(Color.GREEN);
-            btn_ColetivaSTATUS.setForeground(Color.BLACK);
-            cbx_filtros.setEnabled(true);
-            ftxtData_Final.setEnabled(true);
-            ftxtData_Inicial.setEnabled(true);
-            ftxt_maiorque.setEnabled(true);
-            ftxt_menorque.setEnabled(true);
-            btn_IndividualSTATUS.setSelected(false);
-            btn_pesquisarColetiva.setEnabled(true);
-
-        } else {
-
-            btn_ColetivaSTATUS.setText("OFF");
-            btn_ColetivaSTATUS.setBackground(Color.RED);
-            btn_ColetivaSTATUS.setForeground(Color.WHITE);
-            cbx_filtros.setEnabled(false);
-            ftxtData_Final.setEnabled(false);
-            ftxtData_Inicial.setEnabled(false);
-            ftxt_maiorque.setEnabled(false);
-            ftxt_menorque.setEnabled(false);
-            btn_pesquisarColetiva.setEnabled(false);
-            btn_IndividualSTATUS.setSelected(true);
-        }
-    }//GEN-LAST:event_btn_ColetivaSTATUSItemStateChanged
-
-    private void btn_IndividualSTATUSItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_btn_IndividualSTATUSItemStateChanged
-        if (btn_IndividualSTATUS.isSelected()) {
-            btn_IndividualSTATUS.setText("ON");
-            btn_IndividualSTATUS.setBackground(Color.GREEN);
-            btn_IndividualSTATUS.setForeground(Color.BLACK);
-            txt_Cliente.setEnabled(true);
-            rbtnCodigo_Cliente.setEnabled(true);
-            rbtnNome_Cliente.setEnabled(true);
-            btn_pesquisar.setEnabled(true);
-            //O outro botão.....
-            btn_ColetivaSTATUS.setSelected(false);
-
-        } else {
-            btn_IndividualSTATUS.setText("OFF");
-            btn_IndividualSTATUS.setBackground(Color.RED);
-            btn_IndividualSTATUS.setForeground(Color.WHITE);
-            txt_Cliente.setEnabled(false);
-            rbtnCodigo_Cliente.setEnabled(false);
-            rbtnNome_Cliente.setEnabled(false);
-            btn_pesquisar.setEnabled(false);
-            btn_ColetivaSTATUS.setSelected(true);
-        }
-    }//GEN-LAST:event_btn_IndividualSTATUSItemStateChanged
-
-    private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
-        ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
-
-        if (rbtnCodigo_Cliente.isSelected()) {
-            if (txt_Cliente.getText().substring(0, 2).contains("PJ")) {
-                PJ = daoPJ.consultar(txt_Cliente.getText());
-                if (PJ == null) {
-//                    CLiente nao localizado, confira o codigo.
-                } else {
-                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
-                    Object[] row = {
-                        PJ.getNome(),
-                        daoPedido.MediaCompras(PJ.getCodigo()),
-                        daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()),
-                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
-                        daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()};
-                    model.addRow(row);
-
-                }
-            }
-            if (txt_Cliente.getText().substring(0, 2).contains("PF")) {
-                PF = daoPF.consultar(txt_Cliente.getText());
-                if (PF == null) {
-//                    Cliente nao localizado, confira o codigo.
-                } else {
-
-                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
-                    Object[] row = {
-                        PF.getNome(),
-                        daoPedido.MediaCompras(PF.getCodigo()),
-                        daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()),
-                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
-                        daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
-                    };
-                    model.addRow(row);
-                }
-            }
-
-        } else {
-            PJ = daoPJ.consultaNome(txt_Cliente.getText());
-            if (PJ == null) {
-//                    CLiente nao localizado, confira o codigo.
-            } else {
-                ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
-                Object[] row = {
-                    PJ.getNome(),
-                    daoPedido.MediaCompras(PJ.getCodigo()),
-                    daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()),
-                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
-                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()};
-                model.addRow(row);
-            }
-            PF = daoPF.consultaNome(txt_Cliente.getText());
-            if (PF == null) {
-//                    Cliente nao localizado, confira o codigo.
-            } else {
-
-                ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
-                Object[] row = {
-                    PF.getNome(),
-                    daoPedido.MediaCompras(PF.getCodigo()),
-                    daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()),
-                    daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao(),
-                    daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao()
-                };
-                model.addRow(row);
-            }
-        }
-    }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
@@ -510,6 +277,180 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         model = (DefaultTableModel) tblCliente.getModel();
 
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        txtArea_clienteDetalhes.setText("Frequência de Compras : 2\n Média de Compras = 5.000,78");
+
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
+        ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
+        ArrayList<Pedido> ListaPedidos = new ArrayList<Pedido>();
+
+        if (rbtnCodigo_Cliente.isSelected()) {
+            if (txt_Cliente.getText().substring(0, 2).contains("PJ")) {
+                PJ = daoPJ.consultar(txt_Cliente.getText());
+                if (PJ == null) {
+                    //                    CLiente nao localizado, confira o codigo.
+                } else {
+                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
+                    txtArea_clienteDetalhes.setText("Valor Médio em Compras = " + daoPedido.MediaCompras(PJ.getCodigo()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Frequência de Compras = " + daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Favorito = " + daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao() + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Sem Demanda = " + daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao() + "\n");
+                    ListaPedidos = daoPedido.listarPedidosPorCod(PJ.getCodigo());
+
+                    for (int i = 0; i < ListaPedidos.size(); i++) {
+                        String Situacao = "";
+                        switch (ListaPedidos.get(i).getSituacao()) {
+                            case 1:
+                                Situacao = "APROVADO";
+                                break;
+                            case 2:
+                                Situacao = "REPROVADO";
+                                break;
+                            case 3:
+                                Situacao = "PENDENTE";
+                                break;
+                            case 4:
+                                Situacao = "NFe EMITIDA";
+                                break;
+
+                        }
+                        Object[] row = {
+                            PJ.getNome(),
+                            ListaPedidos.get(i).getCodigo(),
+                            ListaPedidos.get(i).getDtPedido().substring(0, 10),
+                            Situacao,
+                            ListaPedidos.get(i).getTotal()
+                        };
+                        model.addRow(row);
+                    }
+
+                }
+            }
+            if (txt_Cliente.getText().substring(0, 2).contains("PF")) {
+                PF = daoPF.consultar(txt_Cliente.getText());
+                if (PF == null) {
+                    //                    Cliente nao localizado, confira o codigo.
+                } else {
+
+                    ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
+                    txtArea_clienteDetalhes.setText("Valor Médio em Compras = " + daoPedido.MediaCompras(PF.getCodigo()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Frequência de Compras = " + daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Favorito = " + daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao() + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Sem Demanda = " + daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao() + "\n");
+                    ListaPedidos = daoPedido.listarPedidosPorCod(PF.getCodigo());
+
+                    for (int i = 0; i < ListaPedidos.size(); i++) {
+                        String Situacao = "";
+                        switch (ListaPedidos.get(i).getSituacao()) {
+                            case 1:
+                                Situacao = "APROVADO";
+                                break;
+                            case 2:
+                                Situacao = "REPROVADO";
+                                break;
+                            case 3:
+                                Situacao = "PENDENTE";
+                                break;
+                            case 4:
+                                Situacao = "NFe EMITIDA";
+                                break;
+
+                        }
+                        Object[] row = {
+                            PF.getNome(),
+                            ListaPedidos.get(i).getCodigo(),
+                            ListaPedidos.get(i).getDtPedido().substring(0, 10),
+                            Situacao,
+                            ListaPedidos.get(i).getTotal()
+                        };
+                        model.addRow(row);
+                    }
+                }
+            }
+
+        } else {
+            PJ = daoPJ.consultaNome(txt_Cliente.getText());
+            if (PJ == null) {
+                //                    CLiente nao localizado, confira o codigo.
+            } else {
+               ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
+                    txtArea_clienteDetalhes.setText("Valor Médio em Compras = " + daoPedido.MediaCompras(PJ.getCodigo()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Frequência de Compras = " + daoPedido.FrequenciaDeCompras(PJ.getCodigo(), formatarDate.format(data), PJ.getDtInicio()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Favorito = " + daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao() + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Sem Demanda = " + daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao() + "\n");
+                    ListaPedidos = daoPedido.listarPedidosPorCod(PJ.getCodigo());
+
+                    for (int i = 0; i < ListaPedidos.size(); i++) {
+                        String Situacao = "";
+                        switch (ListaPedidos.get(i).getSituacao()) {
+                            case 1:
+                                Situacao = "APROVADO";
+                                break;
+                            case 2:
+                                Situacao = "REPROVADO";
+                                break;
+                            case 3:
+                                Situacao = "PENDENTE";
+                                break;
+                            case 4:
+                                Situacao = "NFe EMITIDA";
+                                break;
+
+                        }
+                        Object[] row = {
+                            PJ.getNome(),
+                            ListaPedidos.get(i).getCodigo(),
+                            ListaPedidos.get(i).getDtPedido().substring(0, 10),
+                            Situacao,
+                            ListaPedidos.get(i).getTotal()
+                        };
+                        model.addRow(row);
+                    }
+            }
+            PF = daoPF.consultaNome(txt_Cliente.getText());
+            if (PF == null) {
+                //                    Cliente nao localizado, confira o codigo.
+            } else {
+
+                ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
+                    txtArea_clienteDetalhes.setText("Valor Médio em Compras = " + daoPedido.MediaCompras(PF.getCodigo()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Frequência de Compras = " + daoPedido.FrequenciaDeCompras(PF.getCodigo(), formatarDate.format(data), PF.getDtInicio()) + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Favorito = " + daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getDescricao() + "\n");
+                    txtArea_clienteDetalhes.setText(txtArea_clienteDetalhes.getText() + "Produto Sem Demanda = " + daoProduto.consultar(ListaPedidoProduto.get(ListaPedidoProduto.size() - 1).getProdutoCod()).getDescricao() + "\n");
+                    ListaPedidos = daoPedido.listarPedidosPorCod(PF.getCodigo());
+
+                    for (int i = 0; i < ListaPedidos.size(); i++) {
+                        String Situacao = "";
+                        switch (ListaPedidos.get(i).getSituacao()) {
+                            case 1:
+                                Situacao = "APROVADO";
+                                break;
+                            case 2:
+                                Situacao = "REPROVADO";
+                                break;
+                            case 3:
+                                Situacao = "PENDENTE";
+                                break;
+                            case 4:
+                                Situacao = "NFe EMITIDA";
+                                break;
+
+                        }
+                        Object[] row = {
+                            PF.getNome(),
+                            ListaPedidos.get(i).getCodigo(),
+                            ListaPedidos.get(i).getDtPedido().substring(0, 10),
+                            Situacao,
+                            ListaPedidos.get(i).getTotal()
+                        };
+                        model.addRow(row);
+                    }
+            }
+        }
+    }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void btn_pesquisarColetivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarColetivaActionPerformed
         ArrayList<PessoaFisica> ListaPF = new ArrayList<PessoaFisica>();
@@ -532,8 +473,6 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 model.addRow(row);
             }
         }
-
-
     }//GEN-LAST:event_btn_pesquisarColetivaActionPerformed
 
     /**
@@ -585,28 +524,20 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Grupo_Cliente;
     private javax.swing.JScrollPane Painel_Cliente;
-    private javax.swing.JPanel Painel_Opções_de_Filtro;
-    private javax.swing.JPanel Painel_Período_Pesquisa;
     private javax.swing.JPanel Painel_Pesquisa_Cliente4;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JToggleButton btn_ColetivaSTATUS;
-    private javax.swing.JToggleButton btn_IndividualSTATUS;
     private javax.swing.JButton btn_pesquisar;
     private javax.swing.JButton btn_pesquisarColetiva;
-    private javax.swing.JComboBox<String> cbx_filtros;
-    private javax.swing.JFormattedTextField ftxtData_Final;
-    private javax.swing.JFormattedTextField ftxtData_Inicial;
-    private javax.swing.JFormattedTextField ftxt_maiorque;
-    private javax.swing.JFormattedTextField ftxt_menorque;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblData_Final;
-    private javax.swing.JLabel lblData_Inicial;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rbtnCodigo_Cliente;
     private javax.swing.JRadioButton rbtnNome_Cliente;
     private javax.swing.JTable tblCliente;
+    private javax.swing.JTextArea txtArea_clienteDetalhes;
     private javax.swing.JTextField txt_Cliente;
     // End of variables declaration//GEN-END:variables
 }
