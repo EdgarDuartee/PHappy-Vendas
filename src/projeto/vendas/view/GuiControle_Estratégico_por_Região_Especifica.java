@@ -5,11 +5,33 @@
  */
 package projeto.vendas.view;
 
+import static java.lang.Integer.parseInt;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
+import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoGerarPedido;
+import projeto.vendas.control.DaoPFisica;
+import projeto.vendas.control.DaoPJuridica;
+import projeto.vendas.control.DaoVendedor;
 import projeto.vendas.model.Login;
 import projeto.vendas.model.NotaFiscal;
+import projeto.vendas.model.Pedido;
+import projeto.vendas.model.PessoaFisica;
+import projeto.vendas.model.PessoaJuridica;
+import projeto.vendas.model.Vendedor;
+import projeto.vendas.tabelas.GuiControleEstrategicoRegiaoEspecifica;
 
 /**
  *
@@ -21,8 +43,9 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
      * Creates new form GuiControle_Estratégico_por_Região
      */
     public GuiControle_Estratégico_por_Região_Especifica(Login login,
-            String UF,String estado,int qtdCli,int qtdPF,int qtdPJ,double valorTotal,
-            ArrayList<NotaFiscal> ListarNotaFiscal) {
+            String UF, String estado, int qtdCli, int qtdPF, int qtdPJ, int qtdVendas, double valorTotal,
+            ArrayList<NotaFiscal> ListarNotaFiscal, String dtInicio, String dtFinal, int ativo, int inativo,
+            ArrayList<PessoaFisica> ListarPessoasFisicas, ArrayList<PessoaJuridica> ListarPessoasJuridicas) {
         initComponents();
         this.login = login;
         this.UF = UF;
@@ -30,8 +53,15 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         this.qtdCli = qtdCli;
         this.qtdPF = qtdPF;
         this.qtdPJ = qtdPJ;
+        this.qtdVendas = qtdVendas;
         this.valorTotal = valorTotal;
         this.ListarNotaFiscal = ListarNotaFiscal;
+        this.dtInicio = dtInicio;
+        this.dtFinal = dtFinal;
+        this.ativo = ativo;
+        this.inativo = inativo;
+        this.ListarPessoasFisicas = ListarPessoasFisicas;
+        this.ListarPessoasJuridicas = ListarPessoasJuridicas;
 
         GuiControle_Estratégico_por_Região_Especifica.this.setTitle("Controle Estratégico "
                 + "por Vendedor    " + "Usuário:  " + login.getNome()
@@ -52,24 +82,12 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        Painel_Controle_Estratégico = new javax.swing.JPanel();
-        Painel_Período_Pesquisa = new javax.swing.JPanel();
-        lblData_Inicial = new javax.swing.JLabel();
-        lblData_Final = new javax.swing.JLabel();
-        ftxtData_Inicial = new javax.swing.JFormattedTextField();
-        ftxtData_Final = new javax.swing.JFormattedTextField();
-        btnVoltar = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        Painel_Especifico = new javax.swing.JTabbedPane();
-        Painel_RegiaoEscolhida = new javax.swing.JPanel();
-        jScrollPaneVendedor1 = new javax.swing.JScrollPane();
-        tblRegiaoEspecifica = new javax.swing.JTable();
-        PainelResumo = new javax.swing.JPanel();
-        txtEstado = new javax.swing.JTextField();
+        Painel_Mapa = new javax.swing.JPanel();
+        lblControle_Estrategico_Regiao = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
+        txtEstado = new javax.swing.JTextField();
         lblQtdClientes = new javax.swing.JLabel();
         txtQtdClientes = new javax.swing.JTextField();
-        lblQtdPF = new javax.swing.JLabel();
         txtQtdClientesPF = new javax.swing.JTextField();
         lblQtdPJ = new javax.swing.JLabel();
         txtQtdClientePJ = new javax.swing.JTextField();
@@ -77,9 +95,18 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         txtAtivo = new javax.swing.JTextField();
         lblInativo = new javax.swing.JLabel();
         txtInativo = new javax.swing.JTextField();
+        Painel_Período_Pesquisa = new javax.swing.JPanel();
+        lblData_Inicial = new javax.swing.JLabel();
+        lblData_Final = new javax.swing.JLabel();
+        ftxtData_Inicial = new javax.swing.JFormattedTextField();
+        ftxtData_Final = new javax.swing.JFormattedTextField();
+        Painel_Especifico = new javax.swing.JTabbedPane();
+        Painel_RegiaoEscolhida = new javax.swing.JPanel();
+        jScrollPaneVendedor1 = new javax.swing.JScrollPane();
+        tblRegiaoEspecifica = new javax.swing.JTable();
+        btnVoltar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
-        Painel_Mapa = new javax.swing.JPanel();
-        lblControle_Estrategico_Regiao = new javax.swing.JLabel();
+        lblQtdPF1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,6 +129,33 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                 formWindowOpened(evt);
             }
         });
+
+        javax.swing.GroupLayout Painel_MapaLayout = new javax.swing.GroupLayout(Painel_Mapa);
+        Painel_Mapa.setLayout(Painel_MapaLayout);
+        Painel_MapaLayout.setHorizontalGroup(
+            Painel_MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 16, Short.MAX_VALUE)
+        );
+        Painel_MapaLayout.setVerticalGroup(
+            Painel_MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        lblControle_Estrategico_Regiao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Controle estrategico por Região.png"))); // NOI18N
+
+        lblEstado.setText("Estado:");
+
+        lblQtdClientes.setText("Quantidade de clientes:");
+
+        lblQtdPJ.setText("Qtd pessoa Juridica:");
+
+        lblAtivo.setText("Clientes Ativos:");
+
+        txtAtivo.setText("0");
+
+        lblInativo.setText("Clientes Inativos:");
+
+        txtInativo.setText("0");
 
         Painel_Período_Pesquisa.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Período da Pesquisa", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
@@ -144,7 +198,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ftxtData_Inicial)
                     .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Período_PesquisaLayout.createSequentialGroup()
                         .addComponent(lblData_Final)
@@ -166,24 +220,6 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                     .addComponent(ftxtData_Final, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-
-        btnFiltrar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
-        btnFiltrar.setText("Filtrar");
-        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrarActionPerformed(evt);
-            }
-        });
 
         tblRegiaoEspecifica.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -208,97 +244,29 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         Painel_RegiaoEscolhida.setLayout(Painel_RegiaoEscolhidaLayout);
         Painel_RegiaoEscolhidaLayout.setHorizontalGroup(
             Painel_RegiaoEscolhidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 873, Short.MAX_VALUE)
-            .addGroup(Painel_RegiaoEscolhidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Painel_RegiaoEscolhidaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPaneVendedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(Painel_RegiaoEscolhidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPaneVendedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
+                .addContainerGap())
         );
         Painel_RegiaoEscolhidaLayout.setVerticalGroup(
             Painel_RegiaoEscolhidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
-            .addGroup(Painel_RegiaoEscolhidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(Painel_RegiaoEscolhidaLayout.createSequentialGroup()
-                    .addGap(38, 38, 38)
-                    .addComponent(jScrollPaneVendedor1, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addGap(39, 39, 39)))
+            .addGroup(Painel_RegiaoEscolhidaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPaneVendedor1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         Painel_Especifico.addTab("Clientes por cidade", Painel_RegiaoEscolhida);
 
-        lblEstado.setText("Estado:");
-
-        lblQtdClientes.setText("Quantidade de clientes:");
-
-        lblQtdPF.setText("Quantidades de clientes Pessoa Fisica:");
-
-        lblQtdPJ.setText("Quantidade de clientes Pessoa Juridica:");
-
-        lblAtivo.setText("Clientes Ativos:");
-
-        lblInativo.setText("Clientes Inativos:");
-
-        javax.swing.GroupLayout PainelResumoLayout = new javax.swing.GroupLayout(PainelResumo);
-        PainelResumo.setLayout(PainelResumoLayout);
-        PainelResumoLayout.setHorizontalGroup(
-            PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelResumoLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEstado)
-                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQtdClientes)
-                    .addComponent(txtQtdClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQtdPF)
-                    .addComponent(txtQtdClientesPF, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblInativo)
-                    .addComponent(txtInativo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAtivo)
-                    .addComponent(txtAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblQtdPJ)
-                    .addComponent(txtQtdClientePJ, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(428, Short.MAX_VALUE))
-        );
-        PainelResumoLayout.setVerticalGroup(
-            PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelResumoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelResumoLayout.createSequentialGroup()
-                        .addComponent(lblEstado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PainelResumoLayout.createSequentialGroup()
-                        .addComponent(lblQtdPJ)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQtdClientePJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelResumoLayout.createSequentialGroup()
-                        .addComponent(lblQtdClientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQtdClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PainelResumoLayout.createSequentialGroup()
-                        .addComponent(lblAtivo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PainelResumoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelResumoLayout.createSequentialGroup()
-                        .addComponent(lblQtdPF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQtdClientesPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PainelResumoLayout.createSequentialGroup()
-                        .addComponent(lblInativo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtInativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
-
-        Painel_Especifico.addTab("Resumo da Região", PainelResumo);
+        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         btnImprimir.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         btnImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
@@ -309,83 +277,97 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             }
         });
 
-        javax.swing.GroupLayout Painel_Controle_EstratégicoLayout = new javax.swing.GroupLayout(Painel_Controle_Estratégico);
-        Painel_Controle_Estratégico.setLayout(Painel_Controle_EstratégicoLayout);
-        Painel_Controle_EstratégicoLayout.setHorizontalGroup(
-            Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(btnVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFiltrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnImprimir)
-                        .addGap(18, 18, 18)
-                        .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Painel_Especifico, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-        Painel_Controle_EstratégicoLayout.setVerticalGroup(
-            Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Painel_Especifico, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_Controle_EstratégicoLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(Painel_Controle_EstratégicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVoltar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout Painel_MapaLayout = new javax.swing.GroupLayout(Painel_Mapa);
-        Painel_Mapa.setLayout(Painel_MapaLayout);
-        Painel_MapaLayout.setHorizontalGroup(
-            Painel_MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        Painel_MapaLayout.setVerticalGroup(
-            Painel_MapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        lblControle_Estrategico_Regiao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Controle estrategico por Região.png"))); // NOI18N
+        lblQtdPF1.setText("Qtd pessoa Fisica:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEstado)
+                            .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQtdClientes)
+                            .addComponent(txtQtdClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtQtdClientePJ, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtQtdClientesPF, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQtdPF1)
+                            .addComponent(lblQtdPJ))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Painel_Especifico, javax.swing.GroupLayout.PREFERRED_SIZE, 878, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(lblAtivo, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAtivo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(lblInativo, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtInativo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnVoltar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnImprimir)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblControle_Estrategico_Regiao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblEstado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblQtdClientes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtQtdClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblQtdPF1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtQtdClientesPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblQtdPJ)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtQtdClientePJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtInativo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Painel_Especifico, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblInativo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnVoltar)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblAtivo))
+                                .addGap(0, 3, Short.MAX_VALUE)))
+                        .addGap(0, 24, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(lblControle_Estrategico_Regiao, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Painel_Controle_Estratégico, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -403,27 +385,235 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFiltrarActionPerformed
-
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        // TODO add your handling code here:
+        List lista = new ArrayList();
+        for (int x = 0; x < tblRegiaoEspecifica.getRowCount(); x++) {
+            GuiControleEstrategicoRegiaoEspecifica print
+                    = new GuiControleEstrategicoRegiaoEspecifica();
+
+            print.setCodigo((String) tblRegiaoEspecifica.getValueAt(x, 0));
+            print.setNome((String) tblRegiaoEspecifica.getValueAt(x, 1));
+            print.setCidade((String) tblRegiaoEspecifica.getValueAt(x, 2));
+            print.setQtdCompras((int) tblRegiaoEspecifica.getValueAt(x, 3));
+            print.setValorCompras((double) tblRegiaoEspecifica.getValueAt(x, 4));
+            print.setCodVendResp((int) tblRegiaoEspecifica.getValueAt(x, 5));
+            print.setVendResp((String) tblRegiaoEspecifica.getValueAt(x, 6));
+
+            lista.add(print);
+        }
+
+        Map parameters = new HashMap();
+        parameters.put("dtinicio", ftxtData_Inicial.getText());
+        parameters.put("dtfinal", ftxtData_Final.getText());
+        parameters.put("estado", txtEstado.getText());
+        parameters.put("a", txtAtivo.getText());
+        parameters.put("i", txtInativo.getText());
+        parameters.put("qtdPJ", txtQtdClientePJ.getText());
+        parameters.put("qtdPF", txtQtdClientesPF.getText());
+        parameters.put("qtdCli", txtQtdClientes.getText());
+        
+
+        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
+        try {
+
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("relatorios/EstrategiaPorRegiaoEspecifica.jasper",
+                    parameters, ds);
+
+            JasperViewer jv = new JasperViewer(jpPrint, false);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Região_Especifica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao();
+        conexao.setDriver();
+        conexao.setConnectionString();
+
+        daoPFisica = new DaoPFisica(conexao.conectar());
+        daoPJrudica = new DaoPJuridica(conexao.conectar());
+        daoGerarPedido = new DaoGerarPedido(conexao.conectar());
+
         txtEstado.setText(estado);
         txtQtdClientePJ.setText(String.valueOf(qtdPJ));
         txtQtdClientesPF.setText(String.valueOf(qtdPF));
         txtQtdClientes.setText(String.valueOf(qtdCli));
-        
-        //32341e13
-                
-        for(int x = 0; x < ListarNotaFiscal.size();x++){
-            
-        }        
-        
-//        tblRegiaoEspecifica        
+        ftxtData_Inicial.setText(dtInicio);
+        ftxtData_Final.setText(dtFinal);
+        txtAtivo.setText(String.valueOf(ativo));
+        txtInativo.setText(String.valueOf(inativo));
+
+        if (flagLimpaTabela1 == 1) {
+            modelo.setRowCount(0);
+        }
+        int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
+        int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
+        int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
+        LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
+
+        int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
+        int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
+        int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
+        LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
+
+        for (int x = 0; x < ListarNotaFiscal.size(); x++) {
+            int dia = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(0, 2));
+            int mes = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(3, 5));
+            int ano = parseInt(ListarNotaFiscal.get(x).getDataEmissao().substring(6, 10));
+            LocalDate datainicio1 = LocalDate.of(ano, mes, dia);
+
+            // testa se a data é maior que a data inicial da busca
+            if (datainicio1.isAfter(dataInicio) || datainicio1.isEqual(dataInicio)) {
+                //testa se a data é menor que a data final da busca
+                if (datainicio1.isBefore(dataFinal) || datainicio1.isEqual(dataFinal)) {
+                    pedido = daoGerarPedido.Consultar(ListarNotaFiscal.get(x).getPedidoCod());
+
+                    //caso a tabela esteja vazia
+                    if (!(tblRegiaoEspecifica.getRowCount() > 0)) {
+                        if (pedido.getClienteCod().substring(0, 2).equals("PF")) {
+                            pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
+                            if (pessoaFisica.getUf().equals(UF)) {
+                                Object[] row = {
+                                    pessoaFisica.getCodigo(),
+                                    pessoaFisica.getNome(),
+                                    pessoaFisica.getCidade(),
+                                    1,
+                                    ListarNotaFiscal.get(x).getTotal(),
+                                    pessoaFisica.getCod_vend_resp(),
+                                    pessoaFisica.getVendedor_responsavel()};
+
+                                modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
+                                modelo.addRow(row);
+                                flagLimpaTabela1 = 1;
+                            }
+                        } else {
+                            pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
+                            if (pessoaJuridica.getUf().equals(UF)) {
+                                Object[] row = {
+                                    pessoaJuridica.getCodigo(),
+                                    pessoaJuridica.getNome(),
+                                    pessoaJuridica.getCidade(),
+                                    0,
+                                    0.0,
+                                    pessoaJuridica.getCod_vend_resp(),
+                                    pessoaJuridica.getVendedor_responsavel()};
+
+                                modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
+                                modelo.addRow(row);
+                                flagLimpaTabela1 = 1;
+                            }
+                        }
+                    } //caso a tabela tenha ao menos um registro
+                    else {
+                        if (pedido.getClienteCod().substring(0, 2).equals("PF")) {
+                            pessoaFisica = daoPFisica.consultar(pedido.getClienteCod());
+                            if (pessoaFisica.getUf().equals(UF)) {
+                                int encontrou = 0;
+                                for (int c = 0; c < tblRegiaoEspecifica.getRowCount(); c++) {
+                                    if (pessoaFisica.getCodigo().equals((String) tblRegiaoEspecifica.getValueAt(c, 0))) {
+                                        tblRegiaoEspecifica.setValueAt((int) tblRegiaoEspecifica.getValueAt(c, 3) + 1, c, 3);
+                                        tblRegiaoEspecifica.setValueAt((double) tblRegiaoEspecifica.getValueAt(c, 4)
+                                                + ListarNotaFiscal.get(x).getTotal(), c, 4);
+                                        encontrou = 1;
+                                    }
+                                }
+                                if (encontrou == 0) {
+                                    Object[] row = {
+                                        pessoaFisica.getCodigo(),
+                                        pessoaFisica.getNome(),
+                                        pessoaFisica.getCidade(),
+                                        1,
+                                        ListarNotaFiscal.get(x).getTotal(),
+                                        pessoaFisica.getCod_vend_resp(),
+                                        pessoaFisica.getVendedor_responsavel()};
+
+                                    modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
+                                    modelo.addRow(row);
+                                    flagLimpaTabela1 = 1;
+                                }
+                            }
+                        } else {
+                            pessoaJuridica = daoPJrudica.consultar(pedido.getClienteCod());
+                            if (pessoaJuridica.getUf().equals(UF)) {
+                                int encontrou = 0;
+                                for (int c = 0; c < tblRegiaoEspecifica.getRowCount(); c++) {
+                                    if (pessoaJuridica.getCodigo().equals((String) tblRegiaoEspecifica.getValueAt(c, 0))) {
+                                        tblRegiaoEspecifica.setValueAt((int) tblRegiaoEspecifica.getValueAt(c, 3) + 1, c, 3);
+                                        tblRegiaoEspecifica.setValueAt((double) tblRegiaoEspecifica.getValueAt(c, 4)
+                                                + ListarNotaFiscal.get(x).getTotal(), c, 4);
+                                        encontrou = 1;
+                                    }
+                                }
+                                if (encontrou == 0) {
+                                    Object[] row = {
+                                        pessoaJuridica.getCodigo(),
+                                        pessoaJuridica.getNome(),
+                                        pessoaJuridica.getCidade(),
+                                        1,
+                                        ListarNotaFiscal.get(x).getTotal(),
+                                        pessoaJuridica.getCod_vend_resp(),
+                                        pessoaJuridica.getVendedor_responsavel()};
+
+                                    modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
+                                    modelo.addRow(row);
+                                    flagLimpaTabela1 = 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        //fazer aqui a lista de clientes que nao tem pedidos feitos mais sejam da regiao
+        for (int x = 0; x < ListarPessoasFisicas.size(); x++) {
+            int b = 0;
+            if (ListarPessoasFisicas.get(x).getUf().equals(UF)) {
+                for (int a = 0; a < tblRegiaoEspecifica.getRowCount(); a++) {
+                    if (ListarPessoasFisicas.get(x).getCodigo().equals((String) tblRegiaoEspecifica.getValueAt(a, 0))) {
+                        b = 1;
+                    }
+                }
+                if (b == 0) {
+                    Object[] row = {
+                        ListarPessoasFisicas.get(x).getCodigo(),
+                        ListarPessoasFisicas.get(x).getNome(),
+                        ListarPessoasFisicas.get(x).getCidade(),
+                        0,
+                        0.0,
+                        ListarPessoasFisicas.get(x).getCod_vend_resp(),
+                        ListarPessoasFisicas.get(x).getVendedor_responsavel()};
+
+                    modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
+                    modelo.addRow(row);
+                }
+            }
+        }
+        for (int x = 0; x < ListarPessoasJuridicas.size(); x++) {
+            int b = 0;
+            if (ListarPessoasJuridicas.get(x).getUf().equals(UF)) {
+                for (int a = 0; a < tblRegiaoEspecifica.getRowCount(); a++) {
+                    if (ListarPessoasJuridicas.get(x).getCodigo().equals((String) tblRegiaoEspecifica.getValueAt(a, 0))) {
+                        b = 1;
+                    }
+                }
+                if (b == 0) {
+                    Object[] row = {
+                        ListarPessoasJuridicas.get(x).getCodigo(),
+                        ListarPessoasJuridicas.get(x).getNome(),
+                        ListarPessoasJuridicas.get(x).getCidade(),
+                        0,
+                        0.0,
+                        ListarPessoasJuridicas.get(x).getCod_vend_resp(),
+                        ListarPessoasJuridicas.get(x).getVendedor_responsavel()};
+
+                    modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
+                    modelo.addRow(row);
+                }
+            }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -457,28 +647,45 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiControle_Estratégico_por_Região_Especifica(login,UF,estado,qtdCli,
-                qtdPF,qtdPJ,valorTotal,ListarNotaFiscal).setVisible(true);
+                new GuiControle_Estratégico_por_Região_Especifica(login, UF, estado, qtdCli,
+                        qtdPF, qtdPJ, qtdVendas,
+                        valorTotal, ListarNotaFiscal, dtInicio, dtFinal, ativo, inativo, ListarPessoasFisicas,
+                        ListarPessoasJuridicas).setVisible(true);
             }
         });
     }
 
-    private static String UF;
+    private int flagLimpaTabela1 = 0;
+    private DefaultTableModel modelo = null;
+    private Conexao conexao;
+    private Vendedor vendedor = null;
+    private DaoVendedor daoVendedor = null;
+    private DaoPFisica daoPFisica = null;
+    private DaoPJuridica daoPJrudica = null;
+    private PessoaFisica pessoaFisica = null;
+    private PessoaJuridica pessoaJuridica = null;
     private static Login login = null;
+    private DaoGerarPedido daoGerarPedido = null;
+    private Pedido pedido = null;
+    private static String UF;
     private static String estado;
     private static int qtdCli;
     private static int qtdPF;
     private static int qtdPJ;
+    private static int qtdVendas;
     private static double valorTotal;
+    private static String dtInicio;
+    private static String dtFinal;
+    private static int ativo;
+    private static int inativo;
     private static ArrayList<NotaFiscal> ListarNotaFiscal;
+    private static ArrayList<PessoaFisica> ListarPessoasFisicas;
+    private static ArrayList<PessoaJuridica> ListarPessoasJuridicas;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PainelResumo;
-    private javax.swing.JPanel Painel_Controle_Estratégico;
     private javax.swing.JTabbedPane Painel_Especifico;
     private javax.swing.JPanel Painel_Mapa;
     private javax.swing.JPanel Painel_Período_Pesquisa;
     private javax.swing.JPanel Painel_RegiaoEscolhida;
-    private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField ftxtData_Final;
@@ -493,7 +700,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblInativo;
     private javax.swing.JLabel lblQtdClientes;
-    private javax.swing.JLabel lblQtdPF;
+    private javax.swing.JLabel lblQtdPF1;
     private javax.swing.JLabel lblQtdPJ;
     private javax.swing.JTable tblRegiaoEspecifica;
     private javax.swing.JTextField txtAtivo;

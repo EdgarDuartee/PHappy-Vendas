@@ -15,7 +15,16 @@ public class GuiControleEstrategicoRegiaoGeral {
     private int qtdCli;
     private int qtdCliPF;
     private int qtdCliPJ;
+    private int qtdVendas;
     private double valorVendas;
+
+    public int getQtdVendas() {
+        return qtdVendas;
+    }
+
+    public void setQtdVendas(int qtdVendas) {
+        this.qtdVendas = qtdVendas;
+    }
 
     public GuiControleEstrategicoRegiaoGeral() {
     }
