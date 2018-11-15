@@ -181,6 +181,7 @@ public class DaoPFisica {
                                   rs.getString("cidade"),rs.getString("uf"),
                                   rs.getString("cep"),rs.getString("ativo"));
                 PF.setVendedor_responsavel(rs.getString("vend_resp"));
+                PF.setCod_vend_resp(rs.getInt("cod_vend_resp"));
                 PF.setComplemento(rs.getString("complemento"));
                 PF.setCel(rs.getString("cel"));
                 PF.setTel(rs.getString("tel"));

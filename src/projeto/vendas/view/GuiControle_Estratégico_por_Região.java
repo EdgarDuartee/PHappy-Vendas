@@ -395,6 +395,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         ListarPessoasJuridicas = daoPJrudica.ListarPessoasJuridicas();
 
         preencheTabelaRegiao(ListarNotaFiscal);
+
         preencheQtdCliente();
         if (flagLimpaTabela == 1) {
             Cbx_val.setEnabled(true);
@@ -416,29 +417,6 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         String dataEmTexto = formatador.format(dataDoSistema);
         ftxtData_Final.setText(dataEmTexto);
     }//GEN-LAST:event_formWindowOpened
-
-    private void btnRegiaoEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiaoEspecificoActionPerformed
-        if (tblRegiao.getSelectedRow() >= 0) {
-            GuiControle_Estratégico_por_Região_Especifica GUI
-                    = new GuiControle_Estratégico_por_Região_Especifica(login,
-                            (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 0),
-                            (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 1),
-                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 2),
-                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 3),
-                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 4),
-                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
-                            (double) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 6),
-                            ListarNotaFiscal,
-                            ftxtData_Inicial.getText(),
-                            ftxtData_Final.getText(),
-                            ativo,
-                            inativo);
-            GUI.setVisible(true);
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Escolha uma Região!");
-        }
-    }//GEN-LAST:event_btnRegiaoEspecificoActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         List lista = new ArrayList();
@@ -490,9 +468,34 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             jv.setVisible(true);
 
         } catch (JRException ex) {
-            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GuiControle_Estratégico_por_Região.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void btnRegiaoEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiaoEspecificoActionPerformed
+        if (tblRegiao.getSelectedRow() >= 0) {
+            preencheAtivo();
+            GuiControle_Estratégico_por_Região_Especifica GUI
+            = new GuiControle_Estratégico_por_Região_Especifica(login,
+                (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 0),
+                (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 1),
+                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 2),
+                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 3),
+                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 4),
+                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
+                (double) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 6),
+                ListarNotaFiscal,
+                ftxtData_Inicial.getText(),
+                ftxtData_Final.getText(),
+                ativo,
+                inativo,
+                ListarPessoasFisicas, ListarPessoasJuridicas);
+            GUI.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Escolha uma Região!");
+        }
+    }//GEN-LAST:event_btnRegiaoEspecificoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -639,8 +642,6 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     }
 
     public void preencheQtdCliente() {
-        ativo = 0;
-        inativo = 0;
         for (int c = 0; c < tblRegiao.getRowCount(); c++) {
             for (int b = 0; b < ListarPessoasFisicas.size(); b++) {
                 if (ListarPessoasFisicas.get(b).getUf().equals((String) tblRegiao.getValueAt(c, 0))) {
@@ -649,11 +650,6 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
                     aux = (int) tblRegiao.getValueAt(c, 3);
                     tblRegiao.setValueAt(aux + 1, c, 3);
-                    if (ListarPessoasFisicas.get(b).getAtivo().equals("A")) {
-                        ativo++;
-                    } else {
-                        inativo++;
-                    }
                 }
             }
         }
@@ -665,15 +661,37 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
                     aux = (int) tblRegiao.getValueAt(c, 4);
                     tblRegiao.setValueAt(aux + 1, c, 4);
-
-                    if (ListarPessoasJuridicas.get(b).getAtivo().equals("A")) {
-                        ativo++;
-                    } else {
-                        inativo++;
-                    }
                 }
             }
         }
     }
 
+    public void preencheAtivo() {
+        ativo = 0;
+        inativo = 0;
+
+        for (int b = 0; b < ListarPessoasFisicas.size(); b++) {
+            if (ListarPessoasFisicas.get(b).getUf().equals((String) tblRegiao.getValueAt(
+                    tblRegiao.getSelectedRow(), 0))) {
+
+                if (ListarPessoasFisicas.get(b).getAtivo().equals("A")) {
+                    ativo++;
+                } else {
+                    inativo++;
+                }
+
+            }
+        }
+        for (int b = 0; b < ListarPessoasJuridicas.size(); b++) {
+            if (ListarPessoasJuridicas.get(b).getUf().equals((String) tblRegiao.getValueAt(
+                    tblRegiao.getSelectedRow(), 0))) {
+
+                if (ListarPessoasJuridicas.get(b).getAtivo().equals("A")) {
+                    ativo++;
+                } else {
+                    inativo++;
+                }
+            }
+        }
+    }
 }
