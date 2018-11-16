@@ -57,7 +57,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblProduto.getModel();
         tblProduto.setRowSorter(new TableRowSorter(modelo));
-        
+
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
@@ -102,6 +102,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         btnLimpar = new javax.swing.JButton();
         btnEnviar_Pedido = new javax.swing.JButton();
         lblPedidos = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerar Pedido");
@@ -394,27 +396,37 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         lblPedidos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Tela Pedido.png"))); // NOI18N
 
+        jLabel3.setText("Número do Pedido:");
+
+        jLabel4.setText("0001");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblPedidos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVoltar)
                         .addGap(301, 301, 301)
                         .addComponent(btnLimpar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Painel_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Painel_Produto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPedidos)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Painel_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Painel_Produto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Painel_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(19, Short.MAX_VALUE))
+                        .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEnviar_Pedido)
@@ -425,17 +437,21 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblPedidos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Painel_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Painel_Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Painel_Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPedidos)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVoltar))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -553,8 +569,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "CNPJ Inválido!");
             }
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Digite um CPF ou CNPJ válido!");
         }
     }//GEN-LAST:event_btn_consultarActionPerformed
@@ -574,7 +589,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "CNPJ Inválido");
             }
         }
-*/
+         */
     }//GEN-LAST:event_txtCPF_CNPJFocusLost
 
     private void cbxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProdutoItemStateChanged
@@ -583,21 +598,38 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxProdutoItemStateChanged
 
     private void btnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvançarActionPerformed
+        //TRATANDO ERROS DE QUANDO ADICIONA O PRODUTO.
         if (((int) cbxQuantidade.getValue()) <= 0) {
             JOptionPane.showMessageDialog(null, "Por Favor, insira uma quantidade válida, maior que 0.", "Erro Crítico", JOptionPane.ERROR_MESSAGE);
         }
         if (((int) cbxQuantidade.getValue()) > listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque()) {
             JOptionPane.showMessageDialog(null, "Quantidade informada maior que a quantidade do produto em estoque.", "Erro Crítico", JOptionPane.ERROR_MESSAGE);
         } else if ((((int) cbxQuantidade.getValue()) > 0 && ((int) cbxQuantidade.getValue()) <= listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque())) {
-            Object[] row = {listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(), cbxProduto.getSelectedItem().toString(), listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(), cbxQuantidade.getValue(), ((Integer) cbxQuantidade.getValue()) * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
-
-            DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
-            model.addRow(row);
 
             Total = 0;
-            for (int i = 0; i < tblProduto.getRowCount(); i++) {
-                Total = Total + (float) model.getValueAt(i, 4);
+            System.out.println(tblProduto.getRowCount());
+            DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
+            if (tblProduto.getRowCount() > 0) {
+                for (int i = 0; i < tblProduto.getRowCount(); i++) {
+                    // edita a linha se houver um produto repetido.
+                    if (listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo() == (int) model.getValueAt(i, 0)) {
+                        model.setValueAt((int) model.getValueAt(i, 3) + (int) cbxQuantidade.getValue(), i, 3);
+                        model.setValueAt((int) model.getValueAt(i, 3) * listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(), i, 4);
+                        break;
+                    } else if (i + 1 == tblProduto.getRowCount()) {
+                        // se o produto não estiver na tabela, então adiciona
+                        Object[] row = {listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(), cbxProduto.getSelectedItem().toString(), listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(), cbxQuantidade.getValue(), ((Integer) cbxQuantidade.getValue()) * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
+                        model.addRow(row);
+                    }
+                }
+            } else {
+                Object[] row = {listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(), cbxProduto.getSelectedItem().toString(), listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(), cbxQuantidade.getValue(), ((Integer) cbxQuantidade.getValue()) * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
+                model.addRow(row);
+            }
 
+            for (int i = 0; i < tblProduto.getRowCount(); i++) {
+                //Atualiza o Display de Total 
+                Total = Total + (float) model.getValueAt(i, 4);
             }
             txt_total.setText("" + Total);
 
@@ -741,6 +773,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private javax.swing.JSpinner cbxQuantidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblPedidos;

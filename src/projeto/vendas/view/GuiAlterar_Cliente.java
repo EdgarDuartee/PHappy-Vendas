@@ -1047,14 +1047,6 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVoltarPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarPJuridicaActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnVoltarPJuridicaActionPerformed
-
-    private void btnLimparPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPFisicaActionPerformed
-        limpaCamposPF();
-    }//GEN-LAST:event_btnLimparPFisicaActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         conexao = new Conexao();
         conexao.setDriver();
@@ -1075,140 +1067,27 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnAlterarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPFisicaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {//Sim    
-            JOptionPane.showMessageDialog(null, "Alteração Efetuada com sucesso!");
-            pessoaFisica.setEmail(txtEmailPF.getText());
-            pessoaFisica.setTel(ftxtTelefonePF.getText());
-            pessoaFisica.setCel(ftxtCelularPF.getText());
-            pessoaFisica.setRua(txtRuaPF.getText());
-            pessoaFisica.setNumero(txtNumeroPF.getText());
-            pessoaFisica.setBairro(txtBairroPF.getText());
-            pessoaFisica.setCidade(txtCidadePF.getText());
-            pessoaFisica.setUf((String) cbx_UFPF.getSelectedItem());
-            pessoaFisica.setCep(ftxtCEPPF.getText().replace("-", ""));
-            pessoaFisica.setComplemento(txtComplementoPF.getText());
-            pessoaFisica.setVendedor_responsavel((String) (cbxVendedorRespPF.getSelectedItem()));
-
-            daoVendedor = new DaoVendedor(conexao.conectar());
-
-            ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
-
-            pessoaFisica.setCod_vend_resp(vendedores.get(cbxVendedorRespPF.getSelectedIndex()).getCodigo());
-
-            daoPfisica.alterar(pessoaFisica);
-
-            txtCodigoPFisica.requestFocus();
-
-            limpaCamposPF();
-
-            btnAlterarPFisica.setEnabled(false);
-            btnDesativarPF.setEnabled(false);
-            btnLimparPFisica.setEnabled(false);
-
-            txtBairroPF.setEnabled(false);
-            txtRuaPF.setEnabled(false);
-            txtCidadePF.setEnabled(false);
-            txtComplementoPF.setEnabled(false);
-            txtNumeroPF.setEnabled(false);
-            ftxtCEPPF.setEnabled(false);
-            cbx_UFPF.setEnabled(false);
-            txtEmailPF.setEnabled(false);
-            ftxtCelularPF.setEnabled(false);
-            ftxtTelefonePF.setEnabled(false);
-            ftxtData_NascPF.setEnabled(false);
-            cbxVendedorRespPF.setEnabled(false);
-        }
-
-    }//GEN-LAST:event_btnAlterarPFisicaActionPerformed
-
-    private void btnConsultarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPFisicaActionPerformed
-        if (ftxtConsultarCPF.getText().replace(".", "").replace("-", "").replace(" ", "").equals("")) {
-            JOptionPane.showMessageDialog(null, "Digite o código do Cliente desejado!");
-            txtCodigoPFisica.requestFocus();
-            txtCodigoPFisica.setText("");
-        } else {
-            daoVendedor = new DaoVendedor(conexao.conectar());
-
-            ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
-
-            pessoaFisica = null;
-            pessoaFisica = daoPfisica.consultarCPF(ftxtConsultarCPF.getText().replace("-", "").replace(".", "").replace(" ", ""));
-
-            if (pessoaFisica == null) {
-                JOptionPane.showMessageDialog(null, "CPF não consta no Sistema!");
-                txtCodigoPFisica.requestFocus();
-            } else {
-                txtCodigoPFisica.setText(pessoaFisica.getCodigo());
-                txtNomePF.setText(pessoaFisica.getNome());
-                ftxtRGPF.setText(pessoaFisica.getRg());
-                ftxtTelefonePF.setText(pessoaFisica.getTel());
-                txtEmailPF.setText(pessoaFisica.getEmail());
-                ftxtCPFPF.setText(pessoaFisica.getCpf());
-                ftxtCelularPF.setText(pessoaFisica.getCel());
-                ftxtData_NascPF.setText(pessoaFisica.getDtNasc());
-
-                txtCidadePF.setText(pessoaFisica.getCidade());
-                cbx_UFPF.setSelectedItem(pessoaFisica.getUf());
-                txtRuaPF.setText(pessoaFisica.getRua());
-                txtNumeroPF.setText(pessoaFisica.getNumero());
-                ftxtCEPPF.setText(pessoaFisica.getCep());
-                txtBairroPF.setText(pessoaFisica.getBairro());
-                txtComplementoPF.setText(pessoaFisica.getComplemento());
-                if (pessoaFisica.getAtivo().equals("A")) {
-                    txtSituacao.setText("Ativo");
-                    btnDesativarPF.setText("Desativar Cliente");
-                } else {
-                    txtSituacao.setText("Inativo");
-                    btnDesativarPF.setText("Ativar Cliente");
-                }
-
-                cbxVendedorRespPF.setSelectedItem(pessoaFisica.getVendedor_responsavel());
-
-                txtBairroPF.setEnabled(true);
-                txtRuaPF.setEnabled(true);
-                txtCidadePF.setEnabled(true);
-                txtComplementoPF.setEnabled(true);
-                txtNumeroPF.setEnabled(true);
-                ftxtCEPPF.setEnabled(true);
-                cbx_UFPF.setEnabled(true);
-                txtEmailPF.setEnabled(true);
-                ftxtCelularPF.setEnabled(true);
-                ftxtTelefonePF.setEnabled(true);
-                cbxVendedorRespPF.setEnabled(true);
-
-                btnAlterarPFisica.setEnabled(true);
-                btnDesativarPF.setEnabled(true);
-                btnLimparPFisica.setEnabled(true);
-            }
-        }
-    }//GEN-LAST:event_btnConsultarPFisicaActionPerformed
-
-    private void btnVoltarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarPFisicaActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnVoltarPFisicaActionPerformed
-
-    private void btnDesativarPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarPFActionPerformed
-        if (btnDesativarPF.getText().equals("Desativar Cliente")) {
-            if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {//Sim  
+    private void btnDesativarPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarPJActionPerformed
+        if (btnDesativarPJ.getText().equals("Desativar Cliente")) {
+            if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {//Sim
                 JOptionPane.showMessageDialog(null, "Desativação Efetuada com sucesso!");
 
-                daoPfisica.desativarOUativar(pessoaFisica, "I");
+                daoPJuridica.desativarOUativar(pessoaJuridica, "I");
 
-                limpaCamposPF();
+                limpaCamposPJ();
             }
         } else {
-            if (JOptionPane.showConfirmDialog(null, "Confirma Ativação?") == 0) {//Sim  
+            if (JOptionPane.showConfirmDialog(null, "Confirma Ativação?") == 0) {//Sim
                 JOptionPane.showMessageDialog(null, "Ativação Efetuada com sucesso!");
-                daoPfisica.desativarOUativar(pessoaFisica, "A");
-                limpaCamposPF();
+                daoPJuridica.desativarOUativar(pessoaJuridica, "A");
+                limpaCamposPJ();
             }
 
         }
-    }//GEN-LAST:event_btnDesativarPFActionPerformed
+    }//GEN-LAST:event_btnDesativarPJActionPerformed
 
     private void btnAlterarPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPJuridicaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {//Sim    
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {//Sim
             JOptionPane.showMessageDialog(null, "Alteração Efetuada com sucesso!");
             pessoaJuridica.setEmail(txtEmailPJ.getText());
             pessoaJuridica.setRua(txtRuaPJ.getText());
@@ -1247,9 +1126,13 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         limpaCamposPJ();
     }//GEN-LAST:event_btnLimparPJuridicaActionPerformed
 
+    private void btnVoltarPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarPJuridicaActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarPJuridicaActionPerformed
+
     private void btnConsultarPJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPJuridicaActionPerformed
         if (ftxtConsultarCNPJ.getText().replace(".", "").replace("-", "").replace(" ", "").
-                replace("/", "").equals("")) {
+            replace("/", "").equals("")) {
             JOptionPane.showMessageDialog(null, "Digite o CNPJ do Cliente desejado!");
             txtCodigoPJ.requestFocus();
             txtCodigoPJ.setText("");
@@ -1315,24 +1198,140 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConsultarPJuridicaActionPerformed
 
-    private void btnDesativarPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarPJActionPerformed
-        if (btnDesativarPJ.getText().equals("Desativar Cliente")) {
-            if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {//Sim  
+    private void btnVoltarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarPFisicaActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnVoltarPFisicaActionPerformed
+
+    private void btnDesativarPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesativarPFActionPerformed
+        if (btnDesativarPF.getText().equals("Desativar Cliente")) {
+            if (JOptionPane.showConfirmDialog(null, "Confirma Desativação?") == 0) {//Sim
                 JOptionPane.showMessageDialog(null, "Desativação Efetuada com sucesso!");
 
-                daoPJuridica.desativarOUativar(pessoaJuridica, "I");
+                daoPfisica.desativarOUativar(pessoaFisica, "I");
 
-                limpaCamposPJ();
+                limpaCamposPF();
             }
         } else {
-            if (JOptionPane.showConfirmDialog(null, "Confirma Ativação?") == 0) {//Sim  
+            if (JOptionPane.showConfirmDialog(null, "Confirma Ativação?") == 0) {//Sim
                 JOptionPane.showMessageDialog(null, "Ativação Efetuada com sucesso!");
-                daoPJuridica.desativarOUativar(pessoaJuridica, "A");
-                limpaCamposPJ();
+                daoPfisica.desativarOUativar(pessoaFisica, "A");
+                limpaCamposPF();
             }
 
         }
-    }//GEN-LAST:event_btnDesativarPJActionPerformed
+    }//GEN-LAST:event_btnDesativarPFActionPerformed
+
+    private void btnConsultarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPFisicaActionPerformed
+        if (ftxtConsultarCPF.getText().replace(".", "").replace("-", "").replace(" ", "").equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite o código do Cliente desejado!");
+            txtCodigoPFisica.requestFocus();
+            txtCodigoPFisica.setText("");
+        } else {
+            daoVendedor = new DaoVendedor(conexao.conectar());
+
+            ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
+
+            pessoaFisica = null;
+            pessoaFisica = daoPfisica.consultarCPF(ftxtConsultarCPF.getText().replace("-", "").replace(".", "").replace(" ", ""));
+
+            if (pessoaFisica == null) {
+                JOptionPane.showMessageDialog(null, "CPF não consta no Sistema!");
+                txtCodigoPFisica.requestFocus();
+            } else {
+                txtCodigoPFisica.setText(pessoaFisica.getCodigo());
+                txtNomePF.setText(pessoaFisica.getNome());
+                ftxtRGPF.setText(pessoaFisica.getRg());
+                ftxtTelefonePF.setText(pessoaFisica.getTel());
+                txtEmailPF.setText(pessoaFisica.getEmail());
+                ftxtCPFPF.setText(pessoaFisica.getCpf());
+                ftxtCelularPF.setText(pessoaFisica.getCel());
+                ftxtData_NascPF.setText(pessoaFisica.getDtNasc());
+
+                txtCidadePF.setText(pessoaFisica.getCidade());
+                cbx_UFPF.setSelectedItem(pessoaFisica.getUf());
+                txtRuaPF.setText(pessoaFisica.getRua());
+                txtNumeroPF.setText(pessoaFisica.getNumero());
+                ftxtCEPPF.setText(pessoaFisica.getCep());
+                txtBairroPF.setText(pessoaFisica.getBairro());
+                txtComplementoPF.setText(pessoaFisica.getComplemento());
+                if (pessoaFisica.getAtivo().equals("A")) {
+                    txtSituacao.setText("Ativo");
+                    btnDesativarPF.setText("Desativar Cliente");
+                } else {
+                    txtSituacao.setText("Inativo");
+                    btnDesativarPF.setText("Ativar Cliente");
+                }
+
+                cbxVendedorRespPF.setSelectedItem(pessoaFisica.getVendedor_responsavel());
+
+                txtBairroPF.setEnabled(true);
+                txtRuaPF.setEnabled(true);
+                txtCidadePF.setEnabled(true);
+                txtComplementoPF.setEnabled(true);
+                txtNumeroPF.setEnabled(true);
+                ftxtCEPPF.setEnabled(true);
+                cbx_UFPF.setEnabled(true);
+                txtEmailPF.setEnabled(true);
+                ftxtCelularPF.setEnabled(true);
+                ftxtTelefonePF.setEnabled(true);
+                cbxVendedorRespPF.setEnabled(true);
+
+                btnAlterarPFisica.setEnabled(true);
+                btnDesativarPF.setEnabled(true);
+                btnLimparPFisica.setEnabled(true);
+            }
+        }
+    }//GEN-LAST:event_btnConsultarPFisicaActionPerformed
+
+    private void btnAlterarPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarPFisicaActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "Confirma Alteração?") == 0) {//Sim
+            JOptionPane.showMessageDialog(null, "Alteração Efetuada com sucesso!");
+            pessoaFisica.setEmail(txtEmailPF.getText());
+            pessoaFisica.setTel(ftxtTelefonePF.getText());
+            pessoaFisica.setCel(ftxtCelularPF.getText());
+            pessoaFisica.setRua(txtRuaPF.getText());
+            pessoaFisica.setNumero(txtNumeroPF.getText());
+            pessoaFisica.setBairro(txtBairroPF.getText());
+            pessoaFisica.setCidade(txtCidadePF.getText());
+            pessoaFisica.setUf((String) cbx_UFPF.getSelectedItem());
+            pessoaFisica.setCep(ftxtCEPPF.getText().replace("-", ""));
+            pessoaFisica.setComplemento(txtComplementoPF.getText());
+            pessoaFisica.setVendedor_responsavel((String) (cbxVendedorRespPF.getSelectedItem()));
+
+            daoVendedor = new DaoVendedor(conexao.conectar());
+
+            ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
+
+            pessoaFisica.setCod_vend_resp(vendedores.get(cbxVendedorRespPF.getSelectedIndex()).getCodigo());
+
+            daoPfisica.alterar(pessoaFisica);
+
+            txtCodigoPFisica.requestFocus();
+
+            limpaCamposPF();
+
+            btnAlterarPFisica.setEnabled(false);
+            btnDesativarPF.setEnabled(false);
+            btnLimparPFisica.setEnabled(false);
+
+            txtBairroPF.setEnabled(false);
+            txtRuaPF.setEnabled(false);
+            txtCidadePF.setEnabled(false);
+            txtComplementoPF.setEnabled(false);
+            txtNumeroPF.setEnabled(false);
+            ftxtCEPPF.setEnabled(false);
+            cbx_UFPF.setEnabled(false);
+            txtEmailPF.setEnabled(false);
+            ftxtCelularPF.setEnabled(false);
+            ftxtTelefonePF.setEnabled(false);
+            ftxtData_NascPF.setEnabled(false);
+            cbxVendedorRespPF.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnAlterarPFisicaActionPerformed
+
+    private void btnLimparPFisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPFisicaActionPerformed
+        limpaCamposPF();
+    }//GEN-LAST:event_btnLimparPFisicaActionPerformed
 
     /**
      * @param args the command line arguments
