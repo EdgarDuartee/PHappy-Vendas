@@ -472,7 +472,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblcontato3.setText("Nome do contato 3");
 
         try {
-            ftxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
+            ftxtCelular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }

@@ -73,7 +73,6 @@ public class DaoVendedor {
                         rs.getString("bairro"), rs.getString("cidade"),
                         rs.getString("uf"), rs.getString("cep"));
                 v.setComplemento(rs.getString("complemento"));
-                v.setDtInicio("dtInicio");
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -219,7 +218,7 @@ public class DaoVendedor {
                 v1.setComplemento(rs.getString("complemento"));
                 v1.setPermissao(rs.getInt("permissao"));
                 v1.setAtivo(rs.getString("ativo"));
-                v1.setDtInicio("dtInicio");
+                v1.setDtInicio(rs.getString("dtInicio"));
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -342,4 +341,5 @@ public class DaoVendedor {
         }
         return (cont);
     }
+    
 }
