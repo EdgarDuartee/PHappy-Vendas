@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     NOTA_ITEMS."NUMERONOTA" AS NOTA_ITEMS_NUMERONOTA,
+     NOTA_ITEMS."PRODUTOCOD" AS NOTA_ITEMS_PRODUTOCOD,
+     NOTA_ITEMS."PRODUTODESC" AS NOTA_ITEMS_PRODUTODESC,
+     NOTA_ITEMS."PRODUTOVALOR" AS NOTA_ITEMS_PRODUTOVALOR,
+     NOTA_ITEMS."PRODUTOQTD" AS NOTA_ITEMS_PRODUTOQTD,
+     NOTA_ITEMS."PRODUTOPIS" AS NOTA_ITEMS_PRODUTOPIS,
+     NOTA_ITEMS."PRODUTOCOFINS" AS NOTA_ITEMS_PRODUTOCOFINS,
+     NOTA_ITEMS."PRODUTOIPI" AS NOTA_ITEMS_PRODUTOIPI,
+     NOTA_ITEMS."PRODUTOICMS" AS NOTA_ITEMS_PRODUTOICMS,
+     NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
+     NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
+     NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
+     NOTA_FISCAL."TIPO" AS NOTA_FISCAL_TIPO,
+     NOTA_FISCAL."CFOP" AS NOTA_FISCAL_CFOP,
+     NOTA_FISCAL."TOTAL" AS NOTA_FISCAL_TOTAL,
+     NOTA_FISCAL."DATAEMISSAO" AS NOTA_FISCAL_DATAEMISSAO,
+     NOTA_FISCAL."HORAEMISSAO" AS NOTA_FISCAL_HORAEMISSAO,
+     NOTA_FISCAL."TRANSPCOD" AS NOTA_FISCAL_TRANSPCOD,
+     NOTA_FISCAL."TRANSP_DATASAIDA" AS NOTA_FISCAL_TRANSP_DATASAIDA,
+     NOTA_FISCAL."TRANSP_HORASAIDA" AS NOTA_FISCAL_TRANSP_HORASAIDA
+FROM
+     "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON NOTA_ITEMS."NUMERONOTA" = NOTA_FISCAL."NUMERO"]]>
+	</queryString>
+	<field name="NOTA_ITEMS_NUMERONOTA" class="java.math.BigDecimal"/>
+	<field name="NOTA_ITEMS_PRODUTOCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_ITEMS_PRODUTODESC" class="java.lang.String"/>
+	<field name="NOTA_ITEMS_PRODUTOVALOR" class="java.lang.Double"/>
+	<field name="NOTA_ITEMS_PRODUTOQTD" class="java.math.BigDecimal"/>
+	<field name="NOTA_ITEMS_PRODUTOPIS" class="java.lang.Double"/>
+	<field name="NOTA_ITEMS_PRODUTOCOFINS" class="java.lang.Double"/>
+	<field name="NOTA_ITEMS_PRODUTOIPI" class="java.lang.Double"/>
+	<field name="NOTA_ITEMS_PRODUTOICMS" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_TIPO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_CFOP" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_TOTAL" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_DATAEMISSAO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_HORAEMISSAO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_TRANSPCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_TRANSP_DATASAIDA" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_TRANSP_HORASAIDA" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="377" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Transparent" x="275" y="191" width="170" height="24" uuid="6a9d49f9-2eff-48ef-86dd-28a6dd1c0173"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="160" y="9" width="286" height="30" uuid="5c291d31-2033-4246-abca-63d8a4c80e4d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="141" y="99" width="100" height="20" uuid="e2984b1a-a397-496f-8ee8-7895e3495f7a"/>
+				<text><![CDATA[fone: 3358-7218]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="106" width="27" height="39" uuid="31ce7cd8-04f7-4be6-9ab1-08d2459f809f"/>
+				<textElement textAlignment="Left">
+					<font size="18" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="191" width="85" height="15" uuid="11e92f1b-ba33-4887-9d8e-eec4d2177d0d"/>
+				<text><![CDATA[Nome / Razão Social]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="446" y="150" width="109" height="27" uuid="ff3a0f3f-f9c3-4db4-b33e-f59c8c71d67d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="282" y="59" width="145" height="20" uuid="bc99e2e6-98a2-4b5b-963e-9163818be9ec"/>
+				<text><![CDATA[Documento Auxiliar da]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="99" width="54" height="20" uuid="90294ea6-e72b-49fb-b2b9-6b13759e4315"/>
+				<text><![CDATA[0 - Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="150" width="116" height="20" uuid="16e2ce22-9c82-4774-ab50-c6d162fa0f09"/>
+				<text><![CDATA[Natureza da Operação]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="79" width="229" height="20" uuid="25f80351-65fd-445e-b9b3-5ac95edb45a4"/>
+				<text><![CDATA[Jardim Maria Antônia Prado Sorocaba - SP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="98" width="100" height="20" uuid="e13d4377-1b73-4b4e-9fa3-01ff1e8bcdca"/>
+				<text><![CDATA[CEP 18076-120]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="190" width="100" height="20" uuid="9f2013c8-424d-4121-be51-77257b77aacd"/>
+				<text><![CDATA[DATA EMISSÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="98" width="54" height="20" uuid="cb14ab99-e666-4eb4-9a43-a1412f2af74e"/>
+				<text><![CDATA[0 - Entrada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="277" y="191" width="67" height="15" uuid="3588424e-b9d8-43d3-afa1-30524aa4cbfa"/>
+				<text><![CDATA[CNPJ / CPF]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="445" y="191" width="110" height="24" uuid="71a2847d-02d0-40d8-bc4f-6693f792ca6f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="39" width="100" height="20" uuid="98dbaab2-4d6d-4f8d-9648-ba230b987dcc"/>
+				<text><![CDATA[PetHappy    Ltda;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="9" width="159" height="30" uuid="083ab65e-8e87-4976-a905-7e22fe978853"/>
+				<text><![CDATA[Data  do Recebimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="118" width="54" height="20" uuid="958a4c63-d4f0-40fc-87f1-1be7ec689fe7"/>
+				<text><![CDATA[1 - Saída]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="191" width="275" height="24" uuid="d38cf2fe-4b82-4c73-8b4e-afd7e0dbbb8d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="307" y="39" width="100" height="20" uuid="b80a8084-9022-4d6e-a31c-5bf0b10f8924"/>
+				<text><![CDATA[DANFE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="446" y="9" width="109" height="50" uuid="b99b1f6c-16b1-44ab-bda4-add34b50a7b7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="8" y="59" width="133" height="20" uuid="7bee8e29-2921-4f36-8d3d-ab572085e794"/>
+				<text><![CDATA[Santiago Idalgo Ruiz n°45]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="9" width="36" height="20" uuid="bd247de5-75ac-4628-a1c4-ac04029c41e7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[N°]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="344" y="106" width="39" height="28" uuid="166ab68c-4c8a-4e31-a876-32ec6b474985"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="1" y="150" width="445" height="27" uuid="13e7a65f-43b5-465f-a757-99638d901266"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="282" y="79" width="145" height="20" uuid="aa3b1d6d-3a69-414b-abda-978d41e18c69"/>
+				<text><![CDATA[Nota Fiscala Eletronica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="454" y="29" width="36" height="20" uuid="2619b114-39ee-45dc-9663-765544def849"/>
+				<text><![CDATA[SÉRIE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="9" width="129" height="20" uuid="cecf1903-adbb-4499-8f42-73de5468deec"/>
+				<text><![CDATA[Assinatura do Recebedor]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="276" y="40" width="170" height="110" uuid="c44ca6ad-2b62-49b2-89b4-26395812e326"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="1" y="9" width="159" height="30" uuid="0246d54b-a5c5-4d02-a68d-2aa3a0aa1f9d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="356" y="107" width="21" height="24" uuid="530b7ec7-61cf-41ae-964a-ee3e9e441f77"/>
+				<textElement textAlignment="Left">
+					<font size="18" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="150" width="40" height="15" uuid="811a65b7-b48c-4165-b57d-11d21c82e0d7"/>
+				<text><![CDATA[CNPJ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="177" width="165" height="14" uuid="38d55080-a405-44d2-858e-65efc74f4179"/>
+				<text><![CDATA[DESTINATÁRIO / REMETENTE]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="1" y="40" width="275" height="110" uuid="febfedb7-e48e-4c52-ac24-443b4497c532"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="97" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="77" width="100" height="20" uuid="1ed0016b-4621-4260-bff2-7f83a51e6c25"/>
+				<text><![CDATA[Produto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="195" height="20" uuid="f9bcd06a-96ba-46dd-9af3-c815ff544d4f"/>
+				<textFieldExpression><![CDATA[$F{NOTA_ITEMS_PRODUTODESC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
