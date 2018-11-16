@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.Connection;
@@ -630,8 +631,9 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
                 .addComponent(txtClientesInativos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblClienteInativo1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(txtTotalClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTotalClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         Painel_Vendas.addTab("Resumo", PainelResumo);
@@ -793,8 +795,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         if (tblClientes.getSelectedRow() >= 0) {
             codCli = (String) tblClientes.getValueAt(tblClientes.getSelectedRow(), 0);
             if (codCli.substring(0, 2).equals("PF")) {
-                try {
-                    System.out.println((String) (tblClientes.getValueAt(tblClientes.getSelectedRow(), 0)));
+                try {  
                     parameters.put("codigo", (String) tblClientes.getValueAt(tblClientes.getSelectedRow(), 0));
                     JasperPrint jpPrint;
                     jpPrint = JasperFillManager.fillReport("relatorios/EspelhoClientePF.jasper",
@@ -862,7 +863,13 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             parameters1.put("dtcadastro",ftxtDtcadastro.getText());
             parameters1.put("ativo",txtSituacao.getText());
             
-
+            parameters1.put("qtdA",txtClientesAtivos.getText());
+            parameters1.put("qtdI",txtClientesInativos.getText());
+            parameters1.put("qtdV",txtQtdeVendas.getText());
+            parameters1.put("qtdC",txtTotalClientes.getText());
+            parameters1.put("valortotal",parseDouble(txtValorTotalVendas.getText()));
+            parameters1.put("dtI",ftxtData_Inicial.getText());
+            parameters1.put("dtF",ftxtData_Inicial.getText());
 
             JasperPrint jpPrint1;
             jpPrint1 = JasperFillManager.fillReport("relatorios/EspelhoVendedor.jasper",
