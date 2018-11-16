@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 import org.apache.thrift.server.THsHaServer;
 import projeto.vendas.control.Conexao;
@@ -45,6 +47,7 @@ import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
+import projeto.vendas.tabelas.GuiControleEstrategicoVendedorEspecificoTVVendas;
 
 /**
  *
@@ -135,6 +138,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         Painel_VendasFeitas = new javax.swing.JPanel();
         jScrollPaneVendedor = new javax.swing.JScrollPane();
         tblVendas = new javax.swing.JTable();
+        btnVisualizarVendas = new javax.swing.JButton();
         Painel_Clientes = new javax.swing.JPanel();
         jScrollPaneVendedor1 = new javax.swing.JScrollPane();
         tblClientes = new javax.swing.JTable();
@@ -515,15 +519,32 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         });
         jScrollPaneVendedor.setViewportView(tblVendas);
 
+        btnVisualizarVendas.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnVisualizarVendas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Visualizar.png"))); // NOI18N
+        btnVisualizarVendas.setText("Visualizar Vendas");
+        btnVisualizarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarVendasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout Painel_VendasFeitasLayout = new javax.swing.GroupLayout(Painel_VendasFeitas);
         Painel_VendasFeitas.setLayout(Painel_VendasFeitasLayout);
         Painel_VendasFeitasLayout.setHorizontalGroup(
             Painel_VendasFeitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
+            .addGroup(Painel_VendasFeitasLayout.createSequentialGroup()
+                .addGap(291, 291, 291)
+                .addComponent(btnVisualizarVendas)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Painel_VendasFeitasLayout.setVerticalGroup(
             Painel_VendasFeitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addGroup(Painel_VendasFeitasLayout.createSequentialGroup()
+                .addComponent(jScrollPaneVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVisualizarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 17, Short.MAX_VALUE))
         );
 
         Painel_Vendas.addTab("Vendas", Painel_VendasFeitas);
@@ -883,6 +904,44 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         }
     }//GEN-LAST:event_btnVisualizarVendedorActionPerformed
 
+    private void btnVisualizarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarVendasActionPerformed
+        Map parameters1 = new HashMap();
+
+        List lista = new ArrayList();
+        for (int x = 0; x < tblVendas.getRowCount(); x++) {
+            GuiControleEstrategicoVendedorEspecificoTVVendas print
+                    = new GuiControleEstrategicoVendedorEspecificoTVVendas();
+
+            print.setCodCli((String) tblVendas.getValueAt(x, 0));
+            print.setNomeCli((String) tblVendas.getValueAt(x, 1));
+            print.setNotaFiscal((int) tblVendas.getValueAt(x, 2));
+            print.setValorNota((double) tblVendas.getValueAt(x, 3));
+            print.setDtEmissao((String) tblVendas.getValueAt(x, 4));
+
+            lista.add(print);
+        } 
+        
+        try {
+            parameters1.put("codigo",txtCodigo.getText());
+            parameters1.put("nome",txtNome.getText());
+            parameters1.put("funcao",txtFuncao.getText());            
+            parameters1.put("dtinicio",ftxtData_Inicial.getText());
+            parameters1.put("dtfinal",ftxtData_Inicial.getText());
+
+            JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
+            
+            JasperPrint jpPrint1;
+            jpPrint1 = JasperFillManager.fillReport("relatorios/RelatorioVendedorVendas.jasper",
+                    parameters1,ds);
+
+            JasperViewer jv1 = new JasperViewer(jpPrint1, false);
+            jv1.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnVisualizarVendasActionPerformed
+
 /**
  * @param args the command line arguments
  */
@@ -967,6 +1026,7 @@ public static void main(String args[]) {
     private javax.swing.JPanel Painel_VendasFeitas;
     private javax.swing.JButton btnFiltrarData;
     private javax.swing.JButton btnVisualizarCliente;
+    private javax.swing.JButton btnVisualizarVendas;
     private javax.swing.JButton btnVisualizarVendedor;
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup buttonGroupVendedor;

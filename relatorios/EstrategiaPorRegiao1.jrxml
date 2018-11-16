@@ -89,7 +89,7 @@
 	<pageHeader>
 		<band height="61" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#666666" uuid="5be94b48-69c5-4a0a-b480-1e7ccdfe07ac"/>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" backcolor="#999999" uuid="5be94b48-69c5-4a0a-b480-1e7ccdfe07ac"/>
 			</frame>
 			<staticText>
 				<reportElement style="Painel" x="0" y="0" width="144" height="20" uuid="82df20f9-9b55-4e71-af41-bbebc119a754"/>
@@ -112,7 +112,7 @@
 				<textFieldExpression><![CDATA[$P{dtfinal}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement mode="Opaque" x="0" y="40" width="555" height="20" forecolor="#000000" backcolor="#666666" uuid="fbc9ce24-58ff-4c88-8ab8-5911c4950435"/>
+				<reportElement mode="Opaque" x="0" y="40" width="555" height="20" forecolor="#000000" backcolor="#999999" uuid="fbc9ce24-58ff-4c88-8ab8-5911c4950435"/>
 			</rectangle>
 			<staticText>
 				<reportElement style="Painel" x="154" y="40" width="227" height="20" uuid="807e56fa-951d-4a9c-8a71-5a8b015bd00c"/>
@@ -192,7 +192,7 @@
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="34" splitType="Stretch"/>
+		<band height="35" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
