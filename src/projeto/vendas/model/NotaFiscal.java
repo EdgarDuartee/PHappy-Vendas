@@ -13,6 +13,16 @@ public class NotaFiscal {
     private int TranspCod;
     private String Transp_DataSaida;
     private String Transp_HoraSaida;
+    private String NaturezaDaOperacao;
+    private float BaseICMS;
+    private float ICMS;
+    private float IPI;
+    private String ChaveAcesso;
+    private float Valorfrete;
+    private String PlacaVeiculo;
+    private String CPF;
+    private String CNPJ;
+    private float ValorSeguro;
 
     public NotaFiscal(int Numero, int Serie, int PedidoCod, String Tipo, String CFOP, double Total, String DataEmissao, String HoraEmissao, int TranspCod) {
         this.Numero = Numero;
@@ -25,6 +35,72 @@ public class NotaFiscal {
         this.HoraEmissao = HoraEmissao;
         this.TranspCod = TranspCod;
     }
+
+    public String getNaturezaDaOperacao() {
+        return NaturezaDaOperacao;
+    }
+
+    public void setNaturezaDaOperacao(String NaturezaDaOperacao) {
+        this.NaturezaDaOperacao = NaturezaDaOperacao;
+    }
+
+    public float getBaseICMS() {
+        return BaseICMS;
+    }
+
+    public void setBaseICMS(float BaseICMS) {
+        this.BaseICMS = BaseICMS;
+    }
+
+    public float getICMS() {
+        return ICMS;
+    }
+
+    public void setICMS(float ICMS) {
+        this.ICMS = ICMS;
+    }
+
+    public float getIPI() {
+        return IPI;
+    }
+
+    public void setIPI(float IPI) {
+        this.IPI = IPI;
+    }
+
+    public String getChaveAcesso() {
+        return ChaveAcesso;
+    }
+
+    public void setChaveAcesso(String ChaveAcesso) {
+        this.ChaveAcesso = ChaveAcesso;
+    }
+
+    public float getValorfrete() {
+        return Valorfrete;
+    }
+
+    public void setValorfrete(float Valorfrete) {
+        this.Valorfrete = Valorfrete;
+    }
+
+    public String getPlacaVeiculo() {
+        return PlacaVeiculo;
+    }
+
+    public void setPlacaVeiculo(String PlacaVeiculo) {
+        this.PlacaVeiculo = PlacaVeiculo;
+    }
+
+    public float getValorSeguro() {
+        return ValorSeguro;
+    }
+
+    public void setValorSeguro(float ValorSeguro) {
+        this.ValorSeguro = ValorSeguro;
+    }
+    
+    
 
     public void setTotal(double Total) {
         this.Total = Total;

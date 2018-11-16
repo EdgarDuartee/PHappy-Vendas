@@ -30,6 +30,7 @@ public class DaoGerarPedido {
                         rs.getString("dtPedido"),
                         rs.getFloat("TotalPedido"),
                         rs.getInt("Situacao"));
+                        pedido.setClienteNome(rs.getString("clienteNome"));
 
             }
         } catch (SQLException ex) {
@@ -59,35 +60,16 @@ public class DaoGerarPedido {
     public void inserir(Pedido pedido) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT into Pedido(codigo, clienteCod, vendedorCod,"
+            ps = conn.prepareStatement("INSERT into Pedido(codigo, clienteCod, clienteNome, vendedorCod,"
                     + "dtPedido, totalPedido, Situacao)"
-                    + "VALUES(?, ?, ?, ? , ?, ?)");
+                    + "VALUES(?, ?, ?, ? , ? , ?, ?)");
             ps.setInt(1, pedido.getCodigo());
             ps.setString(2, pedido.getClienteCod());
-            ps.setInt(3, pedido.getVendedorCod());
-            ps.setString(4, pedido.getDtPedido());
-            ps.setFloat(5, pedido.getTotal());
-            ps.setInt(6, pedido.getSituacao());
-
-            ps.execute();
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        }
-    }
-
-    public void PrimeiroPedido(Pedido pedido) {
-        PreparedStatement ps = null;
-        try {
-            ps = conn.prepareStatement("INSERT into Pedido(codigo, clientCod, vendedorCod,"
-                    + "dtPedido, totalPedido,Situacao)"
-                    + "VALUES(?, ?, ?, ? , ?)");
-
-            ps.setInt(1, pedido.getCodigo());
-            ps.setString(2, pedido.getClienteCod());
-            ps.setInt(3, pedido.getVendedorCod());
-            ps.setString(4, pedido.getDtPedido());
-            ps.setFloat(5, pedido.getTotal());
-            ps.setInt(6, pedido.getSituacao());
+            ps.setString(3, pedido.getClienteNome());
+            ps.setInt(4, pedido.getVendedorCod());
+            ps.setString(5, pedido.getDtPedido());
+            ps.setFloat(6, pedido.getTotal());
+            ps.setInt(7, pedido.getSituacao());
 
             ps.execute();
         } catch (SQLException ex) {
@@ -134,6 +116,7 @@ public class DaoGerarPedido {
                         rs.getString("dtPedido"),
                         rs.getFloat("totalPedido"),
                         rs.getInt("Situacao"));
+                pedido.setClienteNome(rs.getString("clienteNome"));
                 lista.add(pedido);
             }
         } catch (SQLException ex) {
@@ -156,6 +139,7 @@ public class DaoGerarPedido {
                         rs.getString("dtPedido"),
                         rs.getFloat("totalPedido"),
                         rs.getInt("Situacao"));
+                pedido.setClienteNome(rs.getString("clienteNome"));
                 lista.add(pedido);
             }
         } catch (SQLException ex) {

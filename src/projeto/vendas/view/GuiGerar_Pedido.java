@@ -493,6 +493,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     lbl_codigoCliente.getText(), login.getCodigo(),
                     txt_Data.getText() + "-" + HoraSistema,
                     Float.parseFloat(txt_total.getText()), 3);
+            pedido.setClienteNome(txt_nomeCliente.getText());
             daoGerarPedido.inserir(pedido);
             for (int i = 0; i < pedidoProduto.size(); i++) {
                 pedidoProduto.get(i).setPedidoCod(pedido.getCodigo());

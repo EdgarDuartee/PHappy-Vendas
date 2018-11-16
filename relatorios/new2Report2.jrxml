@@ -1,37 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.2100000000000046"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="1.948717100000007"/>
+	<property name="ireport.x" value="493"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<queryString>
 		<![CDATA[SELECT
-     PEDIDO."CODIGO" AS PEDIDO_CODIGO,
-     PEDIDO."CLIENTECOD" AS PEDIDO_CLIENTECOD,
-     PEDIDO."CLIENTENOME" AS PEDIDO_CLIENTENOME,
-     PEDIDO."VENDEDORCOD" AS PEDIDO_VENDEDORCOD,
-     PEDIDO."DTPEDIDO" AS PEDIDO_DTPEDIDO,
-     PEDIDO."TOTALPEDIDO" AS PEDIDO_TOTALPEDIDO,
-     PEDIDO."SITUACAO" AS PEDIDO_SITUACAO,
-     NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
-     NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
-     NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
-     NOTA_FISCAL."TIPO" AS NOTA_FISCAL_TIPO,
-     NOTA_FISCAL."TOTAL" AS NOTA_FISCAL_TOTAL,
-     NOTA_FISCAL."DATAEMISSAO" AS NOTA_FISCAL_DATAEMISSAO,
-     NOTA_FISCAL."HORAEMISSAO" AS NOTA_FISCAL_HORAEMISSAO,
-     NOTA_FISCAL."TRANSPCOD" AS NOTA_FISCAL_TRANSPCOD,
-     NOTA_FISCAL."TRANSP_DATASAIDA" AS NOTA_FISCAL_TRANSP_DATASAIDA,
-     NOTA_FISCAL."TRANSP_HORASAIDA" AS NOTA_FISCAL_TRANSP_HORASAIDA,
-     NOTA_FISCAL."CFOP" AS NOTA_FISCAL_CFOP,
-     NOTA_FISCAL."NATUREZADAOPERACAO" AS NOTA_FISCAL_NATUREZADAOPERACAO,
-     NOTA_FISCAL."BASEICMS" AS NOTA_FISCAL_BASEICMS,
-     NOTA_FISCAL."ICMS" AS NOTA_FISCAL_ICMS,
-     NOTA_FISCAL."IPI" AS NOTA_FISCAL_IPI,
-     NOTA_FISCAL."CHAVEACESSO" AS NOTA_FISCAL_CHAVEACESSO,
-     NOTA_FISCAL."VALORFRETE" AS NOTA_FISCAL_VALORFRETE,
-     NOTA_FISCAL."PLACAVEICULO" AS NOTA_FISCAL_PLACAVEICULO,
-     NOTA_FISCAL."VALORSEGURO" AS NOTA_FISCAL_VALORSEGURO,
      NOTA_ITEMS."NUMERONOTA" AS NOTA_ITEMS_NUMERONOTA,
      NOTA_ITEMS."PRODUTOCOD" AS NOTA_ITEMS_PRODUTOCOD,
      NOTA_ITEMS."PRODUTODESC" AS NOTA_ITEMS_PRODUTODESC,
@@ -41,40 +15,20 @@
      NOTA_ITEMS."PRODUTOCOFINS" AS NOTA_ITEMS_PRODUTOCOFINS,
      NOTA_ITEMS."PRODUTOIPI" AS NOTA_ITEMS_PRODUTOIPI,
      NOTA_ITEMS."PRODUTOICMS" AS NOTA_ITEMS_PRODUTOICMS,
-     PEDIDO_PRODUTO."PEDIDOCOD" AS PEDIDO_PRODUTO_PEDIDOCOD,
-     PEDIDO_PRODUTO."PRODUTOCOD" AS PEDIDO_PRODUTO_PRODUTOCOD,
-     PEDIDO_PRODUTO."QTDPRODUTO" AS PEDIDO_PRODUTO_QTDPRODUTO
+     NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
+     NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
+     NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
+     NOTA_FISCAL."TIPO" AS NOTA_FISCAL_TIPO,
+     NOTA_FISCAL."CFOP" AS NOTA_FISCAL_CFOP,
+     NOTA_FISCAL."TOTAL" AS NOTA_FISCAL_TOTAL,
+     NOTA_FISCAL."DATAEMISSAO" AS NOTA_FISCAL_DATAEMISSAO,
+     NOTA_FISCAL."HORAEMISSAO" AS NOTA_FISCAL_HORAEMISSAO,
+     NOTA_FISCAL."TRANSPCOD" AS NOTA_FISCAL_TRANSPCOD,
+     NOTA_FISCAL."TRANSP_DATASAIDA" AS NOTA_FISCAL_TRANSP_DATASAIDA,
+     NOTA_FISCAL."TRANSP_HORASAIDA" AS NOTA_FISCAL_TRANSP_HORASAIDA
 FROM
-     "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON PEDIDO."CODIGO" = NOTA_FISCAL."PEDIDOCOD"
-     INNER JOIN "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS ON NOTA_FISCAL."NUMERO" = NOTA_ITEMS."NUMERONOTA",
-     "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO]]>
+     "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON NOTA_ITEMS."NUMERONOTA" = NOTA_FISCAL."NUMERO"]]>
 	</queryString>
-	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_CLIENTECOD" class="java.lang.String"/>
-	<field name="PEDIDO_CLIENTENOME" class="java.lang.String"/>
-	<field name="PEDIDO_VENDEDORCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_DTPEDIDO" class="java.lang.String"/>
-	<field name="PEDIDO_TOTALPEDIDO" class="java.lang.Double"/>
-	<field name="PEDIDO_SITUACAO" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_TIPO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TOTAL" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_DATAEMISSAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_HORAEMISSAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TRANSPCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_TRANSP_DATASAIDA" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TRANSP_HORASAIDA" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_CFOP" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_NATUREZADAOPERACAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_BASEICMS" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_ICMS" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_IPI" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_CHAVEACESSO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_VALORFRETE" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_PLACAVEICULO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_VALORSEGURO" class="java.lang.Double"/>
 	<field name="NOTA_ITEMS_NUMERONOTA" class="java.math.BigDecimal"/>
 	<field name="NOTA_ITEMS_PRODUTOCOD" class="java.math.BigDecimal"/>
 	<field name="NOTA_ITEMS_PRODUTODESC" class="java.lang.String"/>
@@ -84,9 +38,17 @@ FROM
 	<field name="NOTA_ITEMS_PRODUTOCOFINS" class="java.lang.Double"/>
 	<field name="NOTA_ITEMS_PRODUTOIPI" class="java.lang.Double"/>
 	<field name="NOTA_ITEMS_PRODUTOICMS" class="java.lang.Double"/>
-	<field name="PEDIDO_PRODUTO_PEDIDOCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_PRODUTO_PRODUTOCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_PRODUTO_QTDPRODUTO" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_TIPO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_CFOP" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_TOTAL" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_DATAEMISSAO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_HORAEMISSAO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_TRANSPCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_TRANSP_DATASAIDA" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_TRANSP_HORASAIDA" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

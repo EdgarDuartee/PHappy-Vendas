@@ -1,37 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.2100000000000046"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="2.853116706110015"/>
+	<property name="ireport.x" value="785"/>
+	<property name="ireport.y" value="869"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<queryString>
 		<![CDATA[SELECT
-     PEDIDO."CODIGO" AS PEDIDO_CODIGO,
-     PEDIDO."CLIENTECOD" AS PEDIDO_CLIENTECOD,
-     PEDIDO."CLIENTENOME" AS PEDIDO_CLIENTENOME,
-     PEDIDO."VENDEDORCOD" AS PEDIDO_VENDEDORCOD,
-     PEDIDO."DTPEDIDO" AS PEDIDO_DTPEDIDO,
-     PEDIDO."TOTALPEDIDO" AS PEDIDO_TOTALPEDIDO,
-     PEDIDO."SITUACAO" AS PEDIDO_SITUACAO,
-     NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
-     NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
-     NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
-     NOTA_FISCAL."TIPO" AS NOTA_FISCAL_TIPO,
-     NOTA_FISCAL."TOTAL" AS NOTA_FISCAL_TOTAL,
-     NOTA_FISCAL."DATAEMISSAO" AS NOTA_FISCAL_DATAEMISSAO,
-     NOTA_FISCAL."HORAEMISSAO" AS NOTA_FISCAL_HORAEMISSAO,
-     NOTA_FISCAL."TRANSPCOD" AS NOTA_FISCAL_TRANSPCOD,
-     NOTA_FISCAL."TRANSP_DATASAIDA" AS NOTA_FISCAL_TRANSP_DATASAIDA,
-     NOTA_FISCAL."TRANSP_HORASAIDA" AS NOTA_FISCAL_TRANSP_HORASAIDA,
-     NOTA_FISCAL."CFOP" AS NOTA_FISCAL_CFOP,
-     NOTA_FISCAL."NATUREZADAOPERACAO" AS NOTA_FISCAL_NATUREZADAOPERACAO,
-     NOTA_FISCAL."BASEICMS" AS NOTA_FISCAL_BASEICMS,
-     NOTA_FISCAL."ICMS" AS NOTA_FISCAL_ICMS,
-     NOTA_FISCAL."IPI" AS NOTA_FISCAL_IPI,
-     NOTA_FISCAL."CHAVEACESSO" AS NOTA_FISCAL_CHAVEACESSO,
-     NOTA_FISCAL."VALORFRETE" AS NOTA_FISCAL_VALORFRETE,
-     NOTA_FISCAL."PLACAVEICULO" AS NOTA_FISCAL_PLACAVEICULO,
-     NOTA_FISCAL."VALORSEGURO" AS NOTA_FISCAL_VALORSEGURO,
      NOTA_ITEMS."NUMERONOTA" AS NOTA_ITEMS_NUMERONOTA,
      NOTA_ITEMS."PRODUTOCOD" AS NOTA_ITEMS_PRODUTOCOD,
      NOTA_ITEMS."PRODUTODESC" AS NOTA_ITEMS_PRODUTODESC,
@@ -41,40 +15,20 @@
      NOTA_ITEMS."PRODUTOCOFINS" AS NOTA_ITEMS_PRODUTOCOFINS,
      NOTA_ITEMS."PRODUTOIPI" AS NOTA_ITEMS_PRODUTOIPI,
      NOTA_ITEMS."PRODUTOICMS" AS NOTA_ITEMS_PRODUTOICMS,
-     PEDIDO_PRODUTO."PEDIDOCOD" AS PEDIDO_PRODUTO_PEDIDOCOD,
-     PEDIDO_PRODUTO."PRODUTOCOD" AS PEDIDO_PRODUTO_PRODUTOCOD,
-     PEDIDO_PRODUTO."QTDPRODUTO" AS PEDIDO_PRODUTO_QTDPRODUTO
+     NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
+     NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
+     NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
+     NOTA_FISCAL."TIPO" AS NOTA_FISCAL_TIPO,
+     NOTA_FISCAL."CFOP" AS NOTA_FISCAL_CFOP,
+     NOTA_FISCAL."TOTAL" AS NOTA_FISCAL_TOTAL,
+     NOTA_FISCAL."DATAEMISSAO" AS NOTA_FISCAL_DATAEMISSAO,
+     NOTA_FISCAL."HORAEMISSAO" AS NOTA_FISCAL_HORAEMISSAO,
+     NOTA_FISCAL."TRANSPCOD" AS NOTA_FISCAL_TRANSPCOD,
+     NOTA_FISCAL."TRANSP_DATASAIDA" AS NOTA_FISCAL_TRANSP_DATASAIDA,
+     NOTA_FISCAL."TRANSP_HORASAIDA" AS NOTA_FISCAL_TRANSP_HORASAIDA
 FROM
-     "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON PEDIDO."CODIGO" = NOTA_FISCAL."PEDIDOCOD"
-     INNER JOIN "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS ON NOTA_FISCAL."NUMERO" = NOTA_ITEMS."NUMERONOTA",
-     "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO]]>
+     "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON NOTA_ITEMS."NUMERONOTA" = NOTA_FISCAL."NUMERO"]]>
 	</queryString>
-	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_CLIENTECOD" class="java.lang.String"/>
-	<field name="PEDIDO_CLIENTENOME" class="java.lang.String"/>
-	<field name="PEDIDO_VENDEDORCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_DTPEDIDO" class="java.lang.String"/>
-	<field name="PEDIDO_TOTALPEDIDO" class="java.lang.Double"/>
-	<field name="PEDIDO_SITUACAO" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_TIPO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TOTAL" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_DATAEMISSAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_HORAEMISSAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TRANSPCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_TRANSP_DATASAIDA" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TRANSP_HORASAIDA" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_CFOP" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_NATUREZADAOPERACAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_BASEICMS" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_ICMS" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_IPI" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_CHAVEACESSO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_VALORFRETE" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_PLACAVEICULO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_VALORSEGURO" class="java.lang.Double"/>
 	<field name="NOTA_ITEMS_NUMERONOTA" class="java.math.BigDecimal"/>
 	<field name="NOTA_ITEMS_PRODUTOCOD" class="java.math.BigDecimal"/>
 	<field name="NOTA_ITEMS_PRODUTODESC" class="java.lang.String"/>
@@ -84,9 +38,17 @@ FROM
 	<field name="NOTA_ITEMS_PRODUTOCOFINS" class="java.lang.Double"/>
 	<field name="NOTA_ITEMS_PRODUTOIPI" class="java.lang.Double"/>
 	<field name="NOTA_ITEMS_PRODUTOICMS" class="java.lang.Double"/>
-	<field name="PEDIDO_PRODUTO_PEDIDOCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_PRODUTO_PRODUTOCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_PRODUTO_QTDPRODUTO" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_TIPO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_CFOP" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_TOTAL" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_DATAEMISSAO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_HORAEMISSAO" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_TRANSPCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_FISCAL_TRANSP_DATASAIDA" class="java.lang.String"/>
+	<field name="NOTA_FISCAL_TRANSP_HORASAIDA" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -490,13 +452,13 @@ FROM
 				<reportElement x="554" y="59" width="1" height="91" uuid="22cfb4c5-7d39-4744-bd1f-4c4816e6921f"/>
 			</line>
 			<componentElement>
-				<reportElement x="401" y="61" width="141" height="59" uuid="9ce35c87-eced-44f3-a5ec-dfe93205bc73"/>
+				<reportElement x="401" y="60" width="141" height="59" uuid="9ce35c87-eced-44f3-a5ec-dfe93205bc73"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
 					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<staticText>
-				<reportElement x="386" y="119" width="100" height="18" uuid="06fd85a6-b497-4e98-94b5-2d0d25ed4dc7"/>
+				<reportElement x="386" y="120" width="100" height="18" uuid="06fd85a6-b497-4e98-94b5-2d0d25ed4dc7"/>
 				<text><![CDATA[CHAVE DE ACESSO]]></text>
 			</staticText>
 			<staticText>
@@ -574,41 +536,6 @@ FROM
 				<reportElement x="334" y="14" width="52" height="19" uuid="a67a5de4-17bb-4908-9dd2-a3b56bad6544"/>
 				<text><![CDATA[V. TOTAL]]></text>
 			</staticText>
-			<rectangle>
-				<reportElement x="383" y="14" width="29" height="27" uuid="4c614065-cfde-49b4-8491-ac56074bbddc"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="384" y="15" width="29" height="25" uuid="bbd8237a-4cdf-42d3-b10a-70409b37a49a"/>
-				<text><![CDATA[BC. ICMS]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="412" y="14" width="33" height="28" uuid="c2a5ad4c-d86e-4b82-aa0c-47ce5191a32b"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="414" y="15" width="29" height="20" uuid="29e994f3-6042-4a32-b5b0-f82120964208"/>
-				<text><![CDATA[ICMS]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="445" y="14" width="28" height="27" uuid="62f7ed00-9339-4441-99d5-66549ce71708"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="448" y="16" width="15" height="20" uuid="ab73cffa-a56d-47c7-b84d-e2d6264851c2"/>
-				<text><![CDATA[IPI]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="473" y="14" width="28" height="27" uuid="7bc6cc7f-73a6-411e-84e9-0708769460d5"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="474" y="15" width="26" height="25" uuid="ed1de1c9-04c7-4c90-8898-eaba7ff2edb8"/>
-				<text><![CDATA[ALIQUOTA ICMS]]></text>
-			</staticText>
-			<rectangle>
-				<reportElement x="501" y="14" width="39" height="27" uuid="745b975b-7d91-4ef1-be56-8f844d47caf5"/>
-			</rectangle>
-			<staticText>
-				<reportElement x="502" y="15" width="39" height="24" uuid="8eccdd3a-d381-44ad-ac7b-b9c9d9d09251"/>
-				<text><![CDATA[ALIQUOTA IPI]]></text>
-			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -639,21 +566,6 @@ FROM
 			</rectangle>
 			<rectangle>
 				<reportElement x="332" y="0" width="51" height="21" uuid="0e295b5d-d3cd-41de-914e-68c734dde16a"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="383" y="0" width="29" height="21" uuid="f8492c82-7434-44df-a394-1ac3703cb9ec"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="412" y="0" width="33" height="21" uuid="3f434879-e35f-4bca-b706-056af64e0469"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="445" y="0" width="28" height="21" uuid="9b1cd04a-7cd7-4158-b3b5-0d3a3ce1a7ac"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="473" y="0" width="28" height="21" uuid="5047bf79-8e9f-4700-a739-543ba3b84e31"/>
-			</rectangle>
-			<rectangle>
-				<reportElement x="501" y="0" width="39" height="21" uuid="7883b2a1-b393-47f0-aea9-03aabfda29c8"/>
 			</rectangle>
 		</band>
 	</detail>
