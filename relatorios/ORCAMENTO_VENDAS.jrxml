@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
+	<property name="ireport.zoom" value="1.1000000000000005"/>
+	<property name="ireport.x" value="16"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
+	<style name="Heading 1" fontSize="16" isBold="true"/>
+	<style name="Heading 3" fontSize="14" isBold="true"/>
+	<queryString>
+		<![CDATA[SELECT
+     PEDIDO."CODIGO" AS PEDIDO_CODIGO,
+     PEDIDO."CLIENTECOD" AS PEDIDO_CLIENTECOD,
+     PEDIDO."VENDEDORCOD" AS PEDIDO_VENDEDORCOD,
+     PEDIDO."TOTALPEDIDO" AS PEDIDO_TOTALPEDIDO,
+     PEDIDO_PRODUTO."PEDIDOCOD" AS PEDIDO_PRODUTO_PEDIDOCOD,
+     PEDIDO_PRODUTO."PRODUTOCOD" AS PEDIDO_PRODUTO_PRODUTOCOD,
+     PEDIDO_PRODUTO."QTDPRODUTO" AS PEDIDO_PRODUTO_QTDPRODUTO,
+     PRODUTO."CODIGO" AS PRODUTO_CODIGO,
+     PRODUTO."DESCRICAO" AS PRODUTO_DESCRICAO,
+     PRODUTO."PROD_CAT" AS PRODUTO_PROD_CAT,
+     PRODUTO."VALORUNITARIO" AS PRODUTO_VALORUNITARIO,
+     USUARIO_SISTEMA."CODIGO" AS USUARIO_SISTEMA_CODIGO,
+     USUARIO_SISTEMA."NOME" AS USUARIO_SISTEMA_NOME
+FROM
+     "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO ON PEDIDO."CODIGO" = PEDIDO_PRODUTO."PEDIDOCOD"
+     INNER JOIN "FERNANDO"."PRODUTO" PRODUTO ON PEDIDO_PRODUTO."PRODUTOCOD" = PRODUTO."CODIGO"
+     INNER JOIN "FERNANDO"."USUARIO_SISTEMA" USUARIO_SISTEMA ON PEDIDO."VENDEDORCOD" = USUARIO_SISTEMA."CODIGO"]]>
+	</queryString>
+	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_CLIENTECOD" class="java.lang.String"/>
+	<field name="PEDIDO_VENDEDORCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_TOTALPEDIDO" class="java.lang.Double"/>
+	<field name="PEDIDO_PRODUTO_PEDIDOCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_PRODUTO_PRODUTOCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_PRODUTO_QTDPRODUTO" class="java.math.BigDecimal"/>
+	<field name="PRODUTO_CODIGO" class="java.math.BigDecimal"/>
+	<field name="PRODUTO_DESCRICAO" class="java.lang.String"/>
+	<field name="PRODUTO_PROD_CAT" class="java.lang.String"/>
+	<field name="PRODUTO_VALORUNITARIO" class="java.lang.Double"/>
+	<field name="USUARIO_SISTEMA_CODIGO" class="java.math.BigDecimal"/>
+	<field name="USUARIO_SISTEMA_NOME" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement style="Heading 3" x="1" y="99" width="54" height="20" uuid="40effeaa-6a2d-451b-a743-d47a73d46f73"/>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="405" y="0" width="150" height="72" uuid="0a268201-d675-4aec-96ca-68e69979cae8"/>
+				<imageExpression><![CDATA["D:\\TCC - Fatec 2018\\PHappy-Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Heading 3" x="341" y="119" width="134" height="20" uuid="0218f77d-e152-4cb2-b839-66978ce85eb0"/>
+				<text><![CDATA[Número do Pedido:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Heading 1" x="207" y="0" width="119" height="30" uuid="012303e9-b915-48fb-8d35-658ebc9f4499"/>
+				<text><![CDATA[ORÇAMENTO ]]></text>
+			</staticText>
+			<textField pattern="EEE, d MMM yyyy HH:mm:ss">
+				<reportElement x="1" y="0" width="134" height="20" uuid="b0293c1a-13be-462c-bbb8-c50d93c2e566"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Heading 3" x="475" y="119" width="80" height="20" uuid="985d39c8-7375-492b-8def-d68f783c6aef"/>
+				<textFieldExpression><![CDATA[$F{PEDIDO_CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Heading 3" x="55" y="99" width="271" height="20" uuid="d2fb50cf-c2a2-4efb-bdb4-563bc2a6c9fb"/>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Heading 3" x="1" y="119" width="165" height="20" uuid="ba3253fc-58eb-4b3c-ba04-d2efcb32cbbb"/>
+				<text><![CDATA[Vendedor Responsável:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Heading 3" x="166" y="119" width="160" height="20" uuid="554bf09f-34e2-46ba-b026-3c6ea8ec716e"/>
+				<textFieldExpression><![CDATA[$F{USUARIO_SISTEMA_NOME}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="41" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="100" height="41" uuid="0dfb8799-545d-4a13-8e93-da8ffa75af46"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="101" y="0" width="155" height="41" uuid="9d801bf6-b62f-4b17-bdf4-d0be10ffacf1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="0" width="100" height="41" uuid="3ca8c036-4e54-4653-ac53-fc2710c851b3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="356" y="0" width="100" height="41" uuid="10dc63c7-9151-4232-9ae1-27eb8713bbee"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="456" y="0" width="100" height="41" uuid="a8140e7b-b11c-48ab-b91e-bedc280ee315"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="0" width="100" height="41" uuid="fa57e5c6-9e89-437b-a7bf-c8cdfd6181b8"/>
+				<text><![CDATA[Código Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="0" width="155" height="41" uuid="6e3c1dc6-22c7-4f5e-bbfa-91cab004358f"/>
+				<text><![CDATA[Descrição do Produto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="0" width="100" height="41" uuid="c71ac2b8-beca-43b6-8e41-a662d5f80f87"/>
+				<text><![CDATA[Valor Unitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="0" width="100" height="41" uuid="5645034c-6a0b-4835-8a22-424b98ba1a4b"/>
+				<text><![CDATA[Quantidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="41" uuid="391882e5-914a-4417-ac2f-e1d99d646773"/>
+				<text><![CDATA[Total Por Produto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<rectangle>
+				<reportElement x="1" y="0" width="100" height="44" uuid="5297f8fc-effe-4de0-bd2b-cc2c0a2c6e7e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="101" y="0" width="155" height="44" uuid="3491bd2a-dd86-4c8d-8d19-0f9bf5c9f29c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="0" width="100" height="44" uuid="4115f9da-8f14-4cbb-b98e-0f99309d2305"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="356" y="0" width="100" height="44" uuid="a5805ba6-0b4a-42f8-9449-9ce172a60127"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="456" y="0" width="100" height="44" uuid="f9fb8ad1-0022-4755-83f4-aaf71c248ec0"/>
+			</rectangle>
+			<textField>
+				<reportElement x="1" y="0" width="100" height="44" uuid="fdac9ce4-7c69-4f27-996a-aaa84d17bb09"/>
+				<textFieldExpression><![CDATA[$F{PEDIDO_PRODUTO_PRODUTOCOD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="155" height="44" uuid="1298e4de-7233-4678-868e-f65e643353ad"/>
+				<textFieldExpression><![CDATA[$F{PRODUTO_DESCRICAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="100" height="44" uuid="f7b5ddbe-86af-4e62-bf5c-d4786ba772f0"/>
+				<textFieldExpression><![CDATA[$F{PEDIDO_PRODUTO_QTDPRODUTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="0" width="100" height="44" uuid="2d232517-25db-4ba3-9f6e-11e6d88e83bf"/>
+				<textFieldExpression><![CDATA[$F{PRODUTO_VALORUNITARIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="12" width="100" height="20" uuid="26589e8e-3d46-4492-9462-ef789537fd0d"/>
+				<textFieldExpression><![CDATA[$F{PRODUTO_VALORUNITARIO}.floatValue() * $F{PEDIDO_PRODUTO_QTDPRODUTO}.intValue()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
