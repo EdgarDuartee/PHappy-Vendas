@@ -57,7 +57,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         this.login = login;
 
         GuiControle_Estratégico_por_Região.this.setTitle("Controle Estratégico "
-                + "por Vendedor    " + "Usuário:  " + login.getNome()
+                + "por Região    " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiao.getModel();
@@ -650,6 +650,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
                     aux = (int) tblRegiao.getValueAt(c, 3);
                     tblRegiao.setValueAt(aux + 1, c, 3);
+                    flagLimpaTabela = 1;
                 }
             }
         }
@@ -661,6 +662,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
                     aux = (int) tblRegiao.getValueAt(c, 4);
                     tblRegiao.setValueAt(aux + 1, c, 4);
+                    flagLimpaTabela = 1;
                 }
             }
         }

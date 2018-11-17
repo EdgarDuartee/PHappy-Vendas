@@ -307,10 +307,10 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         lblCidade.setText("Cidade");
 
         lblRua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblRua.setText("Rua");
+        lblRua.setText("Rua/Avenida/Estrada/Viela");
 
         lblBairro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblBairro.setText("Bairro");
+        lblBairro.setText("Bairro/Vila/Parque");
 
         lblUF.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblUF.setText("UF");

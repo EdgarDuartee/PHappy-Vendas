@@ -234,7 +234,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         txtCidade.setEnabled(false);
 
         lblRua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblRua.setText("Rua");
+        lblRua.setText("Rua/Avenida/Estrada/Viela");
 
         txtRua.setEnabled(false);
 
@@ -250,7 +250,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
         lblCEP.setText("CEP");
 
         lblBairro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblBairro.setText("Bairro");
+        lblBairro.setText("Bairro/Vila/Parque");
 
         txtBairro.setEnabled(false);
 

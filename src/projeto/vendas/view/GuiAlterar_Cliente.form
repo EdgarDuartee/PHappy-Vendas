@@ -491,7 +491,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Rua"/>
+                    <Property name="text" type="java.lang.String" value="Rua/Avenida/Estrada/Viela"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtRuaPF">
@@ -1071,7 +1071,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Rua"/>
+                    <Property name="text" type="java.lang.String" value="Rua/Avenida/Estrada/Viela"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtRuaPJ">
@@ -1084,7 +1084,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Times New Roman" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Bairro"/>
+                    <Property name="text" type="java.lang.String" value="Bairro/Vila/Parque"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtBairroPJ">

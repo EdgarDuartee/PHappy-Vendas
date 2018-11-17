@@ -25,7 +25,6 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         GuiMenuGerente.this.setTitle("Menu             " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
         this.login = login;
-        System.out.println("Numero do Vendedor LOGADO = " + login.getCodigo() + "Nome = " + login.getNome());
         
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
