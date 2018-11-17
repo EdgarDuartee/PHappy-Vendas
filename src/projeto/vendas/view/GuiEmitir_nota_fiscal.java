@@ -14,9 +14,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoEmitirNotaFiscal;
 import projeto.vendas.control.DaoGerarPedido;
@@ -1264,7 +1272,23 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxCFOPItemStateChanged
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        System.out.println(String.format("%04d", 1000));
+          Map parameters = new HashMap();
+
+        try {
+            parameters.put("codigo", Integer.parseInt(txtNumero_Nota_Fiscal.getText()));
+            parameters.put("codpedido", recebePedido.getCodigo());
+            
+
+            JasperPrint jpPrint1;
+            jpPrint1 = JasperFillManager.fillReport("relatorios/newReport.jasper",
+                    parameters,conexao.conectar());
+
+            JasperViewer jv1 = new JasperViewer(jpPrint1, false);
+            jv1.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     /**
