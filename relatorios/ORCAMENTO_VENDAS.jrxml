@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
 	<property name="ireport.zoom" value="1.1000000000000005"/>
-	<property name="ireport.x" value="16"/>
+	<property name="ireport.x" value="9"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="Heading 1" fontSize="16" isBold="true"/>
@@ -20,7 +20,9 @@
      PRODUTO."PROD_CAT" AS PRODUTO_PROD_CAT,
      PRODUTO."VALORUNITARIO" AS PRODUTO_VALORUNITARIO,
      USUARIO_SISTEMA."CODIGO" AS USUARIO_SISTEMA_CODIGO,
-     USUARIO_SISTEMA."NOME" AS USUARIO_SISTEMA_NOME
+     USUARIO_SISTEMA."NOME" AS USUARIO_SISTEMA_NOME,
+     PEDIDO."CLIENTENOME" AS PEDIDO_CLIENTENOME,
+     PRODUTO."NOME" AS PRODUTO_NOME
 FROM
      "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO ON PEDIDO."CODIGO" = PEDIDO_PRODUTO."PEDIDOCOD"
      INNER JOIN "FERNANDO"."PRODUTO" PRODUTO ON PEDIDO_PRODUTO."PRODUTOCOD" = PRODUTO."CODIGO"
@@ -35,10 +37,12 @@ FROM
 	<field name="PEDIDO_PRODUTO_QTDPRODUTO" class="java.math.BigDecimal"/>
 	<field name="PRODUTO_CODIGO" class="java.math.BigDecimal"/>
 	<field name="PRODUTO_DESCRICAO" class="java.lang.String"/>
-	<field name="PRODUTO_PROD_CAT" class="java.lang.String"/>
+	<field name="PRODUTO_PROD_CAT" class="java.math.BigDecimal"/>
 	<field name="PRODUTO_VALORUNITARIO" class="java.lang.Double"/>
 	<field name="USUARIO_SISTEMA_CODIGO" class="java.math.BigDecimal"/>
 	<field name="USUARIO_SISTEMA_NOME" class="java.lang.String"/>
+	<field name="PEDIDO_CLIENTENOME" class="java.lang.String"/>
+	<field name="PRODUTO_NOME" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -64,16 +68,12 @@ FROM
 				<text><![CDATA[ORÇAMENTO ]]></text>
 			</staticText>
 			<textField pattern="EEE, d MMM yyyy HH:mm:ss">
-				<reportElement x="1" y="0" width="134" height="20" uuid="b0293c1a-13be-462c-bbb8-c50d93c2e566"/>
+				<reportElement x="1" y="52" width="134" height="20" uuid="b0293c1a-13be-462c-bbb8-c50d93c2e566"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="Heading 3" x="475" y="119" width="80" height="20" uuid="985d39c8-7375-492b-8def-d68f783c6aef"/>
 				<textFieldExpression><![CDATA[$F{PEDIDO_CODIGO}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Heading 3" x="55" y="99" width="271" height="20" uuid="d2fb50cf-c2a2-4efb-bdb4-563bc2a6c9fb"/>
-				<textFieldExpression><![CDATA[]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Heading 3" x="1" y="119" width="165" height="20" uuid="ba3253fc-58eb-4b3c-ba04-d2efcb32cbbb"/>
@@ -82,6 +82,10 @@ FROM
 			<textField>
 				<reportElement style="Heading 3" x="166" y="119" width="160" height="20" uuid="554bf09f-34e2-46ba-b026-3c6ea8ec716e"/>
 				<textFieldExpression><![CDATA[$F{USUARIO_SISTEMA_NOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="55" y="99" width="271" height="20" uuid="294af3bd-0438-4b94-86ba-c542486adf9b"/>
+				<textFieldExpression><![CDATA[$F{PEDIDO_CLIENTENOME}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>

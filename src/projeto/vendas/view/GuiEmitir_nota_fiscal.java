@@ -903,10 +903,13 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         lblSerie_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblSerie_Nota_Fiscal.setText("Série da Nota Fiscal");
 
-        txtSerie_Nota_Fiscal.setText("551");
+        txtSerie_Nota_Fiscal.setText("1");
+        txtSerie_Nota_Fiscal.setEnabled(false);
 
         lblNumero_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNumero_Nota_Fiscal.setText("Número da Nota Fiscal");
+
+        txtNumero_Nota_Fiscal.setEnabled(false);
 
         lblData_Emissao.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Emissao.setText("Data Emissão");
@@ -1120,6 +1123,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         nf.setUF(txtUF_Remetente.getText());
         nf.setCEP(ftxtCEP_Remetente.getText());
         nf.setInscricaoEstadual("123.456.789.123");
+        nf.setCPF(lbl_documento.getText());
         
         
         
@@ -1132,6 +1136,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             daoNotaFiscalItems.inserir(nfItens);
             daoGerarPedido.Faturar(recebePedido.getCodigo());
             JOptionPane.showMessageDialog(null, "Pedido Faturado e Nota Fiscal Emitida !!", "Parabéns", JOptionPane.INFORMATION_MESSAGE);
+            btnImprimir.setEnabled(true);
+            btnGerar_NF.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(null, "Falha na Geração da NFE.", "Erro Crítico", JOptionPane.ERROR_MESSAGE);
         }
@@ -1156,6 +1162,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         daoProduto = new DaoProduto(conexao.conectar());
         daoEmitirNF = new DaoEmitirNotaFiscal(conexao.conectar());
         daoNotaFiscalItems = new DaoNotaFiscalItens(conexao.conectar());
+        btnImprimir.setEnabled(false);
+        btnGerar_NF.setEnabled(true);
 
         Date data = new Date(System.currentTimeMillis());
         Calendar calendar = new GregorianCalendar();

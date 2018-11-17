@@ -1512,7 +1512,8 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtSerie_Nota_Fiscal">
               <Properties>
-                <Property name="text" type="java.lang.String" value="551"/>
+                <Property name="text" type="java.lang.String" value="1"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNumero_Nota_Fiscal">
@@ -1524,6 +1525,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumero_Nota_Fiscal">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblData_Emissao">
               <Properties>

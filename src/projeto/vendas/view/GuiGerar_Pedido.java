@@ -109,7 +109,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerar Pedido");
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -247,27 +246,30 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         Painel_Produto.setLayout(Painel_ProdutoLayout);
         Painel_ProdutoLayout.setHorizontalGroup(
             Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(lblProduto)
-                .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                    .addComponent(jLabel2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(lbl_ValorUnit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                    .addComponent(jLabel1)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(lbl_QtdEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                        .addComponent(cbxQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAdicionar))
-                    .addComponent(lblQuantidade)))
-            .addComponent(lblProduto1)
             .addComponent(cbxProduto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblProduto)
+                        .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(lbl_ValorUnit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lbl_QtdEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                        .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                                .addComponent(cbxQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAdicionar))
+                            .addComponent(lblQuantidade)))
+                    .addComponent(lblProduto1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_ProdutoLayout.setVerticalGroup(
             Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,13 +375,14 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_PedidoLayout.createSequentialGroup()
-                .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         Painel_PedidoLayout.setVerticalGroup(
             Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_PedidoLayout.createSequentialGroup()
-                .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -427,55 +430,63 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addGap(301, 301, 301)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 484, Short.MAX_VALUE)
-                        .addComponent(btnEnviar_Pedido)
-                        .addGap(117, 117, 117))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVoltar)
+                        .addGap(113, 113, 113))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addGap(126, 126, 126))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4))
+                            .addComponent(lblPedidos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Painel_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Painel_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnEnviar_Pedido)
+                        .addGap(253, 253, 253))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(Painel_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Painel_Pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblPedidos)))
-                .addGap(21, 21, 21)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltar))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(Painel_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Painel_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVoltar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         pack();
@@ -485,6 +496,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         conexao = new Conexao();
         conexao.setDriver();
         conexao.setConnectionString();
+        Total = 0;
 
         daoProduto = new DaoProduto(conexao.conectar());
         daoPFisica = new DaoPFisica(conexao.conectar());
@@ -508,6 +520,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private void btnEnviar_PedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_PedidoActionPerformed
         Calendar calendar = new GregorianCalendar();
         String HoraSistema = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND);
+        PedidoProduto itemPedido;
 
         if (JOptionPane.showConfirmDialog(null, "Deseja efetuar o Pedido ?") == 0) {//Sim
 
@@ -517,9 +530,9 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     Float.parseFloat(txt_total.getText()), 3);
             pedido.setClienteNome(txt_nomeCliente.getText());
             daoGerarPedido.inserir(pedido);
-            for (int i = 0; i < pedidoProduto.size(); i++) {
-                pedidoProduto.get(i).setPedidoCod(pedido.getCodigo());
-                daoPedidoProduto.inserir(pedidoProduto.get(i));
+            for (int i = 0; i < model.getRowCount(); i++) {
+                itemPedido = new PedidoProduto(pedido.getCodigo(), (int) model.getValueAt(i, 0), (int) model.getValueAt(i, 3));
+                daoPedidoProduto.inserir(itemPedido);
             }
             JOptionPane.showMessageDialog(null, "Pedido registrado com Sucesso!");
             btnAdicionar.setEnabled(false);
@@ -647,15 +660,15 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             } //A TABELA TEM 1 ITEM AO MENOS
             else {
                 //PERCORRE TODA A TABELA
-                System.out.println("CPMECO");
+//                System.out.println("CPMECO");
                 int i = 0;
                 for (i = 0; i < model.getRowCount(); i++) {
                     //CASO ENCONTRE ALGUM ITEM IGUAL AO QUE SE QUER INSERIR
                     if (listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo()
                             == (int) tblProduto.getValueAt(i, 0)) {
-                        
+
                         // VE SE ESSE PRODUTO QUE QUER ADD NAO VAI ECEDER A QUANTIDADE EM ESTOQUE
-                        System.out.println((int) cbxQuantidade.getValue() + (int) tblProduto.getValueAt(i, 3));
+//                        System.out.println((int) cbxQuantidade.getValue() + (int) tblProduto.getValueAt(i, 3));
                         if (((int) cbxQuantidade.getValue() + (int) tblProduto.getValueAt(i, 3))
                                 <= listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque()) {//NAO ECEDEU
                             //SOMA A QUANTIDADE
@@ -688,16 +701,17 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 }
 
             }
-            for (int i = 0; i < tblProduto.getRowCount(); i++) {
+            Total = 0;
+            for (int x = 0; x < tblProduto.getRowCount(); x++) {
                 //Atualiza o Display de Total 
-                Total = Total + (float) model.getValueAt(i, 4);
+                Total = Total + (float) model.getValueAt(x, 4);
             }
             txt_total.setText("" + Total);
 
-            PedidoProduto itemPedido = new PedidoProduto(1, listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(), (int) cbxQuantidade.getValue());
-            pedidoProduto.add(itemPedido);
+//            PedidoProduto itemPedido = new PedidoProduto(1, listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(), (int) cbxQuantidade.getValue());
+//            pedidoProduto.add(itemPedido);
             //CHECK DE PEDIDO VAZIO PARA HABILITAR O BOTÃO ENVIAR PEDIDO
-            if (pedidoProduto.size() > 0 && btnEnviar_Pedido.isEnabled() == false) {
+            if (model.getRowCount() > 0 && btnEnviar_Pedido.isEnabled() == false) {
                 btnEnviar_Pedido.setEnabled(true);
             }
         }
@@ -728,23 +742,24 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 Total = (Total - (float) model.getValueAt(tblProduto.getSelectedRow(), 4));
                 txt_total.setText("" + Total);
                 // PERCORRO O ARRAYLIST QUE PREENCHE O CBX PRODUTO, ATÉ ENCONTRAR O PRODUTO COM O CÓDIGO DO EXCLUIDO.
-                for (int i = 0; i < listaProdutos.size(); i++) {
-                    if (listaProdutos.get(i).getCodigo() == pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoCod()) {
-                        //DEPOIS QUE ENCONTROU O PRODUTO, ELE VAI SETAR A NOVA QUANTIDADE.
-                        //PEGANDO A QUANTIDADE ATUAL + A QUANTIDADE DO PRODUTO QUE FOI EXCLUIDO.
-                        listaProdutos.get(i).setQtdEstoque(listaProdutos.get(i).getQtdEstoque() + pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoQtd());
-                    }
+//                for (int i = 0; i < listaProdutos.size(); i++) {
+//                    if (listaProdutos.get(i).getCodigo() == pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoCod()) {
+                //DEPOIS QUE ENCONTROU O PRODUTO, ELE VAI SETAR A NOVA QUANTIDADE.
+                //PEGANDO A QUANTIDADE ATUAL + A QUANTIDADE DO PRODUTO QUE FOI EXCLUIDO.
+//                        listaProdutos.get(i).setQtdEstoque(listaProdutos.get(i).getQtdEstoque() + pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoQtd());
+//                    }
 
-                }
-                pedidoProduto.remove(tblProduto.getSelectedRow());
+//                }
+//                pedidoProduto.remove(tblProduto.getSelectedRow());
                 model.removeRow(tblProduto.getSelectedRow());
                 //Atualiza o DISPLAY
-                lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
+//                   lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
             }
         }
         //Desativa o BOTÃO.
-        if (pedidoProduto.size() == 0 && btnEnviar_Pedido.isEnabled() == true) {
+        if (model.getRowCount() <= 0 && btnEnviar_Pedido.isEnabled() == true) {
             btnEnviar_Pedido.setEnabled(false);
+            Total = 0;
         }
     }//GEN-LAST:event_tblProdutoKeyPressed
 
