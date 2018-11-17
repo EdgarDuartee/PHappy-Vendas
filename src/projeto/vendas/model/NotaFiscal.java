@@ -20,8 +20,7 @@ public class NotaFiscal {
     private String ChaveAcesso;
     private float Valorfrete;
     private String PlacaVeiculo;
-    private String CPF;
-    private String CNPJ;
+    private String CNPJ_CPF;
     private float ValorSeguro;
     private String Endereco;
     private String BAIRRO;
@@ -30,6 +29,12 @@ public class NotaFiscal {
     private String UF;
     private String CEP;
     private String inscricaoEstadual;
+    private int Quantidade;
+    private String Especie;
+    private String Marca;
+    private String Numeracao;
+    private float PesoBruto;
+    private float PesoLiquido;
 
     public NotaFiscal(int Numero, int Serie, int PedidoCod, String Tipo, String CFOP, double Total, String DataEmissao, String HoraEmissao, int TranspCod) {
         this.Numero = Numero;
@@ -43,21 +48,65 @@ public class NotaFiscal {
         this.TranspCod = TranspCod;
     }
 
-    public String getCPF() {
-        return CPF;
+    public int getQuantidade() {
+        return Quantidade;
     }
 
-    public void setCPF(String CPF) {
-        this.CPF = CPF;
+    public void setQuantidade(int Quantidade) {
+        this.Quantidade = Quantidade;
     }
 
-    public String getCNPJ() {
-        return CNPJ;
+    public String getEspecie() {
+        return Especie;
     }
 
-    public void setCNPJ(String CNPJ) {
-        this.CNPJ = CNPJ;
+    public void setEspecie(String Especie) {
+        this.Especie = Especie;
     }
+
+    public String getMarca() {
+        return Marca;
+    }
+
+    public void setMarca(String Marca) {
+        this.Marca = Marca;
+    }
+
+    public String getNumeracao() {
+        return Numeracao;
+    }
+
+    public void setNumeracao(String Numeracao) {
+        this.Numeracao = Numeracao;
+    }
+
+    public float getPesoBruto() {
+        return PesoBruto;
+    }
+
+    public void setPesoBruto(float PesoBruto) {
+        this.PesoBruto = PesoBruto;
+    }
+
+    public float getPesoLiquido() {
+        return PesoLiquido;
+    }
+
+    public void setPesoLiquido(float PesoLiquido) {
+        this.PesoLiquido = PesoLiquido;
+    }
+    
+    
+
+    public String getCNPJ_CPF() {
+        return CNPJ_CPF;
+    }
+
+    public void setCNPJ_CPF(String CNPJ_CPF) {
+        this.CNPJ_CPF = CNPJ_CPF;
+    }
+
+
 
     public String getEndereco() {
         return Endereco;

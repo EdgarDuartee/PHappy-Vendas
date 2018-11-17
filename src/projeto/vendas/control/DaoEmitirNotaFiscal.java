@@ -65,8 +65,15 @@ public class DaoEmitirNotaFiscal {
             ps = conn.prepareStatement("INSERT into Nota_Fiscal(Numero, Serie, PedidoCOD, Tipo,"
                     + "Total,DataEmissao,HoraEmissao,TRANSPCOD,TRANSP_DATASAIDA,TRANSP_HORASAIDA,"
                     + "CFOP,NATUREZADAOPERACAO,BASEICMS,ICMS,IPI,CHAVEACESSO,VALORFRETE,PLACAVEICULO,VALORSEGURO,"
-                    + "ENDEREÇO,BAIRRO,MUNICIPIO,TELEFONE,UF,CEP,INSCRICAOESTADUAL)"
-                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    + "CNPJ_CPF,ENDEREÇO,BAIRRO,MUNICIPIO,TELEFONE,UF,CEP,INSCRICAOESTADUAL,"
+                    + "Quantidade,Especie,Marca,Numeracao,PesoBruto,PesoLiquido)"
+                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?"
+                    + "      ,?, ?, ?, ? , ?, ?, ?, ?, ?, ?"
+                    + "      ,?, ?, ?, ? , ?, ?, ?, ?, ?, ?"
+                    + "      ,?, ?, ?)");
+            
+            
+            
             
            
 
@@ -91,12 +98,19 @@ public class DaoEmitirNotaFiscal {
             ps.setString(18, "");
             ps.setFloat(19, 0);
             ps.setString(20, nf.getEndereco());
-            ps.setString(21, nf.getBAIRRO());
-            ps.setString(22, nf.getMUNICIPIO());
-            ps.setString(23, nf.getTELEFONE());
-            ps.setString(24, nf.getUF());
-            ps.setString(25, nf.getCEP());
-            ps.setString(26, nf.getInscricaoEstadual());
+            ps.setString(21, nf.getCNPJ_CPF());
+            ps.setString(22, nf.getBAIRRO());
+            ps.setString(23, nf.getMUNICIPIO());
+            ps.setString(24, nf.getTELEFONE());
+            ps.setString(25, nf.getUF());
+            ps.setString(26, nf.getCEP());
+            ps.setString(27, nf.getInscricaoEstadual());
+            ps.setInt(28, nf.getQuantidade());
+            ps.setString(29, nf.getEspecie());
+            ps.setString(30, nf.getMarca());
+            ps.setString(31, nf.getNumeracao());
+            ps.setFloat(32, nf.getPesoBruto());
+            ps.setFloat(33, nf.getPesoLiquido());
             
             ps.execute();
             return true;

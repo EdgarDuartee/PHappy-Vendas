@@ -1097,6 +1097,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
+
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnGerar_NFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerar_NFActionPerformed
@@ -1123,7 +1124,10 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         nf.setUF(txtUF_Remetente.getText());
         nf.setCEP(ftxtCEP_Remetente.getText());
         nf.setInscricaoEstadual("123.456.789.123");
-        nf.setCPF(lbl_documento.getText());
+        nf.setCNPJ_CPF(lbl_documento.getText());
+        nf.setPesoBruto(pesobruto);
+        nf.setQuantidade(quantidadeProdutos);
+        
         
         
         
@@ -1197,6 +1201,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             txtCidade_Remetente.setText(pessoaFisica.getCidade());
             txtUF_Remetente.setText(pessoaFisica.getUf());
             lbl_documento.setText(pessoaFisica.getCpf());
+            System.out.println(lbl_documento.getText());
             
         } else {
             pessoaJuridica = daoPJuridica.consultar(recebePedido.getClienteCod());
@@ -1224,6 +1229,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             for (int i = 0; i < linhasTabela; i++) {
                 model.removeRow(0);
             }
+            pesobruto = 0;
+            quantidadeProdutos = 0;
             for (int i = 0; i < ListaPedidoProduto.size(); i++) {
 
                 produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
@@ -1237,6 +1244,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                     "CFOP"
                 };
                 model.addRow(row);
+                pesobruto = pesobruto + (Float.parseFloat(produto.getDescricao().substring(7, produto.getDescricao().lastIndexOf("K"))) * ListaPedidoProduto.get(i).getProdutoQtd());
+                quantidadeProdutos = quantidadeProdutos + ListaPedidoProduto.get(i).getProdutoQtd();
                 //Preenchendo os TXT de Impostos
                 txtValor_COFINS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoConfins()) + Float.parseFloat(txtValor_COFINS.getText())) + "");
                 txtValor_ICMS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIcms()) + Float.parseFloat(txtValor_ICMS.getText())) + "");
@@ -1244,7 +1253,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 txtValor_PIS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoPis()) + Float.parseFloat(txtValor_PIS.getText())) + "");
 
             }
-            txtValor_Total_Nota.setText("" + (Float.parseFloat(txtValor_IPI.getText()) + recebePedido.getTotal()));
+            txtValor_Total_Nota.setText("" + (recebePedido.getTotal()));
         }
 
 
@@ -1333,7 +1342,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             }
         });
     }
-
+    private int quantidadeProdutos;
+    private float pesobruto;
     private static Login login = null;
     private Conexao conexao;
     private DaoGerarPedido daoGerarPedido;
