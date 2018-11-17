@@ -6,6 +6,7 @@
 package projeto.vendas.view;
 
 import static java.lang.Integer.parseInt;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,7 +65,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         this.ListarPessoasJuridicas = ListarPessoasJuridicas;
 
         GuiControle_Estratégico_por_Região_Especifica.this.setTitle("Controle Estratégico "
-                + "por Vendedor    " + "Usuário:  " + login.getNome()
+                + "por Região especifica    " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
@@ -107,6 +108,10 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         btnVoltar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
         lblQtdPF1 = new javax.swing.JLabel();
+        lblqtdTotalCompras = new javax.swing.JLabel();
+        txtqtdTotalCompras = new javax.swing.JTextField();
+        lblInativo2 = new javax.swing.JLabel();
+        txtValorCompras = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -279,6 +284,14 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
 
         lblQtdPF1.setText("Qtd pessoa Fisica:");
 
+        lblqtdTotalCompras.setText("Quantidade de vendas:");
+
+        txtqtdTotalCompras.setText("0");
+
+        lblInativo2.setText("Valor total das vendas");
+
+        txtValorCompras.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -317,7 +330,15 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnImprimir)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblqtdTotalCompras, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtqtdTotalCompras, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblInativo2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtValorCompras, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(Painel_Mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -356,17 +377,32 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblInativo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnVoltar)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblAtivo))
-                                .addGap(0, 3, Short.MAX_VALUE)))
-                        .addGap(0, 24, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblInativo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(btnImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btnVoltar)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Painel_Período_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblAtivo))
+                                        .addGap(0, 3, Short.MAX_VALUE)))
+                                .addGap(0, 24, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(24, 24, 24)
+                                            .addComponent(txtValorCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblInativo2))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(24, 24, 24)
+                                            .addComponent(txtqtdTotalCompras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblqtdTotalCompras)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
 
@@ -411,7 +447,8 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         parameters.put("qtdPJ", txtQtdClientePJ.getText());
         parameters.put("qtdPF", txtQtdClientesPF.getText());
         parameters.put("qtdCli", txtQtdClientes.getText());
-        
+        parameters.put("qtdvendas", txtqtdTotalCompras.getText());
+        parameters.put("valorvendas", txtValorCompras.getText());
 
         JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
         try {
@@ -445,6 +482,12 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         ftxtData_Final.setText(dtFinal);
         txtAtivo.setText(String.valueOf(ativo));
         txtInativo.setText(String.valueOf(inativo));
+        txtqtdTotalCompras.setText(String.valueOf(qtdVendas));
+        
+        NumberFormat calculo;
+        calculo = NumberFormat.getInstance();
+        calculo.setMinimumFractionDigits(2);
+        txtValorCompras.setText("R$ " + calculo.format(valorTotal) + " Reais");
 
         if (flagLimpaTabela1 == 1) {
             modelo.setRowCount(0);
@@ -699,9 +742,11 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
     private javax.swing.JLabel lblData_Inicial;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblInativo;
+    private javax.swing.JLabel lblInativo2;
     private javax.swing.JLabel lblQtdClientes;
     private javax.swing.JLabel lblQtdPF1;
     private javax.swing.JLabel lblQtdPJ;
+    private javax.swing.JLabel lblqtdTotalCompras;
     private javax.swing.JTable tblRegiaoEspecifica;
     private javax.swing.JTextField txtAtivo;
     private javax.swing.JTextField txtEstado;
@@ -709,5 +754,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
     private javax.swing.JTextField txtQtdClientePJ;
     private javax.swing.JTextField txtQtdClientes;
     private javax.swing.JTextField txtQtdClientesPF;
+    private javax.swing.JTextField txtValorCompras;
+    private javax.swing.JTextField txtqtdTotalCompras;
     // End of variables declaration//GEN-END:variables
 }

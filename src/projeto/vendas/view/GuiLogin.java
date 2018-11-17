@@ -69,7 +69,7 @@ public class GuiLogin extends javax.swing.JFrame {
         ptxtSenha.setText("1000");
         ptxtSenha.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
-        txtUsuario.setText("03154904034");
+        txtUsuario.setText("39291371866");
         txtUsuario.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         btnSair.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N

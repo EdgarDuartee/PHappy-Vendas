@@ -318,7 +318,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         txtCidadePF.setEnabled(false);
 
         lblRua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblRua.setText("Rua");
+        lblRua.setText("Rua/Avenida/Estrada/Viela");
 
         txtRuaPF.setEnabled(false);
 
@@ -634,12 +634,12 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         txtCidadePJ.setEnabled(false);
 
         lblRua_PJ.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblRua_PJ.setText("Rua");
+        lblRua_PJ.setText("Rua/Avenida/Estrada/Viela");
 
         txtRuaPJ.setEnabled(false);
 
         lblBairro_PJ.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblBairro_PJ.setText("Bairro");
+        lblBairro_PJ.setText("Bairro/Vila/Parque");
 
         txtBairroPJ.setEnabled(false);
 
