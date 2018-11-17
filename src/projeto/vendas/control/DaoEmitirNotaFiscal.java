@@ -64,10 +64,11 @@ public class DaoEmitirNotaFiscal {
         try {
             ps = conn.prepareStatement("INSERT into Nota_Fiscal(Numero, Serie, PedidoCOD, Tipo,"
                     + "Total,DataEmissao,HoraEmissao,TRANSPCOD,TRANSP_DATASAIDA,TRANSP_HORASAIDA,"
-                    + "CFOP,NATUREZADAOPERACAO,BASEICMS,ICMS,IPI,CHAVEACESSO,VALORFRETE,PLACAVEICULO,VALORSEGURO)"
-                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?)");
+                    + "CFOP,NATUREZADAOPERACAO,BASEICMS,ICMS,IPI,CHAVEACESSO,VALORFRETE,PLACAVEICULO,VALORSEGURO,"
+                    + "ENDEREÇO,BAIRRO,MUNICIPIO,TELEFONE,UF,CEP,INSCRICAOESTADUAL)"
+                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             
-            
+           
 
 
             ps.setInt(1, nf.getNumero());
@@ -89,6 +90,13 @@ public class DaoEmitirNotaFiscal {
             ps.setFloat(17, 0);
             ps.setString(18, "");
             ps.setFloat(19, 0);
+            ps.setString(20, nf.getEndereco());
+            ps.setString(21, nf.getBAIRRO());
+            ps.setString(22, nf.getMUNICIPIO());
+            ps.setString(23, nf.getTELEFONE());
+            ps.setString(24, nf.getUF());
+            ps.setString(25, nf.getCEP());
+            ps.setString(26, nf.getInscricaoEstadual());
             
             ps.execute();
             return true;

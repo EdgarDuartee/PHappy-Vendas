@@ -1097,12 +1097,27 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         }
         txtNumero_Nota_Fiscal.setText("" + daoEmitirNF.getProximoCodigo());
         nf = new NotaFiscal(Integer.parseInt(txtNumero_Nota_Fiscal.getText()), Integer.parseInt(txtSerie_Nota_Fiscal.getText()), recebePedido.getCodigo(), TipoNota, cbxCFOP.getSelectedItem().toString(), recebePedido.getTotal(), ftxtData_Emissao.getText(), ftxtHora_Emissao.getText(), recebePedido.getCodigo());
-        nf.setIPI(Float.parseFloat(txtValor_IPI.getText()));
+        nf.setIPI(Float.parseFloat(txtValor_IPI.getText()));        
+        txtValor_ICMS.setText("" + Float.parseFloat(txtValor_Total_Nota.getText()) * (float) 0.18);
+        txtBase_Calculo_ICMS.setText(txtValor_Total_Nota.getText());
+        
+        
         nf.setICMS(Float.parseFloat(txtValor_Total_Nota.getText()) * (float) 0.18);
         nf.setBaseICMS(Float.parseFloat(txtValor_IPI.getText()));
         nf.setNaturezaDaOperacao(lbl_Descricao_CFOP.getText());
-        txtValor_ICMS.setText("" + Float.parseFloat(txtValor_Total_Nota.getText()) * (float) 0.18);
-        txtBase_Calculo_ICMS.setText(txtValor_Total_Nota.getText());
+        nf.setEndereco(txtRua_Remetente.getText()+ ",N° " +txtNumero_Remetente.getText());
+        nf.setBAIRRO(txtBairro_Remetente.getText());
+        nf.setMUNICIPIO(txtComplemento_Remetente.getText());
+        nf.setTELEFONE(ftxtTelefone_Remetente.getText());
+        nf.setUF(txtUF_Remetente.getText());
+        nf.setCEP(ftxtCEP_Remetente.getText());
+        nf.setInscricaoEstadual("123.456.789.123");
+        
+        
+        
+        System.out.println(nf.getIPI()+","+nf.getBaseICMS()+","+nf.getBaseICMS()+","+nf.getNaturezaDaOperacao()+","
+                +nf.getEndereco()+","+nf.getBAIRRO()+","+nf.getMUNICIPIO()+","+nf.getTELEFONE()+","+nf.getUF()+","
+                +nf.getCEP()+","+nf.getInscricaoEstadual());
         
         
         if (daoEmitirNF.inserir(nf)) {

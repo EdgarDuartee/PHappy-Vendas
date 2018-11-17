@@ -23,6 +23,13 @@ public class NotaFiscal {
     private String CPF;
     private String CNPJ;
     private float ValorSeguro;
+    private String Endereco;
+    private String BAIRRO;
+    private String MUNICIPIO;
+    private String TELEFONE;
+    private String UF;
+    private String CEP;
+    private String inscricaoEstadual;
 
     public NotaFiscal(int Numero, int Serie, int PedidoCod, String Tipo, String CFOP, double Total, String DataEmissao, String HoraEmissao, int TranspCod) {
         this.Numero = Numero;
@@ -35,6 +42,80 @@ public class NotaFiscal {
         this.HoraEmissao = HoraEmissao;
         this.TranspCod = TranspCod;
     }
+
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getCNPJ() {
+        return CNPJ;
+    }
+
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
+    }
+
+    public String getEndereco() {
+        return Endereco;
+    }
+
+    public void setEndereco(String Endereco) {
+        this.Endereco = Endereco;
+    }
+
+    public String getBAIRRO() {
+        return BAIRRO;
+    }
+
+    public void setBAIRRO(String BAIRRO) {
+        this.BAIRRO = BAIRRO;
+    }
+
+    public String getMUNICIPIO() {
+        return MUNICIPIO;
+    }
+
+    public void setMUNICIPIO(String MUNICIPIO) {
+        this.MUNICIPIO = MUNICIPIO;
+    }
+
+    public String getTELEFONE() {
+        return TELEFONE;
+    }
+
+    public void setTELEFONE(String TELEFONE) {
+        this.TELEFONE = TELEFONE;
+    }
+
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getInscricaoEstadual() {
+        return inscricaoEstadual;
+    }
+
+    public void setInscricaoEstadual(String inscricaoEstadual) {
+        this.inscricaoEstadual = inscricaoEstadual;
+    }
+    
+    
 
     public String getNaturezaDaOperacao() {
         return NaturezaDaOperacao;

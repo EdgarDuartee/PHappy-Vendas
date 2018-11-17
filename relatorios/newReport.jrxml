@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
 	<property name="ireport.zoom" value="1.2100000000000046"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="48"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<queryString>
 		<![CDATA[SELECT
-     PEDIDO."CODIGO" AS PEDIDO_CODIGO,
-     PEDIDO."CLIENTECOD" AS PEDIDO_CLIENTECOD,
-     PEDIDO."CLIENTENOME" AS PEDIDO_CLIENTENOME,
-     PEDIDO."VENDEDORCOD" AS PEDIDO_VENDEDORCOD,
-     PEDIDO."DTPEDIDO" AS PEDIDO_DTPEDIDO,
-     PEDIDO."TOTALPEDIDO" AS PEDIDO_TOTALPEDIDO,
-     PEDIDO."SITUACAO" AS PEDIDO_SITUACAO,
      NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
      NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
      NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
@@ -32,30 +25,31 @@
      NOTA_FISCAL."VALORFRETE" AS NOTA_FISCAL_VALORFRETE,
      NOTA_FISCAL."PLACAVEICULO" AS NOTA_FISCAL_PLACAVEICULO,
      NOTA_FISCAL."VALORSEGURO" AS NOTA_FISCAL_VALORSEGURO,
-     NOTA_ITEMS."NUMERONOTA" AS NOTA_ITEMS_NUMERONOTA,
-     NOTA_ITEMS."PRODUTOCOD" AS NOTA_ITEMS_PRODUTOCOD,
-     NOTA_ITEMS."PRODUTODESC" AS NOTA_ITEMS_PRODUTODESC,
-     NOTA_ITEMS."PRODUTOVALOR" AS NOTA_ITEMS_PRODUTOVALOR,
-     NOTA_ITEMS."PRODUTOQTD" AS NOTA_ITEMS_PRODUTOQTD,
-     NOTA_ITEMS."PRODUTOPIS" AS NOTA_ITEMS_PRODUTOPIS,
-     NOTA_ITEMS."PRODUTOCOFINS" AS NOTA_ITEMS_PRODUTOCOFINS,
-     NOTA_ITEMS."PRODUTOIPI" AS NOTA_ITEMS_PRODUTOIPI,
-     NOTA_ITEMS."PRODUTOICMS" AS NOTA_ITEMS_PRODUTOICMS,
+     NOTA_FISCAL."CNPJ_CPF" AS NOTA_FISCAL_CNPJ_CPF,
+     NOTA_ITENS."NUMERONOTA" AS NOTA_ITENS_NUMERONOTA,
+     NOTA_ITENS."PRODUTOCOD" AS NOTA_ITENS_PRODUTOCOD,
+     NOTA_ITENS."PRODUTODESC" AS NOTA_ITENS_PRODUTODESC,
+     NOTA_ITENS."PRODUTOVALOR" AS NOTA_ITENS_PRODUTOVALOR,
+     NOTA_ITENS."PRODUTOQTD" AS NOTA_ITENS_PRODUTOQTD,
+     NOTA_ITENS."PRODUTOPIS" AS NOTA_ITENS_PRODUTOPIS,
+     NOTA_ITENS."PRODUTOCOFINS" AS NOTA_ITENS_PRODUTOCOFINS,
+     NOTA_ITENS."PRODUTOIPI" AS NOTA_ITENS_PRODUTOIPI,
+     NOTA_ITENS."PRODUTOICMS" AS NOTA_ITENS_PRODUTOICMS,
+     PEDIDO."CODIGO" AS PEDIDO_CODIGO,
+     PEDIDO."CLIENTECOD" AS PEDIDO_CLIENTECOD,
+     PEDIDO."CLIENTENOME" AS PEDIDO_CLIENTENOME,
+     PEDIDO."VENDEDORCOD" AS PEDIDO_VENDEDORCOD,
+     PEDIDO."DTPEDIDO" AS PEDIDO_DTPEDIDO,
+     PEDIDO."TOTALPEDIDO" AS PEDIDO_TOTALPEDIDO,
+     PEDIDO."SITUACAO" AS PEDIDO_SITUACAO,
      PEDIDO_PRODUTO."PEDIDOCOD" AS PEDIDO_PRODUTO_PEDIDOCOD,
      PEDIDO_PRODUTO."PRODUTOCOD" AS PEDIDO_PRODUTO_PRODUTOCOD,
      PEDIDO_PRODUTO."QTDPRODUTO" AS PEDIDO_PRODUTO_QTDPRODUTO
 FROM
-     "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON PEDIDO."CODIGO" = NOTA_FISCAL."PEDIDOCOD"
-     INNER JOIN "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS ON NOTA_FISCAL."NUMERO" = NOTA_ITEMS."NUMERONOTA",
-     "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO]]>
+     "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO ON PEDIDO."CODIGO" = PEDIDO_PRODUTO."PEDIDOCOD"
+     INNER JOIN "FERNANDO"."NOTA_ITENS" NOTA_ITENS ON PEDIDO_PRODUTO."PRODUTOCOD" = NOTA_ITENS."PRODUTOCOD"
+     INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON NOTA_ITENS."NUMERONOTA" = NOTA_FISCAL."NUMERO"]]>
 	</queryString>
-	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_CLIENTECOD" class="java.lang.String"/>
-	<field name="PEDIDO_CLIENTENOME" class="java.lang.String"/>
-	<field name="PEDIDO_VENDEDORCOD" class="java.math.BigDecimal"/>
-	<field name="PEDIDO_DTPEDIDO" class="java.lang.String"/>
-	<field name="PEDIDO_TOTALPEDIDO" class="java.lang.Double"/>
-	<field name="PEDIDO_SITUACAO" class="java.math.BigDecimal"/>
 	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
 	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
 	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
@@ -75,15 +69,23 @@ FROM
 	<field name="NOTA_FISCAL_VALORFRETE" class="java.lang.Double"/>
 	<field name="NOTA_FISCAL_PLACAVEICULO" class="java.lang.String"/>
 	<field name="NOTA_FISCAL_VALORSEGURO" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_NUMERONOTA" class="java.math.BigDecimal"/>
-	<field name="NOTA_ITEMS_PRODUTOCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_ITEMS_PRODUTODESC" class="java.lang.String"/>
-	<field name="NOTA_ITEMS_PRODUTOVALOR" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOQTD" class="java.math.BigDecimal"/>
-	<field name="NOTA_ITEMS_PRODUTOPIS" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOCOFINS" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOIPI" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOICMS" class="java.lang.Double"/>
+	<field name="NOTA_FISCAL_CNPJ_CPF" class="java.lang.String"/>
+	<field name="NOTA_ITENS_NUMERONOTA" class="java.math.BigDecimal"/>
+	<field name="NOTA_ITENS_PRODUTOCOD" class="java.math.BigDecimal"/>
+	<field name="NOTA_ITENS_PRODUTODESC" class="java.lang.String"/>
+	<field name="NOTA_ITENS_PRODUTOVALOR" class="java.lang.Double"/>
+	<field name="NOTA_ITENS_PRODUTOQTD" class="java.math.BigDecimal"/>
+	<field name="NOTA_ITENS_PRODUTOPIS" class="java.lang.Double"/>
+	<field name="NOTA_ITENS_PRODUTOCOFINS" class="java.lang.Double"/>
+	<field name="NOTA_ITENS_PRODUTOIPI" class="java.lang.Double"/>
+	<field name="NOTA_ITENS_PRODUTOICMS" class="java.lang.Double"/>
+	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_CLIENTECOD" class="java.lang.String"/>
+	<field name="PEDIDO_CLIENTENOME" class="java.lang.String"/>
+	<field name="PEDIDO_VENDEDORCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_DTPEDIDO" class="java.lang.String"/>
+	<field name="PEDIDO_TOTALPEDIDO" class="java.lang.Double"/>
+	<field name="PEDIDO_SITUACAO" class="java.math.BigDecimal"/>
 	<field name="PEDIDO_PRODUTO_PEDIDOCOD" class="java.math.BigDecimal"/>
 	<field name="PEDIDO_PRODUTO_PRODUTOCOD" class="java.math.BigDecimal"/>
 	<field name="PEDIDO_PRODUTO_QTDPRODUTO" class="java.math.BigDecimal"/>
@@ -503,6 +505,14 @@ FROM
 				<reportElement x="386" y="137" width="170" height="13" uuid="c1b2e6b7-55c3-45ea-a3a9-3c0c143f4477"/>
 				<text><![CDATA[3218 0905 5707 1400 0825 5500 1003 9733 7011 0883 3800]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="2" y="161" width="443" height="16" uuid="4a813c90-b33e-4823-b9b9-5dc4ce6735bf"/>
+				<textFieldExpression><![CDATA[$F{NOTA_FISCAL_NATUREZADAOPERACAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="448" y="161" width="106" height="16" uuid="48418996-2af6-4265-94ce-b535dc443a64"/>
+				<textFieldExpression><![CDATA[$F{NOTA_FISCAL_CNPJ_CPF}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
