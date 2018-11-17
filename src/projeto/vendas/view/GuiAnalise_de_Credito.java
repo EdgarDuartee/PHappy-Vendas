@@ -577,13 +577,12 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
                             int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
                             LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
-                            System.out.println(dataInicio);
 
                             int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
                             int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
                             int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
                             LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
-                            System.out.println(dataFinal);
+
                             for (int x = 0; x < pedidosPorCod.size(); x++) {
 
                                 int dia = parseInt(pedidosPorCod.get(x).getDtPedido().substring(0, 2));
@@ -699,13 +698,13 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
             int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
             LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
-            System.out.println(dataInicio);
+
 
             int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
             int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
             int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
             LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
-            System.out.println(dataFinal);
+
 
             ArrayList<Pedido> pedidos = daoGerarPedido.ListarPedidos();
 

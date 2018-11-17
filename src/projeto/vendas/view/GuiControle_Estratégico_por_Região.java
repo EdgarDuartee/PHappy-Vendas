@@ -578,9 +578,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void preencheTabelaRegiao(ArrayList<NotaFiscal> ListarNotaFiscal) {
-        if (flagLimpaTabela == 1) {
-            model.setRowCount(0);
-        }
+        
         int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
         int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
         int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));

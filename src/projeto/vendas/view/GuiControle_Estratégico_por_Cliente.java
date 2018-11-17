@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
@@ -291,7 +292,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             if (txt_Cliente.getText().substring(0, 2).contains("PJ")) {
                 PJ = daoPJ.consultar(txt_Cliente.getText());
                 if (PJ == null) {
-                    //                    CLiente nao localizado, confira o codigo.
+                     JOptionPane.showMessageDialog(null, "Verifique o código do cliente.", "Cliente não Localizado", JOptionPane.ERROR_MESSAGE);
                 } else {
                     ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PJ.getCodigo());
                     txtArea_clienteDetalhes.setText("Valor Médio em Compras = " + daoPedido.MediaCompras(PJ.getCodigo()) + "\n");
@@ -332,7 +333,8 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             if (txt_Cliente.getText().substring(0, 2).contains("PF")) {
                 PF = daoPF.consultar(txt_Cliente.getText());
                 if (PF == null) {
-                    //                    Cliente nao localizado, confira o codigo.
+                    JOptionPane.showMessageDialog(null, "Verifique o código do cliente.", "Cliente não Localizado", JOptionPane.ERROR_MESSAGE);
+
                 } else {
 
                     ListaPedidoProduto = daoPedido.ProdutosMaisComprados(PF.getCodigo());
