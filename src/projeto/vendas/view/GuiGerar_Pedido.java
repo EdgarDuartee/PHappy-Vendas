@@ -293,9 +293,9 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     .addComponent(lbl_QtdEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lbl_ValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_ValorUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -647,10 +647,13 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             } //A TABELA TEM 1 ITEM AO MENOS
             else {
                 //PERCORRE TODA A TABELA
-                for (int i = 0; i < tblProduto.getRowCount(); i++) {
+                System.out.println("CPMECO");
+                int i = 0;
+                for (i = 0; i < model.getRowCount(); i++) {
                     //CASO ENCONTRE ALGUM ITEM IGUAL AO QUE SE QUER INSERIR
                     if (listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo()
                             == (int) tblProduto.getValueAt(i, 0)) {
+                        
                         // VE SE ESSE PRODUTO QUE QUER ADD NAO VAI ECEDER A QUANTIDADE EM ESTOQUE
                         System.out.println((int) cbxQuantidade.getValue() + (int) tblProduto.getValueAt(i, 3));
                         if (((int) cbxQuantidade.getValue() + (int) tblProduto.getValueAt(i, 3))
@@ -671,18 +674,19 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                             break;
                         }
                     } //NAO ENCONTROU NENHUM PRODUTO IGUAL NA TABELA
-                    else {
-                        Total = 0;
-                        Object[] row = {
-                            listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(),
-                            cbxProduto.getSelectedItem().toString(),
-                            listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(),
-                            cbxQuantidade.getValue(),
-                            ((Integer) cbxQuantidade.getValue())
-                            * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
-                        model.addRow(row);
-                    }
                 }
+                if (i == tblProduto.getRowCount()) {
+                    Total = 0;
+                    Object[] row = {
+                        listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(),
+                        cbxProduto.getSelectedItem().toString(),
+                        listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(),
+                        cbxQuantidade.getValue(),
+                        ((Integer) cbxQuantidade.getValue())
+                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
+                    model.addRow(row);
+                }
+
             }
             for (int i = 0; i < tblProduto.getRowCount(); i++) {
                 //Atualiza o Display de Total 
