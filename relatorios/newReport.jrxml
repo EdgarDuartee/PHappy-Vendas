@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.4641000000000068"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="25"/>
+	<property name="ireport.zoom" value="1.3310000000000064"/>
+	<property name="ireport.x" value="65"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="TituloCampo" hAlign="Left" vAlign="Top" fontName="Calibri" fontSize="8" isItalic="false"/>
 	<style name="Style_2" hAlign="Right" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="CENTRALIZADO" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="Titulo" hAlign="Left" fontName="Calibri" fontSize="10" isBold="true" isItalic="false"/>
+	<style name="Heading 3" fontSize="14" isBold="true"/>
 	<parameter name="codigo" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[SELECT * from nota_fiscal inner join pedido on nota_fiscal.pedidocod = pedido.codigo 
@@ -76,10 +77,6 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Titulo" mode="Transparent" x="117" y="9" width="329" height="30" uuid="5c291d31-2033-4246-abca-63d8a4c80e4d"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="141" y="99" width="100" height="20" uuid="e2984b1a-a397-496f-8ee8-7895e3495f7a"/>
-				<text><![CDATA[fone: 3358-7218]]></text>
-			</staticText>
-			<staticText>
 				<reportElement style="TituloCampo" x="4" y="191" width="85" height="15" uuid="11e92f1b-ba33-4887-9d8e-eec4d2177d0d"/>
 				<text><![CDATA[Nome / Razão Social]]></text>
 			</staticText>
@@ -99,14 +96,6 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[Natureza da Operação]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="8" y="79" width="229" height="20" uuid="25f80351-65fd-445e-b9b3-5ac95edb45a4"/>
-				<text><![CDATA[Jardim Maria Antônia Prado Sorocaba - SP]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="8" y="98" width="100" height="20" uuid="e13d4377-1b73-4b4e-9fa3-01ff1e8bcdca"/>
-				<text><![CDATA[CEP 18076-120]]></text>
-			</staticText>
-			<staticText>
 				<reportElement style="TituloCampo" x="446" y="191" width="81" height="15" uuid="9f2013c8-424d-4121-be51-77257b77aacd"/>
 				<text><![CDATA[DATA EMISSÃO]]></text>
 			</staticText>
@@ -117,10 +106,6 @@ where nota_fiscal.numero = $P{codigo}]]>
 			<rectangle>
 				<reportElement style="TituloCampo" mode="Transparent" x="445" y="191" width="110" height="24" uuid="71a2847d-02d0-40d8-bc4f-6693f792ca6f"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="8" y="39" width="100" height="20" uuid="98dbaab2-4d6d-4f8d-9648-ba230b987dcc"/>
-				<text><![CDATA[PetHappy    Ltda;]]></text>
-			</staticText>
 			<staticText>
 				<reportElement style="Titulo" x="4" y="9" width="113" height="30" uuid="083ab65e-8e87-4976-a905-7e22fe978853"/>
 				<text><![CDATA[Data  do Recebimento]]></text>
@@ -140,11 +125,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement mode="Transparent" x="446" y="9" width="109" height="50" uuid="b99b1f6c-16b1-44ab-bda4-add34b50a7b7"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="8" y="59" width="133" height="20" uuid="7bee8e29-2921-4f36-8d3d-ab572085e794"/>
-				<text><![CDATA[Santiago Idalgo Ruiz n°45]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Titulo" x="447" y="9" width="27" height="20" uuid="bd247de5-75ac-4628-a1c4-ac04029c41e7"/>
+				<reportElement style="Heading 3" x="447" y="9" width="27" height="20" uuid="bd247de5-75ac-4628-a1c4-ac04029c41e7"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[N°]]></text>
 			</staticText>
@@ -152,7 +133,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="TituloCampo" mode="Transparent" x="0" y="150" width="445" height="27" uuid="13e7a65f-43b5-465f-a757-99638d901266"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="Titulo" x="446" y="30" width="36" height="20" uuid="2619b114-39ee-45dc-9663-765544def849"/>
+				<reportElement style="Heading 3" x="448" y="30" width="54" height="20" uuid="2619b114-39ee-45dc-9663-765544def849"/>
 				<text><![CDATA[SÉRIE]]></text>
 			</staticText>
 			<staticText>
@@ -177,7 +158,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="TituloCampo" x="236" y="215" width="100" height="20" uuid="bf9ea368-09cc-49ef-8188-edb7f06b5012"/>
 			</rectangle>
 			<rectangle>
-				<reportElement style="TituloCampo" x="336" y="215" width="109" height="20" uuid="0524d232-a7b7-46fe-a76b-fda7da1c68a0"/>
+				<reportElement style="Style_2" x="336" y="215" width="109" height="20" uuid="0524d232-a7b7-46fe-a76b-fda7da1c68a0"/>
 			</rectangle>
 			<staticText>
 				<reportElement style="TituloCampo" x="4" y="215" width="62" height="14" uuid="c0efea38-2f07-44d1-99dd-898539873149"/>
@@ -371,13 +352,13 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[PLACA DO VEÍCULO]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement style="TituloCampo" x="400" y="322" width="45" height="20" uuid="3c49a1d5-2c26-47d0-a024-93098de6213a"/>
+				<reportElement style="Style_2" x="400" y="322" width="45" height="20" uuid="3c49a1d5-2c26-47d0-a024-93098de6213a"/>
 			</rectangle>
 			<rectangle>
 				<reportElement style="TituloCampo" x="400" y="342" width="45" height="20" uuid="98235547-82bb-4528-a0ff-db826670a0ce"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="TituloCampo" x="402" y="321" width="21" height="15" uuid="ce8afb64-bf96-493d-8950-6fcdd4f44eb3"/>
+				<reportElement style="TituloCampo" x="402" y="321" width="14" height="14" uuid="ce8afb64-bf96-493d-8950-6fcdd4f44eb3"/>
 				<text><![CDATA[UF]]></text>
 			</staticText>
 			<staticText>
@@ -464,9 +445,10 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Titulo" x="387" y="132" width="170" height="13" uuid="c1b2e6b7-55c3-45ea-a3a9-3c0c143f4477"/>
 				<text><![CDATA[3218 0905 5707 1400 0825 5500 1003 9733 7011 0883 3800]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="482" y="9" width="74" height="20" uuid="57e9a07b-d780-4925-9ef4-6685e6366aca"/>
-				<textFieldExpression><![CDATA[$F{NUMERO}]]></textFieldExpression>
+			<textField pattern="000000000">
+				<reportElement style="Heading 3" x="475" y="9" width="81" height="20" uuid="57e9a07b-d780-4925-9ef4-6685e6366aca"/>
+				<textFieldExpression><![CDATA[$F{NUMERO}
+]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement style="Titulo" mode="Transparent" x="258" y="39" width="125" height="111" uuid="c44ca6ad-2b62-49b2-89b4-26395812e326"/>
@@ -482,13 +464,97 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[1]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="119" y="335" width="100" height="20" uuid="0bfaa9b8-7fde-4caa-a553-5c42e404c319"/>
-				<text><![CDATA[Static text]]></text>
+				<reportElement style="Style_2" x="101" y="330" width="99" height="12" uuid="0bfaa9b8-7fde-4caa-a553-5c42e404c319"/>
+				<text><![CDATA[0– Por conta do emitente;]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Style_2" x="301" y="330" width="100" height="11" uuid="072da8f9-798b-4cf3-9a67-8f04dbd911f6"/>
+				<textFieldExpression><![CDATA[$F{PLACAVEICULO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Style_2" x="402" y="330" width="27" height="11" uuid="17dd8bec-5b53-4483-af03-dfd50915def9"/>
+				<text><![CDATA[SP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="146" y="150" width="100" height="20" uuid="fb57e450-a9ad-4d57-9364-52194f3daa97"/>
-				<text><![CDATA[Static text]]></text>
+				<reportElement style="Style_2" x="400" y="349" width="29" height="11" uuid="4550b6d1-c9b7-41f1-8270-12517cc0d219"/>
+				<text><![CDATA[SP]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="Style_2" x="277" y="204" width="165" height="11" uuid="fedd8800-ba15-476e-9fd2-25f5743ef37e"/>
+				<textFieldExpression><![CDATA[$F{CNPJ_CPF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="1" y="204" width="270" height="11" uuid="c2283a51-7056-47b3-8697-a96963fa3fd5"/>
+				<textFieldExpression><![CDATA[$F{CLIENTENOME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="447" y="202" width="94" height="12" uuid="6821d439-4a96-4117-bfc9-0a65c0f74e42"/>
+				<textFieldExpression><![CDATA[$F{DATAEMISSAO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="449" y="243" width="92" height="13" uuid="1f46a0da-8086-403b-bff1-fd36c20884dc"/>
+				<textFieldExpression><![CDATA[$F{TRANSP_HORASAIDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="449" y="223" width="92" height="13" uuid="717aff2f-609f-43a1-a22d-b6ea9f852850"/>
+				<textFieldExpression><![CDATA[$F{TRANSP_DATASAIDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="3" y="223" width="232" height="12" uuid="aa6fdc56-551a-4339-9921-70142ce0e48c"/>
+				<textFieldExpression><![CDATA[$F{ENDEREÇO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="235" y="223" width="100" height="11" uuid="89cd0e41-a416-4a58-9450-2e70fbd0fd81"/>
+				<textFieldExpression><![CDATA[$F{BAIRRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="337" y="223" width="92" height="12" uuid="021a849d-b5f1-4ff1-aa3a-0a4534e75443"/>
+				<textFieldExpression><![CDATA[$F{CEP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="258" y="243" width="49" height="12" uuid="dd55de5b-1317-405d-8c86-0dfd25d50511"/>
+				<textFieldExpression><![CDATA[$F{UF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="159" y="243" width="100" height="11" uuid="ed73caa1-81c7-4c6a-aa14-6ee78a6655b4"/>
+				<textFieldExpression><![CDATA[$F{TELEFONE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="4" y="243" width="143" height="11" uuid="5802c12a-03c2-4cb3-a38d-ea1ef5254a22"/>
+				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Style_2" x="0" y="162" width="442" height="15" uuid="1bf8b86f-ebbc-452e-817a-ff8614533a57"/>
+				<textFieldExpression><![CDATA[$F{NATUREZADAOPERACAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Titulo" x="1" y="39" width="76" height="20" uuid="adf53c9b-ee3e-4346-bb7d-70f13f4881a4"/>
+				<text><![CDATA[PetHappy    Ltda]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Titulo" x="119" y="105" width="83" height="20" uuid="6b2d809c-60b3-4117-9e19-c6fd65752236"/>
+				<text><![CDATA[CEP 18076-120]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Titulo" x="176" y="41" width="82" height="20" uuid="2adf9e15-4d2e-4553-b29e-e7af97558eed"/>
+				<text><![CDATA[fone: 3358-7218]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Titulo" x="7" y="105" width="110" height="20" uuid="74a42e3e-48e7-4c27-bfba-ac5fe71a516f"/>
+				<text><![CDATA[Santiago Idalgo Ruiz n°45]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Titulo" x="9" y="123" width="192" height="20" uuid="71f60e60-e3c4-4bce-ba15-324c74d2bf18"/>
+				<text><![CDATA[Jardim Maria Antônia Prado Sorocaba - SP]]></text>
+			</staticText>
+			<image>
+				<reportElement x="9" y="-26" width="285" height="203" uuid="81e26245-52ba-4b00-9213-057bca36e912"/>
+				<imageExpression><![CDATA["D:\\TCC - Fatec 2018\\PHappy-Vendas\\src\\projeto\\vendas\\model\\icones\\logo.png"]]></imageExpression>
+			</image>
+			<textField pattern="000">
+				<reportElement style="Heading 3" x="502" y="30" width="52" height="20" uuid="a96d2f88-b554-4990-a4a7-13160607748b"/>
+				<textFieldExpression><![CDATA[$F{SERIE}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -643,6 +709,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 			</rectangle>
 			<textField>
 				<reportElement style="CENTRALIZADO" x="0" y="0" width="46" height="21" uuid="4de96032-96af-4dae-8100-e4c859e613f6"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{PRODUTOCOD}]]></textFieldExpression>
 			</textField>
 			<textField>
