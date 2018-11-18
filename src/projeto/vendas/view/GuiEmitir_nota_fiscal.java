@@ -10,6 +10,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -903,12 +905,14 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         lblSerie_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblSerie_Nota_Fiscal.setText("Série da Nota Fiscal");
 
-        txtSerie_Nota_Fiscal.setText("1");
+        txtSerie_Nota_Fiscal.setText("001");
+        txtSerie_Nota_Fiscal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtSerie_Nota_Fiscal.setEnabled(false);
 
         lblNumero_Nota_Fiscal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNumero_Nota_Fiscal.setText("Número da Nota Fiscal");
 
+        txtNumero_Nota_Fiscal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNumero_Nota_Fiscal.setEnabled(false);
 
         lblData_Emissao.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -1119,7 +1123,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         nf.setNaturezaDaOperacao(lbl_Descricao_CFOP.getText());
         nf.setEndereco(txtRua_Remetente.getText()+ ",N° " +txtNumero_Remetente.getText());
         nf.setBAIRRO(txtBairro_Remetente.getText());
-        nf.setMUNICIPIO(txtComplemento_Remetente.getText());
+        nf.setMUNICIPIO(txtCidade_Remetente.getText());
         nf.setTELEFONE(ftxtTelefone_Remetente.getText());
         nf.setUF(txtUF_Remetente.getText());
         nf.setCEP(ftxtCEP_Remetente.getText());
@@ -1173,7 +1177,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         Calendar calendar = new GregorianCalendar();
         SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
 
-        txtNumero_Nota_Fiscal.setText("" + daoEmitirNF.getProximoCodigo());
+        txtNumero_Nota_Fiscal.setText(String.format("%09d",daoEmitirNF.getProximoCodigo()));
         ftxtData_Emissao.setText(formatarDate.format(data));
         ftxtData_Saida.setText(formatarDate.format(data));
         ftxtHora_Emissao.setText(String.format("%02d", calendar.get(Calendar.HOUR_OF_DAY)) + ":" + (String.format("%02d", calendar.get(Calendar.MINUTE))));
@@ -1232,6 +1236,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             pesobruto = 0;
             quantidadeProdutos = 0;
             for (int i = 0; i < ListaPedidoProduto.size(); i++) {
+                NumberFormat formatarFloat = new DecimalFormat("0.00");  
 
                 produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
                 nfItens.addProduto(produto);
@@ -1247,10 +1252,10 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 pesobruto = pesobruto + (Float.parseFloat(produto.getDescricao().substring(7, produto.getDescricao().lastIndexOf("K"))) * ListaPedidoProduto.get(i).getProdutoQtd());
                 quantidadeProdutos = quantidadeProdutos + ListaPedidoProduto.get(i).getProdutoQtd();
                 //Preenchendo os TXT de Impostos
-                txtValor_COFINS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoConfins()) + Float.parseFloat(txtValor_COFINS.getText())) + "");
-                txtValor_ICMS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIcms()) + Float.parseFloat(txtValor_ICMS.getText())) + "");
-                txtValor_IPI.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIpi()) + Float.parseFloat(txtValor_IPI.getText())) + "");
-                txtValor_PIS.setText((((float) tblProduto.getValueAt(i, 7) * produto.getImpostoPis()) + Float.parseFloat(txtValor_PIS.getText())) + "");
+                txtValor_COFINS.setText(formatarFloat.format(((float) tblProduto.getValueAt(i, 7) * produto.getImpostoConfins()) + Float.parseFloat(txtValor_COFINS.getText())));
+                txtValor_ICMS.setText(formatarFloat.format(((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIcms()) + Float.parseFloat(txtValor_ICMS.getText())));
+                txtValor_IPI.setText(formatarFloat.format(((float) tblProduto.getValueAt(i, 7) * produto.getImpostoIpi()) + Float.parseFloat(txtValor_IPI.getText())));
+                txtValor_PIS.setText(formatarFloat.format(((float) tblProduto.getValueAt(i, 7) * produto.getImpostoPis()) + Float.parseFloat(txtValor_PIS.getText())));
 
             }
             txtValor_Total_Nota.setText("" + (recebePedido.getTotal()));
