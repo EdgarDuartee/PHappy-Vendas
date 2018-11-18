@@ -99,6 +99,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         txtCidade_Emitente = new javax.swing.JTextField();
         lblUF_Emitente = new javax.swing.JLabel();
         txtUF_Emitente = new javax.swing.JTextField();
+        lblUF_Emitente1 = new javax.swing.JLabel();
+        ftxtCNPJ_Emitente1 = new javax.swing.JFormattedTextField();
         lblLogo = new javax.swing.JLabel();
         jPanelRemetente = new javax.swing.JPanel();
         jPanelDados_Remetente = new javax.swing.JPanel();
@@ -123,6 +125,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         txtCidade_Remetente = new javax.swing.JTextField();
         lblUF_Remetente = new javax.swing.JLabel();
         txtUF_Remetente = new javax.swing.JTextField();
+        lbl_documento = new javax.swing.JLabel();
         lblEmpresa = new javax.swing.JLabel();
         jPanelTransportadora = new javax.swing.JPanel();
         jPanelTotais = new javax.swing.JPanel();
@@ -345,6 +348,16 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         txtUF_Emitente.setText("SP");
 
+        lblUF_Emitente1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lblUF_Emitente1.setText("Inscrição Estadual");
+
+        try {
+            ftxtCNPJ_Emitente1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ftxtCNPJ_Emitente1.setText("50.000.000/0000-01");
+
         javax.swing.GroupLayout jPanelEndereco_EmitenteLayout = new javax.swing.GroupLayout(jPanelEndereco_Emitente);
         jPanelEndereco_Emitente.setLayout(jPanelEndereco_EmitenteLayout);
         jPanelEndereco_EmitenteLayout.setHorizontalGroup(
@@ -353,29 +366,33 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelEndereco_EmitenteLayout.createSequentialGroup()
                         .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtBairro_Emitente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                .addComponent(txtRua_Emitente, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(lblBairro_Emitente)
                             .addGroup(jPanelEndereco_EmitenteLayout.createSequentialGroup()
                                 .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtBairro_Emitente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                        .addComponent(txtRua_Emitente, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(lblBairro_Emitente))
-                                .addGap(18, 18, 18)
+                                    .addComponent(txtUF_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblUF_Emitente))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblCEP_Emitente)
-                                    .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(lblNumero_Emitente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                        .addComponent(txtNumero_Emitente, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addComponent(ftxtCEP_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblRua_Emitente))
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtComplemento_Emitente)
-                            .addComponent(txtCidade_Emitente, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(lblComplemento_Emitente)
-                            .addComponent(lblCidade_Emitente)))
-                    .addComponent(lblUF_Emitente)
-                    .addComponent(txtUF_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 25, Short.MAX_VALUE))
+                                    .addComponent(lblUF_Emitente1)
+                                    .addComponent(ftxtCNPJ_Emitente1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCEP_Emitente)
+                            .addComponent(ftxtCEP_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblNumero_Emitente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                .addComponent(txtNumero_Emitente, javax.swing.GroupLayout.Alignment.LEADING))))
+                    .addComponent(lblRua_Emitente))
+                .addGap(85, 85, 85)
+                .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtComplemento_Emitente)
+                    .addComponent(txtCidade_Emitente, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                    .addComponent(lblComplemento_Emitente)
+                    .addComponent(lblCidade_Emitente))
+                .addGap(25, 25, 25))
         );
         jPanelEndereco_EmitenteLayout.setVerticalGroup(
             jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,9 +418,13 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                     .addComponent(ftxtCEP_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCidade_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblUF_Emitente)
+                .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUF_Emitente)
+                    .addComponent(lblUF_Emitente1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(txtUF_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelEndereco_EmitenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUF_Emitente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ftxtCNPJ_Emitente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -501,6 +522,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         lblUF_Remetente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblUF_Remetente.setText("UF");
 
+        lbl_documento.setText("jLabel1");
+
         javax.swing.GroupLayout jPanelEndereco_RemetenteLayout = new javax.swing.GroupLayout(jPanelEndereco_Remetente);
         jPanelEndereco_Remetente.setLayout(jPanelEndereco_RemetenteLayout);
         jPanelEndereco_RemetenteLayout.setHorizontalGroup(
@@ -510,30 +533,29 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelEndereco_RemetenteLayout.createSequentialGroup()
                         .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRua_Remetente)
+                            .addComponent(lblCidade_Remetente))
+                        .addGap(322, 322, 322)
+                        .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNumero_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNumero_Remetente)
+                            .addComponent(lblCEP_Remetente)
+                            .addComponent(ftxtCEP_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtUF_Remetente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblUF_Remetente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))))
+                    .addGroup(jPanelEndereco_RemetenteLayout.createSequentialGroup()
+                        .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtComplemento_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCidade_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtRua_Remetente, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                                 .addComponent(txtBairro_Remetente)
                                 .addComponent(lblBairro_Remetente))
                             .addComponent(lblComplemento_Remetente))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanelEndereco_RemetenteLayout.createSequentialGroup()
-                        .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelEndereco_RemetenteLayout.createSequentialGroup()
-                                .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblRua_Remetente)
-                                    .addComponent(lblCidade_Remetente))
-                                .addGap(322, 322, 322)
-                                .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumero_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNumero_Remetente)
-                                    .addComponent(lblCEP_Remetente)
-                                    .addComponent(ftxtCEP_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtUF_Remetente, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblUF_Remetente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))))
-                            .addComponent(txtComplemento_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(30, 30, 30)
+                        .addComponent(lbl_documento)))
+                .addGap(0, 111, Short.MAX_VALUE))
         );
         jPanelEndereco_RemetenteLayout.setVerticalGroup(
             jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -558,15 +580,18 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCidade_Remetente)
                     .addComponent(lblUF_Remetente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCidade_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUF_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblComplemento_Remetente)
-                .addGap(5, 5, 5)
-                .addComponent(txtComplemento_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelEndereco_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEndereco_RemetenteLayout.createSequentialGroup()
+                        .addComponent(lblComplemento_Remetente)
+                        .addGap(5, 5, 5)
+                        .addComponent(txtComplemento_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_documento))
+                .addGap(12, 12, 12))
         );
 
         lblEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Empresa.png"))); // NOI18N
@@ -614,7 +639,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelDados_RemetenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelEndereco_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanelEndereco_Remetente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27))
         );
 
@@ -1072,7 +1097,29 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         }
         txtNumero_Nota_Fiscal.setText("" + daoEmitirNF.getProximoCodigo());
         nf = new NotaFiscal(Integer.parseInt(txtNumero_Nota_Fiscal.getText()), Integer.parseInt(txtSerie_Nota_Fiscal.getText()), recebePedido.getCodigo(), TipoNota, cbxCFOP.getSelectedItem().toString(), recebePedido.getTotal(), ftxtData_Emissao.getText(), ftxtHora_Emissao.getText(), recebePedido.getCodigo());
-
+        nf.setIPI(Float.parseFloat(txtValor_IPI.getText()));        
+        txtValor_ICMS.setText("" + Float.parseFloat(txtValor_Total_Nota.getText()) * (float) 0.18);
+        txtBase_Calculo_ICMS.setText(txtValor_Total_Nota.getText());
+        
+        
+        nf.setICMS(Float.parseFloat(txtValor_Total_Nota.getText()) * (float) 0.18);
+        nf.setBaseICMS(Float.parseFloat(txtValor_IPI.getText()));
+        nf.setNaturezaDaOperacao(lbl_Descricao_CFOP.getText());
+        nf.setEndereco(txtRua_Remetente.getText()+ ",N° " +txtNumero_Remetente.getText());
+        nf.setBAIRRO(txtBairro_Remetente.getText());
+        nf.setMUNICIPIO(txtComplemento_Remetente.getText());
+        nf.setTELEFONE(ftxtTelefone_Remetente.getText());
+        nf.setUF(txtUF_Remetente.getText());
+        nf.setCEP(ftxtCEP_Remetente.getText());
+        nf.setInscricaoEstadual("123.456.789.123");
+        
+        
+        
+        System.out.println(nf.getIPI()+","+nf.getBaseICMS()+","+nf.getBaseICMS()+","+nf.getNaturezaDaOperacao()+","
+                +nf.getEndereco()+","+nf.getBAIRRO()+","+nf.getMUNICIPIO()+","+nf.getTELEFONE()+","+nf.getUF()+","
+                +nf.getCEP()+","+nf.getInscricaoEstadual());
+        
+        
         if (daoEmitirNF.inserir(nf)) {
             daoNotaFiscalItems.inserir(nfItens);
             daoGerarPedido.Faturar(recebePedido.getCodigo());
@@ -1090,6 +1137,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
+        lbl_documento.setVisible(false);
         conexao = new Conexao();
         conexao.setDriver();
         conexao.setConnectionString();
@@ -1132,6 +1180,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             ftxtCEP_Remetente.setText(pessoaFisica.getCep());
             txtCidade_Remetente.setText(pessoaFisica.getCidade());
             txtUF_Remetente.setText(pessoaFisica.getUf());
+            lbl_documento.setText(pessoaFisica.getCpf());
+            
         } else {
             pessoaJuridica = daoPJuridica.consultar(recebePedido.getClienteCod());
             txt_NomeDestinario.setText(pessoaJuridica.getNome());
@@ -1146,6 +1196,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             txtCidade_Remetente.setText(pessoaJuridica.getCidade());
             txtUF_Remetente.setText(pessoaJuridica.getUf());
             txtTotal_Produtos.setText("" + recebePedido.getTotal());
+            lbl_documento.setText("" + pessoaJuridica.getCnpj());
 
         }
         ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(recebePedido.getCodigo());
@@ -1207,6 +1258,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 break;
             case 5:
                 lbl_Descricao_CFOP.setText("5 -> Outra saída de mercadoria ou prestação de serviço não especificado");
+                
                 break;
         }
     }//GEN-LAST:event_cbxCFOPItemStateChanged
@@ -1277,6 +1329,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtCEP_Emitente;
     private javax.swing.JFormattedTextField ftxtCEP_Remetente;
     private javax.swing.JFormattedTextField ftxtCNPJ_Emitente;
+    private javax.swing.JFormattedTextField ftxtCNPJ_Emitente1;
     private javax.swing.JFormattedTextField ftxtData_Emissao;
     private javax.swing.JFormattedTextField ftxtData_Saida;
     private javax.swing.JFormattedTextField ftxtHora_Emissao;
@@ -1331,6 +1384,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private javax.swing.JLabel lblTotal_Produtos;
     private javax.swing.JLabel lblTotal_desc_Produto;
     private javax.swing.JLabel lblUF_Emitente;
+    private javax.swing.JLabel lblUF_Emitente1;
     private javax.swing.JLabel lblUF_Remetente;
     private javax.swing.JLabel lblValor_COFINS;
     private javax.swing.JLabel lblValor_ICMS;
@@ -1338,6 +1392,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     private javax.swing.JLabel lblValor_PIS;
     private javax.swing.JLabel lblValor_Total_Nota;
     private javax.swing.JLabel lbl_Descricao_CFOP;
+    private javax.swing.JLabel lbl_documento;
     private javax.swing.JRadioButton rbtnEntrada;
     private javax.swing.JRadioButton rbtnSaida;
     private javax.swing.JTable tblProduto;

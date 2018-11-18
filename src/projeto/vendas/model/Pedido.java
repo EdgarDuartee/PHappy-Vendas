@@ -8,6 +8,7 @@ import java.sql.Date;
 public class Pedido {
     private int codigo;
     private String clienteCod;
+    private String clienteNome;
     private int vendedorCod;
     private String dtPedido;
     private float total;
@@ -22,6 +23,14 @@ public class Pedido {
         this.situacao = situacao;
     }
 
+    public String getClienteNome() {
+        return clienteNome;
+    }
+
+    public void setClienteNome(String clienteNome) {
+        this.clienteNome = clienteNome;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
