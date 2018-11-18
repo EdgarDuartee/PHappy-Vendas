@@ -1,54 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.948717100000007"/>
-	<property name="ireport.x" value="493"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<queryString>
 		<![CDATA[SELECT
-     NOTA_ITEMS."NUMERONOTA" AS NOTA_ITEMS_NUMERONOTA,
-     NOTA_ITEMS."PRODUTOCOD" AS NOTA_ITEMS_PRODUTOCOD,
-     NOTA_ITEMS."PRODUTODESC" AS NOTA_ITEMS_PRODUTODESC,
-     NOTA_ITEMS."PRODUTOVALOR" AS NOTA_ITEMS_PRODUTOVALOR,
-     NOTA_ITEMS."PRODUTOQTD" AS NOTA_ITEMS_PRODUTOQTD,
-     NOTA_ITEMS."PRODUTOPIS" AS NOTA_ITEMS_PRODUTOPIS,
-     NOTA_ITEMS."PRODUTOCOFINS" AS NOTA_ITEMS_PRODUTOCOFINS,
-     NOTA_ITEMS."PRODUTOIPI" AS NOTA_ITEMS_PRODUTOIPI,
-     NOTA_ITEMS."PRODUTOICMS" AS NOTA_ITEMS_PRODUTOICMS,
-     NOTA_FISCAL."NUMERO" AS NOTA_FISCAL_NUMERO,
-     NOTA_FISCAL."SERIE" AS NOTA_FISCAL_SERIE,
-     NOTA_FISCAL."PEDIDOCOD" AS NOTA_FISCAL_PEDIDOCOD,
-     NOTA_FISCAL."TIPO" AS NOTA_FISCAL_TIPO,
-     NOTA_FISCAL."CFOP" AS NOTA_FISCAL_CFOP,
-     NOTA_FISCAL."TOTAL" AS NOTA_FISCAL_TOTAL,
-     NOTA_FISCAL."DATAEMISSAO" AS NOTA_FISCAL_DATAEMISSAO,
-     NOTA_FISCAL."HORAEMISSAO" AS NOTA_FISCAL_HORAEMISSAO,
-     NOTA_FISCAL."TRANSPCOD" AS NOTA_FISCAL_TRANSPCOD,
-     NOTA_FISCAL."TRANSP_DATASAIDA" AS NOTA_FISCAL_TRANSP_DATASAIDA,
-     NOTA_FISCAL."TRANSP_HORASAIDA" AS NOTA_FISCAL_TRANSP_HORASAIDA
+     PEDIDO."CODIGO" AS PEDIDO_CODIGO,
+     PEDIDO."CLIENTECOD" AS PEDIDO_CLIENTECOD,
+     PEDIDO."VENDEDORCOD" AS PEDIDO_VENDEDORCOD,
+     PEDIDO."DTPEDIDO" AS PEDIDO_DTPEDIDO,
+     PEDIDO."TOTALPEDIDO" AS PEDIDO_TOTALPEDIDO,
+     PEDIDO."SITUACAO" AS PEDIDO_SITUACAO,
+     PEDIDO_PRODUTO."PEDIDOCOD" AS PEDIDO_PRODUTO_PEDIDOCOD,
+     PEDIDO_PRODUTO."PRODUTOCOD" AS PEDIDO_PRODUTO_PRODUTOCOD,
+     PEDIDO_PRODUTO."QTDPRODUTO" AS PEDIDO_PRODUTO_QTDPRODUTO
 FROM
-     "FERNANDO"."NOTA_ITEMS" NOTA_ITEMS INNER JOIN "FERNANDO"."NOTA_FISCAL" NOTA_FISCAL ON NOTA_ITEMS."NUMERONOTA" = NOTA_FISCAL."NUMERO"]]>
+     "EDGAR"."PEDIDO" PEDIDO INNER JOIN "EDGAR"."PEDIDO_PRODUTO" PEDIDO_PRODUTO ON PEDIDO."CODIGO" = PEDIDO_PRODUTO."PEDIDOCOD"]]>
 	</queryString>
-	<field name="NOTA_ITEMS_NUMERONOTA" class="java.math.BigDecimal"/>
-	<field name="NOTA_ITEMS_PRODUTOCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_ITEMS_PRODUTODESC" class="java.lang.String"/>
-	<field name="NOTA_ITEMS_PRODUTOVALOR" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOQTD" class="java.math.BigDecimal"/>
-	<field name="NOTA_ITEMS_PRODUTOPIS" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOCOFINS" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOIPI" class="java.lang.Double"/>
-	<field name="NOTA_ITEMS_PRODUTOICMS" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_NUMERO" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_SERIE" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_PEDIDOCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_TIPO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_CFOP" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_TOTAL" class="java.lang.Double"/>
-	<field name="NOTA_FISCAL_DATAEMISSAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_HORAEMISSAO" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TRANSPCOD" class="java.math.BigDecimal"/>
-	<field name="NOTA_FISCAL_TRANSP_DATASAIDA" class="java.lang.String"/>
-	<field name="NOTA_FISCAL_TRANSP_HORASAIDA" class="java.lang.String"/>
+	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_CLIENTECOD" class="java.lang.String"/>
+	<field name="PEDIDO_VENDEDORCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_DTPEDIDO" class="java.lang.String"/>
+	<field name="PEDIDO_TOTALPEDIDO" class="java.lang.Double"/>
+	<field name="PEDIDO_SITUACAO" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_PRODUTO_PEDIDOCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_PRODUTO_PRODUTOCOD" class="java.math.BigDecimal"/>
+	<field name="PEDIDO_PRODUTO_QTDPRODUTO" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -125,7 +103,7 @@ FROM
 				<text><![CDATA[DANFE]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement mode="Transparent" x="446" y="9" width="109" height="50" uuid="b99b1f6c-16b1-44ab-bda4-add34b50a7b7"/>
+				<reportElement mode="Transparent" x="443" y="9" width="109" height="50" uuid="b99b1f6c-16b1-44ab-bda4-add34b50a7b7"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="8" y="59" width="133" height="20" uuid="7bee8e29-2921-4f36-8d3d-ab572085e794"/>
@@ -465,6 +443,10 @@ FROM
 				<reportElement x="386" y="137" width="170" height="13" uuid="c1b2e6b7-55c3-45ea-a3a9-3c0c143f4477"/>
 				<text><![CDATA[3218 0905 5707 1400 0825 5500 1003 9733 7011 0883 3800]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="496" y="29" width="44" height="20" uuid="86cc3639-fa1d-4edc-a355-5c26ff3ea1d4"/>
+				<textFieldExpression><![CDATA[$F{PEDIDO_CODIGO}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -579,7 +561,7 @@ FROM
 				<reportElement x="0" y="0" width="46" height="21" uuid="b03294a5-08d5-4ccc-9636-bd3ceb19ef5e"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="46" y="0" width="100" height="21" uuid="8d7c4219-0143-4dae-a211-f598319954b3"/>
+				<reportElement x="60" y="1" width="100" height="21" uuid="8d7c4219-0143-4dae-a211-f598319954b3"/>
 			</rectangle>
 			<rectangle>
 				<reportElement x="146" y="0" width="33" height="21" uuid="c766704f-39c6-485b-a30b-97899c5f6245"/>

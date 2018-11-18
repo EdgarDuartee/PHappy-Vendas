@@ -3,6 +3,7 @@ package projeto.vendas.model;
 
 public class Produto {
     private int codigo;
+    private String nome;
     private String descricao;
     private int qtdEstoque;
     private String prodCat;
@@ -11,12 +12,30 @@ public class Produto {
     private float impostoPis;
     private float impostoIcms;
     private float impostoConfins;
+    private int categoria;
 
-    public Produto(int codigo, String descricao, int qtdEstoque, float valorUnitario) {
+    public Produto(int codigo,String nome, String descricao, int qtdEstoque, float valorUnitario) {
         this.codigo = codigo;
+        this.nome = nome;
         this.descricao = descricao;
         this.qtdEstoque = qtdEstoque;
         this.valorUnitario = valorUnitario;
+    }
+
+    public int getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getCodigo() {
