@@ -20,7 +20,8 @@ public class DaoNotaFiscalItens {
     public void inserir(NotaFiscalItens NFitens) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT into Nota_Itens(NumeroNota, ProdutoCod, ProdutoDesc, ProdutoValor,"
+            ps = conn.prepareStatement("INSERT into Nota_Itens(NumeroNota, ProdutoCod, "
+                    + "ProdutoDesc, ProdutoValor,"
                     + "ProdutoQTD, ProdutoPIS,ProdutoCOFINS,ProdutoIPI,ProdutoICMS)"
                     + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?)");
 
