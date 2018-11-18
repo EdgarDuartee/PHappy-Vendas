@@ -92,6 +92,11 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         rbtnCodigo_Cliente.setText("Código");
 
         txt_Cliente.setText("Luiz Fernando Neves da Rosa");
+        txt_Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ClienteActionPerformed(evt);
+            }
+        });
 
         btn_pesquisar.setText("Pesquisar");
         btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +188,9 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(Painel_Pesquisa_Cliente4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -280,7 +287,8 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        txtArea_clienteDetalhes.setText("Frequência de Compras : 2\n Média de Compras = 5.000,78");
+//        txtArea_clienteDetalhes.setText("Frequência de Compras : 2\n Média de Compras = 5.000,78");
+
 
     }//GEN-LAST:event_btnVoltarActionPerformed
 
@@ -476,6 +484,10 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_pesquisarColetivaActionPerformed
+
+    private void txt_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ClienteActionPerformed
 
     /**
      * @param args the command line arguments
