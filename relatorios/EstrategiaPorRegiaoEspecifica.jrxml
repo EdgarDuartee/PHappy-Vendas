@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08f21581-4319-4a0c-9871-3a3cd8832b88">
-	<property name="ireport.zoom" value="3.7974983358324463"/>
-	<property name="ireport.x" value="136"/>
-	<property name="ireport.y" value="969"/>
+	<property name="ireport.zoom" value="1.9487171000000187"/>
+	<property name="ireport.x" value="495"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Titulo" fontName="Arial Black" fontSize="20"/>
 	<style name="Coluna" fontName="Arial" fontSize="12" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 	<style name="detalhes" fontName="Arial" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -88,14 +88,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[RELATORIO ESTRATEGICO ESPECIFICO]]></text>
 			</staticText>
-			<image>
-				<reportElement x="448" y="0" width="107" height="75" uuid="e8a9a0cb-47c0-435c-9640-690bb59f2b2b"/>
-				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
-			</image>
 			<textField>
 				<reportElement style="Titulo" x="158" y="22" width="228" height="41" uuid="66047b8c-381b-4a1d-8ac4-a2e023848a3c"/>
 				<textFieldExpression><![CDATA[$P{estado}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="395" y="5" width="157" height="70" uuid="b3a71bb8-a116-4b76-83c7-4714d0ba2118"/>
+				<imageExpression><![CDATA["D:\\TCC - Fatec 2018\\PHappy-Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>

@@ -1236,7 +1236,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             pesobruto = 0;
             quantidadeProdutos = 0;
             for (int i = 0; i < ListaPedidoProduto.size(); i++) {
-                NumberFormat formatarFloat = new DecimalFormat("0.00");  
+                NumberFormat formatarFloat = new DecimalFormat("0,00");  
+                
 
                 produto = daoProduto.consultar(ListaPedidoProduto.get(i).getProdutoCod());
                 nfItens.addProduto(produto);

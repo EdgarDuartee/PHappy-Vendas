@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="08f21581-4319-4a0c-9871-3a3cd8832b88">
 	<property name="ireport.zoom" value="1.2100000000000228"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="24"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Titulo" fontName="Arial Black" fontSize="20"/>
 	<style name="Coluna" fontName="Arial" fontSize="12" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
@@ -72,14 +72,14 @@
 			<rectangle>
 				<reportElement x="0" y="0" width="555" height="75" uuid="53cb662f-d063-4cba-a14a-de08efb2d296"/>
 			</rectangle>
-			<image>
-				<reportElement x="448" y="0" width="107" height="75" uuid="e8a9a0cb-47c0-435c-9640-690bb59f2b2b"/>
-				<imageExpression><![CDATA["C:\\Users\\EdgarSamsung\\Desktop\\PHappy Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="Titulo" x="2" y="21" width="446" height="34" uuid="3d431732-1d49-4e25-afc2-098524cbe94f"/>
 				<text><![CDATA[DADOS DE VENDAS DO FUNCIONARIO]]></text>
 			</staticText>
+			<image>
+				<reportElement x="398" y="5" width="157" height="70" uuid="47aeab2d-7b88-429e-a6b2-22b73478f4b5"/>
+				<imageExpression><![CDATA["D:\\TCC - Fatec 2018\\PHappy-Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
