@@ -63,7 +63,7 @@ where pedido.codigo = $P{pedido} and pedido_produto.pedidocod = $P{pedido}]]>
 			</staticText>
 			<image>
 				<reportElement x="405" y="0" width="150" height="72" uuid="0a268201-d675-4aec-96ca-68e69979cae8"/>
-				<imageExpression><![CDATA["D:\\TCC - Fatec 2018\\PHappy-Vendas\\src\\projeto\\vendas\\model\\icones\\logotipo.png"]]></imageExpression>
+				<imageExpression><![CDATA["logotipo.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement style="Heading 1" x="207" y="0" width="119" height="30" uuid="012303e9-b915-48fb-8d35-658ebc9f4499"/>

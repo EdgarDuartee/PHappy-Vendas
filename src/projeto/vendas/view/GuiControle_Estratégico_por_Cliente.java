@@ -18,6 +18,7 @@ import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
@@ -32,8 +33,11 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     /**
      * Creates new form GuiControle_Estratégico_por_Cliente
      */
-    public GuiControle_Estratégico_por_Cliente() {
+    public GuiControle_Estratégico_por_Cliente(Login login) {
+        this.login = login;
         initComponents();
+                GuiControle_Estratégico_por_Cliente.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -46,13 +50,14 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private void initComponents() {
 
         Grupo_Cliente = new javax.swing.ButtonGroup();
-        btnVoltar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         Painel_Pesquisa_Cliente6 = new javax.swing.JPanel();
-        rbtnNome_Cliente2 = new javax.swing.JRadioButton();
-        rbtnCodigo_Cliente2 = new javax.swing.JRadioButton();
-        txt_Cliente2 = new javax.swing.JTextField();
-        btn_pesquisar2 = new javax.swing.JButton();
+        rbtnNome_Cliente = new javax.swing.JRadioButton();
+        rbtnCodigo_Cliente = new javax.swing.JRadioButton();
+        txt_Cliente = new javax.swing.JTextField();
+        btn_pesquisar = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         Painel_Cliente = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
 
@@ -66,29 +71,37 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         });
 
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        Painel_Pesquisa_Cliente6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Individual de Cliente", javax.swing.border.TitledBorder.LEADING, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
+
+        Grupo_Cliente.add(rbtnNome_Cliente);
+        rbtnNome_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        rbtnNome_Cliente.setText("Nome");
+
+        Grupo_Cliente.add(rbtnCodigo_Cliente);
+        rbtnCodigo_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        rbtnCodigo_Cliente.setSelected(true);
+        rbtnCodigo_Cliente.setText("Código");
+
+        txt_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        txt_Cliente.setText("PF1");
+
+        btn_pesquisar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btn_pesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
+        btn_pesquisar.setText("Pesquisar");
+        btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pesquisarActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVoltarActionPerformed(evt);
-            }
-        });
-
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-
-        Painel_Pesquisa_Cliente6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Individual de Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-
-        Grupo_Cliente.add(rbtnNome_Cliente2);
-        rbtnNome_Cliente2.setText("Nome");
-
-        Grupo_Cliente.add(rbtnCodigo_Cliente2);
-        rbtnCodigo_Cliente2.setText("Código");
-
-        txt_Cliente2.setText("Luiz Fernando Neves da Rosa");
-
-        btn_pesquisar2.setText("Pesquisar");
-        btn_pesquisar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pesquisarActionPerformed(evt);
             }
         });
 
@@ -99,38 +112,38 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             .addGroup(Painel_Pesquisa_Cliente6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Pesquisa_Cliente6Layout.createSequentialGroup()
-                        .addComponent(rbtnNome_Cliente2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbtnCodigo_Cliente2)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_pesquisar2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_Cliente2, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(rbtnNome_Cliente)
+                    .addComponent(rbtnCodigo_Cliente))
+                .addGap(18, 18, 18)
+                .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_Cliente)
+                    .addComponent(btn_pesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+                .addContainerGap(284, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pesquisa_Cliente6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Painel_Pesquisa_Cliente6Layout.setVerticalGroup(
             Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pesquisa_Cliente6Layout.createSequentialGroup()
-                .addComponent(txt_Cliente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnNome_Cliente)
+                    .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Pesquisa_Cliente6Layout.createSequentialGroup()
-                        .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbtnNome_Cliente2)
-                            .addComponent(rbtnCodigo_Cliente2))
-                        .addContainerGap(14, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pesquisa_Cliente6Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_pesquisar2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(rbtnCodigo_Cliente)
+                    .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Coletiva de Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
 
         tblCliente.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Cliente", "Frequência de Compras", "Maior Compra", "Valor Médio Gasto em Compras ", "Produto Favorito"
@@ -154,34 +167,44 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         tblCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Painel_Cliente.setViewportView(tblCliente);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Painel_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1)
+                        .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Painel_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -269,7 +292,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 if (PJ == null) {
                     JOptionPane.showMessageDialog(null, "Verifique o código do cliente.", "Cliente não Localizado", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    new GuiControle_EstrategicoCliente_Individual(PJ.getCodigo()).setVisible(true);
+                    new GuiControle_EstrategicoCliente_Individual(login,PJ.getCodigo()).setVisible(true);
                 }
             } else {
 
@@ -279,7 +302,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Verifique o código do cliente.", "Cliente não Localizado", JOptionPane.ERROR_MESSAGE);
 
                     } else {
-                        new GuiControle_EstrategicoCliente_Individual(PF.getCodigo()).setVisible(true);
+                        new GuiControle_EstrategicoCliente_Individual(login,PF.getCodigo()).setVisible(true);
                     }
                 } else {
                     // Código que não é NEM PF NEM PJ
@@ -290,13 +313,13 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             PJ = daoPJ.consultaNome(txt_Cliente.getText());
             if (PJ != null) {
                 //faz os comandos para preencher a tela
-                new GuiControle_EstrategicoCliente_Individual(PJ.getCodigo()).setVisible(true);
+                new GuiControle_EstrategicoCliente_Individual(login,PJ.getCodigo()).setVisible(true);
 
             } else {
                 PF = daoPF.consultaNome(txt_Cliente.getText());
                 if (PF != null) {
                     //Executar as aççoes
-                    new GuiControle_EstrategicoCliente_Individual(PF.getCodigo()).setVisible(true);
+                    new GuiControle_EstrategicoCliente_Individual(login,PF.getCodigo()).setVisible(true);
                 }
             }
             if (PF == null && PJ == null) {
@@ -336,11 +359,11 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiControle_Estratégico_por_Cliente().setVisible(true);
+                new GuiControle_Estratégico_por_Cliente(login).setVisible(true);
             }
         });
     }
-
+    private static Login login = null;
     private Conexao conexao;
     private DaoPFisica daoPF;
     private DaoPJuridica daoPJ;
@@ -355,23 +378,14 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Grupo_Cliente;
     private javax.swing.JScrollPane Painel_Cliente;
-    private javax.swing.JPanel Painel_Pesquisa_Cliente4;
-    private javax.swing.JPanel Painel_Pesquisa_Cliente5;
     private javax.swing.JPanel Painel_Pesquisa_Cliente6;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JButton btn_pesquisar;
-    private javax.swing.JButton btn_pesquisar1;
-    private javax.swing.JButton btn_pesquisar2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rbtnCodigo_Cliente;
-    private javax.swing.JRadioButton rbtnCodigo_Cliente1;
-    private javax.swing.JRadioButton rbtnCodigo_Cliente2;
     private javax.swing.JRadioButton rbtnNome_Cliente;
-    private javax.swing.JRadioButton rbtnNome_Cliente1;
-    private javax.swing.JRadioButton rbtnNome_Cliente2;
     private javax.swing.JTable tblCliente;
     private javax.swing.JTextField txt_Cliente;
-    private javax.swing.JTextField txt_Cliente1;
-    private javax.swing.JTextField txt_Cliente2;
     // End of variables declaration//GEN-END:variables
 }

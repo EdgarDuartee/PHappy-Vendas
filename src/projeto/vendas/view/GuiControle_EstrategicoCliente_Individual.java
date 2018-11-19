@@ -24,6 +24,7 @@ import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoProduto;
+import projeto.vendas.model.Login;
 import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
@@ -37,9 +38,12 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     /**
      * Creates new form GuiControle_EstrategicoCliente_Individual
      */
-    public GuiControle_EstrategicoCliente_Individual(String codigo) {
+    public GuiControle_EstrategicoCliente_Individual(Login login,String codigo) {
         initComponents();
         this.codigo = codigo;
+        this.login = login;
+                GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
+                "         " +"Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -85,9 +89,10 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         lblFuncionario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Alterar Funcionario.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel1.setText("Código: ");
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel2.setText(" Pedidos Realizados");
 
         txt_qtdPedido.addActionListener(new java.awt.event.ActionListener() {
@@ -96,8 +101,10 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel3.setText("Pedidos Faturados");
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel4.setText("Frequência de Compra");
 
         txt_FrequenciaCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -106,17 +113,20 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel5.setText("Produto Favorito");
 
-        lbl_codigo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl_codigo.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         lbl_codigo.setText("cdg");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel7.setText("Nome:");
 
-        lbl_nome.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        lbl_nome.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbl_nome.setText("name");
 
+        Btn_mapa.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        Btn_mapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
         Btn_mapa.setText("Buscar Localização Gráfica");
         Btn_mapa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,30 +134,38 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel6.setText("Maior Compra");
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setText("% Pedidos Faturados");
 
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel9.setText("Valor Médio dos Pedidos");
 
         painel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+
+        lbl_mapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/MapaTeste.png"))); // NOI18N
 
         javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
         painel.setLayout(painelLayout);
         painelLayout.setHorizontalGroup(
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelLayout.createSequentialGroup()
-                .addComponent(lbl_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(67, 67, 67)
+                .addComponent(lbl_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelLayout.setVerticalGroup(
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLayout.createSequentialGroup()
+            .addGroup(painelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lbl_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
+        Btn_mapa1.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        Btn_mapa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
         Btn_mapa1.setText("Voltar");
         Btn_mapa1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +215,7 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel9)
-                                        .addGap(0, 78, Short.MAX_VALUE))
+                                        .addGap(0, 54, Short.MAX_VALUE))
                                     .addComponent(txt_PercentualFaturados, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txt_MediaPedidos)))
                             .addGroup(layout.createSequentialGroup()
@@ -433,11 +451,12 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                new GuiControle_EstrategicoCliente_Individual(codigo).setVisible(true);
+                new GuiControle_EstrategicoCliente_Individual(login,codigo).setVisible(true);
 
             }
         });
     }
+    private static Login login =  null;
     private static String codigo;
     private Conexao conexao;
     private PessoaFisica PF;

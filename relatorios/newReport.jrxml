@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
 	<property name="ireport.zoom" value="1.464100000000007"/>
 	<property name="ireport.x" value="26"/>
-	<property name="ireport.y" value="116"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="TituloCampo" hAlign="Left" vAlign="Top" fontName="Calibri" fontSize="8" isItalic="false"/>
