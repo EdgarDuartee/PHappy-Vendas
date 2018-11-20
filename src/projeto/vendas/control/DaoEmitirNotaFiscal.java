@@ -65,8 +65,15 @@ public class DaoEmitirNotaFiscal {
             ps = conn.prepareStatement("INSERT into Nota_Fiscal(Numero, Serie, PedidoCOD, Tipo,"
                     + "Total,DataEmissao,HoraEmissao,TRANSPCOD,TRANSP_DATASAIDA,TRANSP_HORASAIDA,"
                     + "CFOP,NATUREZADAOPERACAO,BASEICMS,ICMS,IPI,CHAVEACESSO,VALORFRETE,PLACAVEICULO,VALORSEGURO,"
-                    + "ENDEREÇO,BAIRRO,MUNICIPIO,TELEFONE,UF,CEP,INSCRICAOESTADUAL)"
-                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    + "CNPJ_CPF,ENDEREÇO,BAIRRO,MUNICIPIO,TELEFONE,UF,CEP,INSCRICAOESTADUAL,"
+                    + "Quantidade,Especie,Marca,Numeracao,PesoBruto,PesoLiquido)"
+                    + "VALUES(?, ?, ?, ? , ?, ?, ?, ?, ?, ?"
+                    + "      ,?, ?, ?, ? , ?, ?, ?, ?, ?, ?"
+                    + "      ,?, ?, ?, ? , ?, ?, ?, ?, ?, ?"
+                    + "      ,?, ?, ?)");
+            
+            
+            
             
            
 
@@ -79,24 +86,31 @@ public class DaoEmitirNotaFiscal {
             ps.setString(6, nf.getDataEmissao());
             ps.setString(7, nf.getHoraEmissao());
             ps.setInt(8, nf.getTranspCod());
-            ps.setString(9, "");
-            ps.setString(10, "");
+            ps.setString(9, nf.getTransp_DataSaida());
+            ps.setString(10, nf.getTransp_HoraSaida());
             ps.setString(11, nf.getCFOP());
             ps.setString(12,nf.getNaturezaDaOperacao());
             ps.setFloat(13, nf.getBaseICMS());
             ps.setFloat(14, nf.getICMS());
             ps.setFloat(15,nf.getIPI());
-            ps.setString(16, "");
-            ps.setFloat(17, 0);
-            ps.setString(18, "");
-            ps.setFloat(19, 0);
+            ps.setString(16, nf.getChaveAcesso());
+            ps.setFloat(17, nf.getValorfrete());
+            ps.setString(18, nf.getPlacaVeiculo());
+            ps.setFloat(19, nf.getValorSeguro());
             ps.setString(20, nf.getEndereco());
-            ps.setString(21, nf.getBAIRRO());
-            ps.setString(22, nf.getMUNICIPIO());
-            ps.setString(23, nf.getTELEFONE());
-            ps.setString(24, nf.getUF());
-            ps.setString(25, nf.getCEP());
-            ps.setString(26, nf.getInscricaoEstadual());
+            ps.setString(21, nf.getCNPJ_CPF());
+            ps.setString(22, nf.getBAIRRO());
+            ps.setString(23, nf.getMUNICIPIO());
+            ps.setString(24, nf.getTELEFONE());
+            ps.setString(25, nf.getUF());
+            ps.setString(26, nf.getCEP());
+            ps.setString(27, nf.getInscricaoEstadual());
+            ps.setInt(28, nf.getQuantidade());
+            ps.setString(29, nf.getEspecie());
+            ps.setString(30, nf.getMarca());
+            ps.setString(31, nf.getNumeracao());
+            ps.setFloat(32, nf.getPesoBruto());
+            ps.setFloat(33, nf.getPesoLiquido());
             
             ps.execute();
             return true;

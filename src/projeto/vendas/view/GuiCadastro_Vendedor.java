@@ -119,6 +119,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         lblEmail.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblEmail.setText("Email");
 
+        txtEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtEmail.setEnabled(false);
 
         lblTelefone.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -138,6 +139,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxtRG.setText("");
+        ftxtRG.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ftxtRG.setEnabled(false);
 
         try {
@@ -146,6 +148,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxtTel.setText("");
+        ftxtTel.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ftxtTel.setEnabled(false);
 
         try {
@@ -154,6 +157,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxtCPF.setText("");
+        ftxtCPF.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ftxtCPF.setEnabled(false);
 
         try {
@@ -162,6 +166,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxtCel.setText("");
+        ftxtCel.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ftxtCel.setEnabled(false);
 
         try {
@@ -170,6 +175,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxtData_Nasc.setText("");
+        ftxtData_Nasc.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ftxtData_Nasc.setEnabled(false);
 
         javax.swing.GroupLayout Painel_ContatoLayout = new javax.swing.GroupLayout(Painel_Contato);
@@ -238,21 +244,25 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
 
         Painel_Endereço.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
+        txtCidade.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCidade.setEnabled(false);
 
         lblRua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblRua.setText("Rua/Avenida/Estrada/Viela");
 
+        txtRua.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtRua.setEnabled(false);
 
         lblUF.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblUF.setText("UF");
 
+        txtUF.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtUF.setEnabled(false);
 
         lblNumero.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNumero.setText("N°");
 
+        txtNumero.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNumero.setEnabled(false);
 
         lblCEP.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -261,6 +271,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         lblBairro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblBairro.setText("Bairro/Vila/Parque");
 
+        txtBairro.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtBairro.setEnabled(false);
 
         lblCidade.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -272,8 +283,10 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         ftxtCEP.setText("");
+        ftxtCEP.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ftxtCEP.setEnabled(false);
 
+        txtComplemento.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtComplemento.setEnabled(false);
 
         lblComplemento.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -337,13 +350,15 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                 .addComponent(lblComplemento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         Painel_Vendedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
         lblBuscar_Por.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblBuscar_Por.setText("Buscar");
+
+        txtBusca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         lblBusca.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblBusca.setText("Digite o Código");
@@ -430,6 +445,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         txaLegenda.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txaLegenda.setRows(5);
         txaLegenda.setText("* Cadastrar Cliente;\n* Gerar Pedido;\n* Emitir Nota Fiscal.");
+        txaLegenda.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txaLegenda.setEnabled(false);
         jScrollPane1.setViewportView(txaLegenda);
 
@@ -458,6 +474,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         lblSenha.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblSenha.setText("Senha");
 
+        txtSenha.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtSenha.setEnabled(false);
 
         javax.swing.GroupLayout Painel_NicknameLayout = new javax.swing.GroupLayout(Painel_Nickname);
@@ -484,11 +501,14 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         lblcodigo.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblcodigo.setText("Código de Registro");
 
+        txtCodigo.setEditable(false);
+        txtCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCodigo.setEnabled(false);
 
         lblNome_Colaborador.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNome_Colaborador.setText("Nome do Colaborador");
 
+        txtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNome.setEnabled(false);
 
         lblFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Funcionario.png"))); // NOI18N
@@ -520,10 +540,10 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
                                 .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(Painel_Contato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Painel_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(Painel_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Painel_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(Painel_Vendedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Painel_Contato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,25 +562,29 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblNome_Colaborador)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Painel_Contato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Painel_Endereço, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Painel_Permissoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addComponent(Painel_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Painel_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Painel_Permissoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Painel_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnVoltar)
                                 .addComponent(btnCadastrar))))
-                    .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 39, Short.MAX_VALUE))
+                    .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                        .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout Painel_Cadastro_VendedorLayout = new javax.swing.GroupLayout(Painel_Cadastro_Vendedor);
@@ -568,16 +592,14 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         Painel_Cadastro_VendedorLayout.setHorizontalGroup(
             Painel_Cadastro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Cadastro_VendedorLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         Painel_Cadastro_VendedorLayout.setVerticalGroup(
             Painel_Cadastro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Cadastro_VendedorLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

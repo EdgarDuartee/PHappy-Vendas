@@ -258,5 +258,22 @@ public class DaoGerarPedido {
 
         return lista;
     }
+    
+    public float MaiorCompra(String clienteCod) {
+        PreparedStatement ps = null;
+        float Max = 0;
+        try {
+            ps = conn.prepareStatement("select max(totalpedido) as Media from pedido where clientecod = ?");
+            ps.setString(1, clienteCod);
 
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Max = rs.getFloat("Media");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return Max;
+    }
 }
