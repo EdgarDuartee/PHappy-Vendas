@@ -151,7 +151,7 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         daoPFisica = new DaoPFisica(conexao.conectar());
         daoPJuridica = new DaoPJuridica(conexao.conectar());
         ListaPedidos = daoGerarPedido.ListarPedidos();
-        DefaultTableModel model = (DefaultTableModel) tbl_PedidosAprovados.getModel();
+        model = (DefaultTableModel) tbl_PedidosAprovados.getModel();
 
         for (int i = 0; i < ListaPedidos.size(); i++) {
             if (ListaPedidos.get(i).getSituacao() == 1) {
@@ -182,8 +182,10 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
             GuiEmitir_nota_fiscal NF = new GuiEmitir_nota_fiscal(
                     daoGerarPedido.Consultar(Integer.parseInt(""
                             + tbl_PedidosAprovados.getValueAt(
-                                    tbl_PedidosAprovados.getSelectedRow(), 0))), login);
+                                    tbl_PedidosAprovados.getSelectedRow(), 0))), login,GuiPedidos_Aprovados.this.model);
             NF.setVisible(true);
+            
+            
 
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
@@ -228,6 +230,7 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         });
     }
     private static Login login = null;
+    private DefaultTableModel model;
     private ArrayList<Pedido> ListaPedidos;
     private DaoGerarPedido daoGerarPedido;
     private DaoPFisica daoPFisica;
