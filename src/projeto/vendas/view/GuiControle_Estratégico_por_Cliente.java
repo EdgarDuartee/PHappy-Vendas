@@ -277,9 +277,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-//        txtArea_clienteDetalhes.setText("Frequência de Compras : 2\n Média de Compras = 5.000,78");
-
-
+        dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed

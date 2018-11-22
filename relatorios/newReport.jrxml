@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
 	<property name="ireport.zoom" value="1.464100000000007"/>
-	<property name="ireport.x" value="26"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
@@ -553,8 +553,8 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[Jardim Maria Antônia Prado Sorocaba - SP]]></text>
 			</staticText>
 			<image>
-				<reportElement x="9" y="-26" width="285" height="203" uuid="81e26245-52ba-4b00-9213-057bca36e912"/>
-				<imageExpression><![CDATA["D:\\TCC - Fatec 2018\\PHappy-Vendas\\src\\projeto\\vendas\\model\\icones\\logo.png"]]></imageExpression>
+				<reportElement x="47" y="41" width="150" height="118" uuid="81e26245-52ba-4b00-9213-057bca36e912"/>
+				<imageExpression><![CDATA["logotipo.png"]]></imageExpression>
 			</image>
 			<textField pattern="000">
 				<reportElement style="Heading 3" x="502" y="30" width="52" height="20" uuid="a96d2f88-b554-4990-a4a7-13160607748b"/>
