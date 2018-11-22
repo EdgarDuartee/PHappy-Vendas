@@ -86,6 +86,26 @@ public class DaoProduto {
         }
 
     }
+    
+    
+    public void DecrementaEstoque(int ProdCod, int Qtd) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("update produto set qtdestoque = "
+                    + "              (select qtdestoque from produto where codigo = ?) "
+                    + "               - ? where codigo = ?");
+
+            ps.setInt(1, ProdCod);
+            ps.setInt(2, Qtd);
+            ps.setInt(3, ProdCod);
+            ps.execute();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+
+        }
+
+    }
 
     public ArrayList<Produto> ListarProdutosPorCategoria(int categoria) {
         Produto produto = null;
