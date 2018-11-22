@@ -70,11 +70,13 @@
                   <Component id="Painel_Pedido" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnLimpar" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="btnGerar_Orcamento" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="btnEnviar_Pedido" pref="0" max="32767" attributes="0"/>
-                  <Component id="btnVoltar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnGerar_Orcamento" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="btnEnviar_Pedido" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnVoltar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
@@ -470,12 +472,14 @@
                   <Component id="Produto" pref="296" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblData2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_NumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblData1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTotal" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="txt_total" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblData2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_NumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblData1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTotal" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Component id="txt_Data" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>

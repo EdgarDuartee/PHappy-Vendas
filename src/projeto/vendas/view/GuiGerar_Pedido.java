@@ -415,12 +415,13 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblData2)
-                        .addComponent(lbl_NumeroPedido)
-                        .addComponent(lblData1)
-                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_total, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblData2)
+                            .addComponent(lbl_NumeroPedido)
+                            .addComponent(lblData1)
+                            .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txt_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -498,11 +499,12 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         .addComponent(Painel_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Painel_Pedido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGerar_Orcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGerar_Orcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -551,6 +553,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             for (int i = 0; i < model.getRowCount(); i++) {
                 itemPedido = new PedidoProduto(pedido.getCodigo(), (int) model.getValueAt(i, 0), (int) model.getValueAt(i, 3));
                 daoPedidoProduto.inserir(itemPedido);
+                daoProduto.DecrementaEstoque(itemPedido.getProdutoCod(), itemPedido.getProdutoQtd());
+                btnGerar_Orcamento.setEnabled(true);
             }
 
             btnAdicionar.setEnabled(false);
@@ -716,7 +720,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             //CHECK DE PEDIDO VAZIO PARA HABILITAR O BOTÃO ENVIAR PEDIDO
             if (model.getRowCount() > 0 && btnEnviar_Pedido.isEnabled() == false) {
                 btnEnviar_Pedido.setEnabled(true);
-                btnGerar_Orcamento.setEnabled(true);
             }
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
@@ -867,7 +870,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             model.removeRow(0);
         }
         btnGerar_Orcamento.setEnabled(false);
-        
+
         Map parameters = new HashMap();
 
         try {
@@ -884,7 +887,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
 
     }//GEN-LAST:event_btnGerar_OrcamentoActionPerformed
 

@@ -210,7 +210,7 @@
                           <Component id="cbxCFOP" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lbl_Descricao_CFOP" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

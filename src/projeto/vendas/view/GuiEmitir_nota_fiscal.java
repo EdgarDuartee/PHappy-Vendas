@@ -22,6 +22,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -53,10 +54,11 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     /**
      * Creates new form GuiEmitir_nota_fiscal
      */
-    public GuiEmitir_nota_fiscal(Pedido pPedido, Login login) {
+    public GuiEmitir_nota_fiscal(Pedido pPedido, Login login,DefaultTableModel tabela) {
         initComponents();
         recebePedido = pPedido;
         this.login = login;
+        tbl_pedidosAprovados = tabela;
         GuiEmitir_nota_fiscal.this.setTitle("Emitir Nota Fiscal   " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
         
@@ -258,7 +260,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGroup(jPanelNatureza_da_OperacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbxCFOP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_Descricao_CFOP))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
@@ -1105,6 +1107,8 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnGerar_NFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerar_NFActionPerformed
+        
+        
         String TipoNota = "";
         if (rbtnSaida.isSelected()) {
             TipoNota = "Saida";
@@ -1146,6 +1150,15 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Pedido Faturado e Nota Fiscal Emitida !!", "Parabéns", JOptionPane.INFORMATION_MESSAGE);
             btnImprimir.setEnabled(true);
             btnGerar_NF.setEnabled(false);
+            //ESTE LAÇO É PARA REMOVER O PEDIDO DA GUI "PEDIDOS APROVADOS"
+            for(int i = 0; i < tbl_pedidosAprovados.getRowCount(); i++) {
+            
+            if((int) tbl_pedidosAprovados.getValueAt(i, 0) == recebePedido.getCodigo()){
+                tbl_pedidosAprovados.removeRow(i);
+                break;
+            }
+            
+        }
         } else {
             JOptionPane.showMessageDialog(null, "Falha na Geração da NFE.", "Erro Crítico", JOptionPane.ERROR_MESSAGE);
         }
@@ -1344,10 +1357,11 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiEmitir_nota_fiscal(recebePedido, login).setVisible(true);
+                new GuiEmitir_nota_fiscal(recebePedido, login, tbl_pedidosAprovados).setVisible(true);
             }
         });
     }
+    private static DefaultTableModel  tbl_pedidosAprovados;
     private int quantidadeProdutos;
     private float pesobruto;
     private static Login login = null;

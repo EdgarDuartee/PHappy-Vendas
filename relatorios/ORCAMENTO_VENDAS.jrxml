@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
 	<property name="ireport.zoom" value="1.210000000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="180"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="Heading 1" fontSize="16" isBold="true"/>
 	<style name="Heading 3" fontSize="14" isBold="true"/>
@@ -32,9 +32,9 @@
      PEDIDO."CLIENTENOME" AS PEDIDO_CLIENTENOME,
      PRODUTO."NOME" AS PRODUTO_NOME
 FROM
-     "FERNANDO"."PEDIDO" PEDIDO INNER JOIN "FERNANDO"."PEDIDO_PRODUTO" PEDIDO_PRODUTO ON $P{pedido} = PEDIDO_PRODUTO."PEDIDOCOD"
-     INNER JOIN "FERNANDO"."PRODUTO" PRODUTO ON PEDIDO_PRODUTO."PRODUTOCOD" = PRODUTO."CODIGO"
-     INNER JOIN "FERNANDO"."USUARIO_SISTEMA" USUARIO_SISTEMA ON PEDIDO."VENDEDORCOD" = USUARIO_SISTEMA."CODIGO"
+    PEDIDO INNER JOIN PEDIDO_PRODUTO ON $P{pedido} = PEDIDO_PRODUTO."PEDIDOCOD"
+     INNER JOIN PRODUTO ON PEDIDO_PRODUTO."PRODUTOCOD" = PRODUTO."CODIGO"
+     INNER JOIN USUARIO_SISTEMA ON PEDIDO."VENDEDORCOD" = USUARIO_SISTEMA."CODIGO"
 where pedido.codigo = $P{pedido} and pedido_produto.pedidocod = $P{pedido}]]>
 	</queryString>
 	<field name="PEDIDO_CODIGO" class="java.math.BigDecimal"/>
