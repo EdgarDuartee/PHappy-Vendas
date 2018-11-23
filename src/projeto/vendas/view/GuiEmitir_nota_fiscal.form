@@ -74,8 +74,7 @@
                       <Component id="jPanelDados_Nota_Fiscal" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jPanelDescricao_Nota_Fiscal" min="-2" pref="895" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jPanelDescricao_Nota_Fiscal" min="-2" pref="745" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -190,14 +189,11 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblCFOP" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="cbxCFOP" min="-2" pref="177" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lbl_Descricao_CFOP" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cbxCFOP" min="-2" pref="177" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
+                  <Component id="lbl_Descricao_CFOP" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -206,11 +202,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblCFOP" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cbxCFOP" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_Descricao_CFOP" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <Component id="cbxCFOP" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lbl_Descricao_CFOP" min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -317,11 +312,10 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblLogo" min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="lblLogo" min="-2" pref="180" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblEmpresa_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbxEmpresa_Emitente" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
@@ -331,15 +325,10 @@
                                       <Component id="lblCNPJ_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="ftxtCNPJ_Emitente" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblRazao_Social_Emitente" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtRazao_Social_Emitente" min="-2" pref="123" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                               <Component id="jPanelEndereco_Emitente" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="122" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -350,18 +339,16 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblEmpresa_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblCNPJ_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblRazao_Social_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cbxEmpresa_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ftxtCNPJ_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtRazao_Social_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblLogo" pref="0" max="32767" attributes="0"/>
-                              <Component id="jPanelEndereco_Emitente" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanelEndereco_Emitente" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblLogo" min="-2" pref="128" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="52" max="32767" attributes="0"/>
                       </Group>
@@ -405,19 +392,6 @@
                     <Property name="text" type="java.lang.String" value="50.000.000/0000-01"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblRazao_Social_Emitente">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Times New Roman" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Raz&#xe3;o Social"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtRazao_Social_Emitente">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Servir bem os Animais."/>
-                  </Properties>
-                </Component>
                 <Container class="javax.swing.JPanel" name="jPanelEndereco_Emitente">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -444,17 +418,6 @@
                                               <Component id="txtRua_Emitente" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Component id="lblBairro_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txtUF_Emitente" alignment="0" min="-2" pref="28" max="-2" attributes="0"/>
-                                                  <Component id="lblUF_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblUF_Emitente1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="ftxtCNPJ_Emitente1" min="-2" pref="114" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -476,6 +439,13 @@
                                   <Component id="lblCidade_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblUF_Emitente" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtUF_Emitente" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -506,16 +476,10 @@
                                   <Component id="ftxtCEP_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtCidade_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="lblUF_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblUF_Emitente1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="txtUF_Emitente" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ftxtCNPJ_Emitente1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace pref="13" max="32767" attributes="0"/>
+                              <Component id="lblUF_Emitente" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtUF_Emitente" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -619,22 +583,6 @@
                         <Property name="text" type="java.lang.String" value="SP"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="lblUF_Emitente1">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Times New Roman" size="12" style="1"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Inscri&#xe7;&#xe3;o Estadual"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="ftxtCNPJ_Emitente1">
-                      <Properties>
-                        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
-                          <Format format="##.###.###/####-##" subtype="-1" type="5"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="50.000.000/0000-01"/>
-                      </Properties>
-                    </Component>
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JLabel" name="lblLogo">
@@ -661,7 +609,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanelDados_Remetente" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="122" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -980,7 +928,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="890" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="740" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -1009,7 +957,7 @@
                               <Component id="lblValor_Total_Nota" min="-2" max="-2" attributes="0"/>
                               <Component id="txtValor_Total_Nota" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="72" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1317,8 +1265,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPaneProduto" min="-2" pref="874" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jScrollPaneProduto" pref="730" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1342,85 +1289,61 @@
                     <Component class="javax.swing.JTable" name="tblProduto">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="13" rowCount="5">
+                          <Table columnCount="9" rowCount="5">
                             <Column editable="false" title="C&#xf3;digo" type="java.lang.Object"/>
                             <Column editable="false" title="Descri&#xe7;&#xe3;o" type="java.lang.Object"/>
                             <Column editable="false" title="Valor Unit&#xe1;rio" type="java.lang.Object"/>
-                            <Column editable="false" title="Qtd" type="java.lang.Object"/>
-                            <Column editable="false" title="Seguro" type="java.lang.Object"/>
-                            <Column editable="false" title="Frete" type="java.lang.Object"/>
-                            <Column editable="false" title="Outras Desp." type="java.lang.Object"/>
+                            <Column editable="false" title="Quantidade" type="java.lang.Object"/>
                             <Column editable="false" title="Valor Total" type="java.lang.Object"/>
                             <Column editable="false" title="ICMS" type="java.lang.Object"/>
                             <Column editable="false" title="PIS" type="java.lang.Object"/>
                             <Column editable="false" title="COFINS" type="java.lang.Object"/>
                             <Column editable="false" title="IPI" type="java.lang.Object"/>
-                            <Column editable="false" title="CFOP" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="60" minWidth="40" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="200" minWidth="200" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="100" minWidth="60" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="100" minWidth="60" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="100" minWidth="60" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="40" minWidth="30" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="40" minWidth="30" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="60" minWidth="60" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                            <Column maxWidth="60" minWidth="60" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>

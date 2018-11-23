@@ -14,6 +14,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -318,7 +319,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         Painel_Pedido.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
-        lblTotal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        lblTotal.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblTotal.setText("TOTAL: ");
 
         Produto.setToolTipText("");
@@ -334,7 +335,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -373,19 +374,32 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         });
         Produto.setViewportView(tblProduto);
+        if (tblProduto.getColumnModel().getColumnCount() > 0) {
+            tblProduto.getColumnModel().getColumn(0).setMinWidth(60);
+            tblProduto.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tblProduto.getColumnModel().getColumn(0).setMaxWidth(100);
+            tblProduto.getColumnModel().getColumn(2).setMinWidth(100);
+            tblProduto.getColumnModel().getColumn(2).setMaxWidth(100);
+            tblProduto.getColumnModel().getColumn(3).setMinWidth(100);
+            tblProduto.getColumnModel().getColumn(3).setPreferredWidth(100);
+            tblProduto.getColumnModel().getColumn(3).setMaxWidth(100);
+            tblProduto.getColumnModel().getColumn(4).setMinWidth(100);
+            tblProduto.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblProduto.getColumnModel().getColumn(4).setMaxWidth(150);
+        }
 
         txt_Data.setEditable(false);
-        txt_Data.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txt_Data.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
         txt_total.setEditable(false);
-        txt_total.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txt_total.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        lblData1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblData1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblData1.setText("DATA: ");
 
-        lbl_NumeroPedido.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbl_NumeroPedido.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        lblData2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblData2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblData2.setText("N° DO PEDIDO : ");
 
         javax.swing.GroupLayout Painel_PedidoLayout = new javax.swing.GroupLayout(Painel_Pedido);
@@ -394,8 +408,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_PedidoLayout.createSequentialGroup()
                 .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(Painel_PedidoLayout.createSequentialGroup()
+                    .addComponent(Produto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_PedidoLayout.createSequentialGroup()
                         .addComponent(lblData2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_NumeroPedido)
@@ -407,7 +421,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         .addComponent(lblTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_PedidoLayout.setVerticalGroup(
             Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -469,7 +483,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Painel_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Painel_Produto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -478,7 +492,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         .addComponent(btnLimpar)
                         .addGap(39, 39, 39)
                         .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
@@ -486,7 +500,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(btnEnviar_Pedido))
                     .addComponent(Painel_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -547,13 +561,13 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             Pedido pedido = new Pedido(daoGerarPedido.getProximoCodigo(),
                     lbl_codigoCliente.getText(), login.getCodigo(),
                     txt_Data.getText() + "-" + HoraSistema,
-                    Float.parseFloat(txt_total.getText()), 3);
+                    Float.parseFloat(txt_total.getText().replace(",", ".")), 3);
             pedido.setClienteNome(txt_nomeCliente.getText());
             daoGerarPedido.inserir(pedido);
             for (int i = 0; i < model.getRowCount(); i++) {
                 itemPedido = new PedidoProduto(pedido.getCodigo(), (int) model.getValueAt(i, 0), (int) model.getValueAt(i, 3));
                 daoPedidoProduto.inserir(itemPedido);
-                daoProduto.DecrementaEstoque(itemPedido.getProdutoCod(),itemPedido.getProdutoQtd());
+                daoProduto.DecrementaEstoque(itemPedido.getProdutoCod(), itemPedido.getProdutoQtd());
             }
 
             btnAdicionar.setEnabled(false);
@@ -562,6 +576,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             btnEnviar_Pedido.setEnabled(false);
             btn_consultar.setEnabled(true);
             txtCPF_CNPJ.setEnabled(true);
+            btnGerar_Orcamento.setEnabled(true);
+            btnLimpar.setEnabled(true);
         }
 
     }//GEN-LAST:event_btnEnviar_PedidoActionPerformed
@@ -637,7 +653,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private void cbxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProdutoItemStateChanged
         if (flag == 0) {
             lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
-            lbl_ValorUnit.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario());
+            lbl_ValorUnit.setText(formatador.format(listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()));
         }
     }//GEN-LAST:event_cbxProdutoItemStateChanged
 
@@ -656,9 +672,12 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(),
                         cbxProduto.getSelectedItem().toString(),
                         listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(),
-                        cbxQuantidade.getValue(), ((Integer) cbxQuantidade.getValue())
-                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
+                        cbxQuantidade.getValue(),
+                        formatador.format((((Integer) cbxQuantidade.getValue())
+                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())))};
                     model.addRow(row);
+                    System.out.println(formatador.format(((Integer) cbxQuantidade.getValue())
+                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())));
                 } else {//NAO TEM EM ESTOQUE
                     JOptionPane.showMessageDialog(null, "Quantidade informada maior que "
                             + "a quantidade do produto em estoque.", "Erro Crítico", JOptionPane.ERROR_MESSAGE);
@@ -681,8 +700,8 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                             tblProduto.setValueAt((int) model.getValueAt(i, 3)
                                     + (int) cbxQuantidade.getValue(), i, 3);
                             //SOMA O VALOR
-                            tblProduto.setValueAt((int) model.getValueAt(i, 3)
-                                    * listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(), i, 4);
+                            tblProduto.setValueAt(formatador.format((int) model.getValueAt(i, 3)
+                                    * listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()), i, 4);
                             break;
                         } //ECEDEU
                         else {
@@ -701,25 +720,31 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         cbxProduto.getSelectedItem().toString(),
                         listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(),
                         cbxQuantidade.getValue(),
-                        ((Integer) cbxQuantidade.getValue())
-                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())};
+                        formatador.format(((Integer) cbxQuantidade.getValue())
+                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()))};
                     model.addRow(row);
                 }
 
             }
             Total = 0;
-            for (int x = 0; x < tblProduto.getRowCount(); x++) {
-                //Atualiza o Display de Total 
-                Total = Total + (float) model.getValueAt(x, 4);
+            if (tblProduto.getRowCount() > 0) {
+                String aux;
+                for (int x = 0; x < tblProduto.getRowCount(); x++) {
+                    aux = "" + model.getValueAt(x, 4);
+                    //Atualiza o Display de Total 
+                    Total = Total + Float.parseFloat(aux.replace(",", "."));
+                    System.out.println("Erro Aqui");
+                }
+
             }
-            txt_total.setText("" + Total);
+            txt_total.setText(formatador.format(Total));
 
 //            PedidoProduto itemPedido = new PedidoProduto(1, listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(), (int) cbxQuantidade.getValue());
 //            pedidoProduto.add(itemPedido);
             //CHECK DE PEDIDO VAZIO PARA HABILITAR O BOTÃO ENVIAR PEDIDO
             if (model.getRowCount() > 0 && btnEnviar_Pedido.isEnabled() == false) {
                 btnEnviar_Pedido.setEnabled(true);
-                btnGerar_Orcamento.setEnabled(true);
+                
             }
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
@@ -747,7 +772,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
             if (tblProduto.getSelectedRow() >= 0) {
                 Total = (Total - (float) model.getValueAt(tblProduto.getSelectedRow(), 4));
-                txt_total.setText("" + Total);
+                txt_total.setText(formatador.format(Total));
                 // PERCORRO O ARRAYLIST QUE PREENCHE O CBX PRODUTO, ATÉ ENCONTRAR O PRODUTO COM O CÓDIGO DO EXCLUIDO.
 //                for (int i = 0; i < listaProdutos.size(); i++) {
 //                    if (listaProdutos.get(i).getCodigo() == pedidoProduto.get(tblProduto.getSelectedRow()).getProdutoCod()) {
@@ -855,7 +880,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
     private void btnGerar_OrcamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerar_OrcamentoActionPerformed
         JOptionPane.showMessageDialog(null, "Pedido registrado com Sucesso, Confira:");
-        txt_total.setText("0.00");
+        txt_total.setText("0,00");
         tblProduto.removeAll();
         txtCPF_CNPJ.requestFocus();
         txtCPF_CNPJ.setText("");
@@ -870,7 +895,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             model.removeRow(0);
         }
         btnGerar_Orcamento.setEnabled(false);
-        
+
         Map parameters = new HashMap();
 
         try {
@@ -887,7 +912,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
 
     }//GEN-LAST:event_btnGerar_OrcamentoActionPerformed
 
@@ -940,6 +964,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         });
     }
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private DefaultTableModel model = null;
     private float Total = 0;
     private int flag = 0;
