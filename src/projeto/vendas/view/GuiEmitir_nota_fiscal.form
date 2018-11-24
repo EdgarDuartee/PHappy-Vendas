@@ -315,7 +315,7 @@
                           <Component id="lblLogo" min="-2" pref="180" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblEmpresa_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbxEmpresa_Emitente" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
@@ -326,7 +326,7 @@
                                       <Component id="ftxtCNPJ_Emitente" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jPanelEndereco_Emitente" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanelEndereco_Emitente" min="-2" pref="545" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -433,8 +433,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtComplemento_Emitente" max="32767" attributes="0"/>
-                                  <Component id="txtCidade_Emitente" alignment="0" pref="154" max="32767" attributes="0"/>
+                                  <Component id="txtComplemento_Emitente" pref="154" max="32767" attributes="0"/>
+                                  <Component id="txtCidade_Emitente" alignment="0" max="32767" attributes="0"/>
                                   <Component id="lblComplemento_Emitente" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblCidade_Emitente" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -632,9 +632,8 @@
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Component id="lblEmpresa" min="-2" pref="174" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblNome_Fantasia_Remetente" min="-2" max="-2" attributes="0"/>
                                           <Component id="txt_NomeDestinario" min="-2" pref="195" max="-2" attributes="0"/>
@@ -647,13 +646,12 @@
                                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="lblEmail_Remetente" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtEmail_Remetente" min="-2" pref="195" max="-2" attributes="0"/>
+                                          <Component id="txtEmail_Remetente" min="-2" pref="171" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="jPanelEndereco_Remetente" max="32767" attributes="0"/>
+                                  <Component id="jPanelEndereco_Remetente" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace pref="36" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -756,21 +754,19 @@
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtComplemento_Remetente" alignment="0" min="-2" pref="255" max="-2" attributes="0"/>
-                                              <Component id="txtCidade_Remetente" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtRua_Remetente" alignment="0" pref="315" max="32767" attributes="0"/>
-                                                  <Component id="txtBairro_Remetente" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblBairro_Remetente" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtRua_Remetente" alignment="0" pref="315" max="32767" attributes="0"/>
+                                              <Component id="txtBairro_Remetente" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblBairro_Remetente" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="lblComplemento_Remetente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtCidade_Remetente" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtComplemento_Remetente" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Component id="lbl_documento" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="111" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="85" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -809,13 +805,11 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblComplemento_Remetente" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                          <Component id="txtComplemento_Remetente" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="lblComplemento_Remetente" min="-2" max="-2" attributes="0"/>
                                       <Component id="lbl_documento" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                  <Component id="txtComplemento_Remetente" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -950,14 +944,14 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jPanelProduto" min="-2" max="-2" attributes="0"/>
                               <Component id="lblValor_Total_Nota" min="-2" max="-2" attributes="0"/>
                               <Component id="txtValor_Total_Nota" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="jPanelProduto" alignment="0" min="-2" pref="709" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="21" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

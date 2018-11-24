@@ -5,7 +5,10 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
+import java.net.URL;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -70,6 +73,10 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
         tblRegiaoEspecifica.setRowSorter(new TableRowSorter(modelo));
+        
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -201,7 +208,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ftxtData_Inicial)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

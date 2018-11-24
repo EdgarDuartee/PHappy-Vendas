@@ -116,6 +116,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerar Pedido");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -124,10 +125,10 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         Painel_Cliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
-        lblNome.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNome.setText("Nome");
 
-        lbl_CPF_CNPJ.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lbl_CPF_CNPJ.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lbl_CPF_CNPJ.setText("CPF ou CNPJ");
 
         txtCPF_CNPJ.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -195,17 +196,17 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_nomeCliente)
+                .addComponent(txt_nomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbl_AvisoCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         Painel_Produto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Produto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
-        lblProduto.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblProduto.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblProduto.setText("Produto");
 
-        lblQuantidade.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblQuantidade.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblQuantidade.setText("Qtde.");
 
         cbxQuantidade.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -235,17 +236,17 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel1.setText("Qtd Disponível ");
 
         lbl_QtdEstoque.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel2.setText("Valor Unitário:");
 
         lbl_ValorUnit.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        cbxCategoria.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        cbxCategoria.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "5 Kg", "10 Kg", "15 Kg", "20 Kg" }));
         cbxCategoria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -253,7 +254,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         });
 
-        lblProduto1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblProduto1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblProduto1.setText("Filtro");
 
         javax.swing.GroupLayout Painel_ProdutoLayout = new javax.swing.GroupLayout(Painel_Produto);
@@ -291,19 +292,17 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                        .addComponent(lblProduto1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblProduto))
-                    .addGroup(Painel_ProdutoLayout.createSequentialGroup()
                         .addComponent(lblQuantidade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Painel_ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Painel_ProdutoLayout.createSequentialGroup()
-                                .addComponent(cbxQuantidade)
-                                .addGap(3, 3, 3)))))
+                            .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(cbxQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(Painel_ProdutoLayout.createSequentialGroup()
+                        .addComponent(lblProduto1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblProduto)))
                 .addGap(12, 12, 12)
                 .addComponent(cbxProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,7 +318,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         Painel_Pedido.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pedido", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
-        lblTotal.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblTotal.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblTotal.setText("TOTAL: ");
 
         Produto.setToolTipText("");
@@ -394,12 +393,12 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         txt_total.setEditable(false);
         txt_total.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        lblData1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblData1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData1.setText("DATA: ");
 
         lbl_NumeroPedido.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
-        lblData2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblData2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData2.setText("N° DO PEDIDO : ");
 
         javax.swing.GroupLayout Painel_PedidoLayout = new javax.swing.GroupLayout(Painel_Pedido);
@@ -411,11 +410,15 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     .addComponent(Produto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_PedidoLayout.createSequentialGroup()
                         .addComponent(lblData2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_NumeroPedido)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblData1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Painel_PedidoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_NumeroPedido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_PedidoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblData1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addComponent(txt_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTotal)
@@ -428,15 +431,17 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             .addGroup(Painel_PedidoLayout.createSequentialGroup()
                 .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_total, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblData2)
-                            .addComponent(lbl_NumeroPedido)
-                            .addComponent(lblData1)
-                            .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txt_Data, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblData2)
+                        .addComponent(lbl_NumeroPedido))
+                    .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_Data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblData1))
+                    .addGroup(Painel_PedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
@@ -483,16 +488,15 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Painel_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Painel_Produto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnLimpar)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
@@ -500,7 +504,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(btnEnviar_Pedido))
                     .addComponent(Painel_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,12 +517,11 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         .addComponent(Painel_Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Painel_Pedido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLimpar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnGerar_Orcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGerar_Orcamento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEnviar_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 

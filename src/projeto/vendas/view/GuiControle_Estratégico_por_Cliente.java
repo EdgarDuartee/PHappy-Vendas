@@ -6,6 +6,9 @@
 package projeto.vendas.view;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -38,6 +41,10 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         initComponents();
                 GuiControle_Estratégico_por_Cliente.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
+                
+                URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -278,7 +285,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
 //        txtArea_clienteDetalhes.setText("Frequência de Compras : 2\n Média de Compras = 5.000,78");
-
+          dispose ();
 
     }//GEN-LAST:event_btnVoltarActionPerformed
 

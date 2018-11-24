@@ -5,6 +5,8 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -44,6 +46,10 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         this.login = login;
                 GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
+                
+                URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -80,6 +86,7 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         Btn_mapa1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -192,11 +199,6 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Btn_mapa1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Btn_mapa)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5)
@@ -211,18 +213,28 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                             .addComponent(jLabel3))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_PercentualFaturados, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_MediaPedidos))
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(0, 54, Short.MAX_VALUE))
-                                    .addComponent(txt_PercentualFaturados, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_MediaPedidos)))
+                                        .addGap(19, 19, 19)
+                                        .addComponent(jLabel9))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel8)))
+                                .addGap(0, 54, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addComponent(txt_ProdutoFavorito)))
+                                .addComponent(Btn_mapa1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Btn_mapa))
+                            .addComponent(txt_ProdutoFavorito))
+                        .addContainerGap())))
             .addComponent(painel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(

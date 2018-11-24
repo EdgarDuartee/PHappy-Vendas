@@ -8,6 +8,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Gerar Pedido"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -32,18 +33,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="Painel_Cliente" max="32767" attributes="0"/>
                   <Component id="Painel_Produto" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="btnLimpar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="btnVoltar" min="-2" pref="102" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnLimpar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
@@ -53,7 +53,7 @@
                   </Group>
                   <Component id="Painel_Pedido" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,13 +70,11 @@
                   <Component id="Painel_Pedido" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnLimpar" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnGerar_Orcamento" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="btnEnviar_Pedido" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnVoltar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnGerar_Orcamento" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnEnviar_Pedido" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnVoltar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnLimpar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
@@ -138,7 +136,7 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="lblNome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_nomeCliente" max="32767" attributes="0"/>
+                  <Component id="txt_nomeCliente" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lbl_AvisoCPF_CNPJ" min="-2" pref="11" max="-2" attributes="0"/>
               </Group>
@@ -149,7 +147,7 @@
         <Component class="javax.swing.JLabel" name="lblNome">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
@@ -157,7 +155,7 @@
         <Component class="javax.swing.JLabel" name="lbl_CPF_CNPJ">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CPF ou CNPJ"/>
           </Properties>
@@ -273,22 +271,19 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblProduto1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbxCategoria" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="lblProduto" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Component id="lblQuantidade" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnAdicionar" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="cbxQuantidade" max="32767" attributes="0"/>
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnAdicionar" pref="0" max="32767" attributes="0"/>
+                              <Component id="cbxQuantidade" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="lblProduto1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbxCategoria" min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lblProduto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -312,7 +307,7 @@
         <Component class="javax.swing.JLabel" name="lblProduto">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Produto"/>
           </Properties>
@@ -320,7 +315,7 @@
         <Component class="javax.swing.JLabel" name="lblQuantidade">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Qtde."/>
           </Properties>
@@ -372,7 +367,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Qtd Dispon&#xed;vel "/>
           </Properties>
@@ -387,7 +382,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Valor Unit&#xe1;rio:"/>
           </Properties>
@@ -402,7 +397,7 @@
         <Component class="javax.swing.JComboBox" name="cbxCategoria">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="5">
@@ -424,7 +419,7 @@
         <Component class="javax.swing.JLabel" name="lblProduto1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Filtro"/>
           </Properties>
@@ -450,11 +445,18 @@
                       <Component id="Produto" alignment="0" pref="583" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblData2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lbl_NumeroPedido" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="lblData1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_NumeroPedido" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="lblData1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <Component id="txt_Data" min="-2" pref="100" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblTotal" min="-2" max="-2" attributes="0"/>
@@ -471,18 +473,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="Produto" pref="296" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_total" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblData2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_NumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblData1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblTotal" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblData2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_NumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="txt_Data" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="txt_Data" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblData1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="txt_total" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTotal" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -491,7 +496,7 @@
         <Component class="javax.swing.JLabel" name="lblTotal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="TOTAL: "/>
           </Properties>
@@ -593,7 +598,7 @@
         <Component class="javax.swing.JLabel" name="lblData1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="DATA: "/>
           </Properties>
@@ -608,7 +613,7 @@
         <Component class="javax.swing.JLabel" name="lblData2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="14" style="1"/>
+              <Font name="Times New Roman" size="12" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xb0; DO PEDIDO : "/>
           </Properties>
