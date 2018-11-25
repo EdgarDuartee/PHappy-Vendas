@@ -11,8 +11,17 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 import projeto.vendas.control.Conexao;
 import projeto.vendas.control.DaoGerarPedido;
 import projeto.vendas.control.DaoPFisica;
@@ -23,6 +32,7 @@ import projeto.vendas.model.Pedido;
 import projeto.vendas.model.PedidoProduto;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.PessoaJuridica;
+import projeto.vendas.tabelas.GuiControleEstrategico_ClienteGeral;
 
 /**
  *
@@ -36,8 +46,8 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     public GuiControle_Estratégico_por_Cliente(Login login) {
         this.login = login;
         initComponents();
-                GuiControle_Estratégico_por_Cliente.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
+        GuiControle_Estratégico_por_Cliente.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -240,6 +250,12 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                     daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getNome()
                 };
                 model.addRow(row);
+                lista.add(new GuiControleEstrategico_ClienteGeral(
+                        ListaPF.get(i).getNome(),
+                        Float.parseFloat((formatarFloat.format(daoPedido.FrequenciaDeCompras(ListaPF.get(i).getCodigo(), formatarDate.format(data), ListaPF.get(i).getDtInicio())).replace(",", "."))),
+                        Float.parseFloat((formatarFloat.format(daoPedido.MaiorCompra(ListaPF.get(i).getCodigo())).replace(",", "."))),
+                        Float.parseFloat((formatarFloat.format(daoPedido.MediaCompras(ListaPF.get(i).getCodigo())).replace(",", "."))),
+                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getNome()));
             } else {
                 Object[] row = {
                     ListaPF.get(i).getNome(),
@@ -261,6 +277,13 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                     formatarFloat.format(daoPedido.MediaCompras(ListaPJ.get(i).getCodigo())),
                     daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getNome()
                 };
+                System.out.println("Data de Cadastro" + ListaPJ.get(i).getDtInicio() + " // Data de Hoje " + formatarDate.format(data) );
+                lista.add(new GuiControleEstrategico_ClienteGeral(
+                        ListaPJ.get(i).getNome(),
+                        Float.parseFloat((formatarFloat.format(daoPedido.FrequenciaDeCompras(ListaPJ.get(i).getCodigo(), formatarDate.format(data), ListaPJ.get(i).getDtInicio())).replace(",", "."))),
+                        Float.parseFloat((formatarFloat.format(daoPedido.MaiorCompra(ListaPJ.get(i).getCodigo())).replace(",", "."))),
+                        Float.parseFloat((formatarFloat.format(daoPedido.MediaCompras(ListaPJ.get(i).getCodigo())).replace(",", "."))),
+                        daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getNome()));
                 model.addRow(row);
             } else {
                 Object[] row = {
@@ -273,6 +296,25 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 model.addRow(row);
             }
         }
+
+        Collections.sort(lista);
+        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
+        try {
+
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("relatorios/RelatorioClientesGerais.jasper",
+                    null, ds);
+
+            JasperViewer jv = new JasperViewer(jpPrint, false);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+
+
 
     }//GEN-LAST:event_formWindowOpened
 
@@ -292,7 +334,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 if (PJ == null) {
                     JOptionPane.showMessageDialog(null, "Verifique o código do cliente.", "Cliente não Localizado", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    new GuiControle_EstrategicoCliente_Individual(login,PJ.getCodigo()).setVisible(true);
+                    new GuiControle_EstrategicoCliente_Individual(login, PJ.getCodigo()).setVisible(true);
                 }
             } else {
 
@@ -302,7 +344,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "Verifique o código do cliente.", "Cliente não Localizado", JOptionPane.ERROR_MESSAGE);
 
                     } else {
-                        new GuiControle_EstrategicoCliente_Individual(login,PF.getCodigo()).setVisible(true);
+                        new GuiControle_EstrategicoCliente_Individual(login, PF.getCodigo()).setVisible(true);
                     }
                 } else {
                     // Código que não é NEM PF NEM PJ
@@ -313,13 +355,13 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             PJ = daoPJ.consultaNome(txt_Cliente.getText());
             if (PJ != null) {
                 //faz os comandos para preencher a tela
-                new GuiControle_EstrategicoCliente_Individual(login,PJ.getCodigo()).setVisible(true);
+                new GuiControle_EstrategicoCliente_Individual(login, PJ.getCodigo()).setVisible(true);
 
             } else {
                 PF = daoPF.consultaNome(txt_Cliente.getText());
                 if (PF != null) {
                     //Executar as aççoes
-                    new GuiControle_EstrategicoCliente_Individual(login,PF.getCodigo()).setVisible(true);
+                    new GuiControle_EstrategicoCliente_Individual(login, PF.getCodigo()).setVisible(true);
                 }
             }
             if (PF == null && PJ == null) {
@@ -363,6 +405,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
             }
         });
     }
+    private List<GuiControleEstrategico_ClienteGeral> lista = new ArrayList<GuiControleEstrategico_ClienteGeral>();
     private static Login login = null;
     private Conexao conexao;
     private DaoPFisica daoPF;

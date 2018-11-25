@@ -16,46 +16,52 @@ import java.net.URL;
  */
 public class Coordenadas {
 
+    public Coordenadas() {
+    }
+
     private String JsonMaps, JsonModify;
     private String Latitude;
     private String Longitude;
     //API DO EDGAR    
-    private String keyApi = "AIzaSyCCXW9zJltZ4PUtT1eaAuJeA3OreLKCqgE";
+//    private String keyApi = "AIzaSyCCXW9zJltZ4PUtT1eaAuJeA3OreLKCqgE";
     //API DO LUIZ 
-    //private String keyApi = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
+//    private String keyApi = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
+    private String keyApi = "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk";
     private boolean status;
 
-    public void Buscar(String Numero, String Rua, String Bairro, String Cidade) throws IOException {
+    public void Buscar(String Numero, String Rua, String Bairro, String Cidade) {
         //Formatando os dados para o padrão da URL.
         Rua = this.FormataString(Rua);
         Bairro = this.FormataString(Bairro);
         Cidade = this.FormataString(Cidade);
-        
-        
+        System.out.println(Rua+Bairro+Cidade+Numero);
         //ABRINDO A CONEXÃO COM O SITE, E ATRIBUINDO O CONTEÚDO BUSCADO A VARIAVEL.
-        URL oracle = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + Numero + "+" + Rua + ",+" + Bairro + ",+" + Cidade + "&key=" + keyApi);
-        BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
-        String inputLine = "";
-        while ((inputLine = in.readLine()) != null) {
-            JsonMaps = JsonMaps + inputLine;
+        try {
+            URL oracle = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + Numero + "+" + Rua + ",+" + Bairro + ",+" + Cidade + "&key=" + keyApi);
+            BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
+            String inputLine = "";
+            while ((inputLine = in.readLine()) != null) {
+                JsonMaps = JsonMaps + inputLine;
 
+            }
+        } catch (IOException EX) {
+            System.out.println(EX);
         }
-
-        in.close();
-        JsonModify = JsonMaps;
         System.out.println(JsonMaps);
     }
 
     public double getLatitude() {
-        int pos = JsonModify.indexOf("location");
-        JsonModify = JsonModify.substring(pos, pos + 200);
+        int pos = JsonMaps.indexOf("location");
+        JsonModify = JsonMaps.substring(pos, pos + 200);
         Latitude = JsonModify;
+        System.out.println(Double.parseDouble(Latitude.substring(Latitude.indexOf("lat") + 6, Latitude.indexOf(","))));
         return (Double.parseDouble(Latitude.substring(Latitude.indexOf("lat") + 6, Latitude.indexOf(","))));
     }
 
     public double getLongitude() {
         Longitude = JsonModify.trim();
         Longitude = Longitude.substring(Longitude.indexOf("lng") + 6, Longitude.indexOf("}"));
+        System.out.println(Double.parseDouble(Longitude));
         return (Double.parseDouble(Longitude));
     }
 

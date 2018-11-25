@@ -23,9 +23,10 @@ public class DaoPFisica {
             ps = conn.prepareStatement("INSERT INTO P_Fisica(codigo, email, rua,"
                                        + "numero, bairro, cidade, cep, uf ,"
                                        + "nome , cpf, rg,"
-                                       + "dtnasc, tel , cel, complemento,cod_vend_resp,"
+                                       + "dtnasc, tel , cel, complemento,"
+                                       + "LATITUDE,LONGITUDE,cod_vend_resp,"
                                        + "vend_resp, ativo,dtInicio)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             
             ps.setString(1,    pessoaFisica.getCodigo());
             ps.setString(2, pessoaFisica.getEmail());
@@ -42,10 +43,12 @@ public class DaoPFisica {
             ps.setString(13,   pessoaFisica.getTel());
             ps.setString(14,pessoaFisica.getCel());
             ps.setString(15,pessoaFisica.getComplemento());
-            ps.setInt(16,pessoaFisica.getCod_vend_resp());
-            ps.setString(17,pessoaFisica.getVendedor_responsavel());
-            ps.setString(18,"A");
-            ps.setString(19,pessoaFisica.getDtInicio());
+            ps.setDouble(16, pessoaFisica.getLatitude());
+            ps.setDouble(17, pessoaFisica.getLongitude());
+            ps.setInt(18,pessoaFisica.getCod_vend_resp());
+            ps.setString(19,pessoaFisica.getVendedor_responsavel());
+            ps.setString(20,"A");
+            ps.setString(21,pessoaFisica.getDtInicio());
             
             ps.execute();
         } catch (SQLException ex) {

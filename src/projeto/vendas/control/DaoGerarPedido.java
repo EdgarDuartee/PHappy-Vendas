@@ -30,7 +30,7 @@ public class DaoGerarPedido {
                         rs.getString("dtPedido"),
                         rs.getFloat("TotalPedido"),
                         rs.getInt("Situacao"));
-                        pedido.setClienteNome(rs.getString("clienteNome"));
+                pedido.setClienteNome(rs.getString("clienteNome"));
 
             }
         } catch (SQLException ex) {
@@ -203,7 +203,6 @@ public class DaoGerarPedido {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 media = rs.getFloat("Media");
-                System.out.println("Media = " + media);
             }
 
         } catch (SQLException ex) {
@@ -230,7 +229,7 @@ public class DaoGerarPedido {
             System.out.println(ex);
         }
 
-        System.out.println(frequencia);
+        
         return frequencia;
     }
 
@@ -239,9 +238,10 @@ public class DaoGerarPedido {
         ArrayList<PedidoProduto> lista = new ArrayList<PedidoProduto>();
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("select produtocod as produto,sum(qtdproduto) as Quantidade from pedido "
-                    + "inner join pedido_produto on pedido.codigo = pedido_produto.pedidocod and pedido.clientecod = ? "
-                    + "group by pedido_produto.produtocod order by quantidade");
+            ps = conn.prepareStatement("select produtocod as produto,sum(qtdproduto) as Quantidade"
+                    + " from pedido inner join pedido_produto on "
+                    + "pedido.codigo = pedido_produto.pedidocod and pedido.clientecod = ? "
+                    + "group by pedido_produto.produtocod order by Quantidade desc");
             ps.setString(1, clienteCod);
             ResultSet rs = ps.executeQuery();
 
@@ -258,7 +258,7 @@ public class DaoGerarPedido {
 
         return lista;
     }
-    
+
     public float MaiorCompra(String clienteCod) {
         PreparedStatement ps = null;
         float Max = 0;

@@ -19,6 +19,7 @@ import projeto.vendas.control.DaoDescobreCodigo;
 import projeto.vendas.control.DaoLogin;
 import projeto.vendas.control.DaoPFisica;
 import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Coordenadas;
 import projeto.vendas.model.Login;
 import projeto.vendas.model.PessoaFisica;
 import projeto.vendas.model.Vendedor;
@@ -38,9 +39,9 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
     public GuiCadastroPessoa_Física(Login login) {
         initComponents();
         this.login = login;
-        GuiCadastroPessoa_Física.this.setTitle("Cadastro Pessoa Fisica     " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
-        
+        GuiCadastroPessoa_Física.this.setTitle("Cadastro Pessoa Fisica     " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
@@ -613,9 +614,14 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
                 pessoaFisica.setCel(ftxtCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
                 pessoaFisica.setDtNasc(ftxtData_Nasc.getText().replace("/", ""));
                 pessoaFisica.setComplemento(txtComplemento.getText());
-
                 pessoaFisica.setVendedor_responsavel((String) cbxVendedorResp.getSelectedItem());
                 pessoaFisica.setCod_vend_resp(vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo());
+                coordenadas.Buscar(txtNumero.getText(), txtRua.getText(), txtBairro.getText(), txtCidade.getText());
+                pessoaFisica.setLatitude(coordenadas.getLatitude());
+                pessoaFisica.setLongitude(coordenadas.getLongitude());
+
+                System.out.println(pessoaFisica.getLatitude());
+                System.out.println(pessoaFisica.getLongitude());
 
                 //cria o formatador de data
                 SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
@@ -727,6 +733,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
             }
         });
     }
+    private Coordenadas coordenadas = new Coordenadas();
     private static Login login = null;
     private Conexao conexao = null;
     private DaoPFisica daoPfisica = null;
