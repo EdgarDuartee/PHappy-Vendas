@@ -388,7 +388,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             tblProduto.getColumnModel().getColumn(4).setMaxWidth(150);
         }
 
-        txt_Data.setEditable(false);
         txt_Data.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
         txt_total.setEditable(false);
