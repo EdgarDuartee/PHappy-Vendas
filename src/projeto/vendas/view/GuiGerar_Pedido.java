@@ -325,7 +325,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         Produto.setToolTipText("");
 
         tblProduto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tblProduto.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
+        tblProduto.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -352,7 +352,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         tblProduto.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         tblProduto.setName(""); // NOI18N
         tblProduto.setOpaque(false);
-        tblProduto.setRowHeight(25);
+        tblProduto.setRowHeight(22);
         tblProduto.setRowMargin(5);
         tblProduto.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblProduto.getTableHeader().setReorderingAllowed(false);
@@ -573,7 +573,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             cbxProduto.setEnabled(false);
             cbxQuantidade.setEnabled(false);
             btnEnviar_Pedido.setEnabled(false);
-            btn_consultar.setEnabled(true);
             txtCPF_CNPJ.setEnabled(true);
             btnGerar_Orcamento.setEnabled(true);
             btnLimpar.setEnabled(true);
@@ -762,6 +761,9 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         cbxProduto.setSelectedIndex(0);
         txt_nomeCliente.setText("");
         txt_total.setText("");
+        lbl_AvisoCPF_CNPJ.setText("");
+        txt_nomeCliente.setText("");
+        btnGerar_Orcamento.setEnabled(false);
         btn_consultar.setEnabled(true);
     }//GEN-LAST:event_btnLimparActionPerformed
 

@@ -38,12 +38,12 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     /**
      * Creates new form GuiControle_EstrategicoCliente_Individual
      */
-    public GuiControle_EstrategicoCliente_Individual(Login login,String codigo) {
+    public GuiControle_EstrategicoCliente_Individual(Login login, String codigo) {
         initComponents();
         this.codigo = codigo;
         this.login = login;
-                GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
+        GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
     }
 
     /**
@@ -348,11 +348,17 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                 txt_FrequenciaCompra.setText(formatarFloat.format(daoPedido.FrequenciaDeCompras(codigo, formatarDate.format(data), PF.getDtInicio())));
                 txt_MaiorCompra.setText(formatarFloat.format(daoPedido.MaiorCompra(codigo)));
                 txt_MediaPedidos.setText(formatarFloat.format(daoPedido.MediaCompras(codigo)));
-                txt_ProdutoFavorito.setText(daoProduto.consultar(daoPedido.ProdutosMaisComprados(codigo).get(0).getProdutoCod()).getNome());
+                if (daoPedido.ProdutosMaisComprados(codigo).size() == 0) {
+
+                    txt_ProdutoFavorito.setText("Nenhum");
+                } else {
+                    txt_ProdutoFavorito.setText(daoProduto.consultar(daoPedido.ProdutosMaisComprados(codigo).get(0).getProdutoCod()).getNome());
+
+                }
                 txt_qtdPedido.setText(listaPedido.size() + "");
                 txt_QtdPedidosFaturados.setText(faturado + "");
-                txt_PercentualFaturados.setText(formatarFloat.format(((faturado+0.00) / (listaPedido.size()+0.00)) * 100) + " (%)");
-                System.out.println(3.00/6.00);
+                txt_PercentualFaturados.setText(formatarFloat.format(((faturado + 0.00) / (listaPedido.size() + 0.00)) * 100) + " (%)");
+                System.out.println(3.00 / 6.00);
                 System.out.println(faturado + " / " + listaPedido.size());
 
             } else {
@@ -393,10 +399,16 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                 txt_FrequenciaCompra.setText(formatarFloat.format(daoPedido.FrequenciaDeCompras(codigo, formatarDate.format(data), PJ.getDtInicio())));
                 txt_MaiorCompra.setText(formatarFloat.format(daoPedido.MaiorCompra(codigo)));
                 txt_MediaPedidos.setText(formatarFloat.format(daoPedido.MediaCompras(codigo)));
-                txt_ProdutoFavorito.setText(daoProduto.consultar(daoPedido.ProdutosMaisComprados(codigo).get(0).getProdutoCod()).getNome());
+                if (daoPedido.ProdutosMaisComprados(codigo).size() == 0) {
+
+                    txt_ProdutoFavorito.setText("Nenhum");
+                } else {
+                    txt_ProdutoFavorito.setText(daoProduto.consultar(daoPedido.ProdutosMaisComprados(codigo).get(0).getProdutoCod()).getNome());
+
+                }
                 txt_qtdPedido.setText(listaPedido.size() + "");
                 txt_QtdPedidosFaturados.setText(faturado + "");
-                txt_PercentualFaturados.setText(formatarFloat.format(((faturado+0.00) / (listaPedido.size()+0.00)) * 100) + " (%)");
+                txt_PercentualFaturados.setText(formatarFloat.format(((faturado + 0.00) / (listaPedido.size() + 0.00)) * 100) + " (%)");
                 System.out.println(faturado / listaPedido.size());
                 System.out.println(faturado + " / " + listaPedido.size());
 
@@ -451,12 +463,12 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                new GuiControle_EstrategicoCliente_Individual(login,codigo).setVisible(true);
+                new GuiControle_EstrategicoCliente_Individual(login, codigo).setVisible(true);
 
             }
         });
     }
-    private static Login login =  null;
+    private static Login login = null;
     private static String codigo;
     private Conexao conexao;
     private PessoaFisica PF;

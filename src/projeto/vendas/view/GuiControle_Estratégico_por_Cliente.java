@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -46,6 +47,8 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     public GuiControle_Estratégico_por_Cliente(Login login) {
         this.login = login;
         initComponents();
+        DefaultTableModel model = (DefaultTableModel) tblCliente.getModel();
+        tblCliente.setRowSorter(new TableRowSorter(model));
         GuiControle_Estratégico_por_Cliente.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
     }
@@ -70,6 +73,8 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Painel_Cliente = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
+        btn_imprimir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle Estratégico por Cliente");
@@ -141,11 +146,11 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                     .addComponent(rbtnNome_Cliente)
                     .addComponent(txt_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnCodigo_Cliente)
+                .addGroup(Painel_Pesquisa_Cliente6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rbtnCodigo_Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_pesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pesquisa Coletiva de Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14))); // NOI18N
@@ -174,6 +179,8 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblCliente.setFillsViewportHeight(true);
+        tblCliente.setRowHeight(20);
         tblCliente.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Painel_Cliente.setViewportView(tblCliente);
 
@@ -190,21 +197,40 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        btn_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imprimir.png"))); // NOI18N
+        btn_imprimir.setText("Imprimir");
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("** Apenas os clientes que realizaram alguma compra serão impressos .");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_imprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,7 +240,11 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                     .addComponent(Painel_Pesquisa_Cliente6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,7 +307,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                     formatarFloat.format(daoPedido.MediaCompras(ListaPJ.get(i).getCodigo())),
                     daoProduto.consultar(ListaPedidoProduto.get(0).getProdutoCod()).getNome()
                 };
-                System.out.println("Data de Cadastro" + ListaPJ.get(i).getDtInicio() + " // Data de Hoje " + formatarDate.format(data) );
+                System.out.println("Data de Cadastro" + ListaPJ.get(i).getDtInicio() + " // Data de Hoje " + formatarDate.format(data));
                 lista.add(new GuiControleEstrategico_ClienteGeral(
                         ListaPJ.get(i).getNome(),
                         Float.parseFloat((formatarFloat.format(daoPedido.FrequenciaDeCompras(ListaPJ.get(i).getCodigo(), formatarDate.format(data), ListaPJ.get(i).getDtInicio())).replace(",", "."))),
@@ -296,26 +326,6 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
                 model.addRow(row);
             }
         }
-
-        Collections.sort(lista);
-        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
-        try {
-
-            JasperPrint jpPrint;
-            jpPrint = JasperFillManager.fillReport("relatorios/RelatorioClientesGerais.jasper",
-                    null, ds);
-
-            JasperViewer jv = new JasperViewer(jpPrint, false);
-            jv.setVisible(true);
-
-        } catch (JRException ex) {
-            Logger.getLogger(GuiControle_Estratégico_por_Cliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-
-
-
     }//GEN-LAST:event_formWindowOpened
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -371,6 +381,23 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+        Collections.sort(lista);
+        JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
+        try {
+
+            JasperPrint jpPrint;
+            jpPrint = JasperFillManager.fillReport("relatorios/RelatorioClientesGerais.jasper",
+                    null, ds);
+
+            JasperViewer jv = new JasperViewer(jpPrint, false);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_imprimirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -423,7 +450,9 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane Painel_Cliente;
     private javax.swing.JPanel Painel_Pesquisa_Cliente6;
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_pesquisar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton rbtnCodigo_Cliente;
