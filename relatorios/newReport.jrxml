@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
 	<property name="ireport.zoom" value="1.464100000000007"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.x" value="5"/>
+	<property name="ireport.y" value="346"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="TituloCampo" hAlign="Left" vAlign="Top" fontName="Calibri" fontSize="8" isItalic="false"/>
@@ -372,7 +372,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[UF]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement style="TituloCampo" x="442" y="322" width="109" height="20" uuid="ba975194-0f1e-4417-a136-f5b344c64c3f"/>
+				<reportElement style="TituloCampo" x="442" y="322" width="112" height="20" uuid="ba975194-0f1e-4417-a136-f5b344c64c3f"/>
 			</rectangle>
 			<rectangle>
 				<reportElement style="TituloCampo" x="445" y="342" width="109" height="20" uuid="5a3449a5-7220-4561-9cf0-65e0a9eb1579"/>

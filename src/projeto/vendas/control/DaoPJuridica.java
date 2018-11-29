@@ -129,6 +129,8 @@ public class DaoPJuridica {
                             rs.getString("cep"), rs.getString("ativo"));
                     PJ.setCod_vend_resp(rs.getInt("cod_vend_resp"));
                     PJ.setVendedor_responsavel(rs.getString("vend_resp"));
+                    PJ.setDtInicio(rs.getString("DTINICIO"));
+                    System.out.println(PJ.getDtInicio());
                     lista.add(PJ);
                 }
             } catch (SQLException ex) {

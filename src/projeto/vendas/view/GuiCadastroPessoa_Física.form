@@ -37,7 +37,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Painel_Pessoa_Física" alignment="1" min="-2" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="Painel_Pessoa_Física" alignment="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -64,16 +67,14 @@
                           <Component id="ftxtCodigoCliente" min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblPessoa_Fisica" min="-2" pref="318" max="-2" attributes="0"/>
+                          <Component id="lblPessoa_Fisica" min="-2" pref="267" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                   <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                                   <Component id="btnLimpar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                                   <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
@@ -100,13 +101,16 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="Painel_Endereço" max="32767" attributes="0"/>
                       <Component id="Painel_Contato" max="32767" attributes="0"/>
-                      <Component id="lblPessoa_Fisica" pref="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lblPessoa_Fisica" min="-2" pref="210" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnLimpar" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="btnCadastrar" alignment="0" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnLimpar" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastrar" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -128,6 +132,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtEmail" max="32767" attributes="0"/>
+                          <Component id="cbxVendedorResp" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblAsteristico0" min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblNome" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -177,14 +190,6 @@
                           <Component id="lblTelefone" min="-2" max="-2" attributes="0"/>
                           <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                           <Component id="lblVendedor_Responsável" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="cbxVendedorResp" alignment="0" pref="195" max="32767" attributes="0"/>
-                                  <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblAsteristico0" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>
@@ -428,11 +433,16 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblRua" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblBairro" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblComplemento" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="txtComplemento" max="32767" attributes="0"/>
+                          <Component id="lblRua" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblBairro" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="txtBairro" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRua" alignment="0" min="-2" pref="315" max="-2" attributes="0"/>
+                          <Component id="txtRua" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblCidade" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -442,7 +452,7 @@
                                       <Component id="lblAsteristico6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="37" max="32767" attributes="0"/>
+                              <EmptySpace min="37" pref="28" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblCEP" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
@@ -480,13 +490,6 @@
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblComplemento" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtComplemento" min="-2" pref="255" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -731,6 +734,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblPessoa_Fisica">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/projeto/vendas/model/icones/Pessoa Fisica.png"/>
             </Property>

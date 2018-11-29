@@ -5,8 +5,13 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
+import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,6 +75,10 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiaoEspecifica.getModel();
         tblRegiaoEspecifica.setRowSorter(new TableRowSorter(modelo));
+
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
     }
 
     /**
@@ -201,7 +210,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ftxtData_Inicial)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
                     .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +244,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -424,6 +433,12 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         List lista = new ArrayList();
         for (int x = 0; x < tblRegiaoEspecifica.getRowCount(); x++) {
+
+            //gambi
+            String a = (String) tblRegiaoEspecifica.getValueAt(x, 4);
+            a = a.replace(",", ".");
+            double var = Double.parseDouble(a);
+            
             GuiControleEstrategicoRegiaoEspecifica print
                     = new GuiControleEstrategicoRegiaoEspecifica();
 
@@ -431,7 +446,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             print.setNome((String) tblRegiaoEspecifica.getValueAt(x, 1));
             print.setCidade((String) tblRegiaoEspecifica.getValueAt(x, 2));
             print.setQtdCompras((int) tblRegiaoEspecifica.getValueAt(x, 3));
-            print.setValorCompras((double) tblRegiaoEspecifica.getValueAt(x, 4));
+            print.setValorCompras(var);
             print.setCodVendResp((int) tblRegiaoEspecifica.getValueAt(x, 5));
             print.setVendResp((String) tblRegiaoEspecifica.getValueAt(x, 6));
 
@@ -483,7 +498,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
         txtAtivo.setText(String.valueOf(ativo));
         txtInativo.setText(String.valueOf(inativo));
         txtqtdTotalCompras.setText(String.valueOf(qtdVendas));
-        
+
         NumberFormat calculo;
         calculo = NumberFormat.getInstance();
         calculo.setMinimumFractionDigits(2);
@@ -524,7 +539,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                     pessoaFisica.getNome(),
                                     pessoaFisica.getCidade(),
                                     1,
-                                    ListarNotaFiscal.get(x).getTotal(),
+                                    formatador.format(ListarNotaFiscal.get(x).getTotal()),
                                     pessoaFisica.getCod_vend_resp(),
                                     pessoaFisica.getVendedor_responsavel()};
 
@@ -540,7 +555,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                     pessoaJuridica.getNome(),
                                     pessoaJuridica.getCidade(),
                                     0,
-                                    0.0,
+                                    "0,0",
                                     pessoaJuridica.getCod_vend_resp(),
                                     pessoaJuridica.getVendedor_responsavel()};
 
@@ -558,8 +573,13 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                 for (int c = 0; c < tblRegiaoEspecifica.getRowCount(); c++) {
                                     if (pessoaFisica.getCodigo().equals((String) tblRegiaoEspecifica.getValueAt(c, 0))) {
                                         tblRegiaoEspecifica.setValueAt((int) tblRegiaoEspecifica.getValueAt(c, 3) + 1, c, 3);
-                                        tblRegiaoEspecifica.setValueAt((double) tblRegiaoEspecifica.getValueAt(c, 4)
-                                                + ListarNotaFiscal.get(x).getTotal(), c, 4);
+
+                                        //gambi
+                                        String a = (String) tblRegiaoEspecifica.getValueAt(c, 4);
+                                        a = a.replace(",", ".");
+                                        double b = Double.parseDouble(a);
+                                        tblRegiaoEspecifica.setValueAt(formatador.format(b
+                                                + ListarNotaFiscal.get(x).getTotal()), c, 4);
                                         encontrou = 1;
                                     }
                                 }
@@ -569,7 +589,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                         pessoaFisica.getNome(),
                                         pessoaFisica.getCidade(),
                                         1,
-                                        ListarNotaFiscal.get(x).getTotal(),
+                                        formatador.format(ListarNotaFiscal.get(x).getTotal()),
                                         pessoaFisica.getCod_vend_resp(),
                                         pessoaFisica.getVendedor_responsavel()};
 
@@ -585,8 +605,14 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                 for (int c = 0; c < tblRegiaoEspecifica.getRowCount(); c++) {
                                     if (pessoaJuridica.getCodigo().equals((String) tblRegiaoEspecifica.getValueAt(c, 0))) {
                                         tblRegiaoEspecifica.setValueAt((int) tblRegiaoEspecifica.getValueAt(c, 3) + 1, c, 3);
-                                        tblRegiaoEspecifica.setValueAt((double) tblRegiaoEspecifica.getValueAt(c, 4)
-                                                + ListarNotaFiscal.get(x).getTotal(), c, 4);
+
+                                        //gambi
+                                        String a = (String) tblRegiaoEspecifica.getValueAt(c, 4);
+                                        a = a.replace(",", ".");
+                                        double b = Double.parseDouble(a);
+                                        tblRegiaoEspecifica.setValueAt(formatador.format(b
+                                                + ListarNotaFiscal.get(x).getTotal()), c, 4);
+
                                         encontrou = 1;
                                     }
                                 }
@@ -596,7 +622,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                                         pessoaJuridica.getNome(),
                                         pessoaJuridica.getCidade(),
                                         1,
-                                        ListarNotaFiscal.get(x).getTotal(),
+                                        formatador.format(ListarNotaFiscal.get(x).getTotal()),
                                         pessoaJuridica.getCod_vend_resp(),
                                         pessoaJuridica.getVendedor_responsavel()};
 
@@ -625,7 +651,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                         ListarPessoasFisicas.get(x).getNome(),
                         ListarPessoasFisicas.get(x).getCidade(),
                         0,
-                        0.0,
+                        "0,0",
                         ListarPessoasFisicas.get(x).getCod_vend_resp(),
                         ListarPessoasFisicas.get(x).getVendedor_responsavel()};
 
@@ -648,7 +674,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
                         ListarPessoasJuridicas.get(x).getNome(),
                         ListarPessoasJuridicas.get(x).getCidade(),
                         0,
-                        0.0,
+                        "0,0",
                         ListarPessoasJuridicas.get(x).getCod_vend_resp(),
                         ListarPessoasJuridicas.get(x).getVendedor_responsavel()};
 
@@ -697,7 +723,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             }
         });
     }
-
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private int flagLimpaTabela1 = 0;
     private DefaultTableModel modelo = null;
     private Conexao conexao;
@@ -757,4 +783,13 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
     private javax.swing.JTextField txtValorCompras;
     private javax.swing.JTextField txtqtdTotalCompras;
     // End of variables declaration//GEN-END:variables
+
+    public double converte(String arg) throws ParseException {
+        //obtem um NumberFormat para o Locale default (BR)
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        //converte um nÃºmero com vÃ­rgulas ex: 2,56 para double
+        double number = nf.parse(arg).doubleValue();
+        return number;
+    }
+
 }

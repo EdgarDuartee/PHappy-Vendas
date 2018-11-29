@@ -30,7 +30,7 @@ public class DaoGerarPedido {
                         rs.getString("dtPedido"),
                         rs.getFloat("TotalPedido"),
                         rs.getInt("Situacao"));
-                        pedido.setClienteNome(rs.getString("clienteNome"));
+                pedido.setClienteNome(rs.getString("clienteNome"));
 
             }
         } catch (SQLException ex) {
@@ -197,13 +197,12 @@ public class DaoGerarPedido {
         PreparedStatement ps = null;
         float media = 0;
         try {
-            ps = conn.prepareStatement("select avg(totalpedido) as Media from pedido where clientecod = ?");
+            ps = conn.prepareStatement("select avg(totalpedido) as Media from pedido where clientecod = ? and pedido.situacao = 4");
             ps.setString(1, clienteCod);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 media = rs.getFloat("Media");
-                System.out.println("Media = " + media);
             }
 
         } catch (SQLException ex) {
@@ -216,10 +215,16 @@ public class DaoGerarPedido {
         float frequencia = 0;
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("select ((select count(codigo) from pedido where clientecod = ?) / (select to_date(? , 'DD/MM/YYYY') - to_date(?, 'DD/MM/YYYY') from dual) * 30) as frequencia from dual");
+//            ps = conn.prepareStatement("select ((select count(codigo) from pedido where clientecod = ?) / (select to_date(? , 'DD/MM/YYYY') - to_date(?, 'DD/MM/YYYY') from dual) * 30) as frequencia from dual");
+            ps = conn.prepareStatement("select ((select count(codigo) from pedido where clientecod = ? and situacao = 4)"
+                    + " / (case when (select to_date(? , 'DD/MM/YYYY') - to_date(?, 'DD/MM/YYYY') from dual) > 0 then "
+                    + "(select to_date(? , 'DD/MM/YYYY') - to_date(?, 'DD/MM/YYYY') from dual)"
+                    + " else 1 end)) * 30 as frequencia from dual");
             ps.setString(1, clienteCod);
             ps.setString(2, sysdate);
             ps.setString(3, DataCadastro);
+            ps.setString(4, sysdate);
+            ps.setString(5, DataCadastro);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -230,7 +235,6 @@ public class DaoGerarPedido {
             System.out.println(ex);
         }
 
-        System.out.println(frequencia);
         return frequencia;
     }
 
@@ -239,9 +243,10 @@ public class DaoGerarPedido {
         ArrayList<PedidoProduto> lista = new ArrayList<PedidoProduto>();
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("select produtocod as produto,sum(qtdproduto) as Quantidade from pedido "
-                    + "inner join pedido_produto on pedido.codigo = pedido_produto.pedidocod and pedido.clientecod = ? "
-                    + "group by pedido_produto.produtocod order by quantidade");
+            ps = conn.prepareStatement("select produtocod as produto,sum(qtdproduto) as Quantidade"
+                    + " from pedido inner join pedido_produto on "
+                    + "pedido.codigo = pedido_produto.pedidocod and pedido.clientecod = ? where pedido.situacao = 4 "
+                    + "group by pedido_produto.produtocod order by Quantidade desc");
             ps.setString(1, clienteCod);
             ResultSet rs = ps.executeQuery();
 
@@ -258,12 +263,12 @@ public class DaoGerarPedido {
 
         return lista;
     }
-    
+
     public float MaiorCompra(String clienteCod) {
         PreparedStatement ps = null;
         float Max = 0;
         try {
-            ps = conn.prepareStatement("select max(totalpedido) as Media from pedido where clientecod = ?");
+            ps = conn.prepareStatement("select max(totalpedido) as Media from pedido where clientecod = ? and pedido.situacao = 4");
             ps.setString(1, clienteCod);
 
             ResultSet rs = ps.executeQuery();

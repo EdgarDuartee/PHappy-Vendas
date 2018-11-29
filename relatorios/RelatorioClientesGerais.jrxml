@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1d63d28e-1f78-49a8-852c-a5d829bd5b52">
+	<property name="ireport.zoom" value="17.44940226888657"/>
+	<property name="ireport.x" value="44"/>
+	<property name="ireport.y" value="3818"/>
+	<style name="Heading 1" fontSize="16" isBold="true"/>
+	<style name="Style_1" fontSize="13" isItalic="false"/>
+	<style name="Style_2" hAlign="Center" fontSize="12" isBold="true" isItalic="false"/>
+	<style name="Heading" fontSize="14"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="frequencia" class="java.lang.Float"/>
+	<field name="maiorCompra" class="java.lang.Float"/>
+	<field name="mediaCompras" class="java.lang.Float"/>
+	<field name="produtoFavorito" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="115" splitType="Stretch">
+			<image>
+				<reportElement x="326" y="0" width="229" height="115" uuid="5f3c3733-c32f-41b0-b324-95baf33026ca"/>
+				<imageExpression><![CDATA["logotipo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="43" backcolor="#999999" uuid="ebc30b41-5caf-4ce8-9d1d-7d81d9cf7f10"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement style="Heading 1" x="0" y="0" width="555" height="43" uuid="2ad9421a-9b98-48ca-944c-2ef4cb23f5de"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[LISTA DOS CLIENTES COM AS MAIORES FREQUÊNCIA DE COMPRAS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement style="Style_2" x="0" y="2" width="126" height="31" uuid="50cb05f3-48fa-4bac-88b2-9efd514a3bee"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="126" y="2" width="100" height="31" uuid="5fc1f75e-7974-4f4b-94ea-304913e1fe70"/>
+				<text><![CDATA[FREQUÊNCIA DE COMPRA MENSAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="226" y="2" width="100" height="31" uuid="281b0ae9-b447-45af-a055-f7cca34817c9"/>
+				<text><![CDATA[MAIOR COMPRA REALIZADA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="326" y="2" width="100" height="31" uuid="2fa46069-5973-46e4-8645-115d6ea5148b"/>
+				<text><![CDATA[MÉDIA DE COMPRAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="426" y="2" width="129" height="31" uuid="fbac892b-ad72-4522-a9df-36cefdb73422"/>
+				<text><![CDATA[PRODUTO FAVORITO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement style="Style_1" mode="Transparent" x="0" y="0" width="126" height="33" uuid="f3f9a914-39f4-4e67-83e8-257cdbe7abb1"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="Style_1" mode="Transparent" x="226" y="0" width="100" height="33" uuid="7faad025-8c67-40a7-a509-63f2b2fd973b"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="Style_1" mode="Transparent" x="126" y="0" width="100" height="33" uuid="58fae5d9-f33a-452e-9976-0e69c81c8e38"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="Style_1" mode="Transparent" x="326" y="0" width="100" height="33" uuid="ca4d311f-10b9-454e-bce3-35472dc93413"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement style="Style_1" mode="Transparent" x="426" y="0" width="129" height="33" uuid="c1598dcc-a296-4180-9d57-c7c710b31200"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement style="Style_2" x="426" y="0" width="129" height="20" uuid="4ef01d2a-7e74-40bb-ac86-ee7705f92346"/>
+				<textFieldExpression><![CDATA[$F{produtoFavorito}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="226" y="0" width="100" height="20" uuid="31cadc6b-841f-4d0e-a373-465aede8f30f"/>
+				<textFieldExpression><![CDATA[$F{maiorCompra}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="326" y="0" width="100" height="20" uuid="5d2d107b-7e08-4249-b87c-bdd489a16bbf"/>
+				<textFieldExpression><![CDATA[$F{mediaCompras}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Transparent" x="126" y="1" width="100" height="19" uuid="2098798e-9f30-41bf-9d6d-b2b9bdfc8647"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="226" y="1" width="100" height="19" uuid="6e71df8d-bcb5-4449-a97d-4bfe4e900334"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="326" y="1" width="100" height="19" uuid="acfdf8fb-369d-4e49-928c-2a26972d0ec9"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="426" y="1" width="129" height="19" uuid="e3c15198-3189-4715-8e0c-77415c732842"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField>
+				<reportElement style="Style_2" x="0" y="1" width="126" height="20" uuid="f1f945ef-fd13-4d3a-b78e-9bf04ebf2fa2"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement style="Heading" mode="Transparent" x="0" y="1" width="126" height="19" uuid="66ad98b8-4caf-45e1-b72f-20dc589228e9"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="126" y="0" width="100" height="20" uuid="26ce49a3-a37f-4c15-ad88-6102a235c0eb"/>
+				<textFieldExpression><![CDATA[$F{frequencia}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="0" width="16" height="20" uuid="93b50f23-0f04-4ac3-9b79-eb260e788e53"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[às]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="306" y="0" width="60" height="20" uuid="078b7ea3-f3ea-4600-a0c6-d29817554a1d"/>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="256" y="0" width="50" height="20" uuid="8157a85d-2ed5-48b4-9273-44a7a9a92112"/>
+				<textElement>
+					<font fontName="Arial" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Página n°:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="366" height="1" uuid="944a53e2-9f5b-4265-9172-d4de6feb0ce8"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="140" height="20" uuid="f5bc85e8-4303-40d7-9ee8-9a7a9e53c665"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH.mm">
+				<reportElement x="156" y="0" width="100" height="20" uuid="75827899-171a-41af-9cd2-08d0df7fc09c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

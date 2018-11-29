@@ -382,12 +382,21 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblCidade" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblRua" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCidade" alignment="0" pref="193" max="32767" attributes="0"/>
-                                  <Component id="txtRua" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblCidade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblRua" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="139" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="txtRua" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtCidade" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblNumero" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtNumero" min="-2" pref="50" max="-2" attributes="0"/>
@@ -726,10 +735,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblSenha" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtSenha" min="-2" pref="275" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="lblSenha" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="txtSenha" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

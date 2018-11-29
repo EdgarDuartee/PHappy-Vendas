@@ -95,7 +95,6 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         txtCodigoPFisica = new javax.swing.JTextField();
         lblCodigoPF = new javax.swing.JLabel();
         ftxtConsultarCPF = new javax.swing.JFormattedTextField();
-        lblAlterar = new javax.swing.JLabel();
         Painel_Pessoa_Juridica = new javax.swing.JPanel();
         Painel_Cadastro = new javax.swing.JPanel();
         lblNome_Fantasia = new javax.swing.JLabel();
@@ -150,7 +149,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         lblCelular1 = new javax.swing.JLabel();
         txtCodigoPJ = new javax.swing.JTextField();
         lvlCodigo_PJ = new javax.swing.JLabel();
-        lblImagem_Alterar = new javax.swing.JLabel();
+        lblAlterar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alterar Cliente");
@@ -261,14 +260,15 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                                 .addComponent(lblRG, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(81, 81, 81)
                         .addComponent(lblData_Nascimento))
-                    .addGroup(Painel_Contato_Pessoa_FisicaLayout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(ftxtRGPF, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addComponent(ftxtData_NascPF, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtEmailPF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVendedor_Responsável)
-                    .addComponent(cbxVendedorRespPF, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Painel_Contato_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cbxVendedorRespPF, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtEmailPF, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_Contato_Pessoa_FisicaLayout.createSequentialGroup()
+                            .addGap(116, 116, 116)
+                            .addComponent(ftxtRGPF, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(25, 25, 25)
+                            .addComponent(ftxtData_NascPF, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         Painel_Contato_Pessoa_FisicaLayout.setVerticalGroup(
@@ -359,8 +359,12 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         Painel_EndereçoLayout.setHorizontalGroup(
             Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_EndereçoLayout.createSequentialGroup()
-                .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Painel_EndereçoLayout.createSequentialGroup()
+                .addComponent(lblComplemento)
+                .addGap(0, 319, Short.MAX_VALUE))
+            .addGroup(Painel_EndereçoLayout.createSequentialGroup()
+                .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtComplementoPF)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_EndereçoLayout.createSequentialGroup()
                         .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCidade)
                             .addComponent(txtCidadePF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,10 +372,10 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                         .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCEP)
                             .addComponent(ftxtCEPPF, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblRua)
-                    .addComponent(lblBairro)
-                    .addComponent(txtRuaPF, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                    .addComponent(txtBairroPF))
+                    .addComponent(lblRua, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBairro, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtRuaPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                    .addComponent(txtBairroPF, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
                 .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,11 +383,6 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                     .addComponent(lblUF)
                     .addComponent(cbx_UFPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(Painel_EndereçoLayout.createSequentialGroup()
-                .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblComplemento)
-                    .addComponent(txtComplementoPF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_EndereçoLayout.setVerticalGroup(
             Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,7 +413,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                 .addComponent(lblComplemento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtComplementoPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         btnLimparPFisica.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
@@ -483,50 +482,43 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        lblAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imagem Alterar.png"))); // NOI18N
-
         javax.swing.GroupLayout Painel_Pessoa_FisicaLayout = new javax.swing.GroupLayout(Painel_Pessoa_Fisica);
         Painel_Pessoa_Fisica.setLayout(Painel_Pessoa_FisicaLayout);
         Painel_Pessoa_FisicaLayout.setHorizontalGroup(
             Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_FisicaLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(lblCPF_Cliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ftxtConsultarCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addComponent(btnConsultarPFisica))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_FisicaLayout.createSequentialGroup()
                         .addComponent(btnVoltarPFisica)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnLimparPFisica)
-                        .addGap(47, 47, 47))
-                    .addComponent(Painel_Contato_Pessoa_Fisica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(47, 47, 47)))
+                .addGap(65, 65, 65)
+                .addComponent(lblSituacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblCodigoPF)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCodigoPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Painel_Contato_Pessoa_Fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(lblSituacao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCodigoPF)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_FisicaLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(Painel_Pessoa_FisicaLayout.createSequentialGroup()
-                                .addComponent(btnAlterarPFisica)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDesativarPF))
-                            .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))))
+                        .addComponent(btnAlterarPFisica)
+                        .addGap(165, 165, 165)
+                        .addComponent(btnDesativarPF))
+                    .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         Painel_Pessoa_FisicaLayout.setVerticalGroup(
             Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -540,17 +532,15 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                     .addComponent(lblCodigoPF)
                     .addComponent(txtCodigoPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Painel_Contato_Pessoa_Fisica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Painel_Endereço, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnAlterarPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnLimparPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnVoltarPFisica))
+                    .addComponent(Painel_Contato_Pessoa_Fisica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(Painel_Pessoa_FisicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAlterarPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparPFisica, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltarPFisica)
                     .addComponent(btnDesativarPF))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
@@ -590,19 +580,22 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
             Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_CadastroLayout.createSequentialGroup()
                 .addGroup(Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEmail_PJ)
-                    .addComponent(lblVendedor_Responsável_PJ)
-                    .addComponent(cbxVendedorRespPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Painel_CadastroLayout.createSequentialGroup()
-                        .addGroup(Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtEmailPJ, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(txtNome_Fantasia, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNome_Fantasia, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(23, 23, 23)
                         .addGroup(Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCNPJ)
-                            .addComponent(ftxtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                            .addComponent(lblEmail_PJ)
+                            .addComponent(lblVendedor_Responsável_PJ)
+                            .addGroup(Painel_CadastroLayout.createSequentialGroup()
+                                .addGroup(Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtNome_Fantasia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblNome_Fantasia, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(23, 23, 23)
+                                .addGroup(Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblCNPJ)
+                                    .addComponent(ftxtCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtEmailPJ)
+                    .addComponent(cbxVendedorRespPJ, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         Painel_CadastroLayout.setVerticalGroup(
             Painel_CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,11 +670,13 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
             .addGroup(Painel_Endereço_PJLayout.createSequentialGroup()
                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRua_PJ)
+                    .addComponent(lblComplemento_PJ)
                     .addGroup(Painel_Endereço_PJLayout.createSequentialGroup()
-                        .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblBairro_PJ)
-                            .addComponent(txtRuaPJ, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addGroup(Painel_Endereço_PJLayout.createSequentialGroup()
+                        .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtComplementoPJ, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBairro_PJ, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRuaPJ, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Painel_Endereço_PJLayout.createSequentialGroup()
                                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCidade_PJ)
                                     .addComponent(txtCidadePJ, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -689,15 +684,13 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
                                 .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblCEP_PJ)
                                     .addComponent(ftxtCEP_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtBairroPJ))
+                            .addComponent(txtBairroPJ, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(23, 23, 23)
                         .addGroup(Painel_Endereço_PJLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNumeroPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblUF_PJ)
                             .addComponent(cbxUF_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNumero_PJ)))
-                    .addComponent(lblComplemento_PJ)
-                    .addComponent(txtComplementoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNumero_PJ))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         Painel_Endereço_PJLayout.setVerticalGroup(
@@ -945,8 +938,6 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         lvlCodigo_PJ.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lvlCodigo_PJ.setText("Código");
 
-        lblImagem_Alterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imagem Alterar.png"))); // NOI18N
-
         javax.swing.GroupLayout Painel_Pessoa_JuridicaLayout = new javax.swing.GroupLayout(Painel_Pessoa_Juridica);
         Painel_Pessoa_Juridica.setLayout(Painel_Pessoa_JuridicaLayout);
         Painel_Pessoa_JuridicaLayout.setHorizontalGroup(
@@ -954,94 +945,93 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
             .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                        .addComponent(lblImagem_Alterar)
-                        .addGap(18, 18, 18)
-                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                                .addComponent(btnVoltarPJuridica)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLimparPJuridica)
-                                .addGap(93, 93, 93))
-                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                                .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Painel_Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
-                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                                .addComponent(btnAlterarPJuridica)
-                                .addGap(165, 165, 165)
-                                .addComponent(btnDesativarPJ))
-                            .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                        .addGap(277, 277, 277)
                         .addComponent(lblCNPJ_Cliente_PJ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ftxtConsultarCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnConsultarPJuridica)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(lblSituacao_PJ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtSituacao_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
                         .addComponent(lvlCodigo_PJ)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCodigoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_JuridicaLayout.createSequentialGroup()
+                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
+                                .addComponent(btnVoltarPJuridica)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimparPJuridica))
+                            .addComponent(Painel_Contato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(Painel_Cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(btnAlterarPJuridica)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDesativarPJ)))
+                        .addGap(278, 278, 278)))
                 .addContainerGap())
         );
         Painel_Pessoa_JuridicaLayout.setVerticalGroup(
             Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCodigoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lvlCodigo_PJ))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSituacao_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSituacao_PJ)))
-                    .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnConsultarPJuridica, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
-                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCNPJ_Cliente_PJ)
-                            .addComponent(ftxtConsultarCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCNPJ_Cliente_PJ)
+                    .addComponent(ftxtConsultarCNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultarPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(lblSituacao_PJ)
+                    .addComponent(txtSituacao_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lvlCodigo_PJ)
+                    .addComponent(txtCodigoPJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
                 .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblImagem_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Painel_Pessoa_JuridicaLayout.createSequentialGroup()
-                                .addComponent(Painel_Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(Painel_Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Painel_Endereço_PJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(Painel_Pessoa_JuridicaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAlterarPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDesativarPJ)
-                    .addComponent(btnLimparPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVoltarPJuridica))
+                    .addComponent(btnVoltarPJuridica)
+                    .addComponent(btnLimparPJuridica, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
         Painel_Alterar.addTab("Pessoa Jurídica", Painel_Pessoa_Juridica);
 
+        lblAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imagem Alterar.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Painel_Alterar)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblAlterar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Painel_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Painel_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(lblAlterar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -1433,7 +1423,6 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblData_Nascimento;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail_PJ;
-    private javax.swing.JLabel lblImagem_Alterar;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblNome_Fantasia;
     private javax.swing.JLabel lblNumero;

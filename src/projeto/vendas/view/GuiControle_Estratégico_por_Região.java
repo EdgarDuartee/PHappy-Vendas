@@ -33,6 +33,7 @@ import projeto.vendas.tabelas.GuiControleEstrategicoRegiaoGeral;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -62,6 +63,10 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiao.getModel();
         tblRegiao.setRowSorter(new TableRowSorter(modelo));
+
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
 
     }
 
@@ -155,9 +160,9 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
             .addGroup(Painel_Período_PesquisaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ftxtData_Inicial)
-                    .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(lblData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ftxtData_Inicial, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 16, Short.MAX_VALUE)
                 .addGroup(Painel_Período_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Período_PesquisaLayout.createSequentialGroup()
                         .addComponent(lblData_Final)
@@ -200,40 +205,40 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
         tblRegiao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"AC", "ACRE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"AL", "ALAGOAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"AM", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"AP", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"BA", "BAHIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"CE", "CEARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"DF", "DISTRITO FEDERAL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"ES", "ESPIRITO SANTO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"GO", "GOIÁS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MA", "MARANHÃO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MT", "MATO GROSSO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MS", "MATO GROSSO DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"MG", "MINAS GERAIS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PA", "PARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PB", "PARAÍBA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PR", "PARANÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PE", "PERNAMBUCO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"PI", "PIAUÍ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RJ", "RIO DE JANEIRO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RN", "RIO GRANDE DO NORTE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RS", "RIO GRANDE DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RO", "RONDÔNIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"RR", "RORAIMA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"SC", "SANTA CATARINA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"SP", "SÃO PAULO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"SE", "SERGIPE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)},
-                {"TO", "TOCANTINS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0),  new Double(0.0)}
+                {"AC", "ACRE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"AL", "ALAGOAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"AM", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"AP", "AMAZONAS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"BA", "BAHIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"CE", "CEARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"DF", "DISTRITO FEDERAL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"ES", "ESPIRITO SANTO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"GO", "GOIÁS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"MA", "MARANHÃO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"MT", "MATO GROSSO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"MS", "MATO GROSSO DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"MG", "MINAS GERAIS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"PA", "PARÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"PB", "PARAÍBA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"PR", "PARANÁ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"PE", "PERNAMBUCO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"PI", "PIAUÍ",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"RJ", "RIO DE JANEIRO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"RN", "RIO GRANDE DO NORTE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"RS", "RIO GRANDE DO SUL",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"RO", "RONDÔNIA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"RR", "RORAIMA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"SC", "SANTA CATARINA",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"SP", "SÃO PAULO",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"SE", "SERGIPE",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"},
+                {"TO", "TOCANTINS",  new Integer(0),  new Integer(0),  new Integer(0),  new Integer(0), "0"}
             },
             new String [] {
                 "UF", "Nome", "Qtd clientes", "Qtd clientes PF", "Qtd clientes PJ", "Qtd de Vendas", "Valor Total vendas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -394,7 +399,11 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         ListarPessoasFisicas = daoPFisica.ListarPessoasFisicas();
         ListarPessoasJuridicas = daoPJrudica.ListarPessoasJuridicas();
 
-        preencheTabelaRegiao(ListarNotaFiscal);
+        try {
+            preencheTabelaRegiao(ListarNotaFiscal);
+        } catch (ParseException ex) {
+            Logger.getLogger(GuiControle_Estratégico_por_Região.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         preencheQtdCliente();
         if (flagLimpaTabela == 1) {
@@ -432,7 +441,12 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                     print.setQtdCliPF((int) tblRegiao.getValueAt(x, 3));
                     print.setQtdCliPJ((int) tblRegiao.getValueAt(x, 4));
                     print.setQtdVendas((int) tblRegiao.getValueAt(x, 5));
-                    print.setValorVendas((double) tblRegiao.getValueAt(x, 6));
+
+                    //gambi
+                    String a = (String) tblRegiao.getValueAt(x, 6);
+                    a = a.replace(",", ".");
+                    double var = Double.parseDouble(a);
+                    print.setValorVendas(var);
 
                     lista.add(print);
                 }
@@ -448,7 +462,12 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 print.setQtdCliPF((int) tblRegiao.getValueAt(x, 3));
                 print.setQtdCliPJ((int) tblRegiao.getValueAt(x, 4));
                 print.setQtdVendas((int) tblRegiao.getValueAt(x, 5));
-                print.setValorVendas((double) tblRegiao.getValueAt(x, 6));
+
+                //gambi
+                String a = (String) tblRegiao.getValueAt(x, 6);
+                a = a.replace(",", ".");
+                double var = Double.parseDouble(a);
+                print.setValorVendas(var);
 
                 lista.add(print);
             }
@@ -475,21 +494,27 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     private void btnRegiaoEspecificoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiaoEspecificoActionPerformed
         if (tblRegiao.getSelectedRow() >= 0) {
             preencheAtivo();
+                                        
+                            //gambi
+                    String a = (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 6);
+                    a = a.replace(",", ".");
+                    double var = Double.parseDouble(a);
+                    
             GuiControle_Estratégico_por_Região_Especifica GUI
-            = new GuiControle_Estratégico_por_Região_Especifica(login,
-                (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 0),
-                (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 1),
-                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 2),
-                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 3),
-                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 4),
-                (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
-                (double) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 6),
-                ListarNotaFiscal,
-                ftxtData_Inicial.getText(),
-                ftxtData_Final.getText(),
-                ativo,
-                inativo,
-                ListarPessoasFisicas, ListarPessoasJuridicas);
+                    = new GuiControle_Estratégico_por_Região_Especifica(login,
+                            (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 0),
+                            (String) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 1),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 2),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 3),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 4),
+                            (int) tblRegiao.getValueAt(tblRegiao.getSelectedRow(), 5),
+                            var,
+                            ListarNotaFiscal,
+                            ftxtData_Inicial.getText(),
+                            ftxtData_Final.getText(),
+                            ativo,
+                            inativo,
+                            ListarPessoasFisicas, ListarPessoasJuridicas);
             GUI.setVisible(true);
 
         } else {
@@ -532,6 +557,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
         });
     }
 
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private int ativo;
     private int inativo;
     private static DecimalFormat formatoDinheiro = new DecimalFormat("#.##");
@@ -577,8 +603,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     private javax.swing.JTable tblRegiao;
     // End of variables declaration//GEN-END:variables
 
-    public void preencheTabelaRegiao(ArrayList<NotaFiscal> ListarNotaFiscal) {
-        
+    public void preencheTabelaRegiao(ArrayList<NotaFiscal> ListarNotaFiscal) throws ParseException {
+
         int diaI = parseInt(ftxtData_Inicial.getText().substring(0, 2));
         int mesI = parseInt(ftxtData_Inicial.getText().substring(3, 5));
         int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
@@ -610,8 +636,8 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                                 int qtd = (int) tblRegiao.getValueAt(a, 5);
                                 tblRegiao.setValueAt(qtd + 1, a, 5);
 
-                                double valor = (double) tblRegiao.getValueAt(a, 6);
-                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 6);
+                                double valor = converte((String) tblRegiao.getValueAt(a, 6));
+                                tblRegiao.setValueAt(formatador.format(valor + ListarNotaFiscal.get(x).getTotal()), a, 6);
                                 flagLimpaTabela = 1;
                             }
                         }
@@ -623,7 +649,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                                 tblRegiao.setValueAt(qtd + 1, a, 5);
 
                                 double valor = (double) tblRegiao.getValueAt(a, 6);
-                                tblRegiao.setValueAt(valor + ListarNotaFiscal.get(x).getTotal(), a, 6);
+                                tblRegiao.setValueAt(formatador.format(valor + ListarNotaFiscal.get(x).getTotal()), a, 6);
                                 flagLimpaTabela = 1;
                             }
                         }
@@ -693,5 +719,13 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                 }
             }
         }
+    }
+
+    public double converte(String arg) throws ParseException {
+        //obtem um NumberFormat para o Locale default (BR)
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        //converte um nÃºmero com vÃ­rgulas ex: 2,56 para double
+        double number = nf.parse(arg).doubleValue();
+        return number;
     }
 }

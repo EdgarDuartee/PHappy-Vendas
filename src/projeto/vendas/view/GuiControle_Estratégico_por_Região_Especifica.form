@@ -279,7 +279,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="ftxtData_Inicial" max="32767" attributes="0"/>
+                      <Component id="ftxtData_Inicial" pref="70" max="32767" attributes="0"/>
                       <Component id="lblData_Inicial" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -404,7 +404,7 @@
                         <Column editable="true" title="Nome" type="java.lang.String"/>
                         <Column editable="true" title="Cidade" type="java.lang.String"/>
                         <Column editable="true" title="Qtd Compras" type="java.lang.Integer"/>
-                        <Column editable="true" title="Valor das compras" type="java.lang.Double"/>
+                        <Column editable="true" title="Valor das compras" type="java.lang.Object"/>
                         <Column editable="true" title="Codigo do vendedor responsavel" type="java.lang.Integer"/>
                         <Column editable="true" title="Nome do vendedor responsavel" type="java.lang.String"/>
                       </Table>
