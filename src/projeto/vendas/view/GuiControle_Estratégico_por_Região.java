@@ -63,7 +63,6 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
 
         DefaultTableModel modelo = (DefaultTableModel) tblRegiao.getModel();
         tblRegiao.setRowSorter(new TableRowSorter(modelo));
-
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);

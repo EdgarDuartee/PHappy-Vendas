@@ -56,7 +56,7 @@ public class Conexao {
 //        this.connectionString = "jdbc:oracle:thin:@Apolo:1521:xe";
 
         //setar conexao Cleiton
-//       this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
+       this.connectionString = "jdbc:oracle:thin:@localhost:1521:xe";
         
    }
 
