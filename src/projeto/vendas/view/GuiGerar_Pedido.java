@@ -334,7 +334,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -464,7 +464,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         btnGerar_Orcamento.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         btnGerar_Orcamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imprimir.png"))); // NOI18N
-        btnGerar_Orcamento.setText("Gerar Orçamento");
+        btnGerar_Orcamento.setText("Imprimir Pedido");
         btnGerar_Orcamento.setEnabled(false);
         btnGerar_Orcamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -579,6 +579,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             txtCPF_CNPJ.setEnabled(true);
             btnGerar_Orcamento.setEnabled(true);
             btnLimpar.setEnabled(true);
+            
         }
 
     }//GEN-LAST:event_btnEnviar_PedidoActionPerformed
@@ -654,7 +655,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private void cbxProdutoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxProdutoItemStateChanged
         if (flag == 0) {
             lbl_QtdEstoque.setText("" + listaProdutos.get(cbxProduto.getSelectedIndex()).getQtdEstoque());
-            lbl_ValorUnit.setText(formatador.format(listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()));
+            lbl_ValorUnit.setText(formatador.format(listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()) + " R$");
         }
     }//GEN-LAST:event_cbxProdutoItemStateChanged
 
@@ -672,7 +673,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     Object[] row = {
                         listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(),
                         cbxProduto.getSelectedItem().toString(),
-                        listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(),
+                        formatador.format(listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()),
                         cbxQuantidade.getValue(),
                         formatador.format((((Integer) cbxQuantidade.getValue())
                         * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())))};
@@ -719,7 +720,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                     Object[] row = {
                         listaProdutos.get(cbxProduto.getSelectedIndex()).getCodigo(),
                         cbxProduto.getSelectedItem().toString(),
-                        listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario(),
+                        formatador.format(listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()),
                         cbxQuantidade.getValue(),
                         formatador.format(((Integer) cbxQuantidade.getValue())
                         * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario()))};
@@ -893,6 +894,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         cbxQuantidade.setValue(0);
 
         btnLimpar.setEnabled(false);
+        btn_consultar.setEnabled(true);
         int limite = tblProduto.getModel().getRowCount();
         DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
         for (int i = 0; i < limite; i++) {

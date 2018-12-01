@@ -97,8 +97,8 @@ public class DaoEmitirNotaFiscal {
             ps.setFloat(17, nf.getValorfrete());
             ps.setString(18, nf.getPlacaVeiculo());
             ps.setFloat(19, nf.getValorSeguro());
-            ps.setString(20, nf.getEndereco());
-            ps.setString(21, nf.getCNPJ_CPF());
+            ps.setString(20, nf.getCNPJ_CPF());
+            ps.setString(21, nf.getEndereco());
             ps.setString(22, nf.getBAIRRO());
             ps.setString(23, nf.getMUNICIPIO());
             ps.setString(24, nf.getTELEFONE());

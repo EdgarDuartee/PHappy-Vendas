@@ -525,7 +525,7 @@
                   <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
                     <Column editable="false" title="Nome" type="java.lang.String"/>
-                    <Column editable="false" title="Pre&#xe7;o Unit." type="java.lang.Float"/>
+                    <Column editable="false" title="Pre&#xe7;o Unit." type="java.lang.Object"/>
                     <Column editable="false" title="Quantidade" type="java.lang.Integer"/>
                     <Column editable="false" title="Total Produto" type="java.lang.Object"/>
                   </Table>
@@ -656,7 +656,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/projeto/vendas/model/icones/Imprimir.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Gerar Or&#xe7;amento"/>
+        <Property name="text" type="java.lang.String" value="Imprimir Pedido"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
