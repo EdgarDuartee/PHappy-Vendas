@@ -1124,7 +1124,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         } else {
             TipoNota = "Entrada";
         }
-        txtNumero_Nota_Fiscal.setText("" + daoEmitirNF.getProximoCodigo());
+        txtNumero_Nota_Fiscal.setText(String.format("%09d", daoEmitirNF.getProximoCodigo()));
         nf = new NotaFiscal(Integer.parseInt(txtNumero_Nota_Fiscal.getText()), Integer.parseInt(txtSerie_Nota_Fiscal.getText()), recebePedido.getCodigo(), TipoNota, cbxCFOP.getSelectedItem().toString(), recebePedido.getTotal(), ftxtData_Emissao.getText(), ftxtHora_Emissao.getText(), recebePedido.getCodigo());
         nf.setIPI(Float.parseFloat(txtValor_IPI.getText().replace(",", ".")));
         txtValor_ICMS.setText("" + Float.parseFloat(txtValor_Total_Nota.getText().replace(",", ".")) * (float) 0.18);
@@ -1144,20 +1144,49 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         nf.setPesoBruto(pesobruto);
         nf.setQuantidade(quantidadeProdutos);
         /*montando a chave de acesso
-        35 código do estado,
-        Ano de Emissao        
-        Mes De Emissao
-        CNPJ DA EMPRESA EMITENTE
-        55 MODELO DA NOTA FISCAL
-        
-        
+        *********************************************************
+        35 código do estado,                                    *
+        Ano de Emissao                                          *   
+        Mes De Emissao                                          *
+        CNPJ DA EMPRESA EMITENTE                                *
+        55 MODELO DA NOTA FISCAL                                *
+        Serie da Nota Fiscal                                    *
+        Numero Sequencial da Nota Fiscal                        *
+        Numero Randomico Gerado Pelo Sistema                    *
+        *********************************************************
+        Montando a Chave de Acesso da Nota Fiscal.
          */
+ String chaveAcesso = "";
+        for (int i = 0; i < 9; i++) {
+            int x = (int) (Math.random() * 10);
+            chaveAcesso = chaveAcesso + x;
 
+        }
 
- /*    System.out.println(nf.getIPI() + "," + nf.getBaseICMS() + "," + nf.getBaseICMS() + "," + nf.getNaturezaDaOperacao() + ","
-                + nf.getEndereco() + "," + nf.getBAIRRO() + "," + nf.getMUNICIPIO() + "," + nf.getTELEFONE() + "," + nf.getUF() + ","
-                + nf.getCEP() + "," + nf.getInscricaoEstadual());*/
-        System.out.println(nf.getCNPJ_CPF());
+        chaveAcesso = ("35" + ftxtData_Emissao.getText().substring(8, 10)+"" + ftxtData_Emissao.getText().substring(3, 5)+"" + ftxtCNPJ_Emitente.getText().replaceAll("[-./]", "") + ""
+                + "55" + txtSerie_Nota_Fiscal.getText()+ "" + txtNumero_Nota_Fiscal.getText() + ""
+                + chaveAcesso);
+        
+        System.out.println("CHAVE DE ACESSO : " + chaveAcesso);
+        
+        int fator11 = 2, somatoria = 0, DV = 0;
+        for (int i = 42; i >= 0; i--) {
+            if (fator11 > 9) {
+
+                fator11 = 2;
+            }
+//            System.out.println(chaveAcesso.charAt(i) + "X" + fator11);
+            somatoria = somatoria + ((int) (chaveAcesso.charAt(i)) * fator11);
+            fator11++;
+        }
+//        System.out.println("Resto da Divisão = " + (somatoria % 11) );
+        
+        DV =   11 - (somatoria % 11); 
+        if(DV >= 10) {
+            DV = 0;
+        }
+        nf.setChaveAcesso(chaveAcesso + DV);
+        System.out.println(nf.getChaveAcesso());
         if (daoEmitirNF.inserir(nf)) {
             daoNotaFiscalItems.inserir(nfItens);
             daoGerarPedido.Faturar(recebePedido.getCodigo());
@@ -1357,10 +1386,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
 
         }
 
-        chaveAcesso = (("35" + ftxtData_Emissao.getText().substring(8, 10) + ftxtData_Emissao.getText().substring(3, 5) + ftxtCNPJ_Emitente.getText().replaceAll("[-./]", "")
+        chaveAcesso = ("35" + ftxtData_Emissao.getText().substring(8, 10) + ftxtData_Emissao.getText().substring(3, 5) + ftxtCNPJ_Emitente.getText().replaceAll("[-./]", "")
                 + "55" + txtSerie_Nota_Fiscal.getText() + txtNumero_Nota_Fiscal.getText()
-                + chaveAcesso));
+                + chaveAcesso);
+        
         System.out.println("CHAVE DE ACESSO : " + chaveAcesso);
+        
         int fator11 = 2, somatoria = 0, DV = 0;
         for (int i = 42; i >= 0; i--) {
             if (fator11 > 9) {
