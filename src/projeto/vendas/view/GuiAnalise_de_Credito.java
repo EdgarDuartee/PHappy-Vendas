@@ -10,6 +10,9 @@ import java.awt.Toolkit;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -534,7 +537,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             pedido.getClienteCod(),
                             nome,
                             pedido.getDtPedido(),
-                            pedido.getTotal(),
+                            formatador.format(pedido.getTotal()),
                             legendaSituacao};
 
                         model = (DefaultTableModel) tblPedido.getModel();
@@ -624,7 +627,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                     pedidosPorCod.get(x).getClienteCod(),
                                                     nome,
                                                     pedidosPorCod.get(x).getDtPedido(),
-                                                    pedidosPorCod.get(x).getTotal(),
+                                                    formatador.format(pedidosPorCod.get(x).getTotal()),
                                                     legendaSituacao};
 
                                                 model = (DefaultTableModel) tblPedido.getModel();
@@ -660,7 +663,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                 pedidosPorCod.get(x).getClienteCod(),
                                                 nome,
                                                 pedidosPorCod.get(x).getDtPedido(),
-                                                pedidosPorCod.get(x).getTotal(),
+                                                formatador.format(pedidosPorCod.get(x).getTotal()),
                                                 legendaSituacao};
 
                                             model = (DefaultTableModel) tblPedido.getModel();
@@ -749,7 +752,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                     pedidos.get(x).getClienteCod(),
                                     nome,
                                     pedidos.get(x).getDtPedido(),
-                                    pedidos.get(x).getTotal(),
+                                    formatador.format(pedidos.get(x).getTotal()),
                                     legendaSituacao};
 
                                 model = (DefaultTableModel) tblPedido.getModel();
@@ -785,7 +788,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                 pedidos.get(x).getClienteCod(),
                                 nome,
                                 pedidos.get(x).getDtPedido(),
-                                pedidos.get(x).getTotal(),
+                                formatador.format(pedidos.get(x).getTotal()),
                                 legendaSituacao};
 
                             model = (DefaultTableModel) tblPedido.getModel();
@@ -928,6 +931,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         });
     }
 
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private int flag = 0;
     private Conexao conexao;
     private DaoProduto daoProduto = null;
@@ -978,5 +982,13 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         }
         return true;
+    }
+
+        public double converte(String arg) throws ParseException {
+        //obtem um NumberFormat para o Locale default (BR)
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        //converte um nÃºmero com vÃ­rgulas ex: 2,56 para double
+        double number = nf.parse(arg).doubleValue();
+        return number;
     }
 }
