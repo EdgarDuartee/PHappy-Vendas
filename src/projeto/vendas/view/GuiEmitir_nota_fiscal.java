@@ -1371,12 +1371,11 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
             somatoria = somatoria + ((int) (chaveAcesso.charAt(i)) * fator11);
             fator11++;
         }
+        System.out.println("Resto da Divisão = " + (somatoria % 11) );
         
-        if(somatoria % 11 >= 10){
+        DV =   11 - (somatoria % 11); 
+        if(DV >= 10) {
             DV = 0;
-        }
-        else {
-         DV =   11 - (somatoria % 11); 
         }
         System.out.println("Digito Verificador = " + DV);
 
