@@ -14,15 +14,15 @@ import projeto.vendas.model.Login;
  *
  * @author Cleiton
  */
-public class GuiMenuVendedor extends javax.swing.JFrame {
+public class GuiMenuSupervisor extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
      */
-    public GuiMenuVendedor(Login login) {
+    public GuiMenuSupervisor(Login login) {
         initComponents();
 
-        GuiMenuVendedor.this.setTitle("Menu             " + "Usuário:  " + login.getNome()+
+        GuiMenuSupervisor.this.setTitle("Menu             " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
         this.login = login;
         
@@ -47,12 +47,18 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         jMenu_Cliente = new javax.swing.JMenu();
         jMenuItem_Pessoa_Física = new javax.swing.JMenuItem();
         jMenuItem_Pessoa_Jurídica = new javax.swing.JMenuItem();
+        jMenuItem_Vendedor = new javax.swing.JMenuItem();
         JMenuAlterar = new javax.swing.JMenu();
         jMenuItem_Alterar_Cliente = new javax.swing.JMenuItem();
+        jMenuItem_Alterar_Vendedor = new javax.swing.JMenuItem();
         jMenu_Gerar_Pedido = new javax.swing.JMenu();
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
         jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
         jMenuItem_PedidosAprovados = new javax.swing.JMenuItem();
+        jMenu_ControleEstrategico = new javax.swing.JMenu();
+        jMenuItem_PorCliente = new javax.swing.JMenuItem();
+        jMenuItem_PorVendedor = new javax.swing.JMenuItem();
+        jMenuItem_PorRegiao = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -88,6 +94,15 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
 
         jMenu_Cadastro.add(jMenu_Cliente);
 
+        jMenuItem_Vendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_Vendedor.setText("Vendedor");
+        jMenuItem_Vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_VendedorActionPerformed(evt);
+            }
+        });
+        jMenu_Cadastro.add(jMenuItem_Vendedor);
+
         jMenu.add(jMenu_Cadastro);
 
         JMenuAlterar.setText("Alterar");
@@ -101,6 +116,15 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
             }
         });
         JMenuAlterar.add(jMenuItem_Alterar_Cliente);
+
+        jMenuItem_Alterar_Vendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_Alterar_Vendedor.setText("Vendedor");
+        jMenuItem_Alterar_Vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_Alterar_VendedorActionPerformed(evt);
+            }
+        });
+        JMenuAlterar.add(jMenuItem_Alterar_Vendedor);
 
         jMenu.add(JMenuAlterar);
 
@@ -131,6 +155,38 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         jMenu_Pedidos_Aprovados.add(jMenuItem_PedidosAprovados);
 
         jMenu.add(jMenu_Pedidos_Aprovados);
+
+        jMenu_ControleEstrategico.setText("Controle Estratégico");
+        jMenu_ControleEstrategico.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+
+        jMenuItem_PorCliente.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_PorCliente.setText("Por Cliente");
+        jMenuItem_PorCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PorClienteActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem_PorCliente);
+
+        jMenuItem_PorVendedor.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_PorVendedor.setText("Por Vendedor");
+        jMenuItem_PorVendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PorVendedorActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem_PorVendedor);
+
+        jMenuItem_PorRegiao.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_PorRegiao.setText("Por Região");
+        jMenuItem_PorRegiao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_PorRegiaoActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem_PorRegiao);
+
+        jMenu.add(jMenu_ControleEstrategico);
 
         setJMenuBar(jMenu);
 
@@ -166,13 +222,33 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         new GuiGerar_Pedido(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_Gerar_PedidoActionPerformed
 
+    private void jMenuItem_VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_VendedorActionPerformed
+        new GuiCadastro_Vendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_VendedorActionPerformed
+
     private void jMenuItem_Alterar_ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Alterar_ClienteActionPerformed
         new GuiAlterar_Cliente(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_Alterar_ClienteActionPerformed
 
+    private void jMenuItem_Alterar_VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Alterar_VendedorActionPerformed
+        new GuiAlterar_Vendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_Alterar_VendedorActionPerformed
+
     private void jMenuItem_PedidosAprovadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PedidosAprovadosActionPerformed
         new GuiPedidos_Aprovados(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PedidosAprovadosActionPerformed
+
+    private void jMenuItem_PorRegiaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorRegiaoActionPerformed
+        new GuiControle_Estratégico_por_Região(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_PorRegiaoActionPerformed
+
+    private void jMenuItem_PorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorClienteActionPerformed
+        new GuiControle_Estratégico_por_Cliente(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_PorClienteActionPerformed
+
+    private void jMenuItem_PorVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PorVendedorActionPerformed
+        new GuiControle_Estratégico_por_Vendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_PorVendedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,13 +267,13 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiMenuSupervisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiMenuSupervisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiMenuSupervisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiMenuVendedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GuiMenuSupervisor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -211,7 +287,7 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiMenuVendedor(login).setVisible(true);
+                new GuiMenuSupervisor(login).setVisible(true);
             }
         });
     }
@@ -221,12 +297,18 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
+    private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;
     private javax.swing.JMenuItem jMenuItem_PedidosAprovados;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Física;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Jurídica;
+    private javax.swing.JMenuItem jMenuItem_PorCliente;
+    private javax.swing.JMenuItem jMenuItem_PorRegiao;
+    private javax.swing.JMenuItem jMenuItem_PorVendedor;
+    private javax.swing.JMenuItem jMenuItem_Vendedor;
     private javax.swing.JMenu jMenu_Cadastro;
     private javax.swing.JMenu jMenu_Cliente;
+    private javax.swing.JMenu jMenu_ControleEstrategico;
     private javax.swing.JMenu jMenu_Gerar_Pedido;
     private javax.swing.JMenu jMenu_Pedidos_Aprovados;
     private javax.swing.JLabel lblLogotipo;

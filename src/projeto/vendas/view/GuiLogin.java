@@ -23,7 +23,7 @@ public class GuiLogin extends javax.swing.JFrame {
 
     GuiMenuGerente MenuGerente;
     GuiMenuVendedor MenuVendedor;
-    GuiMenu_Supervisor MenuSupervisor;
+    GuiMenuSupervisor MenuSupervisor;
     
     
     /**
@@ -85,7 +85,7 @@ public class GuiLogin extends javax.swing.JFrame {
         lblSenha.setText("Senha");
 
         lblEsqueceuSenha.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblEsqueceuSenha.setText("Esqueceu sua Senha?");
+        lblEsqueceuSenha.setText("Em caso de problemas no login, entrar em contato com o adminstrador do sistema.");
 
         btnEntrar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/entrar.png"))); // NOI18N
@@ -105,27 +105,28 @@ public class GuiLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(146, 146, 146)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSenha)
                             .addComponent(ptxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblEsqueceuSenha)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lblUsuario))
-                        .addContainerGap(84, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(lblLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUsuario)))
+                    .addComponent(lblLogotipo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblEsqueceuSenha)
+                        .addGap(32, 32, 32))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +194,7 @@ public class GuiLogin extends javax.swing.JFrame {
                 }
                 else{
                     if(MenuSupervisor == null){
-                        MenuSupervisor = new GuiMenu_Supervisor(login);
+                        MenuSupervisor = new GuiMenuSupervisor(login);
                         MenuSupervisor.setVisible(true);
                     }
                 }
