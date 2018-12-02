@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -160,7 +161,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -521,7 +522,10 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         for (int i = 0; i < tblVendedor.getRowCount(); i++) {
             total = total + (int) model.getValueAt(i, 4);;
             
-            valorTotal = valorTotal + (double)model.getValueAt(i,5);
+            String a = (String)model.getValueAt(i,5);
+            a = a.replace(",",".");
+            double b = Double.parseDouble(a);
+            valorTotal = valorTotal + b;
         }
 
         txtQtdeTotalVendas.setText(String.valueOf(total));
@@ -545,6 +549,12 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         List lista = new ArrayList();
         for (int x = 0; x < tblVendedor.getRowCount(); x++) {
+            
+            //gambi
+            String a = (String) tblVendedor.getValueAt(x, 5);
+            a = a.replace(",", ".");
+            double var = Double.parseDouble(a);
+            
             GuiControleEstrategicoVendedorTBVendedoresGeral print
                     = new GuiControleEstrategicoVendedorTBVendedoresGeral();
 
@@ -553,7 +563,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             print.setCargo((String) tblVendedor.getValueAt(x, 2));
             print.setDtCadastro((String) tblVendedor.getValueAt(x, 3));
             print.setQtdeVendasPeriodo((int) tblVendedor.getValueAt(x, 4));
-            print.setValorVendasPeriodo((double) tblVendedor.getValueAt(x, 5));
+            print.setValorVendasPeriodo(var);
             System.out.println(print.getValorVendasPeriodo());
             print.setQtdeClientes((int) tblVendedor.getValueAt(x, 6));
             print.setAtivo((String) tblVendedor.getValueAt(x, 7));
@@ -633,7 +643,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
         });
     }
 
-    private static DecimalFormat formatoDinheiro = new DecimalFormat("#.##");
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private ArrayList<Vendedor> ListarVendedores;
     private ArrayList<NotaFiscal> ListarNotaFiscal;
     private static Login login = null;
@@ -758,7 +768,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                         funcao,
                         dtInicio,
                         0,
-                        0.0,
+                        "0,0",
                         0,
                         ativo,
                         dtInatividade
@@ -812,13 +822,18 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                             totalVendas = (int) tblVendedor.getValueAt(c, 4);
                             totalVendas++;
                             tblVendedor.getModel().setValueAt(totalVendas, c, 4);
-                            valorTotalVendas = (double)model.getValueAt(c, 5);
+                            
+                            //gambi
+                            String a = (String)model.getValueAt(c, 5);
+                            a= a.replace(",",".");
+                            valorTotalVendas = Double.parseDouble(a);
+                            
                             System.out.println((double) ListarNotaFiscal.get(x).getTotal());
                             valorTotalVendas = valorTotalVendas + (double) ListarNotaFiscal.get(x).getTotal();
                                                        System.out.println(valorTotalVendas);
                           
 
-                            tblVendedor.getModel().setValueAt(valorTotalVendas, c, 5);
+                            tblVendedor.getModel().setValueAt(formatador.format(valorTotalVendas), c, 5);
                         }
                     }
 
@@ -833,5 +848,13 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
             qtdeClientes = daoVendedor.contaClientePFPJ((int) tblVendedor.getValueAt(x, 0));
             tblVendedor.getModel().setValueAt(qtdeClientes, x, 6);
         }
+    }
+    
+        public double converte(String arg) throws ParseException {
+        //obtem um NumberFormat para o Locale default (BR)
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        //converte um nÃºmero com vÃ­rgulas ex: 2,56 para double
+        double number = nf.parse(arg).doubleValue();
+        return number;
     }
 }

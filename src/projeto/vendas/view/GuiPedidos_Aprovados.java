@@ -8,6 +8,7 @@ package projeto.vendas.view;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -159,16 +160,17 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
             if (ListaPedidos.get(i).getSituacao() == 1) {
                 if (ListaPedidos.get(i).getClienteCod().substring(0, 2).equals("PF")) {
                     pf = daoPFisica.consultar(ListaPedidos.get(i).getClienteCod());
-                    Object[] row = {ListaPedidos.get(i).getCodigo(),
+                    Object[] row = {
+                        ListaPedidos.get(i).getCodigo(),
                         "(" + ListaPedidos.get(i).getClienteCod() + ")   " + pf.getNome(),
-                        ListaPedidos.get(i).getTotal(),
+                        formatador.format(ListaPedidos.get(i).getTotal()),
                         "Aprovado"};
                     model.addRow(row);
                 } else {
                     pj = daoPJuridica.consultar(ListaPedidos.get(i).getClienteCod());
                     Object[] row = {ListaPedidos.get(i).getCodigo(),
                         "(" + ListaPedidos.get(i).getClienteCod() + ")   " + pj.getNome(),
-                        ListaPedidos.get(i).getTotal(),
+                        formatador.format(ListaPedidos.get(i).getTotal()),
                         "Aprovado"};
                     System.out.println(pj.getNome());
                     model.addRow(row);
@@ -231,6 +233,7 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
             }
         });
     }
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private static Login login = null;
     private DefaultTableModel model;
     private ArrayList<Pedido> ListaPedidos;

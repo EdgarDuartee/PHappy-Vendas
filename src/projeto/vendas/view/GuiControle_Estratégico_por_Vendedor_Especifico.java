@@ -16,6 +16,7 @@ import java.text.NumberFormat;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -510,7 +511,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -807,11 +808,16 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
         double valorTotal = 0;
         for (int i = 0; i < tblVendas.getRowCount(); i++) {
-            valorTotal = valorTotal + (double) model.getValueAt(i, 3);
+            
+            //gambi
+            String a = (String) model.getValueAt(i, 3);
+            a = a.replace(",", ".");
+            double var = Double.parseDouble(a);
+            valorTotal = valorTotal + var;
         }
         txtTotalClientes.setText(String.valueOf(tblClientes.getRowCount()));
         txtQtdeVendas.setText(String.valueOf(tblVendas.getRowCount()));
-        
+
         NumberFormat calculo;
         calculo = NumberFormat.getInstance();
         calculo.setMinimumFractionDigits(2);
@@ -829,7 +835,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         if (tblClientes.getSelectedRow() >= 0) {
             codCli = (String) tblClientes.getValueAt(tblClientes.getSelectedRow(), 0);
             if (codCli.substring(0, 2).equals("PF")) {
-                try {  
+                try {
                     parameters.put("codigo", (String) tblClientes.getValueAt(tblClientes.getSelectedRow(), 0));
                     JasperPrint jpPrint;
                     jpPrint = JasperFillManager.fillReport("relatorios/EspelhoClientePF.jasper",
@@ -878,36 +884,36 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         Map parameters1 = new HashMap();
 
         try {
-            parameters1.put("codigo",txtCodigo.getText());
-            parameters1.put("nome",txtNome.getText());
-            parameters1.put("telefone",ftxtTelefone.getText());
-            parameters1.put("celular",ftxtCelular.getText());
-            parameters1.put("funcao",txtFuncao.getText());
-            parameters1.put("email",txtEmail.getText());
-            parameters1.put("rua",txtRua.getText());
-            parameters1.put("numero",txtNumero.getText()); 
-            parameters1.put("bairro",txtBairro.getText());
-            parameters1.put("cidade",txtCidade.getText());
-            parameters1.put("cep",ftxtCEP.getText());
-            parameters1.put("uf",(String)cbxUF.getSelectedItem());
-            parameters1.put("complemento",txtComplemento.getText());
-            parameters1.put("dtnasc",ftxtDtNasc.getText());
-            parameters1.put("cpf",ftxtCPF.getText());
-            parameters1.put("rg",ftxtDtNasc.getText());
-            parameters1.put("dtcadastro",ftxtDtcadastro.getText());
-            parameters1.put("ativo",txtSituacao.getText());
-            
-            parameters1.put("qtdA",txtClientesAtivos.getText());
-            parameters1.put("qtdI",txtClientesInativos.getText());
-            parameters1.put("qtdV",txtQtdeVendas.getText());
-            parameters1.put("qtdC",txtTotalClientes.getText());
-            parameters1.put("valortotal",txtValorTotalVendas.getText());
-            parameters1.put("dtI",ftxtData_Inicial.getText());
-            parameters1.put("dtF",ftxtData_Final.getText());
+            parameters1.put("codigo", txtCodigo.getText());
+            parameters1.put("nome", txtNome.getText());
+            parameters1.put("telefone", ftxtTelefone.getText());
+            parameters1.put("celular", ftxtCelular.getText());
+            parameters1.put("funcao", txtFuncao.getText());
+            parameters1.put("email", txtEmail.getText());
+            parameters1.put("rua", txtRua.getText());
+            parameters1.put("numero", txtNumero.getText());
+            parameters1.put("bairro", txtBairro.getText());
+            parameters1.put("cidade", txtCidade.getText());
+            parameters1.put("cep", ftxtCEP.getText());
+            parameters1.put("uf", (String) cbxUF.getSelectedItem());
+            parameters1.put("complemento", txtComplemento.getText());
+            parameters1.put("dtnasc", ftxtDtNasc.getText());
+            parameters1.put("cpf", ftxtCPF.getText());
+            parameters1.put("rg", ftxtDtNasc.getText());
+            parameters1.put("dtcadastro", ftxtDtcadastro.getText());
+            parameters1.put("ativo", txtSituacao.getText());
+
+            parameters1.put("qtdA", txtClientesAtivos.getText());
+            parameters1.put("qtdI", txtClientesInativos.getText());
+            parameters1.put("qtdV", txtQtdeVendas.getText());
+            parameters1.put("qtdC", txtTotalClientes.getText());
+            parameters1.put("valortotal", txtValorTotalVendas.getText());
+            parameters1.put("dtI", ftxtData_Inicial.getText());
+            parameters1.put("dtF", ftxtData_Final.getText());
 
             JasperPrint jpPrint1;
             jpPrint1 = JasperFillManager.fillReport("relatorios/EspelhoVendedor.jasper",
-                    parameters1,conexao.conectar());
+                    parameters1, conexao.conectar());
 
             JasperViewer jv1 = new JasperViewer(jpPrint1, false);
             jv1.setVisible(true);
@@ -922,30 +928,36 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
 
         List lista = new ArrayList();
         for (int x = 0; x < tblVendas.getRowCount(); x++) {
+            
+            //gambi
+            String a = (String) tblVendas.getValueAt(x, 3);
+            a = a.replace(",", ".");
+            double var = Double.parseDouble(a);
+            
             GuiControleEstrategicoVendedorEspecificoTVVendas print
                     = new GuiControleEstrategicoVendedorEspecificoTVVendas();
 
             print.setCodCli((String) tblVendas.getValueAt(x, 0));
             print.setNomeCli((String) tblVendas.getValueAt(x, 1));
             print.setNotaFiscal((int) tblVendas.getValueAt(x, 2));
-            print.setValorNota((double) tblVendas.getValueAt(x, 3));
+            print.setValorNota(var);
             print.setDtEmissao((String) tblVendas.getValueAt(x, 4));
 
             lista.add(print);
-        } 
-        
+        }
+
         try {
-            parameters1.put("codigo",txtCodigo.getText());
-            parameters1.put("nome",txtNome.getText());
-            parameters1.put("funcao",txtFuncao.getText());            
-            parameters1.put("dtinicio",ftxtData_Inicial.getText());
-            parameters1.put("dtfinal",ftxtData_Inicial.getText());
+            parameters1.put("codigo", txtCodigo.getText());
+            parameters1.put("nome", txtNome.getText());
+            parameters1.put("funcao", txtFuncao.getText());
+            parameters1.put("dtinicio", ftxtData_Inicial.getText());
+            parameters1.put("dtfinal", ftxtData_Inicial.getText());
 
             JRBeanCollectionDataSource ds = new JRBeanCollectionDataSource(lista);
-            
+
             JasperPrint jpPrint1;
             jpPrint1 = JasperFillManager.fillReport("relatorios/RelatorioVendedorVendas.jasper",
-                    parameters1,ds);
+                    parameters1, ds);
 
             JasperViewer jv1 = new JasperViewer(jpPrint1, false);
             jv1.setVisible(true);
@@ -955,10 +967,10 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         }
     }//GEN-LAST:event_btnVisualizarVendasActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -970,35 +982,23 @@ public static void main(String args[]) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-                
-
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        
-
-} catch (InstantiationException ex) {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        
-
-} catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GuiControle_Estratégico_por_Vendedor_Especifico.class
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -1010,6 +1010,7 @@ public static void main(String args[]) {
             }
         });
     }
+    private DecimalFormat formatador = new DecimalFormat("0.00");
     private int flagLimpaTabela1 = 0;
     private int flagLimpaTabela = 0;
     private static ArrayList<NotaFiscal> ListarNotaFiscal;
@@ -1124,13 +1125,12 @@ public static void main(String args[]) {
         ftxtDtNasc.setText(vendedor.getDataNasc());
         txtComplemento.setText(vendedor.getComplemento());
         ftxtDtcadastro.setText(vendedor.getDtInicio());
-        
-        if(vendedor.getAtivo().equals("A")){
+
+        if (vendedor.getAtivo().equals("A")) {
             txtSituacao.setText("ATIVO");
-        }else{
+        } else {
             txtSituacao.setText("INATIVO");
         }
-            
 
         //painel endereço
         txtRua.setText(vendedor.getRua());
@@ -1237,7 +1237,7 @@ public static void main(String args[]) {
                             pedido.getClienteCod(),
                             nome,
                             ListarNotaFiscal.get(x).getNumero(),
-                            (double) ListarNotaFiscal.get(x).getTotal(),
+                            formatador.format(ListarNotaFiscal.get(x).getTotal()),
                             ListarNotaFiscal.get(x).getDataEmissao()
                         };
 
