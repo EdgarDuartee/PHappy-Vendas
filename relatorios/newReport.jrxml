@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.464100000000007"/>
-	<property name="ireport.x" value="5"/>
-	<property name="ireport.y" value="346"/>
+	<property name="ireport.zoom" value="1.7715610000000093"/>
+	<property name="ireport.x" value="50"/>
+	<property name="ireport.y" value="192"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="TituloCampo" hAlign="Left" vAlign="Top" fontName="Calibri" fontSize="8" isItalic="false"/>
@@ -13,8 +13,8 @@
 	<parameter name="codigo" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[SELECT * from nota_fiscal inner join pedido on nota_fiscal.pedidocod = pedido.codigo 
-inner join pedido_produto on pedido_produto.pedidocod = pedido.codigo
-inner join produto on pedido_produto.produtocod = produto.codigo
+inner join nota_itens on nota_fiscal.numero = nota_itens.numeronota
+inner join produto on nota_itens.produtocod = produto.codigo
 where nota_fiscal.numero = $P{codigo}]]>
 	</queryString>
 	<field name="NUMERO" class="java.math.BigDecimal"/>
@@ -57,8 +57,15 @@ where nota_fiscal.numero = $P{codigo}]]>
 	<field name="DTPEDIDO" class="java.lang.String"/>
 	<field name="TOTALPEDIDO" class="java.lang.Double"/>
 	<field name="SITUACAO" class="java.math.BigDecimal"/>
+	<field name="NUMERONOTA" class="java.math.BigDecimal"/>
 	<field name="PRODUTOCOD" class="java.math.BigDecimal"/>
-	<field name="QTDPRODUTO" class="java.math.BigDecimal"/>
+	<field name="PRODUTODESC" class="java.lang.String"/>
+	<field name="PRODUTOVALOR" class="java.lang.Double"/>
+	<field name="PRODUTOQTD" class="java.math.BigDecimal"/>
+	<field name="PRODUTOPIS" class="java.lang.Double"/>
+	<field name="PRODUTOCOFINS" class="java.lang.Double"/>
+	<field name="PRODUTOIPI" class="java.lang.Double"/>
+	<field name="PRODUTOICMS" class="java.lang.Double"/>
 	<field name="NOME" class="java.lang.String"/>
 	<field name="DESCRICAO" class="java.lang.String"/>
 	<field name="QTDESTOQUE" class="java.math.BigDecimal"/>
@@ -228,7 +235,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="TituloCampo" x="1" y="268" width="100" height="20" uuid="e1186970-6dcc-48e0-a9bc-67d68a2510ff"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="TituloCampo" x="7" y="269" width="93" height="18" uuid="4f0ecf51-ce4f-4d5d-8f0b-4100f9ae0126"/>
+				<reportElement style="TituloCampo" x="3" y="267" width="97" height="18" uuid="4f0ecf51-ce4f-4d5d-8f0b-4100f9ae0126"/>
 				<text><![CDATA[BC. ICMS]]></text>
 			</staticText>
 			<rectangle>
@@ -287,14 +294,14 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="TituloCampo" x="360" y="268" width="100" height="20" uuid="7bd6f9bf-a003-4c89-9e85-71d0c7ac3ae2"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="TituloCampo" x="360" y="269" width="100" height="14" uuid="00a5af84-b6e1-45a3-aa8f-c3136c0885a4"/>
+				<reportElement style="TituloCampo" x="359" y="269" width="100" height="19" uuid="00a5af84-b6e1-45a3-aa8f-c3136c0885a4"/>
 				<text><![CDATA[VALOR IMP. IMPORTAÇÃO]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement style="TituloCampo" x="360" y="288" width="100" height="20" uuid="0b1ed7ad-d24a-4fd5-a8e8-bef2efca07bc"/>
 			</rectangle>
 			<staticText>
-				<reportElement style="TituloCampo" x="360" y="288" width="69" height="14" uuid="8a986b9e-1dc0-42c7-b2db-cc8e8f420904"/>
+				<reportElement style="TituloCampo" x="360" y="289" width="69" height="14" uuid="8a986b9e-1dc0-42c7-b2db-cc8e8f420904"/>
 				<text><![CDATA[VALOR DO IPI]]></text>
 			</staticText>
 			<rectangle>
@@ -308,7 +315,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[TOTAL DOS PRODUTOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="TituloCampo" x="463" y="288" width="92" height="13" uuid="af672cd7-b608-40f3-ad0f-a2eb4b6d997d"/>
+				<reportElement style="TituloCampo" x="462" y="289" width="92" height="13" uuid="af672cd7-b608-40f3-ad0f-a2eb4b6d997d"/>
 				<text><![CDATA[TOTAL DA NOTA]]></text>
 			</staticText>
 			<staticText>
@@ -361,7 +368,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="400" y="322" width="45" height="20" uuid="3c49a1d5-2c26-47d0-a024-93098de6213a"/>
 			</rectangle>
 			<rectangle>
-				<reportElement style="TituloCampo" x="400" y="342" width="45" height="20" uuid="98235547-82bb-4528-a0ff-db826670a0ce"/>
+				<reportElement style="TituloCampo" x="400" y="342" width="42" height="20" uuid="98235547-82bb-4528-a0ff-db826670a0ce"/>
 			</rectangle>
 			<staticText>
 				<reportElement style="TituloCampo" x="402" y="321" width="14" height="14" uuid="ce8afb64-bf96-493d-8950-6fcdd4f44eb3"/>
@@ -375,7 +382,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="TituloCampo" x="442" y="322" width="112" height="20" uuid="ba975194-0f1e-4417-a136-f5b344c64c3f"/>
 			</rectangle>
 			<rectangle>
-				<reportElement style="TituloCampo" x="445" y="342" width="109" height="20" uuid="5a3449a5-7220-4561-9cf0-65e0a9eb1579"/>
+				<reportElement style="TituloCampo" x="442" y="342" width="112" height="20" uuid="5a3449a5-7220-4561-9cf0-65e0a9eb1579"/>
 			</rectangle>
 			<staticText>
 				<reportElement style="TituloCampo" x="446" y="322" width="56" height="14" uuid="b0e9e32e-a7ca-49df-b323-1b8f1e4ccb3e"/>
@@ -444,12 +451,8 @@ where nota_fiscal.numero = $P{codigo}]]>
 				</jr:barbecue>
 			</componentElement>
 			<staticText>
-				<reportElement style="Titulo" x="386" y="119" width="100" height="18" uuid="06fd85a6-b497-4e98-94b5-2d0d25ed4dc7"/>
+				<reportElement style="Titulo" x="384" y="119" width="100" height="18" uuid="06fd85a6-b497-4e98-94b5-2d0d25ed4dc7"/>
 				<text><![CDATA[CHAVE DE ACESSO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Titulo" x="387" y="132" width="170" height="13" uuid="c1b2e6b7-55c3-45ea-a3a9-3c0c143f4477"/>
-				<text><![CDATA[3218 0905 5707 1400 0825 5500 1003 9733 7011 0883 3800]]></text>
 			</staticText>
 			<textField pattern="000000000">
 				<reportElement style="Heading 3" x="475" y="9" width="81" height="20" uuid="57e9a07b-d780-4925-9ef4-6685e6366aca"/>
@@ -472,8 +475,8 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="101" y="330" width="99" height="12" uuid="0bfaa9b8-7fde-4caa-a553-5c42e404c319"/>
 				<text><![CDATA[0– Por conta do emitente;]]></text>
 			</staticText>
-			<textField>
-				<reportElement style="Style_2" x="301" y="330" width="100" height="11" uuid="072da8f9-798b-4cf3-9a67-8f04dbd911f6"/>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Style_2" x="300" y="331" width="100" height="11" uuid="072da8f9-798b-4cf3-9a67-8f04dbd911f6"/>
 				<textFieldExpression><![CDATA[$F{PLACAVEICULO}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -485,7 +488,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[SP]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Style_2" x="4" y="223" width="226" height="11" uuid="fedd8800-ba15-476e-9fd2-25f5743ef37e"/>
+				<reportElement style="Style_2" x="277" y="202" width="165" height="11" uuid="fedd8800-ba15-476e-9fd2-25f5743ef37e"/>
 				<textFieldExpression><![CDATA[$F{CNPJ_CPF}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -496,16 +499,16 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="447" y="202" width="94" height="12" uuid="6821d439-4a96-4117-bfc9-0a65c0f74e42"/>
 				<textFieldExpression><![CDATA[$F{DATAEMISSAO}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement style="Style_2" x="449" y="243" width="92" height="13" uuid="1f46a0da-8086-403b-bff1-fd36c20884dc"/>
 				<textFieldExpression><![CDATA[$F{TRANSP_HORASAIDA}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement style="Style_2" x="449" y="223" width="92" height="13" uuid="717aff2f-609f-43a1-a22d-b6ea9f852850"/>
 				<textFieldExpression><![CDATA[$F{TRANSP_DATASAIDA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Style_2" x="277" y="204" width="171" height="12" uuid="aa6fdc56-551a-4339-9921-70142ce0e48c"/>
+				<reportElement style="Style_2" x="1" y="223" width="223" height="12" uuid="aa6fdc56-551a-4339-9921-70142ce0e48c"/>
 				<textFieldExpression><![CDATA[$F{ENDEREÇO}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -528,7 +531,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="4" y="243" width="143" height="11" uuid="5802c12a-03c2-4cb3-a38d-ea1ef5254a22"/>
 				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement style="Style_2" x="0" y="162" width="442" height="15" uuid="1bf8b86f-ebbc-452e-817a-ff8614533a57"/>
 				<textFieldExpression><![CDATA[$F{NATUREZADAOPERACAO}]]></textFieldExpression>
 			</textField>
@@ -561,23 +564,59 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<textFieldExpression><![CDATA[$F{SERIE}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="CampsNF" x="448" y="288" width="106" height="20" uuid="70df34cd-097c-4967-ba3d-923131fd6613"/>
-			</textField>
-			<textField>
-				<reportElement x="1" y="388" width="100" height="20" uuid="cf4548b9-ef7a-413c-a850-b393724a6367"/>
+				<reportElement style="Style_2" x="8" y="396" width="88" height="12" uuid="cf4548b9-ef7a-413c-a850-b393724a6367"/>
 				<textFieldExpression><![CDATA[$F{QUANTIDADE}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Style_2" x="402" y="390" width="71" height="18" uuid="e512498a-865c-472b-b313-e65b324ce0d8"/>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="408" y="396" width="63" height="12" uuid="e512498a-865c-472b-b313-e65b324ce0d8"/>
 				<textFieldExpression><![CDATA[$F{PESOBRUTO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Style_2" x="473" y="388" width="81" height="18" uuid="90467d3a-0306-470e-8365-5e66a17cdef4"/>
+				<reportElement style="Style_2" x="477" y="396" width="74" height="12" uuid="90467d3a-0306-470e-8365-5e66a17cdef4"/>
 				<textFieldExpression><![CDATA[$F{PESOBRUTO}.floatValue() * 0.93]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Style_2" x="236" y="349" width="49" height="13" uuid="d090a729-f13d-4fdc-bd4d-b142d5a53545"/>
 				<text><![CDATA[SOROCABA]]></text>
+			</staticText>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="-2" y="277" width="100" height="11" uuid="ab97fec3-da53-44e5-8746-5ef847745b95"/>
+				<textFieldExpression><![CDATA[$F{BASEICMS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="101" y="277" width="73" height="11" uuid="f25044d7-3597-4c02-a99b-8a75fed573ea"/>
+				<textFieldExpression><![CDATA[$F{ICMS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="367" y="294" width="89" height="12" uuid="1ea0568b-91f9-4433-8ecb-92c7c52eb658"/>
+				<textFieldExpression><![CDATA[$F{IPI}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="465" y="295" width="86" height="11" uuid="b97fbf19-639a-4776-aff1-de5ce1711620"/>
+				<textFieldExpression><![CDATA[$F{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="464" y="276" width="87" height="11" uuid="30c0dce6-a35e-48e5-9275-48b1273085e3"/>
+				<textFieldExpression><![CDATA[$F{TOTALPEDIDO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" isPrintRepeatedValues="false" x="4" y="297" width="91" height="10" uuid="c5810ba7-02f9-44a4-9910-5c0b6322e1d3"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VALORFRETE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Titulo" x="383" y="132" width="171" height="15" uuid="5a865be6-6822-4cee-836d-6d4783fc06fa"/>
+				<textFieldExpression><![CDATA[$F{CHAVEACESSO}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement style="Style_2" x="97" y="296" width="76" height="10" uuid="16239d24-702f-4cd1-afc8-d2a4aa72324c"/>
+				<textFieldExpression><![CDATA[$F{VALORSEGURO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Style_2" x="153" y="396" width="44" height="10" uuid="d35b80f3-6f19-4993-89d2-ec736c503400"/>
+				<text><![CDATA[PACOTE]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -757,24 +796,24 @@ where nota_fiscal.numero = $P{codigo}]]>
 			<textField>
 				<reportElement style="CENTRALIZADO" x="260" y="0" width="29" height="20" uuid="37e388ab-d83f-4601-91d9-e00bb0ecae63"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{QTDPRODUTO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PRODUTOQTD}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement style="CENTRALIZADO" x="290" y="0" width="42" height="20" uuid="fbd75c5a-f8db-44b1-8fe3-54325b767ab4"/>
 				<textFieldExpression><![CDATA[$F{VALORUNITARIO}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement style="CENTRALIZADO" x="336" y="1" width="47" height="20" uuid="e65f4b53-569e-4190-9465-c9bfb96bea10"/>
-				<textFieldExpression><![CDATA[$F{QTDPRODUTO}.intValue() * $F{VALORUNITARIO}.floatValue()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PRODUTOQTD}.intValue() * $F{VALORUNITARIO}.floatValue()]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement style="CENTRALIZADO" x="416" y="1" width="30" height="20" uuid="72e7aecd-5a30-4e11-8c06-3051c37820db"/>
-				<textFieldExpression><![CDATA[$F{ICMS}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PRODUTOICMS}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement style="CENTRALIZADO" x="445" y="1" width="28" height="20" uuid="5839d5c5-a713-4131-b077-65a335e928e6"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{IPI}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PRODUTOIPI}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement style="CENTRALIZADO" x="383" y="0" width="28" height="20" uuid="4563dfbe-0817-4190-a5db-fef6b5f7e367"/>
@@ -783,7 +822,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 			</textField>
 			<staticText>
 				<reportElement style="CENTRALIZADO" x="480" y="1" width="28" height="20" uuid="7bcf7d48-11aa-458f-bc91-1e0ce3964c8d"/>
-				<text><![CDATA[17%]]></text>
+				<text><![CDATA[18%]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="CENTRALIZADO" x="527" y="1" width="27" height="20" uuid="94f9c8a3-4f65-4f69-867a-508de6cabc16"/>

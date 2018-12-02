@@ -73,7 +73,8 @@
                       <Component id="jPanelDados_Nota_Fiscal" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jPanelDescricao_Nota_Fiscal" min="-2" pref="745" max="-2" attributes="0"/>
+                  <Component id="jPanelDescricao_Nota_Fiscal" min="-2" pref="756" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -958,7 +959,7 @@
                               <Component id="ftxtValor_Frete" max="32767" attributes="0"/>
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="333" max="32767" attributes="0"/>
+                          <EmptySpace pref="344" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1076,11 +1077,11 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtTotal_Produtos1" pref="135" max="32767" attributes="0"/>
+                                              <Component id="txtTotal_Impostos" pref="135" max="32767" attributes="0"/>
                                               <Component id="lblTotal_Produtos1" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtValor_IPI" alignment="0" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace pref="29" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="txtTotal_Desc_Produto" min="-2" pref="95" max="-2" attributes="0"/>
                                               <Component id="lblTotal_desc_Produto" min="-2" max="-2" attributes="0"/>
@@ -1153,7 +1154,7 @@
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtTotal_Produtos1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtTotal_Impostos" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="txtTotal_Produtos" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="txtTotal_Desc_Produto" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1203,37 +1204,37 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="100" minWidth="60" prefWidth="-1" resizable="true">
+                            <Column maxWidth="100" minWidth="70" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="100" minWidth="60" prefWidth="-1" resizable="true">
+                            <Column maxWidth="80" minWidth="40" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="100" minWidth="60" prefWidth="-1" resizable="true">
+                            <Column maxWidth="80" minWidth="40" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="40" minWidth="30" prefWidth="-1" resizable="true">
+                            <Column maxWidth="60" minWidth="40" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="40" minWidth="30" prefWidth="-1" resizable="true">
-                              <Title/>
-                              <Editor/>
-                              <Renderer/>
-                            </Column>
-                            <Column maxWidth="60" minWidth="60" prefWidth="-1" resizable="true">
+                            <Column maxWidth="60" minWidth="40" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
                             <Column maxWidth="60" minWidth="60" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="60" minWidth="40" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -1250,6 +1251,9 @@
                 <Component class="javax.swing.JTextField" name="txtValor_Total_Nota">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -1272,12 +1276,18 @@
                 <Component class="javax.swing.JTextField" name="txtTotal_Produtos">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtTotal_Produtos1">
+                <Component class="javax.swing.JTextField" name="txtTotal_Impostos">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -1292,6 +1302,9 @@
                 <Component class="javax.swing.JTextField" name="txtTotal_Desc_Produto">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -1314,6 +1327,9 @@
                 <Component class="javax.swing.JTextField" name="txtBase_Calculo_ICMS">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -1328,6 +1344,9 @@
                 <Component class="javax.swing.JTextField" name="txtValor_ICMS">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
@@ -1337,6 +1356,9 @@
                 <Component class="javax.swing.JTextField" name="txtValor_IPI">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
@@ -1359,12 +1381,18 @@
                 <Component class="javax.swing.JTextField" name="txtValor_COFINS">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtValor_PIS">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                 </Component>
