@@ -19,6 +19,7 @@ import projeto.vendas.control.DaoDescobreCodigo;
 import projeto.vendas.control.DaoLogin;
 import projeto.vendas.control.DaoPJuridica;
 import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Coordenadas;
 import projeto.vendas.model.Login;
 import projeto.vendas.model.PessoaJuridica;
 import projeto.vendas.model.Vendedor;
@@ -684,8 +685,10 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
                 pessoaJuridica.setTel2(ftxtTelefone2.getText().replace("(", "").replace(")", "").replace("-", ""));
                 pessoaJuridica.setContato3(txtNome_Contato3.getText());
                 pessoaJuridica.setTel3(ftxtCelular.getText().replace("(", "").replace(")", "").replace("-", ""));
-
                 pessoaJuridica.setComplemento(txtComplemento.getText());
+                coordenadas.Buscar(txtNumero.getText(), txtRua.getText(), txtBairro.getText(), txtCidade.getText());
+                pessoaJuridica.setLatitude(coordenadas.getLatitude());
+                pessoaJuridica.setLongitude(coordenadas.getLongitude());
 
                 ArrayList<Vendedor> vendedores = daoVendedor.listarVendedores();
                 vendedor = daoVendedor.consultar(vendedores.get(cbxVendedorResp.getSelectedIndex()).getCodigo());
@@ -790,6 +793,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
     private Vendedor vendedor = null;
     private DaoDescobreCodigo daoDescobreCodigo = null;
     private ArrayList<Vendedor> vendedores = null;
+    private Coordenadas coordenadas = new Coordenadas();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Painel_Contato;

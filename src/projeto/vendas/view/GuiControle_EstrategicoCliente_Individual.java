@@ -338,10 +338,10 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         BufferedImage img = null;
         for (int i = 0; i < ListaAPI.length; i++) {
             try {
-                URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center=" 
-                        + FormataString(lbl_bairro.getText()) + "," + FormataString(lbl_cidade.getText()) + "," + FormataString(lbl_UF.getText())
-                        + "&zoom=15&size=752x323&maptype=roadmap&markers=color:black%7Clabel:A%7C" + 
-                        lbl_latitude.getText() + "," + lbl_longitude.getText() + "&key=" + ListaAPI[i]);
+                URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center="
+                        + lbl_latitude.getText() + "," + lbl_longitude.getText() + ","
+                        + "&zoom=16&size=600x300&maptype=roadmap&markers=color:black%7Clabel:A%7C"
+                        + lbl_latitude.getText() + "," + lbl_longitude.getText() + "&key=" + ListaAPI[i]);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 img = ImageIO.read(con.getInputStream());
             } catch (MalformedURLException ex) {
@@ -352,7 +352,8 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
 
             if (img != null) {
                 ImageIcon mapa = new ImageIcon(img);
-                lbl_mapa.setIcon(mapa);
+//                lbl_mapa.setIcon(mapa);
+                lbl_mapa.setIcon(new ImageIcon(mapa.getImage().getScaledInstance(lbl_mapa.getWidth(),lbl_mapa.getHeight(), 100)));
                 break;
             } else {
                 System.out.println("Erro Na Chave da APi");
@@ -552,7 +553,6 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     Date data = new Date(System.currentTimeMillis());
     SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
 
-    
     public String FormataString(String endereco) {
         endereco = endereco.replaceAll(" ", "+");
         endereco = endereco.replaceAll("[áÁàÀâÂãÃäÄ]", "a");

@@ -12,13 +12,13 @@ import projeto.vendas.model.PessoaJuridica;
  * @author Cleiton
  */
 public class DaoPJuridica {
-    
+
     private Connection conn;
-    
+
     public DaoPJuridica(Connection conn) {
         this.conn = conn;
     }
-    
+
     public void inserir(PessoaJuridica pessoaJuridica) {
         PreparedStatement ps = null;
         try {
@@ -26,12 +26,13 @@ public class DaoPJuridica {
                     + "rua, numero, bairro, cidade, cep,"
                     + "uf, cnpj,"
                     + "nomefantasia,complemento"
+                    + ",Latitude,Longitude"
                     + ",cod_vend_resp,"
                     + "vend_resp, ativo,dtInicio,contato1,"
                     + "nomecont1,contato2,nomecont2,"
                     + "contato3,nomecont3)"
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
             ps.setString(1, pessoaJuridica.getCodigo());
             ps.setString(2, pessoaJuridica.getEmail());
             ps.setString(3, pessoaJuridica.getRua());
@@ -43,24 +44,26 @@ public class DaoPJuridica {
             ps.setString(9, pessoaJuridica.getCnpj());
             ps.setString(10, pessoaJuridica.getNome());
             ps.setString(11, pessoaJuridica.getComplemento());
-            ps.setInt(12, pessoaJuridica.getCod_vend_resp());
-            ps.setString(13, pessoaJuridica.getVendedor_responsavel());
-            ps.setString(14, "A");
-            ps.setString(15, pessoaJuridica.getDtInicio());
-            ps.setString(16, pessoaJuridica.getTel1());
-            ps.setString(17, pessoaJuridica.getContato1());
-            ps.setString(18, pessoaJuridica.getTel2());
-            ps.setString(19, pessoaJuridica.getContato2());
-            ps.setString(20, pessoaJuridica.getTel3());
-            ps.setString(21, pessoaJuridica.getContato3());
-            
+            ps.setDouble(12, pessoaJuridica.getLatitude());
+            ps.setDouble(13, pessoaJuridica.getLongitude());
+            ps.setInt(14, pessoaJuridica.getCod_vend_resp());
+            ps.setString(15, pessoaJuridica.getVendedor_responsavel());
+            ps.setString(16, "A");
+            ps.setString(17, pessoaJuridica.getDtInicio());
+            ps.setString(18, pessoaJuridica.getTel1());
+            ps.setString(19, pessoaJuridica.getContato1());
+            ps.setString(20, pessoaJuridica.getTel2());
+            ps.setString(21, pessoaJuridica.getContato2());
+            ps.setString(22, pessoaJuridica.getTel3());
+            ps.setString(23, pessoaJuridica.getContato3());
+
             ps.execute();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        
+
     }
-    
+
     public void alterar(PessoaJuridica pessoaJuridica) {
         PreparedStatement ps = null;
         try {
@@ -73,7 +76,7 @@ public class DaoPJuridica {
                     + " contato3 = ?, nomecont1 = ?, nomecont2 = ?,"
                     + " nomecont3 = ?"
                     + "where codigo = ?");
-            
+
             ps.setString(1, pessoaJuridica.getEmail());
             ps.setString(2, pessoaJuridica.getRua());
             ps.setString(3, pessoaJuridica.getNumero());
@@ -91,28 +94,28 @@ public class DaoPJuridica {
             ps.setString(15, pessoaJuridica.getContato2());
             ps.setString(16, pessoaJuridica.getContato3());
             ps.setString(17, pessoaJuridica.getCodigo());
-            
+
             ps.execute();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
     }
-    
+
     public void desativarOUativar(PessoaJuridica pessoaJuridica, String ativo) {
         PreparedStatement ps = null;
         try {
             ps = conn.prepareStatement("UPDATE P_Juridica set ativo = ? where "
                     + "codigo = ?");
-            
+
             ps.setString(1, ativo);
             ps.setString(2, pessoaJuridica.getCodigo());
-            
+
             ps.execute();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
     }
-    
+
     public ArrayList<PessoaJuridica> ListarPessoasJuridicas() {
         {
             PessoaJuridica PJ = null;
@@ -129,6 +132,8 @@ public class DaoPJuridica {
                             rs.getString("cep"), rs.getString("ativo"));
                     PJ.setCod_vend_resp(rs.getInt("cod_vend_resp"));
                     PJ.setVendedor_responsavel(rs.getString("vend_resp"));
+                    PJ.setLatitude(rs.getDouble("Latitude"));
+                    PJ.setLongitude(rs.getDouble("Longitude"));
                     PJ.setDtInicio(rs.getString("DTINICIO"));
                     System.out.println(PJ.getDtInicio());
                     lista.add(PJ);
@@ -137,11 +142,11 @@ public class DaoPJuridica {
                 System.out.println(ex.toString());
             }
             return (lista);
-            
+
         }
-        
+
     }
-    
+
     public PessoaJuridica consultaCNPJ(String cnpj) {
         PessoaJuridica p = null;
         PreparedStatement ps = null;
@@ -149,9 +154,9 @@ public class DaoPJuridica {
             ps = conn.prepareStatement("SELECT * from P_JURIDICA where "
                     + "CNPJ = ?");
             ps.setString(1, cnpj);
-            
+
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next() == true) {
                 p = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
                         rs.getString("email"), rs.getString("rua"),
@@ -167,16 +172,18 @@ public class DaoPJuridica {
                 p.setContato2(rs.getString("nomecont2"));
                 p.setTel3(rs.getString("contato3"));
                 p.setContato3(rs.getString("nomecont3"));
+                p.setLatitude(rs.getDouble("Latitude"));
+                p.setLongitude(rs.getDouble("Longitude"));
                 p.setCnpj(rs.getString("CNPJ"));
                 p.setDtInicio(rs.getString("DtINICIO"));
-                
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         return (p);
     }
-    
+
     public PessoaJuridica consultar(String codigo) {
         PessoaJuridica p = null;
         PreparedStatement ps = null;
@@ -184,9 +191,9 @@ public class DaoPJuridica {
             ps = conn.prepareStatement("SELECT * from P_Juridica where "
                     + "CODIGO = ?");
             ps.setString(1, codigo);
-            
+
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next() == true) {
                 p = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
                         rs.getString("email"), rs.getString("rua"),
@@ -201,17 +208,19 @@ public class DaoPJuridica {
                 p.setTel2(rs.getString("contato2"));
                 p.setContato2(rs.getString("nomecont2"));
                 p.setTel3(rs.getString("contato3"));
+                p.setLatitude(rs.getDouble("Latitude"));
+                p.setLongitude(rs.getDouble("Longitude"));
                 p.setContato3(rs.getString("nomecont3"));
                 p.setCnpj(rs.getString("CNPJ"));
                 p.setDtInicio(rs.getString("DtINICIO"));
-                
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         return (p);
     }
-    
+
     public ArrayList<PessoaJuridica> ListarPJPorCodVend(int codigo) {
         {
             PessoaJuridica PJ = null;
@@ -220,7 +229,7 @@ public class DaoPJuridica {
             try {
                 ps = conn.prepareStatement("SELECT * from P_JURIDICA where cod_vend_resp = ?");
                 ps.setInt(1, codigo);
-                
+
                 ResultSet rs = ps.executeQuery();
                 while (rs.next() == true) {
                     PJ = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
@@ -229,16 +238,18 @@ public class DaoPJuridica {
                             rs.getString("cidade"), rs.getString("uf"),
                             rs.getString("cep"), rs.getString("ativo"));
                     PJ.setCnpj(rs.getString("CNPJ"));
+                    PJ.setLatitude(rs.getDouble("Latitude"));
+                    PJ.setLongitude(rs.getDouble("Longitude"));
                     lista.add(PJ);
                 }
             } catch (SQLException ex) {
                 System.out.println(ex.toString());
             }
             return (lista);
-            
+
         }
     }
-    
+
     public PessoaJuridica consultaNome(String Nome) {
         PessoaJuridica p = null;
         PreparedStatement ps = null;
@@ -246,9 +257,9 @@ public class DaoPJuridica {
             ps = conn.prepareStatement("SELECT * from P_JURIDICA where "
                     + "NomeFantasia = ?");
             ps.setString(1, Nome);
-            
+
             ResultSet rs = ps.executeQuery();
-            
+
             if (rs.next() == true) {
                 p = new PessoaJuridica(rs.getString("codigo"), rs.getString("nomefantasia"),
                         rs.getString("email"), rs.getString("rua"),
@@ -263,15 +274,17 @@ public class DaoPJuridica {
                 p.setTel2(rs.getString("contato2"));
                 p.setContato2(rs.getString("nomecont2"));
                 p.setTel3(rs.getString("contato3"));
+                p.setLatitude(rs.getDouble("Latitude"));
+                p.setLongitude(rs.getDouble("Longitude"));
                 p.setContato3(rs.getString("nomecont3"));
                 p.setCnpj(rs.getString("CNPJ"));
                 p.setDtInicio(rs.getString("DtINICIO"));
-                
+
             }
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         return (p);
     }
-    
+
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.7715610000000093"/>
-	<property name="ireport.x" value="50"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.zoom" value="5.559917313492306"/>
+	<property name="ireport.x" value="2598"/>
+	<property name="ireport.y" value="683"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="TituloCampo" hAlign="Left" vAlign="Top" fontName="Calibri" fontSize="8" isItalic="false"/>
@@ -94,7 +94,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<text><![CDATA[Nome / Razão Social]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="445" y="150" width="110" height="27" uuid="ff3a0f3f-f9c3-4db4-b33e-f59c8c71d67d"/>
+				<reportElement mode="Opaque" x="445" y="150" width="110" height="27" uuid="ff3a0f3f-f9c3-4db4-b33e-f59c8c71d67d"/>
 			</rectangle>
 			<staticText>
 				<reportElement style="Titulo" x="262" y="59" width="115" height="39" uuid="bc99e2e6-98a2-4b5b-963e-9163818be9ec"/>
@@ -441,17 +441,14 @@ where nota_fiscal.numero = $P{codigo}]]>
 			<rectangle>
 				<reportElement style="Titulo" mode="Transparent" x="343" y="119" width="40" height="31" uuid="a46bc353-41f0-4612-a938-d919832f956c"/>
 			</rectangle>
-			<line>
-				<reportElement x="554" y="59" width="1" height="91" uuid="22cfb4c5-7d39-4744-bd1f-4c4816e6921f"/>
-			</line>
 			<componentElement>
-				<reportElement style="Titulo" x="401" y="61" width="141" height="59" uuid="9ce35c87-eced-44f3-a5ec-dfe93205bc73"/>
+				<reportElement style="Titulo" mode="Transparent" x="400" y="61" width="141" height="59" uuid="9ce35c87-eced-44f3-a5ec-dfe93205bc73"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="2of7" drawText="false" checksumRequired="false">
 					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<staticText>
-				<reportElement style="Titulo" x="384" y="119" width="100" height="18" uuid="06fd85a6-b497-4e98-94b5-2d0d25ed4dc7"/>
+				<reportElement style="Titulo" mode="Transparent" x="384" y="119" width="100" height="18" uuid="06fd85a6-b497-4e98-94b5-2d0d25ed4dc7"/>
 				<text><![CDATA[CHAVE DE ACESSO]]></text>
 			</staticText>
 			<textField pattern="000000000">
@@ -475,7 +472,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="101" y="330" width="99" height="12" uuid="0bfaa9b8-7fde-4caa-a553-5c42e404c319"/>
 				<text><![CDATA[0– Por conta do emitente;]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField isBlankWhenNull="false">
 				<reportElement style="Style_2" x="300" y="331" width="100" height="11" uuid="072da8f9-798b-4cf3-9a67-8f04dbd911f6"/>
 				<textFieldExpression><![CDATA[$F{PLACAVEICULO}]]></textFieldExpression>
 			</textField>
@@ -571,7 +568,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="408" y="396" width="63" height="12" uuid="e512498a-865c-472b-b313-e65b324ce0d8"/>
 				<textFieldExpression><![CDATA[$F{PESOBRUTO}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement style="Style_2" x="477" y="396" width="74" height="12" uuid="90467d3a-0306-470e-8365-5e66a17cdef4"/>
 				<textFieldExpression><![CDATA[$F{PESOBRUTO}.floatValue() * 0.93]]></textFieldExpression>
 			</textField>
@@ -606,10 +603,6 @@ where nota_fiscal.numero = $P{codigo}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{VALORFRETE}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Titulo" x="383" y="132" width="171" height="15" uuid="5a865be6-6822-4cee-836d-6d4783fc06fa"/>
-				<textFieldExpression><![CDATA[$F{CHAVEACESSO}]]></textFieldExpression>
-			</textField>
 			<textField pattern="###0.00">
 				<reportElement style="Style_2" x="97" y="296" width="76" height="10" uuid="16239d24-702f-4cd1-afc8-d2a4aa72324c"/>
 				<textFieldExpression><![CDATA[$F{VALORSEGURO}]]></textFieldExpression>
@@ -618,6 +611,81 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="153" y="396" width="44" height="10" uuid="d35b80f3-6f19-4993-89d2-ec736c503400"/>
 				<text><![CDATA[PACOTE]]></text>
 			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="1" y="330" width="88" height="12" uuid="a1fbc980-47ab-4197-80a6-589cd46e1da6"/>
+				<text><![CDATA[Pet Happy]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="1" y="349" width="172" height="12" uuid="a44aff7d-f7e8-4dcb-88b2-c0490fd42b9f"/>
+				<text><![CDATA[Santiago Idalgo Ruiz, N°45]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="449" y="331" width="100" height="11" uuid="bf4adcda-d58c-4ff5-af0a-af72404ab951"/>
+				<text><![CDATA[50000000000001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Style_2" x="450" y="163" width="100" height="11" uuid="1930e244-2d29-4a85-bd56-5886bcde1f0d"/>
+				<text><![CDATA[50000000000001]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="550" y="59" width="5" height="91" isRemoveLineWhenBlank="true" uuid="b8c8c64c-b857-4b1d-9b81-53afb6cc531b"/>
+			</rectangle>
+			<line>
+				<reportElement mode="Transparent" x="549" y="61" width="1" height="89" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="685fd159-2ca3-4307-8cdf-4f6af7ca3b28"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="549" y="61" width="2" height="1" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="2be3e908-65d3-41f8-9d89-2ea0ef0c2f2b"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="547" y="145" width="2" height="1" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="851c0d3a-4834-4e78-8734-90e3c3124789"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="559" y="71" width="2" height="1" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="2e97de99-d6ad-4336-afe0-44264de71dae"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="548" y="146" width="2" height="1" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="765904e5-0b02-4938-82d5-b44fecc7ca94"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="545" y="146" width="2" height="1" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="71cc2398-6572-4db5-97c5-74f1fddb7cfc"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement mode="Transparent" x="559" y="71" width="2" height="1" forecolor="#FFFFFF" backcolor="#FFFF00" uuid="536b4d19-b8f2-4887-9529-f2a052fdbe2a"/>
+				<graphicElement>
+					<pen lineWidth="4.0"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="525" y="150" width="100" height="0" backcolor="#000000" uuid="2b546547-d64c-4629-98ac-5ad4bc286f34"/>
+				<textFieldExpression><![CDATA[]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="527" y="149" width="26" height="1" uuid="fcc395a7-f39c-4248-aa26-77f67c8834ca"/>
+			</line>
+			<rectangle>
+				<reportElement x="504" y="132" width="49" height="17" forecolor="#FFFFFF" uuid="7fccc70c-0a04-4d6b-a58b-94a8163dcb77"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Titulo" mode="Transparent" x="384" y="134" width="170" height="15" uuid="5a865be6-6822-4cee-836d-6d4783fc06fa"/>
+				<textFieldExpression><![CDATA[$F{CHAVEACESSO}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
