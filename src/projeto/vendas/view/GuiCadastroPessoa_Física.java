@@ -623,8 +623,8 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
                 pessoaFisica.setLatitude(coordenadas.getLatitude());
                 pessoaFisica.setLongitude(coordenadas.getLongitude());
 
-                System.out.println(pessoaFisica.getLatitude());
-                System.out.println(pessoaFisica.getLongitude());
+//                System.out.println(pessoaFisica.getLatitude());
+//                System.out.println(pessoaFisica.getLongitude());
 
                 //cria o formatador de data
                 SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");

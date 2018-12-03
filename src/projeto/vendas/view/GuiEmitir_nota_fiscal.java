@@ -1316,7 +1316,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                     formatarFloat.format((produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoConfins()),
                     formatarFloat.format((produto.getValorUnitario() * ListaPedidoProduto.get(i).getProdutoQtd()) * produto.getImpostoIpi())
                 };
-                                        
+
                 model.addRow(row);
                 nfItens.getListaProdutos().get(i).setImpostoIpi(Float.parseFloat(model.getValueAt(i, 8).toString().replace(",", ".")));
                 nfItens.getListaProdutos().get(i).setImpostoIcms(Float.parseFloat(model.getValueAt(i, 5).toString().replace(",", ".")));
@@ -1405,37 +1405,23 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtValor_ICMSActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String chaveAcesso = "";
-        for (int i = 0; i < 9; i++) {
-            int x = (int) (Math.random() * 10);
-            chaveAcesso = chaveAcesso + x;
+        String[] ListaAPI = {
+            "AIzaSyAMfvhhEDTKHoWbWBgZia-_Do84_9WOF1I",
+            "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk",
+            "AIzaSyB8dv9It_rRwRm406oglwmOXHmi5BcWUMU",
+            "AIzaSyBVGCaZb7dnCzX97OjvDHWBv4VF-wcwruA",
+            "AIzaSyAMnYKifueh6tRFRIQUGMC2lWyG09W4ODU",
+            "AIzaSyC5OPnWY_sRx8ah787-dEZHpwYAQyhHsS8",
+            "AIzaSyAYfPopEKLjZFUYepa8WYFhKGxPKp4nV9g",
+            "AIzaSyCrg1YmbptVkwm8aPocCwsFFSdhRioQZIM",
+            "AIzaSyCq2-ed0OyvSXFfeWNMfXFirT2QR0xB2nc",
+            "AIzaSyB3VBfVDLf1Kvt0aMxS81Ul0R8t7KtK-hE",
+            "AIzaSyAaw9a1v3ENXt8NJA-0WXBIInoXy7xhR7I",
+            "AIzaSyC9ahEqd6JuB4nvGUW09zze6b-T7dqEJWY"
+        };
+String xd = "FERNANDO";
 
-        }
-
-        chaveAcesso = ("35" + ftxtData_Emissao.getText().substring(8, 10) + ftxtData_Emissao.getText().substring(3, 5) + ftxtCNPJ_Emitente.getText().replaceAll("[-./]", "")
-                + "55" + txtSerie_Nota_Fiscal.getText() + txtNumero_Nota_Fiscal.getText()
-                + chaveAcesso);
-
-        System.out.println("CHAVE DE ACESSO : " + chaveAcesso);
-
-        int fator11 = 2, somatoria = 0, DV = 0;
-        for (int i = 42; i >= 0; i--) {
-            if (fator11 > 9) {
-
-                fator11 = 2;
-            }
-            System.out.println(chaveAcesso.charAt(i) + "X" + fator11);
-            somatoria = somatoria + ((int) (chaveAcesso.charAt(i)) * fator11);
-            fator11++;
-        }
-        System.out.println("Resto da Divisão = " + (somatoria % 11));
-
-        DV = 11 - (somatoria % 11);
-        if (DV >= 10) {
-            DV = 0;
-        }
-        System.out.println("Digito Verificador = " + DV);
-
+System.out.println(xd.indexOf("PINTO"));
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void ftxtValor_FreteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ftxtValor_FreteFocusLost

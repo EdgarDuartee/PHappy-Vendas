@@ -44,10 +44,10 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         initComponents();
         this.codigo = codigo;
         this.login = login;
-                GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
-                
-                URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
     }
@@ -84,6 +84,11 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         painel = new javax.swing.JPanel();
         lbl_mapa = new javax.swing.JLabel();
         Btn_mapa1 = new javax.swing.JButton();
+        lbl_bairro = new javax.swing.JLabel();
+        lbl_cidade = new javax.swing.JLabel();
+        lbl_UF = new javax.swing.JLabel();
+        lbl_latitude = new javax.swing.JLabel();
+        lbl_longitude = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -152,23 +157,15 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
 
         painel.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED)));
 
-        lbl_mapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/MapaTeste.png"))); // NOI18N
-
         javax.swing.GroupLayout painelLayout = new javax.swing.GroupLayout(painel);
         painel.setLayout(painelLayout);
         painelLayout.setHorizontalGroup(
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(lbl_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(lbl_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         painelLayout.setVerticalGroup(
             painelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(lbl_mapa, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
         );
 
         Btn_mapa1.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
@@ -179,6 +176,16 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                 Btn_mapa1ActionPerformed(evt);
             }
         });
+
+        lbl_bairro.setText("jLabel10");
+
+        lbl_cidade.setText("jLabel11");
+
+        lbl_UF.setText("jLabel14");
+
+        lbl_latitude.setText("jLabel12");
+
+        lbl_longitude.setText("jLabel13");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,45 +203,58 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_nome))
                     .addComponent(lblFuncionario))
-                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5)
-                            .addComponent(txt_qtdPedido)
-                            .addComponent(jLabel4)
-                            .addComponent(txt_FrequenciaCompra))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_MaiorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_QtdPedidosFaturados, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                        .addGap(42, 42, 42)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(txt_qtdPedido)
+                                    .addComponent(jLabel4)
+                                    .addComponent(txt_FrequenciaCompra))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_PercentualFaturados, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_MediaPedidos))
-                                .addContainerGap())
+                                    .addComponent(jLabel6)
+                                    .addComponent(txt_MaiorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_QtdPedidosFaturados, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_PercentualFaturados, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txt_MediaPedidos))
+                                        .addContainerGap())
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(19, 19, 19)
+                                                .addComponent(jLabel9))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel8)))
+                                        .addGap(0, 54, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jLabel9))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel8)))
-                                .addGap(0, 54, Short.MAX_VALUE))))
+                                        .addComponent(Btn_mapa1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(Btn_mapa))
+                                    .addComponent(txt_ProdutoFavorito))
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_cidade)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Btn_mapa1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Btn_mapa))
-                            .addComponent(txt_ProdutoFavorito))
-                        .addContainerGap())))
+                                .addComponent(lbl_bairro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lbl_UF))
+                            .addComponent(lbl_latitude)
+                            .addComponent(lbl_longitude))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addComponent(painel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -277,7 +297,17 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Btn_mapa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Btn_mapa1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Btn_mapa1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_bairro)
+                            .addComponent(lbl_UF))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_cidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_latitude)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_longitude)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -288,27 +318,47 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_mapaActionPerformed
-        String chave = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
+//        String chave = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
+        String[] ListaAPI = {
+            "AIzaSyAMfvhhEDTKHoWbWBgZia-_Do84_9WOF1I",
+            "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk",
+            "AIzaSyB8dv9It_rRwRm406oglwmOXHmi5BcWUMU",
+            "AIzaSyBVGCaZb7dnCzX97OjvDHWBv4VF-wcwruA",
+            "AIzaSyAMnYKifueh6tRFRIQUGMC2lWyG09W4ODU",
+            "AIzaSyC5OPnWY_sRx8ah787-dEZHpwYAQyhHsS8",
+            "AIzaSyAYfPopEKLjZFUYepa8WYFhKGxPKp4nV9g",
+            "AIzaSyCrg1YmbptVkwm8aPocCwsFFSdhRioQZIM",
+            "AIzaSyCq2-ed0OyvSXFfeWNMfXFirT2QR0xB2nc",
+            "AIzaSyB3VBfVDLf1Kvt0aMxS81Ul0R8t7KtK-hE",
+            "AIzaSyAaw9a1v3ENXt8NJA-0WXBIInoXy7xhR7I",
+            "AIzaSyC9ahEqd6JuB4nvGUW09zze6b-T7dqEJWY"
+        };
 
-        String endereco = "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=1200x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
+//        String endereco = "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=1200x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
         BufferedImage img = null;
+        for (int i = 0; i < ListaAPI.length; i++) {
+            try {
+                URL url = new URL("https://maps.googleapis.com/maps/api/staticmap?center=" 
+                        + FormataString(lbl_bairro.getText()) + "," + FormataString(lbl_cidade.getText()) + "," + FormataString(lbl_UF.getText())
+                        + "&zoom=15&size=752x323&maptype=roadmap&markers=color:black%7Clabel:A%7C" + 
+                        lbl_latitude.getText() + "," + lbl_longitude.getText() + "&key=" + ListaAPI[i]);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                img = ImageIO.read(con.getInputStream());
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(GuiControle_EstrategicoCliente_Individual.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GuiControle_EstrategicoCliente_Individual.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        try {
-            URL url = new URL(endereco);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            img = ImageIO.read(con.getInputStream());
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(GuiControle_EstrategicoCliente_Individual.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(GuiControle_EstrategicoCliente_Individual.class.getName()).log(Level.SEVERE, null, ex);
+            if (img != null) {
+                ImageIcon mapa = new ImageIcon(img);
+                lbl_mapa.setIcon(mapa);
+                break;
+            } else {
+                System.out.println("Erro Na Chave da APi");
+            }
         }
 
-        if (img != null) {
-            ImageIcon mapa = new ImageIcon(img);
-            lbl_mapa.setIcon(mapa);
-        } else {
-            lbl_mapa.setText("Sem Mapa");
-        }
     }//GEN-LAST:event_Btn_mapaActionPerformed
 
     private void txt_qtdPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_qtdPedidoActionPerformed
@@ -336,6 +386,11 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
 
         if (codigo.substring(0, 2).contains("PF")) {
             PF = daoPF.consultar(codigo);
+            lbl_UF.setText(PF.getUf());
+            lbl_bairro.setText(PF.getBairro());
+            lbl_cidade.setText(PF.getCidade());
+            lbl_latitude.setText(PF.getLatitude() + "");
+            lbl_longitude.setText(PF.getLongitude() + "");
             if (listaPedido.size() >= 1) {
                 int aprovado = 0, reprovado = 0, pendente = 0, faturado = 0;
                 for (int i = 0; i < listaPedido.size(); i++) {
@@ -387,6 +442,11 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
 
         } else {
             PJ = daoPJ.consultar(codigo);
+            lbl_UF.setText(PJ.getUf());
+            lbl_bairro.setText(PJ.getBairro());
+            lbl_cidade.setText(PJ.getCidade());
+            lbl_latitude.setText(PJ.getLatitude().toString());
+            lbl_longitude.setText(PJ.getLongitude().toString());
             if (listaPedido.size() >= 1) {
                 float aprovado = 0, reprovado = 0, pendente = 0, faturado = 0;
                 for (int i = 0; i < listaPedido.size(); i++) {
@@ -492,6 +552,16 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     Date data = new Date(System.currentTimeMillis());
     SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
 
+    
+    public String FormataString(String endereco) {
+        endereco = endereco.replaceAll(" ", "+");
+        endereco = endereco.replaceAll("[áÁàÀâÂãÃäÄ]", "a");
+        endereco = endereco.replaceAll("[éÉèÈêÊëË]", "e");
+        endereco = endereco.replaceAll("[íÍìÌÎîÏï]", "i");
+        endereco = endereco.replaceAll("[óÓòÒõÕôÔöÖ]", "o");
+        endereco = endereco.replaceAll("[úÚùÙûÛüÜ]", "u");
+        return endereco;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_mapa;
     private javax.swing.JButton Btn_mapa1;
@@ -505,7 +575,12 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblFuncionario;
+    private javax.swing.JLabel lbl_UF;
+    private javax.swing.JLabel lbl_bairro;
+    private javax.swing.JLabel lbl_cidade;
     private javax.swing.JLabel lbl_codigo;
+    private javax.swing.JLabel lbl_latitude;
+    private javax.swing.JLabel lbl_longitude;
     private javax.swing.JLabel lbl_mapa;
     private javax.swing.JLabel lbl_nome;
     private javax.swing.JPanel painel;

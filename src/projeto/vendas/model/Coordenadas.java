@@ -26,7 +26,20 @@ public class Coordenadas {
 //    private String keyApi = "AIzaSyCCXW9zJltZ4PUtT1eaAuJeA3OreLKCqgE";
     //API DO LUIZ 
 //    private String keyApi = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
-    private String keyApi = "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk";
+    private String[] ListaAPI = {
+        "AIzaSyAMfvhhEDTKHoWbWBgZia-_Do84_9WOF1I",
+        "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk",
+        "AIzaSyB8dv9It_rRwRm406oglwmOXHmi5BcWUMU",
+        "AIzaSyBVGCaZb7dnCzX97OjvDHWBv4VF-wcwruA",
+        "AIzaSyAMnYKifueh6tRFRIQUGMC2lWyG09W4ODU",
+        "AIzaSyC5OPnWY_sRx8ah787-dEZHpwYAQyhHsS8",
+        "AIzaSyAYfPopEKLjZFUYepa8WYFhKGxPKp4nV9g",
+        "AIzaSyCrg1YmbptVkwm8aPocCwsFFSdhRioQZIM",
+        "AIzaSyCq2-ed0OyvSXFfeWNMfXFirT2QR0xB2nc",
+        "AIzaSyB3VBfVDLf1Kvt0aMxS81Ul0R8t7KtK-hE",
+        "AIzaSyAaw9a1v3ENXt8NJA-0WXBIInoXy7xhR7I",
+        "AIzaSyC9ahEqd6JuB4nvGUW09zze6b-T7dqEJWY"
+    };
     private boolean status;
 
     public void Buscar(String Numero, String Rua, String Bairro, String Cidade) {
@@ -34,35 +47,54 @@ public class Coordenadas {
         Rua = this.FormataString(Rua);
         Bairro = this.FormataString(Bairro);
         Cidade = this.FormataString(Cidade);
-        System.out.println(Rua+Bairro+Cidade+Numero);
+        System.out.println(Rua + Bairro + Cidade + Numero);
         //ABRINDO A CONEXÃO COM O SITE, E ATRIBUINDO O CONTEÚDO BUSCADO A VARIAVEL.
-        try {
-            URL oracle = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + Numero + "+" + Rua + ",+" + Bairro + ",+" + Cidade + "&key=" + keyApi);
-            BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
-            String inputLine = "";
-            while ((inputLine = in.readLine()) != null) {
-                JsonMaps = JsonMaps + inputLine;
-
+        for (int i = 0; i < ListaAPI.length; i++) {
+            try {
+                URL oracle = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + Numero + "+" + Rua + ",+" + Bairro + ",+" + Cidade + "&key=" + ListaAPI[i]);
+                BufferedReader in = new BufferedReader(new InputStreamReader(oracle.openStream()));
+                String inputLine = "";
+                while ((inputLine = in.readLine()) != null) {
+                    JsonMaps = JsonMaps + inputLine;
+                }
+            } catch (IOException EX) {
+                System.out.println(EX);
             }
-        } catch (IOException EX) {
-            System.out.println(EX);
+            if (JsonMaps.indexOf("OVER_QUERY_LIMIT") < 0 &&JsonMaps.indexOf("REQUEST_DENIED") < 0) {
+                System.out.println("Aqui tem o break");
+                break;
+            } else {
+                JsonMaps = "";
+                System.out.println("Cave expirada, limpa a variavel.");
+            }
+
         }
         System.out.println(JsonMaps);
     }
 
     public double getLatitude() {
         int pos = JsonMaps.indexOf("location");
-        JsonModify = JsonMaps.substring(pos, pos + 200);
-        Latitude = JsonModify;
-        System.out.println(Double.parseDouble(Latitude.substring(Latitude.indexOf("lat") + 6, Latitude.indexOf(","))));
-        return (Double.parseDouble(Latitude.substring(Latitude.indexOf("lat") + 6, Latitude.indexOf(","))));
+        if (pos > 0) {
+            JsonModify = JsonMaps.substring(pos, pos + 200);
+            Latitude = JsonModify;
+            System.out.println(Double.parseDouble(Latitude.substring(Latitude.indexOf("lat") + 6, Latitude.indexOf(","))));
+            return (Double.parseDouble(Latitude.substring(Latitude.indexOf("lat") + 6, Latitude.indexOf(","))));
+        } else {
+            return (0);
+        }
     }
 
     public double getLongitude() {
-        Longitude = JsonModify.trim();
-        Longitude = Longitude.substring(Longitude.indexOf("lng") + 6, Longitude.indexOf("}"));
-        System.out.println(Double.parseDouble(Longitude));
-        return (Double.parseDouble(Longitude));
+        int pos = JsonMaps.indexOf("location");
+        if (pos > 0) {
+            Longitude = JsonModify.trim();
+            Longitude = Longitude.substring(Longitude.indexOf("lng") + 6, Longitude.indexOf("}"));
+            System.out.println(Double.parseDouble(Longitude));
+            return (Double.parseDouble(Longitude));
+
+        } else {
+            return (0);
+        }
     }
 
     public boolean status() {
@@ -70,12 +102,13 @@ public class Coordenadas {
 
             return true;
         } else {
-
+            System.out.println(JsonMaps);
             return false;
         }
     }
 
     public void Simulacao() {
+
         JsonMaps = "{\n"
                 + "   \"results\" : [\n"
                 + "      {\n"

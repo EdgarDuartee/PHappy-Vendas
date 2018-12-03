@@ -27,22 +27,19 @@ public class DaoDescobreCodigo {
     
     public int consultarCodPF() {
         PessoaFisica p = null;
-        
-        String seq = "";
         int aux = 0;
         
         PreparedStatement ps = null;
         try {      
-            ps = conn.prepareStatement("SELECT codigo from P_Fisica");                                  
+            ps = conn.prepareStatement("SELECT count(codigo) as codigo from P_Fisica");                                  
             
             ResultSet rs = ps.executeQuery();
             
-            while(rs.next() == true ){
-                seq = rs.getString("codigo");
+            if(rs.next() == true ){
+                aux = rs.getInt("codigo");
+                System.out.println(aux);
             }
-            if(seq.length()>2){
-                aux = parseInt(seq.substring(2,seq.length()).replace(" ",""));
-            }
+
         } catch (SQLException ex) {
              System.out.println(ex.toString());   
         }
@@ -51,26 +48,26 @@ public class DaoDescobreCodigo {
     
     public int consultarCodPJ() {
         PessoaJuridica p = null;
-        
-        String seq = "";
+
         int aux = 0;
         
         PreparedStatement ps = null;
         try {      
-            ps = conn.prepareStatement("SELECT codigo from P_Juridica");                                  
+            ps = conn.prepareStatement("SELECT count(codigo) as codigo from P_Juridica");                                  
             
             ResultSet rs = ps.executeQuery();
             
-            while(rs.next() == true ){
-                seq = rs.getString("codigo");
+            if(rs.next() == true ){
+                aux = rs.getInt("codigo");
+                System.out.println(aux);
             }
-            if(seq.length()>2){
-                aux = parseInt(seq.substring(2,seq.length()).replace(" ",""));
-            }
+
         } catch (SQLException ex) {
              System.out.println(ex.toString());   
         }
         return  (aux);
     }
+    
+    
   
 }
