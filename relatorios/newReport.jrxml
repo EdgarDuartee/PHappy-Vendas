@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="5.559917313492306"/>
-	<property name="ireport.x" value="2598"/>
-	<property name="ireport.y" value="683"/>
+	<property name="ireport.zoom" value="3.7974983358324605"/>
+	<property name="ireport.x" value="878"/>
+	<property name="ireport.y" value="948"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="CampsNF" isBlankWhenNull="false" fontName="Calibri" fontSize="8" isBold="false" isItalic="false"/>
 	<style name="TituloCampo" hAlign="Left" vAlign="Top" fontName="Calibri" fontSize="8" isItalic="false"/>
@@ -472,7 +472,7 @@ where nota_fiscal.numero = $P{codigo}]]>
 				<reportElement style="Style_2" x="101" y="330" width="99" height="12" uuid="0bfaa9b8-7fde-4caa-a553-5c42e404c319"/>
 				<text><![CDATA[0– Por conta do emitente;]]></text>
 			</staticText>
-			<textField isBlankWhenNull="false">
+			<textField isBlankWhenNull="true">
 				<reportElement style="Style_2" x="300" y="331" width="100" height="11" uuid="072da8f9-798b-4cf3-9a67-8f04dbd911f6"/>
 				<textFieldExpression><![CDATA[$F{PLACAVEICULO}]]></textFieldExpression>
 			</textField>

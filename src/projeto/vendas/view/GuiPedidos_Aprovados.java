@@ -67,6 +67,7 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
             }
         });
 
+        tbl_PedidosAprovados.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbl_PedidosAprovados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -90,6 +91,8 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_PedidosAprovados.setRowHeight(20);
+        tbl_PedidosAprovados.setRowMargin(2);
         tbl_PedidosAprovados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_PedidosAprovados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

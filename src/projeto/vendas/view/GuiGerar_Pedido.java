@@ -776,7 +776,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
 
             if (tblProduto.getSelectedRow() >= 0) {
-                Total = (Total - (float) model.getValueAt(tblProduto.getSelectedRow(), 4));
+                Total = (Total - Float.parseFloat(model.getValueAt(tblProduto.getSelectedRow(), 4).toString().replace(",",".")));
                 txt_total.setText(formatador.format(Total));
                 // PERCORRO O ARRAYLIST QUE PREENCHE O CBX PRODUTO, ATÉ ENCONTRAR O PRODUTO COM O CÓDIGO DO EXCLUIDO.
 //                for (int i = 0; i < listaProdutos.size(); i++) {
