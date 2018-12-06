@@ -22,10 +22,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     public GuiMenuGerente(Login login) {
         initComponents();
 
-        GuiMenuGerente.this.setTitle("Menu             " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
+        GuiMenuGerente.this.setTitle("Menu             " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
         this.login = login;
-        
+
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
@@ -41,6 +41,13 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         lblLogotipo = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
@@ -51,6 +58,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         JMenuAlterar = new javax.swing.JMenu();
         jMenuItem_Alterar_Cliente = new javax.swing.JMenuItem();
         jMenuItem_Alterar_Vendedor = new javax.swing.JMenuItem();
+        jmenu_AlterarSenha = new javax.swing.JMenuItem();
         jMenu_Gerar_Pedido = new javax.swing.JMenu();
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
         jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
@@ -61,8 +69,22 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenuItem_PorCliente = new javax.swing.JMenuItem();
         jMenuItem_PorVendedor = new javax.swing.JMenuItem();
         jMenuItem_PorRegiao = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu2.setText("jMenu2");
+
+        jMenu3.setText("jMenu3");
+
+        jMenu4.setText("jMenu4");
+
+        jMenu6.setText("jMenu6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -127,6 +149,15 @@ public class GuiMenuGerente extends javax.swing.JFrame {
             }
         });
         JMenuAlterar.add(jMenuItem_Alterar_Vendedor);
+
+        jmenu_AlterarSenha.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jmenu_AlterarSenha.setText("Senha");
+        jmenu_AlterarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmenu_AlterarSenhaActionPerformed(evt);
+            }
+        });
+        JMenuAlterar.add(jmenu_AlterarSenha);
 
         jMenu.add(JMenuAlterar);
 
@@ -203,6 +234,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu_ControleEstrategico.add(jMenuItem_PorRegiao);
 
         jMenu.add(jMenu_ControleEstrategico);
+        jMenu.add(jMenu5);
 
         setJMenuBar(jMenu);
 
@@ -270,6 +302,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         new GuiControle_Estratégico_por_Vendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PorVendedorActionPerformed
 
+    private void jmenu_AlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenu_AlterarSenhaActionPerformed
+        new GuiAlterar_Senha(login).setVisible(true);
+    }//GEN-LAST:event_jmenu_AlterarSenhaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -310,8 +346,15 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private static Login login;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenuAlterar;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Analise_de_Credito;
@@ -329,6 +372,8 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_Gerar_Pedido;
     private javax.swing.JMenu jMenu_GerenciarPendencias;
     private javax.swing.JMenu jMenu_Pedidos_Aprovados;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JMenuItem jmenu_AlterarSenha;
     private javax.swing.JLabel lblLogotipo;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,15 @@
  */
 package projeto.vendas.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.net.URL;
+import javax.swing.JOptionPane;
+import projeto.vendas.control.Conexao;
+import projeto.vendas.control.DaoVendedor;
+import projeto.vendas.model.Login;
+import projeto.vendas.model.Vendedor;
+
 /**
  *
  * @author Fernando
@@ -14,8 +23,15 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
     /**
      * Creates new form GuiAlterar_Senha
      */
-    public GuiAlterar_Senha() {
+    public GuiAlterar_Senha(Login login) {
         initComponents();
+        GuiAlterar_Senha.this.setTitle("Alterar Senha   " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+
+        URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
+        Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
+        this.setIconImage(iconeTitulo);
+        this.login = login;
     }
 
     /**
@@ -27,29 +43,36 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ptxtSenha = new javax.swing.JPasswordField();
-        ptxtSenha1 = new javax.swing.JPasswordField();
-        ptxtSenha2 = new javax.swing.JPasswordField();
+        txt_SenhaAtual = new javax.swing.JPasswordField();
+        txt_NovaSenha = new javax.swing.JPasswordField();
+        txt_ConfirmarNovaSenha = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btn_alterarSenha = new javax.swing.JButton();
+        cbx_ExibirSenhas = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        ptxtSenha.setText("1000");
-        ptxtSenha.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        ptxtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ptxtSenhaActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
-        ptxtSenha1.setText("1000");
-        ptxtSenha1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txt_SenhaAtual.setText("1000");
+        txt_SenhaAtual.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txt_SenhaAtual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_SenhaAtualActionPerformed(evt);
+            }
+        });
 
-        ptxtSenha2.setText("1000");
-        ptxtSenha2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        txt_NovaSenha.setText("1000");
+        txt_NovaSenha.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+
+        txt_ConfirmarNovaSenha.setText("1000");
+        txt_ConfirmarNovaSenha.setBorder(javax.swing.BorderFactory.createCompoundBorder());
 
         jLabel1.setText("Senha Atual");
 
@@ -57,26 +80,49 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
 
         jLabel3.setText("Confirme a nova Senha");
 
-        jButton1.setText("jButton1");
+        btn_alterarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Alterar.png"))); // NOI18N
+        btn_alterarSenha.setText("Atualizar Senha");
+        btn_alterarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_alterarSenhaActionPerformed(evt);
+            }
+        });
+
+        cbx_ExibirSenhas.setText("Exibir Senhas");
+        cbx_ExibirSenhas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbx_ExibirSenhasItemStateChanged(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Voltar.png"))); // NOI18N
+        jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ptxtSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txt_NovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jLabel2))
                     .addComponent(jLabel3)
-                    .addComponent(ptxtSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_ConfirmarNovaSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ptxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(txt_SenhaAtual)
+                    .addComponent(btn_alterarSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(cbx_ExibirSenhas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,23 +133,89 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ptxtSenha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ptxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                    .addComponent(txt_NovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_SenhaAtual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbx_ExibirSenhas)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_ConfirmarNovaSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ptxtSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_alterarSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ptxtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ptxtSenhaActionPerformed
+    private void txt_SenhaAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SenhaAtualActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ptxtSenhaActionPerformed
+    }//GEN-LAST:event_txt_SenhaAtualActionPerformed
+
+    private void btn_alterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_alterarSenhaActionPerformed
+        if (txt_ConfirmarNovaSenha.getPassword().length <= 4 && txt_NovaSenha.getPassword().length <= 4) {
+            JOptionPane.showMessageDialog(null, "Informe uma senha"
+                    + "entre 5 ou 20 caracteres.",
+                    "Caracteres Insuficientes", JOptionPane.ERROR_MESSAGE);
+        } else if (txt_ConfirmarNovaSenha.getPassword().length >= 21 && txt_NovaSenha.getPassword().length >= 21) {
+
+            JOptionPane.showMessageDialog(null, "Informe uma senha"
+                    + "entre 5 ou 20 caracteres.",
+                    "Muitos Caracteres", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (String.valueOf(txt_SenhaAtual.getPassword()).equals(login.getSenha())) {
+                if (JOptionPane.showConfirmDialog(null, "Deseja Alterar a Senha?") == 0) {
+                    vendedor.setSenha(String.valueOf(txt_NovaSenha.getPassword()));
+                    daoVendedor.alterarsenha(vendedor);
+                    JOptionPane.showMessageDialog(null, "Se houver problemas com a nova senha, contate um administrador.",
+                    "Senha Alterada Com Sucesso.", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    if (JOptionPane.showConfirmDialog(null, "Deseja Limpar a Tela ?") == 0) {
+                        txt_ConfirmarNovaSenha.setText("");
+                        txt_NovaSenha.setText("");
+                        txt_SenhaAtual.setText("");
+                    }
+
+                }
+            } else {
+                System.out.println(String.valueOf(txt_SenhaAtual.getPassword()).equals(login.getSenha()));
+                JOptionPane.showMessageDialog(null, "A senha atual"
+                        + "informada, não é igual a senha cadastrada no sistema.",
+                        "Senhas Divergentes", JOptionPane.ERROR_MESSAGE);
+
+            }
+        }
+
+    }//GEN-LAST:event_btn_alterarSenhaActionPerformed
+
+    private void cbx_ExibirSenhasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbx_ExibirSenhasItemStateChanged
+        if (cbx_ExibirSenhas.isSelected()) {
+            txt_ConfirmarNovaSenha.setEchoChar('\u0000');
+            txt_NovaSenha.setEchoChar('\u0000');
+            txt_SenhaAtual.setEchoChar('\u0000');
+
+        } else {
+            txt_ConfirmarNovaSenha.setEchoChar('\u25cf');
+            txt_NovaSenha.setEchoChar('\u25cf');
+            txt_SenhaAtual.setEchoChar('\u25cf');
+        }
+    }//GEN-LAST:event_cbx_ExibirSenhasItemStateChanged
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        conexao = new Conexao();
+        conexao.setDriver();
+        conexao.setConnectionString();
+        daoVendedor = new DaoVendedor(conexao.conectar());
+        vendedor = daoVendedor.consultar(login.getCodigo());
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,18 +247,24 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiAlterar_Senha().setVisible(true);
+                new GuiAlterar_Senha(login).setVisible(true);
             }
         });
     }
 
+    private static Login login;
+    private DaoVendedor daoVendedor = null;
+    private Conexao conexao;
+    private Vendedor vendedor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_alterarSenha;
+    private javax.swing.JCheckBox cbx_ExibirSenhas;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField ptxtSenha;
-    private javax.swing.JPasswordField ptxtSenha1;
-    private javax.swing.JPasswordField ptxtSenha2;
+    private javax.swing.JPasswordField txt_ConfirmarNovaSenha;
+    private javax.swing.JPasswordField txt_NovaSenha;
+    private javax.swing.JPasswordField txt_SenhaAtual;
     // End of variables declaration//GEN-END:variables
 }

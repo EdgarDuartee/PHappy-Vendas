@@ -80,9 +80,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="JScrollPanePedido" min="-2" pref="252" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnReprovar" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="btnAprovar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAprovar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -93,9 +93,9 @@
                           <Component id="jPanel_Período_da_Pesquisa" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnBuscar" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="btnBuscar" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

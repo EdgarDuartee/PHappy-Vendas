@@ -79,11 +79,6 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         ftxtCEP = new javax.swing.JFormattedTextField();
         txtComplemento = new javax.swing.JTextField();
         lblComplemento = new javax.swing.JLabel();
-        Painel_Vendedor = new javax.swing.JPanel();
-        lblBuscar_Por = new javax.swing.JLabel();
-        txtBusca = new javax.swing.JTextField();
-        lblBusca = new javax.swing.JLabel();
-        btnPesquisar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         btnCadastrar = new javax.swing.JButton();
@@ -95,10 +90,11 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         lblSenha = new javax.swing.JLabel();
         txtSenha = new javax.swing.JTextField();
         lblcodigo = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         lblNome_Colaborador = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         lblFuncionario = new javax.swing.JLabel();
+        txtBusca = new javax.swing.JTextField();
+        btnPesquisar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Vendedor");
@@ -111,7 +107,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
 
         Painel_Registro_Vendedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro Vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
-        Painel_Contato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Contato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
+        Painel_Contato.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados do Colaborador\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
 
         lblRG.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblRG.setText("RG");
@@ -190,9 +186,9 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                         .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail)
                             .addGroup(Painel_ContatoLayout.createSequentialGroup()
-                                .addComponent(ftxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ftxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ftxtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_ContatoLayout.createSequentialGroup()
                                 .addGroup(Painel_ContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ftxtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,7 +204,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                             .addComponent(lblData_Nascimento)
                             .addComponent(lblRG, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEmail))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                         .addComponent(lblCPF)
                         .addGap(77, 77, 77))))
         );
@@ -326,6 +322,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         Painel_EndereçoLayout.setVerticalGroup(
             Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_EndereçoLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(Painel_EndereçoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCidade)
                     .addComponent(lblUF))
@@ -351,55 +348,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                 .addComponent(lblComplemento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        Painel_Vendedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vendedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 12))); // NOI18N
-
-        lblBuscar_Por.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblBuscar_Por.setText("Buscar");
-
-        txtBusca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
-        lblBusca.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblBusca.setText("Digite o Código");
-
-        btnPesquisar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
-        btnPesquisar.setText("Pesquisar");
-        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesquisarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Painel_VendedorLayout = new javax.swing.GroupLayout(Painel_Vendedor);
-        Painel_Vendedor.setLayout(Painel_VendedorLayout);
-        Painel_VendedorLayout.setHorizontalGroup(
-            Painel_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_VendedorLayout.createSequentialGroup()
-                .addGroup(Painel_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBusca)
-                    .addComponent(lblBuscar_Por))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Painel_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPesquisar)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Painel_VendedorLayout.setVerticalGroup(
-            Painel_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_VendedorLayout.createSequentialGroup()
-                .addGroup(Painel_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Painel_VendedorLayout.createSequentialGroup()
-                        .addComponent(lblBuscar_Por, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11))
-                    .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10)
-                .addGroup(Painel_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
         );
 
         btnVoltar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
@@ -499,23 +448,30 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblcodigo.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblcodigo.setText("Código de Registro");
 
-        txtCodigo.setEditable(false);
-        txtCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCodigo.setEnabled(false);
-
         lblNome_Colaborador.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        lblNome_Colaborador.setText("Nome do Colaborador");
+        lblNome_Colaborador.setText("Colaborador");
 
         txtNome.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNome.setEnabled(false);
 
         lblFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Funcionario.png"))); // NOI18N
+
+        txtBusca.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        btnPesquisar.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Consultar.png"))); // NOI18N
+        btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Painel_Registro_VendedorLayout = new javax.swing.GroupLayout(Painel_Registro_Vendedor);
         Painel_Registro_Vendedor.setLayout(Painel_Registro_VendedorLayout);
@@ -527,63 +483,65 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100)
-                        .addComponent(btnLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCadastrar))
-                    .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                        .addComponent(lblcodigo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lblNome_Colaborador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Registro_VendedorLayout.createSequentialGroup()
                         .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Registro_VendedorLayout.createSequentialGroup()
+                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar))
                             .addComponent(Painel_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Painel_Contato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Painel_Vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(lblcodigo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnPesquisar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Painel_Permissoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Painel_Permissoes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_Registro_VendedorLayout.createSequentialGroup()
+                                .addComponent(btnCadastrar)
+                                .addGap(100, 100, 100)))))
                 .addContainerGap())
         );
         Painel_Registro_VendedorLayout.setVerticalGroup(
             Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblcodigo)
+                    .addComponent(lblNome_Colaborador)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblcodigo)
-                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNome_Colaborador)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)
-                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                                .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Painel_Permissoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                                .addComponent(Painel_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Painel_Nickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnVoltar)
-                                .addComponent(btnCadastrar))))
+                        .addComponent(Painel_Endereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Painel_Permissoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
-                        .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Painel_Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Painel_Nickname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Painel_Registro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastrar))
                 .addContainerGap())
+            .addGroup(Painel_Registro_VendedorLayout.createSequentialGroup()
+                .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 207, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Painel_Cadastro_VendedorLayout = new javax.swing.GroupLayout(Painel_Cadastro_Vendedor);
@@ -592,13 +550,11 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             Painel_Cadastro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Painel_Cadastro_VendedorLayout.createSequentialGroup()
                 .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Painel_Cadastro_VendedorLayout.setVerticalGroup(
             Painel_Cadastro_VendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Painel_Cadastro_VendedorLayout.createSequentialGroup()
-                .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+            .addComponent(Painel_Registro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -607,13 +563,11 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Painel_Cadastro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Painel_Cadastro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Painel_Cadastro_Vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -657,7 +611,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
 
                 txtSenha.setText("");
                 txtNome.setText("");
-                txtCodigo.setText("");
+//                txtCodigo.setText("");
                 txtEmail.setText("");
                 txtBusca.setText("");
                 btnCadastrar.setText("Cadastrar");
@@ -666,7 +620,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         } else {
             if (JOptionPane.showConfirmDialog(null, "Confirma Cadastro?") == 0) {
                 JOptionPane.showMessageDialog(null, "Cadastro Efetuado com sucesso!");
-                vendedor = new Vendedor(parseInt(txtCodigo.getText()), txtNome.getText(),
+                vendedor = new Vendedor(parseInt(txtBusca.getText()), txtNome.getText(),
                         ftxtRG.getText().replace(".", "").replace("-", ""),
                         ftxtCPF.getText().replace(".", "").replace("-", ""), txtEmail.getText(),
                         ftxtTel.getText(), ftxtCel.getText(), ftxtData_Nasc.getText().replace("/", ""),
@@ -708,7 +662,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
 
                 txtSenha.setText("");
                 txtNome.setText("");
-                txtCodigo.setText("");
+//                txtCodigo.setText("");
                 txtEmail.setText("");
             }
         }
@@ -735,7 +689,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
 
         txtSenha.setText("");
         txtNome.setText("");
-        txtCodigo.setText("");
+//        txtCodigo.setText("");
         txtEmail.setText("");
         txtSenha.setEnabled(false);
         btnLimpar.setEnabled(false);
@@ -758,7 +712,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                 vendedor1 = null;
                 vendedor1 = daoVendedor.consultarTbVend(parseInt(txtBusca.getText()));
                 if (vendedor1 == null) {
-                    txtCodigo.setText(String.valueOf(vendedor.getCodigo()));
+//                    txtCodigo.setText(String.valueOf(vendedor.getCodigo()));
                     txtNome.setText(vendedor.getNome());
                     ftxtRG.setText(vendedor.getRg());
                     ftxtTel.setText(vendedor.getTel());
@@ -782,7 +736,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                     btnCadastrar.setEnabled(true);
                     btnLimpar.setEnabled(true);
                 } else {
-                    txtCodigo.setText(String.valueOf(vendedor1.getCodigo()));
+//                    txtCodigo.setText(String.valueOf(vendedor1.getCodigo()));
                     txtNome.setText(vendedor1.getNome());
                     ftxtRG.setText(vendedor1.getRg());
                     ftxtTel.setText(vendedor1.getTel());
@@ -826,7 +780,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
 
                         txtSenha.setText("");
                         txtNome.setText("");
-                        txtCodigo.setText("");
+//                        txtCodigo.setText("");
                         txtEmail.setText("");
                         cbxPermissoes.setEnabled(false);
                         txtBusca.setText("");
@@ -908,7 +862,6 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
     private javax.swing.JPanel Painel_Nickname;
     private javax.swing.JPanel Painel_Permissoes;
     private javax.swing.JPanel Painel_Registro_Vendedor;
-    private javax.swing.JPanel Painel_Vendedor;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnPesquisar;
@@ -924,8 +877,6 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftxtTel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBairro;
-    private javax.swing.JLabel lblBusca;
-    private javax.swing.JLabel lblBuscar_Por;
     private javax.swing.JLabel lblCEP;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblCelular;
@@ -946,7 +897,6 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
     private javax.swing.JTextField txtBairro;
     private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtCidade;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;

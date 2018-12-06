@@ -42,6 +42,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
      */
     public GuiAnalise_de_Credito(Login login) {
         initComponents();
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         this.login = login;
         GuiAnalise_de_Credito.this.setTitle("Analise de Crédito  " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
@@ -387,7 +388,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JScrollPanePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnReprovar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAprovar)))
                     .addGroup(layout.createSequentialGroup()
@@ -397,7 +398,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             .addComponent(jPanel_Complemento_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel_Período_da_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnVoltar)
                             .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
