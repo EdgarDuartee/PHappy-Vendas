@@ -60,6 +60,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     public GuiGerar_Pedido(Login login) {
         initComponents();
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         GuiGerar_Pedido.this.setTitle("Gerar Pedido      " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();

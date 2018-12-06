@@ -30,6 +30,7 @@ public class GuiAlterar_Vendedor extends javax.swing.JFrame {
     public GuiAlterar_Vendedor(Login login) {
         initComponents();
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
 
         GuiAlterar_Vendedor.this.setTitle("Alterar Vendedor         " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());

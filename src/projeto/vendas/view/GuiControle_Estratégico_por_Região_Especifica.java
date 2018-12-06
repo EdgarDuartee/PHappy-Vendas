@@ -54,6 +54,7 @@ public class GuiControle_Estratégico_por_Região_Especifica extends javax.swing
             ArrayList<PessoaFisica> ListarPessoasFisicas, ArrayList<PessoaJuridica> ListarPessoasJuridicas) {
         initComponents();
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         this.UF = UF;
         this.estado = estado;
         this.qtdCli = qtdCli;

@@ -44,6 +44,7 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         initComponents();
         this.codigo = codigo;
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 

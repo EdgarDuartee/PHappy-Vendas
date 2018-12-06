@@ -60,6 +60,7 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
     public GuiControle_Estratégico_por_Vendedor(Login login) {
         initComponents();
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         GuiControle_Estratégico_por_Vendedor.this.setTitle("Controle Estratégico por Vendedor"
                 + "    " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());

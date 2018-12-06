@@ -35,7 +35,7 @@ public class GuiAlterar_Cliente extends javax.swing.JFrame {
         this.login = login;
         GuiAlterar_Cliente.this.setTitle("Alterar CLientes         " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
-        
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);

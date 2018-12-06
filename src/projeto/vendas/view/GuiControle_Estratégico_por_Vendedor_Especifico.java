@@ -66,6 +66,7 @@ public class GuiControle_Estratégico_por_Vendedor_Especifico extends javax.swin
         this.login = login;
         this.codigo = codigo;
         this.ListarNotaFiscal = Lista;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
 
         GuiControle_Estratégico_por_Vendedor_Especifico.this.setTitle(
                 "Controle Estratégico por Vendedor    " + "Usuário:  " + login.getNome()

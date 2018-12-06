@@ -39,6 +39,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
     public GuiCadastroPessoa_Física(Login login) {
         initComponents();
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         GuiCadastroPessoa_Física.this.setTitle("Cadastro Pessoa Fisica     " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 

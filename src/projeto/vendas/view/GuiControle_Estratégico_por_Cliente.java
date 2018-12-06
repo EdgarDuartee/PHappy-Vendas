@@ -52,6 +52,7 @@ public class GuiControle_Estratégico_por_Cliente extends javax.swing.JFrame {
         initComponents();
                 GuiControle_Estratégico_por_Cliente.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
+                this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
                 
                 URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);

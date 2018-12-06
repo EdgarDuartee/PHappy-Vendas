@@ -44,6 +44,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         initComponents();
         this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         GuiAnalise_de_Credito.this.setTitle("Analise de Crédito  " + "Usuário:  " + login.getNome()+
                 "         " +"Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblPedido.getModel();

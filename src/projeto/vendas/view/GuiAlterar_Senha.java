@@ -32,6 +32,7 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
     }
 
     /**

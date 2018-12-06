@@ -35,6 +35,7 @@ public class GuiPedidos_Aprovados extends javax.swing.JFrame {
         initComponents();
 
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
         GuiPedidos_Aprovados.this.setTitle("Pedidos Aprovados    " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tbl_PedidosAprovados.getModel();

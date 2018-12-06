@@ -56,6 +56,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
     public GuiControle_Estratégico_por_Região(Login login) {
         initComponents();
         this.login = login;
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
 
         GuiControle_Estratégico_por_Região.this.setTitle("Controle Estratégico "
                 + "por Região    " + "Usuário:  " + login.getNome()

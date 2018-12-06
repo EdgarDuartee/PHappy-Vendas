@@ -30,9 +30,10 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
     public GuiCadastro_Vendedor(Login login) {
         initComponents();
         this.login = login;
-        GuiCadastro_Vendedor.this.setTitle("Cadastro Vendedor       " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
-        
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
+        GuiCadastro_Vendedor.this.setTitle("Cadastro Vendedor       " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
+
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
@@ -581,7 +582,7 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
         conexao = new Conexao();
         conexao.setDriver();
         conexao.setConnectionString();
-        daoVendedor = new DaoVendedor(conexao.conectar());  
+        daoVendedor = new DaoVendedor(conexao.conectar());
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -618,52 +619,63 @@ public class GuiCadastro_Vendedor extends javax.swing.JFrame {
                 btnCadastrar.setEnabled(false);
             }
         } else {
-            if (JOptionPane.showConfirmDialog(null, "Confirma Cadastro?") == 0) {
-                JOptionPane.showMessageDialog(null, "Cadastro Efetuado com sucesso!");
-                vendedor = new Vendedor(parseInt(txtBusca.getText()), txtNome.getText(),
-                        ftxtRG.getText().replace(".", "").replace("-", ""),
-                        ftxtCPF.getText().replace(".", "").replace("-", ""), txtEmail.getText(),
-                        ftxtTel.getText(), ftxtCel.getText(), ftxtData_Nasc.getText().replace("/", ""),
-                        txtRua.getText(), txtNumero.getText(), txtBairro.getText(), txtCidade.getText(),
-                        txtUF.getText(), ftxtCEP.getText().replace("-", ""));
-                vendedor.setPermissao(cbxPermissoes.getSelectedIndex());
-                vendedor.setSenha(txtSenha.getText());
-                vendedor.setComplemento(txtComplemento.getText());
+            if (txtSenha.getText().length() <= 4) {
+                JOptionPane.showMessageDialog(null, "Informe uma senha "
+                        + "entre 5 ou 20 caracteres.",
+                        "Caracteres Insuficientes", JOptionPane.ERROR_MESSAGE);
+            } else if (txtSenha.getText().length() >= 21) {
 
-                //cria o formatador de data
-                SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");  
-		 //cria um objeto date com a data do sistema
-		Date dataDoSistema = new Date(System.currentTimeMillis());
-		 //passa o objeto dataDoSistema para uma String da forma que pediu
-		String dataEmTexto = formatador.format(dataDoSistema);  
-                //passa o valor como string para o atributo
-                vendedor.setDtInicio(dataEmTexto);
-                
-                daoVendedor.inserir(vendedor);
-                btnCadastrar.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Informe uma senha "
+                        + "entre 5 ou 20 caracteres.",
+                        "Muitos Caracteres", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (JOptionPane.showConfirmDialog(null, "Confirma Cadastro?") == 0) {
+                    JOptionPane.showMessageDialog(null, "Cadastro Efetuado com sucesso!");
+                    vendedor = new Vendedor(parseInt(txtBusca.getText()), txtNome.getText(),
+                            ftxtRG.getText().replace(".", "").replace("-", ""),
+                            ftxtCPF.getText().replace(".", "").replace("-", ""), txtEmail.getText(),
+                            ftxtTel.getText(), ftxtCel.getText(), ftxtData_Nasc.getText().replace("/", ""),
+                            txtRua.getText(), txtNumero.getText(), txtBairro.getText(), txtCidade.getText(),
+                            txtUF.getText(), ftxtCEP.getText().replace("-", ""));
+                    vendedor.setPermissao(cbxPermissoes.getSelectedIndex());
+                    vendedor.setSenha(txtSenha.getText());
+                    vendedor.setComplemento(txtComplemento.getText());
 
-                txtBusca.requestFocus();
+                    //cria o formatador de data
+                    SimpleDateFormat formatador = new SimpleDateFormat("ddMMyyyy");
+                    //cria um objeto date com a data do sistema
+                    Date dataDoSistema = new Date(System.currentTimeMillis());
+                    //passa o objeto dataDoSistema para uma String da forma que pediu
+                    String dataEmTexto = formatador.format(dataDoSistema);
+                    //passa o valor como string para o atributo
+                    vendedor.setDtInicio(dataEmTexto);
 
-                ftxtRG.setText("");
-                ftxtCEP.setText("");
-                ftxtCPF.setText("");
-                ftxtCel.setText("");
-                ftxtData_Nasc.setText("");
-                ftxtTel.setText("");
-                cbxPermissoes.setSelectedIndex(0);
-                cbxPermissoes.setEnabled(false);
+                    daoVendedor.inserir(vendedor);
+                    btnCadastrar.setEnabled(false);
 
-                txtRua.setText("");
-                txtNumero.setText("");
-                txtBairro.setText("");
-                txtCidade.setText("");
-                txtUF.setText("");
-                txtComplemento.setText("");
+                    txtBusca.requestFocus();
 
-                txtSenha.setText("");
-                txtNome.setText("");
+                    ftxtRG.setText("");
+                    ftxtCEP.setText("");
+                    ftxtCPF.setText("");
+                    ftxtCel.setText("");
+                    ftxtData_Nasc.setText("");
+                    ftxtTel.setText("");
+                    cbxPermissoes.setSelectedIndex(0);
+                    cbxPermissoes.setEnabled(false);
+
+                    txtRua.setText("");
+                    txtNumero.setText("");
+                    txtBairro.setText("");
+                    txtCidade.setText("");
+                    txtUF.setText("");
+                    txtComplemento.setText("");
+
+                    txtSenha.setText("");
+                    txtNome.setText("");
 //                txtCodigo.setText("");
-                txtEmail.setText("");
+                    txtEmail.setText("");
+                }
             }
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
