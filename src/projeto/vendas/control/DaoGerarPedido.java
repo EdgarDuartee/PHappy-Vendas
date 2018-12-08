@@ -72,9 +72,11 @@ public class DaoGerarPedido {
             ps.setInt(7, pedido.getSituacao());
 
             ps.execute();
+            ps.close();
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
+
     }
 
     public ArrayList<Pedido> ListarPedidos() {

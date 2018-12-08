@@ -1231,6 +1231,7 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
         nf.setPlacaVeiculo(ftxt_PlacaVeiculo.getText());
         nf.setTransp_DataSaida(ftxt_dataSaida.getText());
         nf.setTransp_HoraSaida(ftxt_horaSaida.getText());
+        nf.setValorfrete(Float.parseFloat(ftxtValor_Frete.getText().replace(",", ".")));
         
         /*montando a chave de acesso
         *********************************************************

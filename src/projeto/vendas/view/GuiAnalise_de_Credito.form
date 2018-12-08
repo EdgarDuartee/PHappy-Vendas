@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-              <Component id="lblAnalise_de_Credito" pref="150" max="32767" attributes="0"/>
+              <Component id="lblAnalise_de_Credito" pref="141" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jPanel_Pesquisa" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -248,20 +248,20 @@
                       <Group type="102" attributes="0">
                           <Component id="rbtnNumero_do_Cliente" min="-2" pref="103" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtPesquisaCliente" max="32767" attributes="0"/>
+                          <Component id="txtPesquisaCliente" min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                       <Component id="lblPesquisa" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="rbtnNumero_do_Pedido" min="-2" pref="103" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtPesquisaPedido" min="-2" pref="74" max="-2" attributes="0"/>
+                          <Component id="txtPesquisaPedido" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Component id="cbxHabilitaPesq1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="88" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -273,8 +273,8 @@
                   <Component id="lblPesquisa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtPesquisaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rbtnNumero_do_Pedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtPesquisaPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="6" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -311,11 +311,6 @@
             <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="rbtnNumero_do_PedidoStateChanged"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtPesquisaPedido">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnNumero_do_Cliente">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
@@ -343,6 +338,14 @@
           <Events>
             <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxHabilitaPesq1ItemStateChanged"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtPesquisaPedido">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

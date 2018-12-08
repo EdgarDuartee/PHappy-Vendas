@@ -42,14 +42,14 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
      */
     public GuiAnalise_de_Credito(Login login) {
         initComponents();
-        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
         this.login = login;
-        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
-        GuiAnalise_de_Credito.this.setTitle("Analise de Crédito  " + "Usuário:  " + login.getNome()+
-                "         " +"Codigo:  " + login.getCodigo());
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+        GuiAnalise_de_Credito.this.setTitle("Analise de Crédito  " + "Usuário:  " + login.getNome()
+                + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel modelo = (DefaultTableModel) tblPedido.getModel();
         tblPedido.setRowSorter(new TableRowSorter(modelo));
-        
+
         URL caminhoIcone = getClass().getResource("/projeto/vendas/model/icones/logotipo.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
@@ -73,10 +73,10 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         jPanel_Pesquisa = new javax.swing.JPanel();
         lblPesquisa = new javax.swing.JLabel();
         rbtnNumero_do_Pedido = new javax.swing.JRadioButton();
-        txtPesquisaPedido = new javax.swing.JTextField();
         rbtnNumero_do_Cliente = new javax.swing.JRadioButton();
         txtPesquisaCliente = new javax.swing.JTextField();
         cbxHabilitaPesq1 = new javax.swing.JCheckBox();
+        txtPesquisaPedido = new javax.swing.JFormattedTextField();
         jPanel_Complemento_da_Pesquisa = new javax.swing.JPanel();
         lblFiltro = new javax.swing.JLabel();
         cbxFiltro = new javax.swing.JComboBox<>();
@@ -199,8 +199,6 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         });
 
-        txtPesquisaPedido.setEnabled(false);
-
         buttonGroup1.add(rbtnNumero_do_Cliente);
         rbtnNumero_do_Cliente.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         rbtnNumero_do_Cliente.setText("N° do Cliente");
@@ -216,6 +214,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             }
         });
 
+        txtPesquisaPedido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txtPesquisaPedido.setEnabled(false);
+
         javax.swing.GroupLayout jPanel_PesquisaLayout = new javax.swing.GroupLayout(jPanel_Pesquisa);
         jPanel_Pesquisa.setLayout(jPanel_PesquisaLayout);
         jPanel_PesquisaLayout.setHorizontalGroup(
@@ -226,16 +227,16 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                     .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                         .addComponent(rbtnNumero_do_Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPesquisaCliente))
+                        .addComponent(txtPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblPesquisa)
                     .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                         .addComponent(rbtnNumero_do_Pedido, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPesquisaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPesquisaPedido)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel_PesquisaLayout.createSequentialGroup()
                 .addComponent(cbxHabilitaPesq1)
-                .addGap(0, 88, Short.MAX_VALUE))
+                .addGap(0, 97, Short.MAX_VALUE))
         );
         jPanel_PesquisaLayout.setVerticalGroup(
             jPanel_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,8 +246,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 .addComponent(lblPesquisa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPesquisaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbtnNumero_do_Pedido))
+                    .addComponent(rbtnNumero_do_Pedido)
+                    .addComponent(txtPesquisaPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(jPanel_PesquisaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnNumero_do_Cliente)
@@ -355,7 +356,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(lblAnalise_de_Credito, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(lblAnalise_de_Credito, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel_Pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -456,7 +457,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                 DaoPedidoProduto daoPedidoProduto = new DaoPedidoProduto(conexao.conectar());
                 ArrayList<PedidoProduto> ListaPedidoProduto = new ArrayList<PedidoProduto>();
                 ListaPedidoProduto = daoPedidoProduto.listarPedidoProduto(valorPedido);
-                for(int i = 0; i < ListaPedidoProduto.size(); i++) {
+                for (int i = 0; i < ListaPedidoProduto.size(); i++) {
                     daoProduto.IncrementaEstoque(ListaPedidoProduto.get(i).getProdutoCod(), ListaPedidoProduto.get(i).getProdutoQtd());
                 }
             }
@@ -472,6 +473,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         //limpa caso ja tiver algo na tabela
+        model = (DefaultTableModel) tblPedido.getModel();
         btnAprovar.setEnabled(false);
         btnReprovar.setEnabled(false);
         if (flag == 1) {
@@ -519,11 +521,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             pedido.getCodigo(),
                             pedido.getClienteCod(),
                             nome,
-                            pedido.getDtPedido().substring(0,pedido.getDtPedido().indexOf("-")),
+                            pedido.getDtPedido().substring(0, pedido.getDtPedido().indexOf("-")),
                             formatador.format(pedido.getTotal()),
                             legendaSituacao};
-
-                        model = (DefaultTableModel) tblPedido.getModel();
                         model.addRow(row);
                         flag = 1;
                     }
@@ -538,8 +538,8 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                             && (txtPesquisaCliente.getText().substring(0, 2).equals("PF")
                             || txtPesquisaCliente.getText().substring(0, 2).equals("PJ"))) {
                         //testa se o restante depois do prefixo so tem numero
-                        System.out.println(txtPesquisaCliente.getText().
-                                substring(2, txtPesquisaCliente.getText().length()));
+//                        System.out.println(txtPesquisaCliente.getText().
+//                                substring(2, txtPesquisaCliente.getText().length()));
                         if (testaNumeros(txtPesquisaCliente.getText().
                                 substring(2, txtPesquisaCliente.getText().length())) == true) {
                             daoGerarPedido = new DaoGerarPedido(conexao.conectar());
@@ -609,11 +609,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                     pedidosPorCod.get(x).getCodigo(),
                                                     pedidosPorCod.get(x).getClienteCod(),
                                                     nome,
-                                                    pedidosPorCod.get(x).getDtPedido().substring(0,pedidosPorCod.get(x).getDtPedido().indexOf("-")),
+                                                    pedidosPorCod.get(x).getDtPedido().substring(0, pedidosPorCod.get(x).getDtPedido().indexOf("-")),
                                                     formatador.format(pedidosPorCod.get(x).getTotal()),
                                                     legendaSituacao};
-
-                                                model = (DefaultTableModel) tblPedido.getModel();
                                                 model.addRow(row);
                                                 flag = 1;
                                             }
@@ -645,11 +643,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                                 pedidosPorCod.get(x).getCodigo(),
                                                 pedidosPorCod.get(x).getClienteCod(),
                                                 nome,
-                                                pedidosPorCod.get(x).getDtPedido().substring(0,pedidosPorCod.get(x).getDtPedido().indexOf("-")),
+                                                pedidosPorCod.get(x).getDtPedido().substring(0, pedidosPorCod.get(x).getDtPedido().indexOf("-")),
                                                 formatador.format(pedidosPorCod.get(x).getTotal()),
                                                 legendaSituacao};
-
-                                            model = (DefaultTableModel) tblPedido.getModel();
                                             model.addRow(row);
                                             flag = 1;
                                         }
@@ -682,25 +678,30 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
             int anoI = parseInt(ftxtData_Inicial.getText().substring(6, 10));
             LocalDate dataInicio = LocalDate.of(anoI, mesI, diaI);
 
-
             int diaF = parseInt(ftxtData_Final.getText().substring(0, 2));
             int mesF = parseInt(ftxtData_Final.getText().substring(3, 5));
             int anoF = parseInt(ftxtData_Final.getText().substring(6, 10));
             LocalDate dataFinal = LocalDate.of(anoF, mesF, diaF);
 
-
             ArrayList<Pedido> pedidos = daoGerarPedido.ListarPedidos();
+//            System.out.println("Tamanho do Array = " + pedidos.size());
 
             for (int x = 0; x < pedidos.size(); x++) {
-                int dia = parseInt(pedidos.get(x).getDtPedido().substring(0, 2));
-                int mes = parseInt(pedidos.get(x).getDtPedido().substring(3, 5));
-                int ano = parseInt(pedidos.get(x).getDtPedido().substring(6, 10));
+                System.out.println("Inicio do FOR,Volta número = " + x);
+                int dia = parseInt(pedidos.get(x).getDtPedido().substring(0, pedidos.get(x).getDtPedido().indexOf("/", 0)));
+                int mes = parseInt(pedidos.get(x).getDtPedido().substring(3, pedidos.get(x).getDtPedido().indexOf("/", 3)));
+//                System.out.println("Momentos antes da desgraça : " + pedidos.get(x).getDtPedido().substring(pedidos.get(x).getDtPedido().indexOf("/", 3)+1, pedidos.get(x).getDtPedido().indexOf("-", 3)));
+                int ano = parseInt(pedidos.get(x).getDtPedido().substring(pedidos.get(x).getDtPedido().indexOf("/", 3) + 1, pedidos.get(x).getDtPedido().indexOf("-", 3)));
+//                System.out.println("DOSKPODKSPODKSAPO" + dia+"/"+mes+"/"+ano);
                 LocalDate dataPedido = LocalDate.of(ano, mes, dia);
-                System.out.println(dataPedido);
+//                System.out.println(dataPedido);
 
                 // testa se a data é maior que a data inicial da busca
                 if (dataPedido.isAfter(dataInicio) || dataPedido.isEqual(dataInicio)) {
+
                     //testa se a data é menor que a data final da busca
+
+                    
                     if (dataPedido.isBefore(dataFinal) || dataPedido.isEqual(dataFinal)) {
                         //testa se o filtro nao é todos
                         if (cbxFiltro.getSelectedIndex() != 0) {
@@ -734,11 +735,9 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                     pedidos.get(x).getCodigo(),
                                     pedidos.get(x).getClienteCod(),
                                     nome,
-                                    pedidos.get(x).getDtPedido().substring(0,pedidos.get(x).getDtPedido().indexOf("-")),
+                                    pedidos.get(x).getDtPedido().substring(0, pedidos.get(x).getDtPedido().indexOf("-")),
                                     formatador.format(pedidos.get(x).getTotal()),
                                     legendaSituacao};
-
-                                model = (DefaultTableModel) tblPedido.getModel();
                                 model.addRow(row);
                                 flag = 1;
                             }
@@ -766,16 +765,16 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
                                     legendaSituacao = "NFe EMITIDA";
                                     break;
                             }
+                            
                             Object[] row = {
                                 pedidos.get(x).getCodigo(),
                                 pedidos.get(x).getClienteCod(),
                                 nome,
-                                pedidos.get(x).getDtPedido().substring(0,pedidos.get(x).getDtPedido().indexOf("-")),
+                                pedidos.get(x).getDtPedido().substring(0, pedidos.get(x).getDtPedido().indexOf("-")),
                                 formatador.format(pedidos.get(x).getTotal()),
                                 legendaSituacao};
-
-                            model = (DefaultTableModel) tblPedido.getModel();
                             model.addRow(row);
+
                             flag = 1;
                         }
 
@@ -951,7 +950,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtnNumero_do_Pedido;
     private javax.swing.JTable tblPedido;
     private javax.swing.JTextField txtPesquisaCliente;
-    private javax.swing.JTextField txtPesquisaPedido;
+    private javax.swing.JFormattedTextField txtPesquisaPedido;
     // End of variables declaration//GEN-END:variables
     public boolean testaNumeros(String texto) {
         for (int i = 0; i < texto.length(); i++) {
@@ -962,7 +961,7 @@ public class GuiAnalise_de_Credito extends javax.swing.JFrame {
         return true;
     }
 
-        public double converte(String arg) throws ParseException {
+    public double converte(String arg) throws ParseException {
         //obtem um NumberFormat para o Locale default (BR)
         NumberFormat nf = NumberFormat.getNumberInstance();
         //converte um nÃºmero com vÃ­rgulas ex: 2,56 para double

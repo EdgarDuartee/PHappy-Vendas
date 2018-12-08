@@ -648,7 +648,7 @@ public class GuiControle_Estratégico_por_Região extends javax.swing.JFrame {
                                 int qtd = (int) tblRegiao.getValueAt(a, 5);
                                 tblRegiao.setValueAt(qtd + 1, a, 5);
 
-                                double valor = (double) tblRegiao.getValueAt(a, 6);
+                                double valor = Double.parseDouble(tblRegiao.getValueAt(a, 6).toString().replace(",", "."));
                                 tblRegiao.setValueAt(formatador.format(valor + ListarNotaFiscal.get(x).getTotal()), a, 6);
                                 flagLimpaTabela = 1;
                             }
