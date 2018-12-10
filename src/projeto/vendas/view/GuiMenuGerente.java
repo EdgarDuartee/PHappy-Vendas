@@ -69,6 +69,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenuItem_PorCliente = new javax.swing.JMenuItem();
         jMenuItem_PorVendedor = new javax.swing.JMenuItem();
         jMenuItem_PorRegiao = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -233,6 +234,14 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         });
         jMenu_ControleEstrategico.add(jMenuItem_PorRegiao);
 
+        jMenuItem2.setText("jMenuItem2");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu_ControleEstrategico.add(jMenuItem2);
+
         jMenu.add(jMenu_ControleEstrategico);
         jMenu.add(jMenu5);
 
@@ -306,6 +315,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         new GuiAlterar_Senha(login).setVisible(true);
     }//GEN-LAST:event_jmenu_AlterarSenhaActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       new GuiClientes_doVendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -355,6 +368,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Analise_de_Credito;

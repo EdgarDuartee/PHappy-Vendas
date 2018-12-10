@@ -126,7 +126,32 @@ public class DaoGerarPedido {
         }
         return (lista);
     }
+    
+public ArrayList<Pedido> listarPedidosVendedor(int vendedorCod) {
+        Pedido pedido = null;
+        ArrayList<Pedido> lista = new ArrayList();
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("SELECT * from pedido where vendedorCod = ?");
 
+            ps.setInt(1, vendedorCod);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next() == true) {
+                pedido = new Pedido(rs.getInt("CODIGO"),
+                        rs.getString("ClienteCod"),
+                        rs.getInt("VendedorCod"),
+                        rs.getString("dtPedido"),
+                        rs.getFloat("totalPedido"),
+                        rs.getInt("Situacao"));
+                pedido.setClienteNome(rs.getString("clienteNome"));
+                lista.add(pedido);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return (lista);
+    }
     public ArrayList<Pedido> listarPedidosDataSituacao(int Situcao, String dtInicio, String dtFinal) {
         Pedido pedido = null;
         ArrayList<Pedido> lista = new ArrayList();
@@ -282,5 +307,22 @@ public class DaoGerarPedido {
             System.out.println(ex);
         }
         return Max;
+    }
+    
+    public String UltimoPedido (String clienteCod) {
+        PreparedStatement ps = null;
+        String Data = null;
+        try {
+            ps = conn.prepareStatement("select dtpedido as data from pedido where codigo = (Select max(codigo) from pedido where clientecod =  ?");
+            ps.setString(1, clienteCod);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Data = rs.getString("Data");
+                System.out.println(Data);
+            }
+        } catch (SQLException ex) {
+            return("Nunca Antes");
+        }
+        return (Data);
     }
 }

@@ -41,6 +41,10 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         lblLogotipo = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
@@ -53,8 +57,18 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
         jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
         jMenuItem_PedidosAprovados = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -132,6 +146,18 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
 
         jMenu.add(jMenu_Pedidos_Aprovados);
 
+        jMenu2.setText("Informações Vendedor");
+
+        jMenuItem5.setText("Clientes Afiliados");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenu.add(jMenu2);
+
         setJMenuBar(jMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,6 +199,10 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     private void jMenuItem_PedidosAprovadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PedidosAprovadosActionPerformed
         new GuiPedidos_Aprovados(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PedidosAprovadosActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new GuiClientes_doVendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,6 +250,12 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     private javax.swing.JMenu JMenuAlterar;
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;
     private javax.swing.JMenuItem jMenuItem_PedidosAprovados;
