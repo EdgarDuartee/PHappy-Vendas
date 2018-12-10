@@ -194,12 +194,14 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
         jMenu.add(jMenu_ControleEstrategico);
 
         jMenu2.setText("Informações Vendedor");
+        jMenu2.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu2ActionPerformed(evt);
             }
         });
 
+        jMenuItem2.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem2.setText("Clientes Atribuídos");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

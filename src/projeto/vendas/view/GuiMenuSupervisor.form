@@ -191,6 +191,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es Vendedor"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Times New Roman" size="12" style="3"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu2ActionPerformed"/>
@@ -198,6 +201,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="3"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Clientes Atribu&#xed;dos"/>
               </Properties>
               <Events>

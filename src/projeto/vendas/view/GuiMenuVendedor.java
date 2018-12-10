@@ -147,7 +147,9 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         jMenu.add(jMenu_Pedidos_Aprovados);
 
         jMenu2.setText("Informações Vendedor");
+        jMenu2.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
+        jMenuItem5.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenuItem5.setText("Clientes Atribuídos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
