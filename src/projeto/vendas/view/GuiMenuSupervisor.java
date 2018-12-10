@@ -41,6 +41,7 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         lblLogotipo = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
@@ -59,8 +60,12 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
         jMenuItem_PorCliente = new javax.swing.JMenuItem();
         jMenuItem_PorVendedor = new javax.swing.JMenuItem();
         jMenuItem_PorRegiao = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -188,6 +193,23 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
 
         jMenu.add(jMenu_ControleEstrategico);
 
+        jMenu2.setText("Informações Vendedor");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Clientes Atribuídos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+        jMenu.add(jMenu2);
+
         setJMenuBar(jMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -250,6 +272,14 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
         new GuiControle_Estratégico_por_Vendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem_PorVendedorActionPerformed
 
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        System.out.println("XD");
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+      new GuiClientes_doVendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,6 +326,9 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
     private javax.swing.JMenu JMenuAlterar;
     private javax.swing.JMenuBar jMenu;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;

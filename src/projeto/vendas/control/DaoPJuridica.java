@@ -213,6 +213,7 @@ public class DaoPJuridica {
                 p.setContato3(rs.getString("nomecont3"));
                 p.setCnpj(rs.getString("CNPJ"));
                 p.setDtInicio(rs.getString("DtINICIO"));
+                System.out.println(p.getDtInicio());
 
             }
         } catch (SQLException ex) {
@@ -240,6 +241,8 @@ public class DaoPJuridica {
                     PJ.setCnpj(rs.getString("CNPJ"));
                     PJ.setLatitude(rs.getDouble("Latitude"));
                     PJ.setLongitude(rs.getDouble("Longitude"));
+                    PJ.setDtInicio(rs.getString("DtINICIO"));
+                System.out.println(PJ.getDtInicio());
                     lista.add(PJ);
                 }
             } catch (SQLException ex) {

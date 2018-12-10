@@ -148,7 +148,7 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
 
         jMenu2.setText("Informações Vendedor");
 
-        jMenuItem5.setText("Clientes Afiliados");
+        jMenuItem5.setText("Clientes Atribuídos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);

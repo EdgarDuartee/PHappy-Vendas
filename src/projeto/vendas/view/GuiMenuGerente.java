@@ -48,6 +48,7 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         lblLogotipo = new javax.swing.JLabel();
         jMenu = new javax.swing.JMenuBar();
         jMenu_Cadastro = new javax.swing.JMenu();
@@ -71,6 +72,8 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenuItem_PorRegiao = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -86,6 +89,8 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu4.setText("jMenu4");
 
         jMenu6.setText("jMenu6");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
@@ -245,6 +250,18 @@ public class GuiMenuGerente extends javax.swing.JFrame {
         jMenu.add(jMenu_ControleEstrategico);
         jMenu.add(jMenu5);
 
+        jMenu7.setText("Informações Gerente");
+
+        jMenuItem4.setText("Clientes Atribuídos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem4);
+
+        jMenu.add(jMenu7);
+
         setJMenuBar(jMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -319,6 +336,10 @@ public class GuiMenuGerente extends javax.swing.JFrame {
        new GuiClientes_doVendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+       new GuiClientes_doVendedor(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,8 +388,11 @@ public class GuiMenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Analise_de_Credito;

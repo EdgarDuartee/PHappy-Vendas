@@ -126,8 +126,8 @@ public class DaoGerarPedido {
         }
         return (lista);
     }
-    
-public ArrayList<Pedido> listarPedidosVendedor(int vendedorCod) {
+
+    public ArrayList<Pedido> listarPedidosVendedor(int vendedorCod) {
         Pedido pedido = null;
         ArrayList<Pedido> lista = new ArrayList();
         PreparedStatement ps = null;
@@ -152,6 +152,7 @@ public ArrayList<Pedido> listarPedidosVendedor(int vendedorCod) {
         }
         return (lista);
     }
+
     public ArrayList<Pedido> listarPedidosDataSituacao(int Situcao, String dtInicio, String dtFinal) {
         Pedido pedido = null;
         ArrayList<Pedido> lista = new ArrayList();
@@ -308,21 +309,28 @@ public ArrayList<Pedido> listarPedidosVendedor(int vendedorCod) {
         }
         return Max;
     }
-    
-    public String UltimoPedido (String clienteCod) {
+
+    public String UltimoPedido(String clienteCod) {
         PreparedStatement ps = null;
         String Data = null;
         try {
-            ps = conn.prepareStatement("select dtpedido as data from pedido where codigo = (Select max(codigo) from pedido where clientecod =  ?");
+            ps = conn.prepareStatement("select dtpedido as data from pedido where codigo = (Select max(codigo) from pedido where clientecod =  ?)");
             ps.setString(1, clienteCod);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Data = rs.getString("Data");
+                Data = rs.getString("data");
                 System.out.println(Data);
+
             }
         } catch (SQLException ex) {
-            return("Nunca Antes");
+            System.out.println(ex);
+
         }
-        return (Data);
+        if (Data == null) {
+            return ("Nunca Antes");
+        } else {
+            return (Data.substring(0, Data.indexOf("-")));
+        }
+
     }
 }
