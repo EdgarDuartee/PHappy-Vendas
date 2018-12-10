@@ -1048,12 +1048,12 @@ public class GuiEmitir_nota_fiscal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelDados_Nota_FiscalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblData_Emissao)
-                    .addComponent(ftxtData_Emissao, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(ftxtData_Emissao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelDados_Nota_FiscalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblHora_Emissao)
                     .addComponent(ftxtHora_Emissao, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelDados_Nota_FiscalLayout.setVerticalGroup(
             jPanelDados_Nota_FiscalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

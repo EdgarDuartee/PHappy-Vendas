@@ -1550,14 +1550,14 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblData_Emissao" min="-2" max="-2" attributes="0"/>
-                          <Component id="ftxtData_Emissao" min="-2" pref="63" max="-2" attributes="0"/>
+                          <Component id="ftxtData_Emissao" min="-2" pref="81" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblHora_Emissao" min="-2" max="-2" attributes="0"/>
                           <Component id="ftxtHora_Emissao" min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

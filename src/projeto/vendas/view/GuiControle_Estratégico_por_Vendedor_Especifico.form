@@ -221,8 +221,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblFuncao" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="txtNome" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="txtCodigo" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
@@ -233,13 +232,16 @@
                                                       <Component id="lblTelefone" alignment="0" min="-2" max="-2" attributes="0"/>
                                                       <Component id="ftxtTelefone" alignment="0" min="-2" pref="86" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="ftxtCelular" min="-2" pref="92" max="-2" attributes="0"/>
+                                                      <Component id="ftxtCelular" min="-2" pref="105" max="-2" attributes="0"/>
                                                       <Component id="lblCelular" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Component id="txtFuncao" alignment="0" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="txtNome" pref="326" max="32767" attributes="0"/>
+                                                  <Component id="txtFuncao" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="ftxtDtNasc" min="-2" pref="70" max="-2" attributes="0"/>

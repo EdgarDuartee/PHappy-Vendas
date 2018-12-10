@@ -328,10 +328,10 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                     .addComponent(txtQtdeTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalValorVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                     .addGroup(jPanelVendasLayout.createSequentialGroup()
-                        .addComponent(txtValorTotalVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lblTotalValorVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
+                        .addComponent(txtValorTotalVendas)
+                        .addContainerGap())))
         );
         jPanelVendasLayout.setVerticalGroup(
             jPanelVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -355,11 +355,11 @@ public class GuiControle_Estratégico_por_Vendedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
-                        .addComponent(jPanelVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(75, 75, 75))
-                    .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
                         .addComponent(jPanelVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Painel_ResumoGeralLayout.createSequentialGroup()
+                        .addComponent(jPanelVendedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(75, 75, 75))))
         );
         Painel_ResumoGeralLayout.setVerticalGroup(
             Painel_ResumoGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
