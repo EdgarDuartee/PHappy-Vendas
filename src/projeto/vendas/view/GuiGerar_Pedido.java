@@ -60,7 +60,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     public GuiGerar_Pedido(Login login) {
         initComponents();
         this.login = login;
-        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
         GuiGerar_Pedido.this.setTitle("Gerar Pedido      " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
         DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
@@ -362,10 +362,10 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             }
         });
         tblProduto.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 tblProdutoInputMethodTextChanged(evt);
+            }
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         tblProduto.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -567,7 +567,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             Pedido pedido = new Pedido(daoGerarPedido.getProximoCodigo(),
                     lbl_codigoCliente.getText(), login.getCodigo(),
                     txt_Data.getText() + "-" + HoraSistema,
-                    Float.parseFloat(txt_total.getText().replace(",", ".")), 3);
+                    Total, 3);
             pedido.setClienteNome(txt_nomeCliente.getText());
             daoGerarPedido.inserir(pedido);
             for (int i = 0; i < model.getRowCount(); i++) {
@@ -583,7 +583,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             txtCPF_CNPJ.setEnabled(true);
             btnGerar_Orcamento.setEnabled(true);
             btnLimpar.setEnabled(true);
-            
+
         }
 
     }//GEN-LAST:event_btnEnviar_PedidoActionPerformed
@@ -683,7 +683,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
                         * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())))};
                     model.addRow(row);
                     System.out.println(formatador.format(((Integer) cbxQuantidade.getValue())
-                        * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())));
+                            * (listaProdutos.get(cbxProduto.getSelectedIndex()).getValorUnitario())));
                 } else {//NAO TEM EM ESTOQUE
                     JOptionPane.showMessageDialog(null, "Quantidade informada maior que "
                             + "a quantidade do produto em estoque.", "Erro Crítico", JOptionPane.ERROR_MESSAGE);
@@ -750,7 +750,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             //CHECK DE PEDIDO VAZIO PARA HABILITAR O BOTÃO ENVIAR PEDIDO
             if (model.getRowCount() > 0 && btnEnviar_Pedido.isEnabled() == false) {
                 btnEnviar_Pedido.setEnabled(true);
-                
+
             }
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
@@ -780,7 +780,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
 
             if (tblProduto.getSelectedRow() >= 0) {
-                Total = (Total - Float.parseFloat(model.getValueAt(tblProduto.getSelectedRow(), 4).toString().replace(",",".")));
+                Total = (Total - Float.parseFloat(model.getValueAt(tblProduto.getSelectedRow(), 4).toString().replace(",", ".")));
                 txt_total.setText(formatador.format(Total));
                 // PERCORRO O ARRAYLIST QUE PREENCHE O CBX PRODUTO, ATÉ ENCONTRAR O PRODUTO COM O CÓDIGO DO EXCLUIDO.
 //                for (int i = 0; i < listaProdutos.size(); i++) {
@@ -1004,7 +1004,6 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
     private javax.swing.JButton btnGerar_Orcamento;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnVoltar;
-    private javax.swing.JButton btnVoltar1;
     private javax.swing.JButton btn_consultar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxCategoria;

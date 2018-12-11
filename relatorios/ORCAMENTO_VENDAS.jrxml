@@ -86,11 +86,15 @@ where pedido.codigo = $P{pedido} and pedido_produto.pedidocod = $P{pedido}]]>
 				<reportElement style="Heading 3" x="55" y="99" width="271" height="20" uuid="294af3bd-0438-4b94-86ba-c542486adf9b"/>
 				<textFieldExpression><![CDATA[$F{PEDIDO_CLIENTENOME}]]></textFieldExpression>
 			</textField>
-			<textField pattern="###0.00">
-				<reportElement style="Heading 3" x="342" y="99" width="214" height="20" uuid="7bca97d4-713b-4040-b6fd-10b13004f351"/>
+			<textField pattern="###0.00;-###0.00">
+				<reportElement style="Heading 3" x="488" y="99" width="67" height="20" uuid="7bca97d4-713b-4040-b6fd-10b13004f351"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Total do Pedido =  " + $F{PEDIDO_TOTALPEDIDO}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PEDIDO_TOTALPEDIDO}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="Heading 3" x="368" y="99" width="120" height="20" uuid="90128a1c-4faa-4afc-8ef9-036f68e49a97"/>
+				<text><![CDATA[Total do Pedido =]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
