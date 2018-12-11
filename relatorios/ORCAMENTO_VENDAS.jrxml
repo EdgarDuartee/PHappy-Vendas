@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8de373e7-cead-4cf3-bf6f-bdc765a5293f">
-	<property name="ireport.zoom" value="1.210000000000001"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="180"/>
+	<property name="ireport.zoom" value="2.3579476910000032"/>
+	<property name="ireport.x" value="487"/>
+	<property name="ireport.y" value="240"/>
 	<style name="Style_1" hAlign="Right" fontName="Calibri" fontSize="8"/>
 	<style name="Heading 1" fontSize="16" isBold="true"/>
 	<style name="Heading 3" fontSize="14" isBold="true"/>
@@ -66,8 +66,8 @@ where pedido.codigo = $P{pedido} and pedido_produto.pedidocod = $P{pedido}]]>
 				<imageExpression><![CDATA["logotipo.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Heading 1" x="207" y="0" width="119" height="30" uuid="012303e9-b915-48fb-8d35-658ebc9f4499"/>
-				<text><![CDATA[ORÇAMENTO ]]></text>
+				<reportElement style="Heading 1" x="207" y="0" width="161" height="30" uuid="012303e9-b915-48fb-8d35-658ebc9f4499"/>
+				<text><![CDATA[Relatório do Pedido]]></text>
 			</staticText>
 			<textField>
 				<reportElement style="Heading 3" x="341" y="119" width="214" height="20" uuid="985d39c8-7375-492b-8def-d68f783c6aef"/>
@@ -86,8 +86,8 @@ where pedido.codigo = $P{pedido} and pedido_produto.pedidocod = $P{pedido}]]>
 				<reportElement style="Heading 3" x="55" y="99" width="271" height="20" uuid="294af3bd-0438-4b94-86ba-c542486adf9b"/>
 				<textFieldExpression><![CDATA[$F{PEDIDO_CLIENTENOME}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="Heading 3" x="341" y="99" width="214" height="20" uuid="7bca97d4-713b-4040-b6fd-10b13004f351"/>
+			<textField pattern="###0.00">
+				<reportElement style="Heading 3" x="342" y="99" width="214" height="20" uuid="7bca97d4-713b-4040-b6fd-10b13004f351"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Total do Pedido =  " + $F{PEDIDO_TOTALPEDIDO}]]></textFieldExpression>
 			</textField>
@@ -175,19 +175,19 @@ where pedido.codigo = $P{pedido} and pedido_produto.pedidocod = $P{pedido}]]>
 				<textFieldExpression><![CDATA[$F{PRODUTO_NOME}+ "  -  " + $F{PRODUTO_DESCRICAO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Text Body" x="356" y="0" width="100" height="29" uuid="f7b5ddbe-86af-4e62-bf5c-d4786ba772f0"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{PEDIDO_PRODUTO_QTDPRODUTO}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement style="Text Body" x="256" y="0" width="100" height="29" uuid="2d232517-25db-4ba3-9f6e-11e6d88e83bf"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{PRODUTO_VALORUNITARIO}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00;-###0.00">
-				<reportElement style="Text Body" x="456" y="0" width="100" height="29" uuid="26589e8e-3d46-4492-9462-ef789537fd0d"/>
+				<reportElement style="Text Body" x="456" y="-1" width="100" height="30" uuid="26589e8e-3d46-4492-9462-ef789537fd0d"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{PRODUTO_VALORUNITARIO}.floatValue() * $F{PEDIDO_PRODUTO_QTDPRODUTO}.intValue()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Text Body" x="356" y="0" width="99" height="29" uuid="f7b5ddbe-86af-4e62-bf5c-d4786ba772f0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PEDIDO_PRODUTO_QTDPRODUTO}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

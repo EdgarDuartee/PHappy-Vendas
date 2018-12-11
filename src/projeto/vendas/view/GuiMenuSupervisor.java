@@ -52,6 +52,7 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
         JMenuAlterar = new javax.swing.JMenu();
         jMenuItem_Alterar_Cliente = new javax.swing.JMenuItem();
         jMenuItem_Alterar_Vendedor = new javax.swing.JMenuItem();
+        jMenuItem_Alterar_Cliente1 = new javax.swing.JMenuItem();
         jMenu_Gerar_Pedido = new javax.swing.JMenu();
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
         jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
@@ -131,6 +132,15 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
         });
         JMenuAlterar.add(jMenuItem_Alterar_Vendedor);
 
+        jMenuItem_Alterar_Cliente1.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_Alterar_Cliente1.setText("Senha");
+        jMenuItem_Alterar_Cliente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_Alterar_Cliente1ActionPerformed(evt);
+            }
+        });
+        JMenuAlterar.add(jMenuItem_Alterar_Cliente1);
+
         jMenu.add(JMenuAlterar);
 
         jMenu_Gerar_Pedido.setText("Gerar Pedido");
@@ -193,7 +203,7 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
 
         jMenu.add(jMenu_ControleEstrategico);
 
-        jMenu2.setText("Informações Vendedor");
+        jMenu2.setText("Informações Supervisor");
         jMenu2.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
         jMenu2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +292,10 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
       new GuiClientes_doVendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem_Alterar_Cliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Alterar_Cliente1ActionPerformed
+        new GuiAlterar_Senha(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_Alterar_Cliente1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -332,6 +346,7 @@ public class GuiMenuSupervisor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
+    private javax.swing.JMenuItem jMenuItem_Alterar_Cliente1;
     private javax.swing.JMenuItem jMenuItem_Alterar_Vendedor;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;
     private javax.swing.JMenuItem jMenuItem_PedidosAprovados;

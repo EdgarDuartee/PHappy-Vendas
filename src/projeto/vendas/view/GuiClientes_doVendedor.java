@@ -61,10 +61,6 @@ public class GuiClientes_doVendedor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_clientes = new javax.swing.JTable();
-        cbx_clientes = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
-        checkbox_Todos = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
@@ -93,25 +89,13 @@ public class GuiClientes_doVendedor extends javax.swing.JFrame {
             tbl_clientes.getColumnModel().getColumn(2).setMinWidth(105);
             tbl_clientes.getColumnModel().getColumn(2).setPreferredWidth(105);
             tbl_clientes.getColumnModel().getColumn(2).setMaxWidth(105);
-            tbl_clientes.getColumnModel().getColumn(3).setMinWidth(105);
-            tbl_clientes.getColumnModel().getColumn(3).setPreferredWidth(105);
-            tbl_clientes.getColumnModel().getColumn(3).setMaxWidth(105);
+            tbl_clientes.getColumnModel().getColumn(3).setMinWidth(125);
+            tbl_clientes.getColumnModel().getColumn(3).setPreferredWidth(125);
+            tbl_clientes.getColumnModel().getColumn(3).setMaxWidth(125);
             tbl_clientes.getColumnModel().getColumn(4).setMinWidth(60);
             tbl_clientes.getColumnModel().getColumn(4).setPreferredWidth(60);
             tbl_clientes.getColumnModel().getColumn(4).setMaxWidth(60);
         }
-
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Adicionar.png"))); // NOI18N
-        jButton4.setText("Adicionar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        checkbox_Todos.setText("Selecionar Todos ");
-
-        jLabel1.setText("Clientes");
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/projeto/vendas/model/icones/Imprimir.png"))); // NOI18N
         jButton5.setText("Gerar Ficha Cliente");
@@ -134,42 +118,24 @@ public class GuiClientes_doVendedor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(checkbox_Todos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
-                    .addComponent(cbx_clientes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbx_clientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(checkbox_Todos)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -187,22 +153,17 @@ public class GuiClientes_doVendedor extends javax.swing.JFrame {
 
         listaPF = daoPFisica.ListarPFPorCodVend(login.getCodigo());
         listaPJ = daoPJuridica.ListarPJPorCodVend(login.getCodigo());
+        DefaultTableModel model = (DefaultTableModel) tbl_clientes.getModel();
 
-        for (int i = 0; i < listaPF.size(); i++) {
+     /*   for (int i = 0; i < listaPF.size(); i++) {
             cbx_clientes.addItem(listaPF.get(i).getNome());
 
         }
         for (int i = 0; i < listaPJ.size(); i++) {
             cbx_clientes.addItem(listaPJ.get(i).getNome());
 
-        }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tbl_clientes.getModel();
-
-        if (checkbox_Todos.isSelected()) {
-            for (int i = 0; i < listaPF.size(); i++) {
+        }*/
+     for (int i = 0; i < listaPF.size(); i++) {
                 Object[] row = {
                     listaPF.get(i).getCodigo(),
                     "(" + listaPF.get(i).getCodigo() + ")   " + listaPF.get(i).getNome(),
@@ -228,37 +189,7 @@ public class GuiClientes_doVendedor extends javax.swing.JFrame {
                 System.out.println(listaPJ.get(i).getDtInicio());
 
             }
-        } else {
-            if (cbx_clientes.getSelectedIndex() < listaPF.size()) {
-                Object[] row = {
-                    listaPF.get(cbx_clientes.getSelectedIndex()).getCodigo(),
-                    "(" + listaPF.get(cbx_clientes.getSelectedIndex()).getCodigo() + ")   " + listaPF.get(cbx_clientes.getSelectedIndex()).getNome(),
-                    listaPF.get(cbx_clientes.getSelectedIndex()).getDtInicio().substring(0, 2) + "/" + listaPF.get(cbx_clientes.getSelectedIndex()).getDtInicio().substring(2, 4) + "/"
-                    + listaPF.get(cbx_clientes.getSelectedIndex()).getDtInicio().substring(4, listaPF.get(cbx_clientes.getSelectedIndex()).getDtInicio().length()),
-                    daoGerarPedido.UltimoPedido(listaPF.get(cbx_clientes.getSelectedIndex()).getCodigo()),
-                    listaPF.get(cbx_clientes.getSelectedIndex()).getAtivo()
-                };
-                model.addRow(row);
-                System.out.println(listaPF.get(cbx_clientes.getSelectedIndex()).getDtInicio());
-
-            } else {
-                Object[] row = {
-                    listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getCodigo(),
-                    "(" + listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getCodigo() + ")   " + listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getNome(),
-                    listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getDtInicio().substring(0, 2)
-                         + "/"
-                         + listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getDtInicio().substring(2, 4)
-                         + "/"
-                         + listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getDtInicio().substring(4, listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getDtInicio().length()),
-                    daoGerarPedido.UltimoPedido(listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getCodigo()),
-                    listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getAtivo()
-                };
-                model.addRow(row);
-                System.out.println(listaPJ.get(cbx_clientes.getSelectedIndex() - listaPF.size()).getDtInicio());
-
-            }
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_formWindowOpened
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
              String codCli = "";
@@ -346,13 +277,9 @@ public class GuiClientes_doVendedor extends javax.swing.JFrame {
     private static Login login;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbx_clientes;
-    private javax.swing.JCheckBox checkbox_Todos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl_clientes;
     // End of variables declaration//GEN-END:variables

@@ -32,7 +32,7 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
         this.login = login;
-        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -170,10 +170,17 @@ public class GuiAlterar_Senha extends javax.swing.JFrame {
         } else {
             if (String.valueOf(txt_SenhaAtual.getPassword()).equals(login.getSenha())) {
                 if (JOptionPane.showConfirmDialog(null, "Deseja Alterar a Senha?") == 0) {
-                    vendedor.setSenha(String.valueOf(txt_NovaSenha.getPassword()));
-                    daoVendedor.alterarsenha(vendedor);
-                    JOptionPane.showMessageDialog(null, "Se houver problemas com a nova senha, contate um administrador.",
-                    "Senha Alterada Com Sucesso.", JOptionPane.INFORMATION_MESSAGE);
+                    if (String.valueOf(txt_ConfirmarNovaSenha.getPassword()).equals(String.valueOf(txt_NovaSenha.getPassword()))) {
+                        vendedor.setSenha(String.valueOf(txt_NovaSenha.getPassword()));
+                        daoVendedor.alterarsenha(vendedor);
+                        JOptionPane.showMessageDialog(null, "Se houver problemas com a nova senha, contate um administrador.",
+                                "Senha Alterada Com Sucesso.", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "A nova senha "
+                                + "informada, não corresponde a senha do campo ''Confirmar Senha''.",
+                                "Senha Atual Divergente.", JOptionPane.ERROR_MESSAGE);
+                    }
                 } else {
                     if (JOptionPane.showConfirmDialog(null, "Deseja Limpar a Tela ?") == 0) {
                         txt_ConfirmarNovaSenha.setText("");

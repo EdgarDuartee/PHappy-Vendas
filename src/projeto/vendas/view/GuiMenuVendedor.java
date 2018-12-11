@@ -53,6 +53,7 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         jMenuItem_Pessoa_Jurídica = new javax.swing.JMenuItem();
         JMenuAlterar = new javax.swing.JMenu();
         jMenuItem_Alterar_Cliente = new javax.swing.JMenuItem();
+        jMenuItem_Alterar_Senha = new javax.swing.JMenuItem();
         jMenu_Gerar_Pedido = new javax.swing.JMenu();
         jMenuItem_Gerar_Pedido = new javax.swing.JMenuItem();
         jMenu_Pedidos_Aprovados = new javax.swing.JMenu();
@@ -115,6 +116,15 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
             }
         });
         JMenuAlterar.add(jMenuItem_Alterar_Cliente);
+
+        jMenuItem_Alterar_Senha.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
+        jMenuItem_Alterar_Senha.setText("Senha");
+        jMenuItem_Alterar_Senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_Alterar_SenhaActionPerformed(evt);
+            }
+        });
+        JMenuAlterar.add(jMenuItem_Alterar_Senha);
 
         jMenu.add(JMenuAlterar);
 
@@ -206,6 +216,10 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
         new GuiClientes_doVendedor(login).setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem_Alterar_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_Alterar_SenhaActionPerformed
+      new GuiAlterar_Senha(login).setVisible(true);
+    }//GEN-LAST:event_jMenuItem_Alterar_SenhaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +273,7 @@ public class GuiMenuVendedor extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem_Alterar_Cliente;
+    private javax.swing.JMenuItem jMenuItem_Alterar_Senha;
     private javax.swing.JMenuItem jMenuItem_Gerar_Pedido;
     private javax.swing.JMenuItem jMenuItem_PedidosAprovados;
     private javax.swing.JMenuItem jMenuItem_Pessoa_Física;
