@@ -27,6 +27,16 @@ public class Coordenadas {
     //API DO LUIZ 
 //    private String keyApi = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
     private String[] ListaAPI = {
+        "AIzaSyDQdP-366QqkD8GVWN1SO7LP9HnleKzm38",
+        "AIzaSyC8925nkG9uW1fiXPdHL1uAOJ0xRccXk3E",
+        "AIzaSyCqX6Vst0ytQzQD-IQqhWygtNY77XZbP68",
+        "AIzaSyCfGdfu17HiNLws0HUo-gkw7E9WQ0we_sM",
+        "AIzaSyAfYaM91K5mz9D3afhNMsuh4KF3xDo5uEA",
+        "AIzaSyBKX9yaPoHu4v9vE2HDEUZkeLGicVdDDso",
+        "AIzaSyC3ypT5cFDcSNcz3z7hJtKCqFyFAWaW8no",
+        "AIzaSyCdOhjLlq6Ah9lwMK6SSStcaGIkir0o4H8",
+        "AIzaSyCmLqzbAJeDGLCwlxGUyp2mnfmMloWIFEs",
+        "AIzaSyC_eHbKEXUL_3XFXixzrl1i0rMImK8j5wg",
         "AIzaSyAMfvhhEDTKHoWbWBgZia-_Do84_9WOF1I",
         "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk",
         "AIzaSyB8dv9It_rRwRm406oglwmOXHmi5BcWUMU",
@@ -60,7 +70,7 @@ public class Coordenadas {
             } catch (IOException EX) {
                 System.out.println(EX);
             }
-            if (JsonMaps.indexOf("OVER_QUERY_LIMIT") < 0 &&JsonMaps.indexOf("REQUEST_DENIED") < 0) {
+            if (JsonMaps.indexOf("OVER_QUERY_LIMIT") < 0 && JsonMaps.indexOf("REQUEST_DENIED") < 0) {
                 System.out.println("Aqui tem o break");
                 break;
             } else {

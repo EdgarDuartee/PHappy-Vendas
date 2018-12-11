@@ -44,7 +44,7 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         initComponents();
         this.codigo = codigo;
         this.login = login;
-        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE); 
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
         GuiControle_EstrategicoCliente_Individual.this.setTitle("Controle Estratégico Cliente             " + "Usuário:  " + login.getNome()
                 + "         " + "Codigo:  " + login.getCodigo());
 
@@ -321,6 +321,16 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
     private void Btn_mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_mapaActionPerformed
 //        String chave = "AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
         String[] ListaAPI = {
+            "AIzaSyDQdP-366QqkD8GVWN1SO7LP9HnleKzm38",
+            "AIzaSyC8925nkG9uW1fiXPdHL1uAOJ0xRccXk3E",
+            "AIzaSyCqX6Vst0ytQzQD-IQqhWygtNY77XZbP68",
+            "AIzaSyCfGdfu17HiNLws0HUo-gkw7E9WQ0we_sM",
+            "AIzaSyAfYaM91K5mz9D3afhNMsuh4KF3xDo5uEA",
+            "AIzaSyBKX9yaPoHu4v9vE2HDEUZkeLGicVdDDso",
+            "AIzaSyC3ypT5cFDcSNcz3z7hJtKCqFyFAWaW8no",
+            "AIzaSyCdOhjLlq6Ah9lwMK6SSStcaGIkir0o4H8",
+            "AIzaSyCmLqzbAJeDGLCwlxGUyp2mnfmMloWIFEs",
+            "AIzaSyC_eHbKEXUL_3XFXixzrl1i0rMImK8j5wg",
             "AIzaSyAMfvhhEDTKHoWbWBgZia-_Do84_9WOF1I",
             "AIzaSyDcKzjKLpEcBsdcVRj4SrSMYjjiMBAGBUk",
             "AIzaSyB8dv9It_rRwRm406oglwmOXHmi5BcWUMU",
@@ -334,7 +344,6 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
             "AIzaSyAaw9a1v3ENXt8NJA-0WXBIInoXy7xhR7I",
             "AIzaSyC9ahEqd6JuB4nvGUW09zze6b-T7dqEJWY"
         };
-
 //        String endereco = "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=1200x600&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyClq1KlL77y-yFQg9tREoTL3RX5xHZgDN8";
         BufferedImage img = null;
         for (int i = 0; i < ListaAPI.length; i++) {
@@ -354,7 +363,7 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
             if (img != null) {
                 ImageIcon mapa = new ImageIcon(img);
 //                lbl_mapa.setIcon(mapa);
-                lbl_mapa.setIcon(new ImageIcon(mapa.getImage().getScaledInstance(lbl_mapa.getWidth(),lbl_mapa.getHeight(), 100)));
+                lbl_mapa.setIcon(new ImageIcon(mapa.getImage().getScaledInstance(lbl_mapa.getWidth(), lbl_mapa.getHeight(), 100)));
                 break;
             } else {
                 System.out.println("Erro Na Chave da APi");
@@ -375,7 +384,11 @@ public class GuiControle_EstrategicoCliente_Individual extends javax.swing.JFram
         conexao = new Conexao();
         conexao.setDriver();
         conexao.setConnectionString();
-
+        lbl_latitude.setVisible(false);
+        lbl_longitude.setVisible(false);
+        lbl_cidade.setVisible(false);
+        lbl_UF.setVisible(false);
+        lbl_bairro.setVisible(false);
         daoPF = new DaoPFisica(conexao.conectar());
         daoPJ = new DaoPJuridica(conexao.conectar());
         daoPedido = new DaoGerarPedido(conexao.conectar());

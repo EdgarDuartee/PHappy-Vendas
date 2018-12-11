@@ -773,6 +773,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
         txt_nomeCliente.setText("");
         btnGerar_Orcamento.setEnabled(false);
         btn_consultar.setEnabled(true);
+        lbl_NumeroPedido.setText(daoGerarPedido.getProximoCodigo()+"");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void tblProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProdutoKeyPressed
@@ -899,6 +900,7 @@ public class GuiGerar_Pedido extends javax.swing.JFrame {
 
         btnLimpar.setEnabled(false);
         btn_consultar.setEnabled(true);
+        lbl_NumeroPedido.setText(daoGerarPedido.getProximoCodigo()+"");
         int limite = tblProduto.getModel().getRowCount();
         DefaultTableModel model = (DefaultTableModel) tblProduto.getModel();
         for (int i = 0; i < limite; i++) {

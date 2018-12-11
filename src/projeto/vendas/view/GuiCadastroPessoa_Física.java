@@ -126,11 +126,15 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         lblNome.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNome.setText("Nome");
 
+        txtNome.setText("Antonio Silveira Santos");
+
         lblRG.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblRG.setText("RG");
 
         lblEmail.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblEmail.setText("Email");
+
+        txtEmail.setText("demonstracao@cadastro.com");
 
         lblTelefone.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblTelefone.setText("Telefone");
@@ -149,7 +153,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtCelular.setText("");
+        ftxtCelular.setText("(15)99136-0038");
 
         lblData_Nascimento.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblData_Nascimento.setText("Data Nascimento");
@@ -159,21 +163,26 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtData_Nasc.setText("");
+        ftxtData_Nasc.setText("08/06/2018");
+        ftxtData_Nasc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftxtData_NascActionPerformed(evt);
+            }
+        });
 
         try {
             ftxtTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtTelefone.setText("");
+        ftxtTelefone.setText("(15)3358-7218");
 
         try {
             ftxtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtCPF.setText("");
+        ftxtCPF.setText("390.109.518-71");
         ftxtCPF.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 ftxtCPFFocusLost(evt);
@@ -185,7 +194,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtRG.setText("");
+        ftxtRG.setText("99.999.999-9");
 
         lblAsteristico.setText("*");
 
@@ -309,17 +318,30 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         lblCidade.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCidade.setText("Cidade");
 
+        txtCidade.setText("Sorocaba");
+
         lblRua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblRua.setText("Rua/Avenida/Estrada/Viela");
 
+        txtRua.setText("Santiago Hidalgo Ruiz");
+
         lblBairro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblBairro.setText("Bairro/Vila/Parque");
+
+        txtBairro.setText("Maria Antônia Prado");
+        txtBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBairroActionPerformed(evt);
+            }
+        });
 
         lblUF.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblUF.setText("UF");
 
         lblNumero.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNumero.setText("N°");
+
+        txtNumero.setText("45");
 
         lblCEP.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCEP.setText("CEP");
@@ -329,7 +351,7 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtCEP.setText("");
+        ftxtCEP.setText("18076-120");
 
         lblAsteristico6.setText("*");
 
@@ -699,6 +721,14 @@ public class GuiCadastroPessoa_Física extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Este CPF ja está cadastrado no sistema!");
         }
     }//GEN-LAST:event_ftxtCPFFocusLost
+
+    private void ftxtData_NascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftxtData_NascActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftxtData_NascActionPerformed
+
+    private void txtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBairroActionPerformed
 
     /**
      * @param args the command line arguments

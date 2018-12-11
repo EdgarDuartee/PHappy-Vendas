@@ -226,6 +226,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNome_Fantasia">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PetShop da Vila"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNome_FantasiaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblEmail">
               <Properties>
@@ -236,6 +242,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="petshop@vendas.com"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCNPJ">
               <Properties>
@@ -258,7 +267,7 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="##.###.###/####-##" subtype="-1" type="5"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=""/>
+                <Property name="text" type="java.lang.String" value="06.893.887/0001-70"/>
               </Properties>
               <Events>
                 <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="ftxtCNPJFocusLost"/>
@@ -439,6 +448,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCidade">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sorocaba"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblRua">
               <Properties>
@@ -449,6 +461,12 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtRua">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Santiago Idalgo Ruiz"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRuaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblBairro">
               <Properties>
@@ -459,6 +477,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBairro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Maria Antonia Prado"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblNumero">
               <Properties>
@@ -469,6 +490,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNumero">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="45"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblCEP">
               <Properties>
@@ -483,7 +507,7 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="#####-###" subtype="-1" type="5"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=""/>
+                <Property name="text" type="java.lang.String" value="18075-120"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAsteristico5">
@@ -731,6 +755,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNome_Contato1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eike Batista - Propiet&#xe1;rio"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTelefone1">
               <Properties>
@@ -745,7 +772,7 @@
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
                   <Format format="(##)####-####" subtype="-1" type="5"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=""/>
+                <Property name="text" type="java.lang.String" value="(15)3003-4004"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAsteristico11">
@@ -775,6 +802,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNome_Contato2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Isabella - Gerente"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="ftxtTelefone2">
               <Properties>

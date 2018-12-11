@@ -130,8 +130,17 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblNome_Fantasia.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNome_Fantasia.setText("Nome Fantasia");
 
+        txtNome_Fantasia.setText("PetShop da Vila");
+        txtNome_Fantasia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNome_FantasiaActionPerformed(evt);
+            }
+        });
+
         lblEmail.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblEmail.setText("Email");
+
+        txtEmail.setText("petshop@vendas.com");
 
         lblCNPJ.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCNPJ.setText("CNPJ");
@@ -144,7 +153,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtCNPJ.setText("");
+        ftxtCNPJ.setText("06.893.887/0001-70");
         ftxtCNPJ.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 ftxtCNPJFocusLost(evt);
@@ -228,14 +237,27 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblCidade.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCidade.setText("Cidade");
 
+        txtCidade.setText("Sorocaba");
+
         lblRua.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblRua.setText("Rua/Avenida/Estrada/Viela");
+
+        txtRua.setText("Santiago Idalgo Ruiz");
+        txtRua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRuaActionPerformed(evt);
+            }
+        });
 
         lblBairro.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblBairro.setText("Bairro/Vila/Parque");
 
+        txtBairro.setText("Maria Antonia Prado");
+
         lblNumero.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblNumero.setText("N°");
+
+        txtNumero.setText("45");
 
         lblCEP.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblCEP.setText("CEP");
@@ -245,7 +267,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtCEP.setText("");
+        ftxtCEP.setText("18075-120");
 
         lblAsteristico5.setText("*");
 
@@ -399,6 +421,8 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         lblcontato1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblcontato1.setText("Nome do contato 1");
 
+        txtNome_Contato1.setText("Eike Batista - Propietário");
+
         lblTelefone1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblTelefone1.setText("Telefone 1");
 
@@ -407,7 +431,7 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftxtTelefone1.setText("");
+        ftxtTelefone1.setText("(15)3003-4004");
 
         lblAsteristico11.setText("*");
 
@@ -418,6 +442,8 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
 
         lblTelefone2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         lblTelefone2.setText("Telefone 2");
+
+        txtNome_Contato2.setText("Isabella - Gerente");
 
         try {
             ftxtTelefone2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)####-####")));
@@ -748,6 +774,14 @@ public class GuiCadastroPessoa_Jurídica extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Este CNPJ ja está cadastrado no sistema!");
         }
     }//GEN-LAST:event_ftxtCNPJFocusLost
+
+    private void txtNome_FantasiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome_FantasiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome_FantasiaActionPerformed
+
+    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRuaActionPerformed
 
     /**
      * @param args the command line arguments
